@@ -1,6 +1,6 @@
 import Foundation
 
-import CardLib
+import CardKit
 
 public struct DroneCardDescs {
     private init() {}
