@@ -1,0 +1,19 @@
+//
+//  DroneCardKit.h
+//  DroneCardKit
+//
+//  Created by ismails on 6/17/16.
+//  Copyright © 2016 IBM. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+
+//! Project version number for DroneCardKit.
+FOUNDATION_EXPORT double DroneCardKitVersionNumber;
+
+//! Project version string for DroneCardKit.
+FOUNDATION_EXPORT const unsigned char DroneCardKitVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <DroneCardKit/PublicHeader.h>
+
+
