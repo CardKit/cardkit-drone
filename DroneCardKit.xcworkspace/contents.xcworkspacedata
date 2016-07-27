@@ -5,6 +5,6 @@
       location = "group:DroneCardKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/card-kit/CardKit.xcodeproj">
+      location = "group:../card-kit/CardKit.xcodeproj">
    </FileRef>
 </Workspace>
