@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CC93187A1D4796DB001B71B1"
-               BuildableName = "DroneCardKit iOS.framework"
+               BuildableName = "DroneCardKit.framework"
                BlueprintName = "DroneCardKit iOS"
                ReferencedContainer = "container:DroneCardKit.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CC93187A1D4796DB001B71B1"
-            BuildableName = "DroneCardKit iOS.framework"
+            BuildableName = "DroneCardKit.framework"
             BlueprintName = "DroneCardKit iOS"
             ReferencedContainer = "container:DroneCardKit.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CC93187A1D4796DB001B71B1"
-            BuildableName = "DroneCardKit iOS.framework"
+            BuildableName = "DroneCardKit.framework"
             BlueprintName = "DroneCardKit iOS"
             ReferencedContainer = "container:DroneCardKit.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CC93187A1D4796DB001B71B1"
-            BuildableName = "DroneCardKit iOS.framework"
+            BuildableName = "DroneCardKit.framework"
             BlueprintName = "DroneCardKit iOS"
             ReferencedContainer = "container:DroneCardKit.xcodeproj">
          </BuildableReference>

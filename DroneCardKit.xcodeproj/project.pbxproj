@@ -34,6 +34,9 @@
 		CC9318E61D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
 		CC9318E71D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
 		CC9318E81D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
+		CC93193B1D47EA65001B71B1 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93193A1D47EA65001B71B1 /* CardKit.framework */; };
+		CC93193D1D47EA6C001B71B1 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93193C1D47EA6C001B71B1 /* CardKit.framework */; };
+		CC93193F1D47EA71001B71B1 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93193E1D47EA71001B71B1 /* CardKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCardDescriptors.swift; sourceTree = "<group>"; };
 		CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStudyScenarios.swift; sourceTree = "<group>"; };
 		CC9318D61D4797BF001B71B1 /* DroneTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTokens.swift; sourceTree = "<group>"; };
+		CC93193A1D47EA65001B71B1 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = "Carthage/Checkouts/card-kit/build/Debug-iphoneos/CardKit.framework"; sourceTree = "<group>"; };
+		CC93193C1D47EA6C001B71B1 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = "Carthage/Checkouts/card-kit/build/Debug/CardKit.framework"; sourceTree = "<group>"; };
+		CC93193E1D47EA71001B71B1 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = "Carthage/Checkouts/card-kit/build/Debug-appletvos/CardKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC93193B1D47EA65001B71B1 /* CardKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC93193D1D47EA6C001B71B1 /* CardKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC93193F1D47EA71001B71B1 /* CardKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +137,9 @@
 		CC9318711D4796DB001B71B1 = {
 			isa = PBXGroup;
 			children = (
+				CC93193E1D47EA71001B71B1 /* CardKit.framework */,
+				CC93193C1D47EA6C001B71B1 /* CardKit.framework */,
+				CC93193A1D47EA65001B71B1 /* CardKit.framework */,
 				CC93187D1D4796DB001B71B1 /* DroneCardKit */,
 				CC9318891D4796DB001B71B1 /* DroneCardKitTests */,
 				CC93187C1D4796DB001B71B1 /* Products */,
@@ -610,6 +622,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -626,6 +642,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -664,6 +684,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -685,6 +709,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -732,6 +760,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-appletvos",
+				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -751,6 +783,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-appletvos",
+				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -806,6 +842,7 @@
 				CC9318911D4796DB001B71B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC9318921D4796DB001B71B1 /* Build configuration list for PBXNativeTarget "DroneCardKitTests iOS" */ = {
 			isa = XCConfigurationList;
@@ -814,6 +851,7 @@
 				CC9318941D4796DB001B71B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC9318AB1D4796F5001B71B1 /* Build configuration list for PBXNativeTarget "DroneCardKit macOS" */ = {
 			isa = XCConfigurationList;
@@ -822,6 +860,7 @@
 				CC9318AD1D4796F5001B71B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC9318AE1D4796F5001B71B1 /* Build configuration list for PBXNativeTarget "DroneCardKitTests macOS" */ = {
 			isa = XCConfigurationList;
@@ -830,6 +869,7 @@
 				CC9318B01D4796F5001B71B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC9318C71D479706001B71B1 /* Build configuration list for PBXNativeTarget "DroneCardKit tvOS" */ = {
 			isa = XCConfigurationList;
@@ -838,6 +878,7 @@
 				CC9318C91D479706001B71B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC9318CA1D479706001B71B1 /* Build configuration list for PBXNativeTarget "DroneCardKitTests tvOS" */ = {
 			isa = XCConfigurationList;
@@ -846,6 +887,7 @@
 				CC9318CC1D479706001B71B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
