@@ -1,0 +1,3 @@
+github "bignerdranch/Freddy" "2.1.0"
+git "git@github.ibm.com:CMER/card-kit.git" "38b54bd1761d6f7aefa948236d3085d7aee5abd5"
+git "git@github.ibm.com:CMER/card-kit-runtime.git" "07e37212696c522b71257e2fad1120526dbc9d9c"

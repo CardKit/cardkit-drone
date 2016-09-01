@@ -16,24 +16,33 @@
 		CC9318CE1D479716001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
 		CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
-		CC9318D71D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */; };
-		CC9318D81D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */; };
-		CC9318D91D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */; };
-		CC9318DA1D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */; };
-		CC9318DB1D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */; };
-		CC9318DC1D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */; };
 		CC9318DD1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
 		CC9318DE1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
 		CC9318DF1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
 		CC9318E01D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
 		CC9318E11D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
 		CC9318E21D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
-		CC9318E31D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
-		CC9318E41D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
-		CC9318E51D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
-		CC9318E61D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
-		CC9318E71D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
-		CC9318E81D4797BF001B71B1 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D61D4797BF001B71B1 /* DroneTokens.swift */; };
+		CCBB79441D7897BB003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
+		CCBB79451D7897BB003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
+		CCBB79461D7897BB003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
+		CCBB794C1D7897D8003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
+		CCBB794D1D7897D8003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */; };
+		CCBB794E1D7897D8003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794B1D7897D8003B6458 /* Freddy.framework */; };
+		CCBB79531D7897FA003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
+		CCBB79541D7897FA003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */; };
+		CCBB79551D7897FA003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79521D7897FA003B6458 /* Freddy.framework */; };
+		CCBB79621D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
+		CCBB79631D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
+		CCBB79641D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
+		CCBB79651D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
+		CCBB79661D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
+		CCBB79671D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
+		CCBB79681D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
+		CCBB79691D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
+		CCBB796A1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
+		CCBB796B1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
+		CCBB796C1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
+		CCBB796D1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +80,18 @@
 		CC9318A31D4796F5001B71B1 /* DroneCardKitTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DroneCardKitTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318B61D479706001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318BF1D479706001B71B1 /* DroneCardKitTests tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DroneCardKitTests tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCardDescriptors.swift; sourceTree = "<group>"; };
 		CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStudyScenarios.swift; sourceTree = "<group>"; };
-		CC9318D61D4797BF001B71B1 /* DroneTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTokens.swift; sourceTree = "<group>"; };
+		CCBB79411D7897BB003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/iOS/CardKit.framework; sourceTree = "<group>"; };
+		CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/iOS/CardKitRuntime.framework; sourceTree = "<group>"; };
+		CCBB79431D7897BB003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
+		CCBB79491D7897D8003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/Mac/CardKit.framework; sourceTree = "<group>"; };
+		CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/Mac/CardKitRuntime.framework; sourceTree = "<group>"; };
+		CCBB794B1D7897D8003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/Mac/Freddy.framework; sourceTree = "<group>"; };
+		CCBB79501D7897FA003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/tvOS/CardKit.framework; sourceTree = "<group>"; };
+		CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/tvOS/CardKitRuntime.framework; sourceTree = "<group>"; };
+		CCBB79521D7897FA003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/tvOS/Freddy.framework; sourceTree = "<group>"; };
+		CCBB795F1D789B80003B6458 /* DroneCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCards.swift; sourceTree = "<group>"; };
+		CCBB79611D789B80003B6458 /* DroneTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTokens.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +99,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBB79441D7897BB003B6458 /* CardKit.framework in Frameworks */,
+				CCBB79451D7897BB003B6458 /* CardKitRuntime.framework in Frameworks */,
+				CCBB79461D7897BB003B6458 /* Freddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +117,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBB794C1D7897D8003B6458 /* CardKit.framework in Frameworks */,
+				CCBB794D1D7897D8003B6458 /* CardKitRuntime.framework in Frameworks */,
+				CCBB794E1D7897D8003B6458 /* Freddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +135,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBB79531D7897FA003B6458 /* CardKit.framework in Frameworks */,
+				CCBB79541D7897FA003B6458 /* CardKitRuntime.framework in Frameworks */,
+				CCBB79551D7897FA003B6458 /* Freddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +157,7 @@
 			children = (
 				CC93187D1D4796DB001B71B1 /* DroneCardKit */,
 				CC9318891D4796DB001B71B1 /* DroneCardKitTests */,
+				CCBB79481D7897C6003B6458 /* Frameworks */,
 				CC93187C1D4796DB001B71B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,9 +180,8 @@
 			children = (
 				CC93187E1D4796DB001B71B1 /* DroneCardKit.h */,
 				CC9318801D4796DB001B71B1 /* Info.plist */,
-				CC9318D11D4797BF001B71B1 /* Card */,
+				CCBB795D1D789B80003B6458 /* Cards */,
 				CC9318D31D4797BF001B71B1 /* Scenarios */,
-				CC9318D51D4797BF001B71B1 /* Token */,
 			);
 			path = DroneCardKit;
 			sourceTree = "<group>";
@@ -168,14 +195,6 @@
 			path = DroneCardKitTests;
 			sourceTree = "<group>";
 		};
-		CC9318D11D4797BF001B71B1 /* Card */ = {
-			isa = PBXGroup;
-			children = (
-				CC9318D21D4797BF001B71B1 /* DroneCardDescriptors.swift */,
-			);
-			path = Card;
-			sourceTree = "<group>";
-		};
 		CC9318D31D4797BF001B71B1 /* Scenarios */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,10 +203,67 @@
 			path = Scenarios;
 			sourceTree = "<group>";
 		};
-		CC9318D51D4797BF001B71B1 /* Token */ = {
+		CCBB79471D7897C1003B6458 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CC9318D61D4797BF001B71B1 /* DroneTokens.swift */,
+				CCBB79411D7897BB003B6458 /* CardKit.framework */,
+				CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */,
+				CCBB79431D7897BB003B6458 /* Freddy.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CCBB79481D7897C6003B6458 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCBB79471D7897C1003B6458 /* iOS */,
+				CCBB794F1D7897E2003B6458 /* macOS */,
+				CCBB79561D7897FF003B6458 /* tvOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CCBB794F1D7897E2003B6458 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				CCBB79491D7897D8003B6458 /* CardKit.framework */,
+				CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */,
+				CCBB794B1D7897D8003B6458 /* Freddy.framework */,
+			);
+			name = macOS;
+			sourceTree = "<group>";
+		};
+		CCBB79561D7897FF003B6458 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				CCBB79501D7897FA003B6458 /* CardKit.framework */,
+				CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */,
+				CCBB79521D7897FA003B6458 /* Freddy.framework */,
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
+		CCBB795D1D789B80003B6458 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				CCBB795F1D789B80003B6458 /* DroneCards.swift */,
+				CCBB795E1D789B80003B6458 /* Action */,
+				CCBB79601D789B80003B6458 /* Token */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		CCBB795E1D789B80003B6458 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		CCBB79601D789B80003B6458 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				CCBB79611D789B80003B6458 /* DroneTokens.swift */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -231,6 +307,7 @@
 				CC9318781D4796DB001B71B1 /* Headers */,
 				CC9318791D4796DB001B71B1 /* Resources */,
 				CC9319501D4905A2001B71B1 /* ShellScript */,
+				CCBB795A1D7898F7003B6458 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -248,6 +325,7 @@
 				CC9318811D4796DB001B71B1 /* Sources */,
 				CC9318821D4796DB001B71B1 /* Frameworks */,
 				CC9318831D4796DB001B71B1 /* Resources */,
+				CCBB79571D789855003B6458 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -268,6 +346,7 @@
 				CC9318971D4796F5001B71B1 /* Headers */,
 				CC9318981D4796F5001B71B1 /* Resources */,
 				CC93194F1D49059B001B71B1 /* ShellScript */,
+				CCBB795B1D78992E003B6458 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -285,6 +364,7 @@
 				CC93189F1D4796F5001B71B1 /* Sources */,
 				CC9318A01D4796F5001B71B1 /* Frameworks */,
 				CC9318A11D4796F5001B71B1 /* Resources */,
+				CCBB79581D78987B003B6458 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -305,6 +385,7 @@
 				CC9318B31D479706001B71B1 /* Headers */,
 				CC9318B41D479706001B71B1 /* Resources */,
 				CC93194E1D490592001B71B1 /* ShellScript */,
+				CCBB795C1D78995B003B6458 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -322,6 +403,7 @@
 				CC9318BB1D479706001B71B1 /* Sources */,
 				CC9318BC1D479706001B71B1 /* Frameworks */,
 				CC9318BD1D479706001B71B1 /* Resources */,
+				CCBB79591D7898BA003B6458 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -470,6 +552,102 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		CCBB79571D789855003B6458 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		CCBB79581D78987B003B6458 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Freddy.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/CardKit.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/CardKitRuntime.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		CCBB79591D7898BA003B6458 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Freddy.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/CardKit.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/CardKitRuntime.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		CCBB795A1D7898F7003B6458 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		CCBB795B1D78992E003B6458 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Freddy.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/CardKit.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/CardKitRuntime.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		CCBB795C1D78995B003B6458 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Freddy.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/CardKit.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/CardKitRuntime.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -477,9 +655,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBB79681D789B80003B6458 /* DroneTokens.swift in Sources */,
+				CCBB79621D789B80003B6458 /* DroneCards.swift in Sources */,
 				CC9318DD1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
-				CC9318E31D4797BF001B71B1 /* DroneTokens.swift in Sources */,
-				CC9318D71D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,10 +665,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9318E41D4797BF001B71B1 /* DroneTokens.swift in Sources */,
 				CC9318DE1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
 				CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */,
-				CC9318D81D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */,
+				CCBB79631D789B80003B6458 /* DroneCards.swift in Sources */,
+				CCBB79691D789B80003B6458 /* DroneTokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,9 +676,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBB796A1D789B80003B6458 /* DroneTokens.swift in Sources */,
+				CCBB79641D789B80003B6458 /* DroneCards.swift in Sources */,
 				CC9318DF1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
-				CC9318E51D4797BF001B71B1 /* DroneTokens.swift in Sources */,
-				CC9318D91D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,10 +686,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9318E61D4797BF001B71B1 /* DroneTokens.swift in Sources */,
 				CC9318E01D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
 				CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */,
-				CC9318DA1D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */,
+				CCBB79651D789B80003B6458 /* DroneCards.swift in Sources */,
+				CCBB796B1D789B80003B6458 /* DroneTokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,9 +697,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBB796C1D789B80003B6458 /* DroneTokens.swift in Sources */,
+				CCBB79661D789B80003B6458 /* DroneCards.swift in Sources */,
 				CC9318E11D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
-				CC9318E71D4797BF001B71B1 /* DroneTokens.swift in Sources */,
-				CC9318DB1D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,10 +707,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9318E81D4797BF001B71B1 /* DroneTokens.swift in Sources */,
 				CC9318E21D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
 				CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */,
-				CC9318DC1D4797BF001B71B1 /* DroneCardDescriptors.swift in Sources */,
+				CCBB79671D789B80003B6458 /* DroneCards.swift in Sources */,
+				CCBB796D1D789B80003B6458 /* DroneTokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +836,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -678,6 +857,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -720,6 +900,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
@@ -745,6 +926,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
@@ -796,6 +978,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -819,6 +1002,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/card-kit/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = DroneCardKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

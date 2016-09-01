@@ -1,1 +1,1 @@
-git "../card-kit" "master"
+git "git@github.ibm.com:CMER/card-kit-runtime.git" "master"
