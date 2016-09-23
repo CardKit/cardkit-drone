@@ -1,3 +1,5 @@
-github "bignerdranch/Freddy" "2.1.0"
-git "git@github.ibm.com:CMER/card-kit.git" "38b54bd1761d6f7aefa948236d3085d7aee5abd5"
-git "git@github.ibm.com:CMER/card-kit-runtime.git" "07e37212696c522b71257e2fad1120526dbc9d9c"
+github "bignerdranch/Freddy" "3.0.1"
+github "mavlink/c_library_v2" "55267638ac8e55d311c2dd630a85732da58c70d1"
+git "https://bitbucket.org/boland/redparkserialcable.git" "43f12a8be585517c884d80e1f995c4683ea9c1cc"
+git "git@github.ibm.com:CMER/card-kit.git" "50aca5a94a380ee9e7f8d23efa40465e9d3cf19f"
+git "git@github.ibm.com:CMER/card-kit-runtime.git" "e8c0d1fc1fd4f1c85bf0550e401e644e28ad4d29"

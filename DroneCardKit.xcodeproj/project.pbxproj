@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC84DF3F1D95CB5100FE9612 /* DroneCardKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */; };
+		CC84DF401D95CB5100FE9612 /* DroneCardKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */; };
+		CC84DF411D95CB5100FE9612 /* DroneCardKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */; };
+		CC84DF421D95CB5100FE9612 /* DroneCardKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */; };
+		CC84DF431D95CB5100FE9612 /* DroneCardKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */; };
+		CC84DF441D95CB5100FE9612 /* DroneCardKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */; };
+		CC84DF451D95CB5100FE9612 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */; };
+		CC84DF461D95CB5100FE9612 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */; };
+		CC84DF471D95CB5100FE9612 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */; };
+		CC84DF481D95CB5100FE9612 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */; };
+		CC84DF491D95CB5100FE9612 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */; };
+		CC84DF4A1D95CB5100FE9612 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */; };
+		CC84DF4B1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */; };
+		CC84DF4C1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */; };
+		CC84DF4D1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */; };
+		CC84DF4E1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */; };
+		CC84DF4F1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */; };
+		CC84DF501D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */; };
+		CC84DF511D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
+		CC84DF521D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
+		CC84DF531D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
+		CC84DF541D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
+		CC84DF551D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
+		CC84DF561D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
 		CC93187F1D4796DB001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318861D4796DB001B71B1 /* DroneCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */; };
 		CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
@@ -16,12 +40,6 @@
 		CC9318CE1D479716001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
 		CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
-		CC9318DD1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
-		CC9318DE1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
-		CC9318DF1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
-		CC9318E01D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
-		CC9318E11D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
-		CC9318E21D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */; };
 		CCBB79441D7897BB003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
 		CCBB79451D7897BB003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
 		CCBB79461D7897BB003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
@@ -31,18 +49,6 @@
 		CCBB79531D7897FA003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
 		CCBB79541D7897FA003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */; };
 		CCBB79551D7897FA003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79521D7897FA003B6458 /* Freddy.framework */; };
-		CCBB79621D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
-		CCBB79631D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
-		CCBB79641D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
-		CCBB79651D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
-		CCBB79661D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
-		CCBB79671D789B80003B6458 /* DroneCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB795F1D789B80003B6458 /* DroneCards.swift */; };
-		CCBB79681D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
-		CCBB79691D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
-		CCBB796A1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
-		CCBB796B1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
-		CCBB796C1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
-		CCBB796D1D789B80003B6458 /* DroneTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB79611D789B80003B6458 /* DroneTokens.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +76,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCardKit.swift; sourceTree = "<group>"; };
+		CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneToken.swift; sourceTree = "<group>"; };
+		CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MavlinkDroneToken.swift; sourceTree = "<group>"; };
+		CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTypes.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC93187E1D4796DB001B71B1 /* DroneCardKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneCardKit.h; sourceTree = "<group>"; };
 		CC9318801D4796DB001B71B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,8 +100,6 @@
 		CCBB79501D7897FA003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/tvOS/CardKit.framework; sourceTree = "<group>"; };
 		CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/tvOS/CardKitRuntime.framework; sourceTree = "<group>"; };
 		CCBB79521D7897FA003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/tvOS/Freddy.framework; sourceTree = "<group>"; };
-		CCBB795F1D789B80003B6458 /* DroneCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCards.swift; sourceTree = "<group>"; };
-		CCBB79611D789B80003B6458 /* DroneTokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneTokens.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC84DF361D95CB5100FE9612 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */,
+				CC84DF371D95CB5100FE9612 /* Action */,
+				CC84DF391D95CB5100FE9612 /* Token */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		CC84DF371D95CB5100FE9612 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		CC84DF391D95CB5100FE9612 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				CC84DF3A1D95CB5100FE9612 /* Drone */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
+		CC84DF3A1D95CB5100FE9612 /* Drone */ = {
+			isa = PBXGroup;
+			children = (
+				CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */,
+				CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */,
+			);
+			path = Drone;
+			sourceTree = "<group>";
+		};
+		CC84DF3D1D95CB5100FE9612 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
 		CC9318711D4796DB001B71B1 = {
 			isa = PBXGroup;
 			children = (
@@ -180,7 +230,8 @@
 			children = (
 				CC93187E1D4796DB001B71B1 /* DroneCardKit.h */,
 				CC9318801D4796DB001B71B1 /* Info.plist */,
-				CCBB795D1D789B80003B6458 /* Cards */,
+				CC84DF361D95CB5100FE9612 /* Cards */,
+				CC84DF3D1D95CB5100FE9612 /* Inputs */,
 				CC9318D31D4797BF001B71B1 /* Scenarios */,
 			);
 			path = DroneCardKit;
@@ -241,31 +292,6 @@
 				CCBB79521D7897FA003B6458 /* Freddy.framework */,
 			);
 			name = tvOS;
-			sourceTree = "<group>";
-		};
-		CCBB795D1D789B80003B6458 /* Cards */ = {
-			isa = PBXGroup;
-			children = (
-				CCBB795F1D789B80003B6458 /* DroneCards.swift */,
-				CCBB795E1D789B80003B6458 /* Action */,
-				CCBB79601D789B80003B6458 /* Token */,
-			);
-			path = Cards;
-			sourceTree = "<group>";
-		};
-		CCBB795E1D789B80003B6458 /* Action */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Action;
-			sourceTree = "<group>";
-		};
-		CCBB79601D789B80003B6458 /* Token */ = {
-			isa = PBXGroup;
-			children = (
-				CCBB79611D789B80003B6458 /* DroneTokens.swift */,
-			);
-			path = Token;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,26 +448,32 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = IBM;
 				TargetAttributes = {
 					CC93187A1D4796DB001B71B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					CC9318841D4796DB001B71B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					CC9318991D4796F5001B71B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					CC9318A21D4796F5001B71B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					CC9318B51D479706001B71B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					CC9318BE1D479706001B71B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -655,9 +687,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBB79681D789B80003B6458 /* DroneTokens.swift in Sources */,
-				CCBB79621D789B80003B6458 /* DroneCards.swift in Sources */,
-				CC9318DD1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
+				CC84DF511D95CB5100FE9612 /* InputTypes.swift in Sources */,
+				CC84DF4B1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF451D95CB5100FE9612 /* DroneToken.swift in Sources */,
+				CC84DF3F1D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,10 +698,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9318DE1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
 				CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */,
-				CCBB79631D789B80003B6458 /* DroneCards.swift in Sources */,
-				CCBB79691D789B80003B6458 /* DroneTokens.swift in Sources */,
+				CC84DF4C1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF401D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
+				CC84DF461D95CB5100FE9612 /* DroneToken.swift in Sources */,
+				CC84DF521D95CB5100FE9612 /* InputTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,9 +710,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBB796A1D789B80003B6458 /* DroneTokens.swift in Sources */,
-				CCBB79641D789B80003B6458 /* DroneCards.swift in Sources */,
-				CC9318DF1D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
+				CC84DF531D95CB5100FE9612 /* InputTypes.swift in Sources */,
+				CC84DF4D1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF471D95CB5100FE9612 /* DroneToken.swift in Sources */,
+				CC84DF411D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,10 +721,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9318E01D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
 				CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */,
-				CCBB79651D789B80003B6458 /* DroneCards.swift in Sources */,
-				CCBB796B1D789B80003B6458 /* DroneTokens.swift in Sources */,
+				CC84DF4E1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF421D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
+				CC84DF481D95CB5100FE9612 /* DroneToken.swift in Sources */,
+				CC84DF541D95CB5100FE9612 /* InputTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,9 +733,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBB796C1D789B80003B6458 /* DroneTokens.swift in Sources */,
-				CCBB79661D789B80003B6458 /* DroneCards.swift in Sources */,
-				CC9318E11D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
+				CC84DF551D95CB5100FE9612 /* InputTypes.swift in Sources */,
+				CC84DF4F1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF491D95CB5100FE9612 /* DroneToken.swift in Sources */,
+				CC84DF431D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,10 +744,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9318E21D4797BF001B71B1 /* UserStudyScenarios.swift in Sources */,
 				CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */,
-				CCBB79671D789B80003B6458 /* DroneCards.swift in Sources */,
-				CCBB796D1D789B80003B6458 /* DroneTokens.swift in Sources */,
+				CC84DF501D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF441D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
+				CC84DF4A1D95CB5100FE9612 /* DroneToken.swift in Sources */,
+				CC84DF561D95CB5100FE9612 /* InputTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,8 +787,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -777,6 +817,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Modules";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -798,8 +839,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -819,6 +862,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Modules";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -829,6 +874,7 @@
 		CC9318901D4796DB001B71B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -844,12 +890,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKit;
 				PRODUCT_NAME = DroneCardKit;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CC9318911D4796DB001B71B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -865,33 +913,38 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKit;
 				PRODUCT_NAME = DroneCardKit;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		CC9318931D4796DB001B71B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CC9318941D4796DB001B71B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		CC9318AC1D4796F5001B71B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -911,13 +964,14 @@
 				PRODUCT_NAME = DroneCardKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CC9318AD1D4796F5001B71B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -937,12 +991,14 @@
 				PRODUCT_NAME = DroneCardKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		CC9318AF1D4796F5001B71B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
@@ -951,12 +1007,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CC9318B01D4796F5001B71B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
@@ -965,12 +1023,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		CC9318C81D479706001B71B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -987,6 +1047,7 @@
 				PRODUCT_NAME = DroneCardKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
@@ -995,6 +1056,7 @@
 		CC9318C91D479706001B71B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1011,6 +1073,7 @@
 				PRODUCT_NAME = DroneCardKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
@@ -1019,11 +1082,13 @@
 		CC9318CB1D479706001B71B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
@@ -1031,11 +1096,13 @@
 		CC9318CC1D479706001B71B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.research.DroneCardKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
