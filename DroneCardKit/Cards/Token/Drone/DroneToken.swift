@@ -10,8 +10,8 @@ import Foundation
 
 public protocol DroneToken {
     func takeOff()
-    func fly(to: Coordinate2D)
-    func fly(to: Coordinate3D)
+    func fly(to coordinate: DCKCoordinate2D)
+    func fly(to coordinate: DCKCoordinate3D)
     func returnHome()
     func land()
 }

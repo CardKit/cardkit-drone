@@ -31,6 +31,12 @@
 		CC84DF541D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
 		CC84DF551D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
 		CC84DF561D95CB5100FE9612 /* InputTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */; };
+		CC84DF621D96BF8100FE9612 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF611D96BF8100FE9612 /* CoverArea.swift */; };
+		CC84DF631D96BF8100FE9612 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF611D96BF8100FE9612 /* CoverArea.swift */; };
+		CC84DF641D96BF8100FE9612 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF611D96BF8100FE9612 /* CoverArea.swift */; };
+		CC84DF651D96BF8100FE9612 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF611D96BF8100FE9612 /* CoverArea.swift */; };
+		CC84DF661D96BF8100FE9612 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF611D96BF8100FE9612 /* CoverArea.swift */; };
+		CC84DF671D96BF8100FE9612 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC84DF611D96BF8100FE9612 /* CoverArea.swift */; };
 		CC93187F1D4796DB001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318861D4796DB001B71B1 /* DroneCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */; };
 		CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
@@ -80,6 +86,7 @@
 		CC84DF3B1D95CB5100FE9612 /* DroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneToken.swift; sourceTree = "<group>"; };
 		CC84DF3C1D95CB5100FE9612 /* MavlinkDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MavlinkDroneToken.swift; sourceTree = "<group>"; };
 		CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTypes.swift; sourceTree = "<group>"; };
+		CC84DF611D96BF8100FE9612 /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC93187E1D4796DB001B71B1 /* DroneCardKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneCardKit.h; sourceTree = "<group>"; };
 		CC9318801D4796DB001B71B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,17 +171,10 @@
 			isa = PBXGroup;
 			children = (
 				CC84DF381D95CB5100FE9612 /* DroneCardKit.swift */,
-				CC84DF371D95CB5100FE9612 /* Action */,
+				CC84DF5E1D96BF8100FE9612 /* Action */,
 				CC84DF391D95CB5100FE9612 /* Token */,
 			);
 			path = Cards;
-			sourceTree = "<group>";
-		};
-		CC84DF371D95CB5100FE9612 /* Action */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Action;
 			sourceTree = "<group>";
 		};
 		CC84DF391D95CB5100FE9612 /* Token */ = {
@@ -200,6 +200,30 @@
 				CC84DF3E1D95CB5100FE9612 /* InputTypes.swift */,
 			);
 			path = Inputs;
+			sourceTree = "<group>";
+		};
+		CC84DF5E1D96BF8100FE9612 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				CC84DF5F1D96BF8100FE9612 /* Movement */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		CC84DF5F1D96BF8100FE9612 /* Movement */ = {
+			isa = PBXGroup;
+			children = (
+				CC84DF601D96BF8100FE9612 /* Area */,
+			);
+			path = Movement;
+			sourceTree = "<group>";
+		};
+		CC84DF601D96BF8100FE9612 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				CC84DF611D96BF8100FE9612 /* CoverArea.swift */,
+			);
+			path = Area;
 			sourceTree = "<group>";
 		};
 		CC9318711D4796DB001B71B1 = {
@@ -688,6 +712,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC84DF511D95CB5100FE9612 /* InputTypes.swift in Sources */,
+				CC84DF621D96BF8100FE9612 /* CoverArea.swift in Sources */,
 				CC84DF4B1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
 				CC84DF451D95CB5100FE9612 /* DroneToken.swift in Sources */,
 				CC84DF3F1D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
@@ -700,6 +725,7 @@
 			files = (
 				CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CC84DF4C1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF631D96BF8100FE9612 /* CoverArea.swift in Sources */,
 				CC84DF401D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
 				CC84DF461D95CB5100FE9612 /* DroneToken.swift in Sources */,
 				CC84DF521D95CB5100FE9612 /* InputTypes.swift in Sources */,
@@ -711,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC84DF531D95CB5100FE9612 /* InputTypes.swift in Sources */,
+				CC84DF641D96BF8100FE9612 /* CoverArea.swift in Sources */,
 				CC84DF4D1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
 				CC84DF471D95CB5100FE9612 /* DroneToken.swift in Sources */,
 				CC84DF411D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
@@ -723,6 +750,7 @@
 			files = (
 				CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CC84DF4E1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF651D96BF8100FE9612 /* CoverArea.swift in Sources */,
 				CC84DF421D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
 				CC84DF481D95CB5100FE9612 /* DroneToken.swift in Sources */,
 				CC84DF541D95CB5100FE9612 /* InputTypes.swift in Sources */,
@@ -734,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC84DF551D95CB5100FE9612 /* InputTypes.swift in Sources */,
+				CC84DF661D96BF8100FE9612 /* CoverArea.swift in Sources */,
 				CC84DF4F1D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
 				CC84DF491D95CB5100FE9612 /* DroneToken.swift in Sources */,
 				CC84DF431D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
@@ -746,6 +775,7 @@
 			files = (
 				CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CC84DF501D95CB5100FE9612 /* MavlinkDroneToken.swift in Sources */,
+				CC84DF671D96BF8100FE9612 /* CoverArea.swift in Sources */,
 				CC84DF441D95CB5100FE9612 /* DroneCardKit.swift in Sources */,
 				CC84DF4A1D95CB5100FE9612 /* DroneToken.swift in Sources */,
 				CC84DF561D95CB5100FE9612 /* InputTypes.swift in Sources */,

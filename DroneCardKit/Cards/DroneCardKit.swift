@@ -10,253 +10,43 @@ import Foundation
 
 import CardKit
 
+/// DroneCardKit card descriptors
 public struct DroneCardKit {
     fileprivate init() {}
-    
-    /// Contains descriptors for Input cards
-    public struct Input {
+}
+
+// MARK: - Action Cards
+
+extension DroneCardKit {
+    /// Contains descriptors for Action cards
+    public struct Action {
         fileprivate init() {}
     }
-    
-    /// Contains descriptors for Modifier cards
-    public struct Modifier {
-        fileprivate init() {}
-    }
-    
+}
+
+extension DroneCardKit.Action {
     /// Contains descriptors for Movement cards
     public struct Movement {
         fileprivate init() {}
     }
-    
-    /// Contains descriptors for Tech cards
-    public struct Tech {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Think cards
-    public struct Think {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Token cards
-    public struct Token {
-        fileprivate init() {}
-    }
 }
 
-// MARK: - Input Cards
-
-extension DroneCardKit.Input {
-    /// Contains descriptors for Input/Location cards
-    public struct Location {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Input/Relative cards
-    public struct Relative {
-        fileprivate init() {}
-    }
-}
-
-extension DroneCardKit.Input.Location {
-    // MARK: Location/Angle
-    /// Descriptor for the Angle card
-    public static let Angle = InputCardDescriptor(
-        name: "Angle",
-        subpath: "Location",
-        inputType: Double.self,
-        inputDescription: "Angle (in degrees)",
-        assetCatalog: CardAssetCatalog(description: "Angle (in degrees)"),
-        version: 0)
-    
-    // MARK: Location/BoundingBox
-    /// Descriptor for the Bounding Box card
-    public static let BoundingBox = InputCardDescriptor(
-        name: "Bounding Box",
-        subpath: "Location",
-        inputType: [Coordinate2D].self,
-        inputDescription: "Set of 2D coordinates",
-        assetCatalog: CardAssetCatalog(description: "Bounding Box (2D)"),
-        version: 0)
-    
-    // MARK: Location/BoundingBox3D
-    /// Descriptor for the Bounding Box 3D card
-    public static let BoundingBox3D = InputCardDescriptor(
-        name: "Bounding Box 3D",
-        subpath: "Location",
-        inputType: [Coordinate3D].self,
-        inputDescription: "Set of 3D coordinates",
-        assetCatalog: CardAssetCatalog(description: "Bounding Box (3D)"),
-        version: 0)
-    
-    // MARK: Location/CardinalDirection
-    /// Descriptor for the Cardinal Direction card
-    public static let CardinalDirection = InputCardDescriptor(
-        name: "Cardinal Direction",
-        subpath: "Location",
-        inputType: CardinalDirection.self,
-        inputDescription: "Cardinal Direction",
-        assetCatalog: CardAssetCatalog(description: "Cardinal Direction (N, S, E, W)"),
-        version: 0)
-    
-    // MARK: Location/Distance
-    /// Descriptor for the Distance card
-    public static let Distance = InputCardDescriptor(
-        name: "Distance",
-        subpath: "Location",
-        inputType: Double.self,
-        inputDescription: "Distance (meters)",
-        assetCatalog: CardAssetCatalog(description: "Distance (meters)"),
-        version: 0)
-    
-    // MARK: Location/Coordinate2D
-    /// Descriptor for the Coordinate2D card
-    public static let Coordinate2D = InputCardDescriptor(
-        name: "Coordinate 2D",
-        subpath: "Location/Coordinate",
-        inputType: Coordinate2D.self,
-        inputDescription: "Coordinate (2D)",
-        assetCatalog: CardAssetCatalog(description: "2D coordinate"),
-        version: 0)
-    
-    // MARK: Location/Coordinate3D
-    /// Descriptor for the Coordinate3D card
-    public static let Coordinate3D = InputCardDescriptor(
-        name: "Coordinate 3D",
-        subpath: "Location/Coordinate",
-        inputType: Coordinate3D.self,
-        inputDescription: "Coordinate (3D)",
-        assetCatalog: CardAssetCatalog(description: "3D coordinate"),
-        version: 0)
-    
-    // MARK: Location/Path
-    /// Descriptor for the Path card
-    public static let Path = InputCardDescriptor(
-        name: "Path",
-        subpath: "Location",
-        inputType: [Coordinate2D].self,
-        inputDescription: "2D coordinate path",
-        assetCatalog: CardAssetCatalog(description: "Path (2D)"),
-        version: 0)
-    
-    // MARK: Location/Path3D
-    /// Descriptor for the Path 3D card
-    public static let Path3D = InputCardDescriptor(
-        name: "Path 3D",
-        subpath: "Location",
-        inputType: [Coordinate3D].self,
-        inputDescription: "3D coordinate path",
-        assetCatalog: CardAssetCatalog(description: "Path (3D)"),
-        version: 0)
-}
-
-extension DroneCardKit.Input.Relative {
-    // MARK: Relative/RelativeToLocation
-    /// Descriptor for the RelativeToLocation card
-    public static let RelativeToLocation = InputCardDescriptor(
-        name: "Relative To Location",
-        subpath: "Relative",
-        inputType: Coordinate2D.self,
-        inputDescription: "Coordinate offset",
-        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset another coordinate"),
-        version: 0)
-    
-    // MARK: Relative/RelativeToObject
-    /// Descriptor for the RelativeToObject card
-    public static let RelativeToObject = InputCardDescriptor(
-        name: "Relative To Object",
-        subpath: "Relative",
-        inputType: Coordinate2D.self,
-        inputDescription: "Coordinate offset",
-        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset from an object's location"),
-        version: 0)
-}
-
-// MARK: - Modifier Cards
-
-extension DroneCardKit.Modifier {
-    public struct Movement {
-        fileprivate init() {}
-    }
-}
-
-extension DroneCardKit.Modifier.Movement {
-    // MARK: Modifier/Movement/Altitude
-    public static let Altitude = InputCardDescriptor(
-        name: "Altitude",
-        subpath: "Modifier/Movement",
-        inputType: Double.self,
-        inputDescription: "Altitude (in meters)",
-        assetCatalog: CardAssetCatalog(description: "Altitude (in meters)"),
-        version: 0)
-    
-    // MARK: Modifier/Movement/AngularSpeed
-    public static let AngularSpeed = InputCardDescriptor(
-        name: "AngularSpeed",
-        subpath: "Modifier/Movement",
-        inputType: Double.self,
-        inputDescription: "Angular speed (in degrees/sec)",
-        assetCatalog: CardAssetCatalog(description: "Angular speed (in degress/sec)"),
-        version: 0)
-    
-    // MARK: Modifier/Movement/Speed
-    public static let Speed = InputCardDescriptor(
-        name: "Speed",
-        subpath: "Modifier/Movement",
-        inputType: Double.self,
-        inputDescription: "Speed (in meters/sec)",
-        assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"),
-        version: 0)
-}
-
-// MARK: - Movement Cards
-
-extension DroneCardKit.Movement {
+extension DroneCardKit.Action.Movement {
     /// Contains descriptors for Movement/Area cards
     public struct Area {
         fileprivate init() {}
     }
-    
-    /// Contains descriptors for Movement/Location cards
-    public struct Location {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Movement/Orientation cards
-    public struct Orientation {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Movement/Path cards
-    public struct Path {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Movement/Relative cards
-    public struct Relative {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Movement/Simple cards
-    public struct Simple {
-        fileprivate init() {}
-    }
-    
-    /// Contains descriptors for Movement/Sequence cards
-    public struct Sequence {
-        fileprivate init() {}
-    }
 }
 
-extension DroneCardKit.Movement.Area {
+extension DroneCardKit.Action.Movement.Area {
     // MARK: Movement/Area/CoverArea
     public static let CoverArea = ActionCardDescriptor(
         name: "Cover Area",
         subpath: "Movement/Area",
         inputs: [
             InputSlot(name: "Area", descriptor: DroneCardKit.Input.Location.Path, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -274,8 +64,8 @@ extension DroneCardKit.Movement.Area {
         subpath: "Movement/Area",
         inputs: [
             InputSlot(name: "Area", descriptor: DroneCardKit.Input.Location.BoundingBox, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -288,7 +78,14 @@ extension DroneCardKit.Movement.Area {
         version: 0)
 }
 
-extension DroneCardKit.Movement.Location {
+extension DroneCardKit.Action.Movement {
+    /// Contains descriptors for Movement/Location cards
+    public struct Location {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Movement.Location {
     // MARK: Movement/Location/Circle
     public static let Circle = ActionCardDescriptor(
         name: "Circle",
@@ -296,8 +93,8 @@ extension DroneCardKit.Movement.Location {
         inputs: [
             InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -316,9 +113,9 @@ extension DroneCardKit.Movement.Location {
         inputs: [
             InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true),
-        ],
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true),
+            ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
         ],
@@ -336,8 +133,8 @@ extension DroneCardKit.Movement.Location {
         inputs: [
             InputSlot(name: "Destination", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -354,8 +151,8 @@ extension DroneCardKit.Movement.Location {
         name: "Return Home",
         subpath: "Movement/Location",
         inputs: [
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -368,15 +165,22 @@ extension DroneCardKit.Movement.Location {
         version: 0)
 }
 
-extension DroneCardKit.Movement.Orientation {
+extension DroneCardKit.Action.Movement {
+    /// Contains descriptors for Movement/Orientation cards
+    public struct Orientation {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Movement.Orientation {
     /// MARK: Movement/Orientation/Rotate
     public static let Rotate = ActionCardDescriptor(
         name: "Rotate",
         subpath: "Movement/Orientation",
         inputs: [
             InputSlot(name: "Angle", descriptor: DroneCardKit.Input.Location.Angle, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -393,8 +197,8 @@ extension DroneCardKit.Movement.Orientation {
         name: "Rotate",
         subpath: "Movement/Orientation",
         inputs: [
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -407,7 +211,14 @@ extension DroneCardKit.Movement.Orientation {
         version: 0)
 }
 
-extension DroneCardKit.Movement.Path {
+extension DroneCardKit.Action.Movement {
+    /// Contains descriptors for Movement/Path cards
+    public struct Path {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Movement.Path {
     // MARK: Movement/Path/Trace
     public static let Trace = ActionCardDescriptor(
         name: "Trace",
@@ -415,8 +226,8 @@ extension DroneCardKit.Movement.Path {
         inputs: [
             InputSlot(name: "Area", descriptor: DroneCardKit.Input.Location.Path, isOptional: false),
             InputSlot(name: "Offset", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -435,8 +246,8 @@ extension DroneCardKit.Movement.Path {
         inputs: [
             InputSlot(name: "Area", descriptor: DroneCardKit.Input.Location.Path, isOptional: false),
             InputSlot(name: "Offset", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -449,7 +260,14 @@ extension DroneCardKit.Movement.Path {
         version: 0)
 }
 
-extension DroneCardKit.Movement.Relative {
+extension DroneCardKit.Action.Movement {
+    /// Contains descriptors for Movement/Relative cards
+    public struct Relative {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Movement.Relative {
     // MARK: Movement/Relative/Follow
     public static let Follow = ActionCardDescriptor(
         name: "Follow",
@@ -457,8 +275,8 @@ extension DroneCardKit.Movement.Relative {
         inputs: [
             InputSlot(name: "Object", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
             InputSlot(name: "Distance", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -471,14 +289,21 @@ extension DroneCardKit.Movement.Relative {
         version: 0)
 }
 
-extension DroneCardKit.Movement.Simple {
+extension DroneCardKit.Action.Movement {
+    /// Contains descriptors for Movement/Simple cards
+    public struct Simple {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Movement.Simple {
     // MARK: Movement/Simple/FlyForward
     public static let FlyForward = ActionCardDescriptor(
         name: "Fly Forward",
         subpath: "Movement/Simple",
         inputs: [
             InputSlot(name: "Distance", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -495,7 +320,7 @@ extension DroneCardKit.Movement.Simple {
         name: "Hover",
         subpath: "Movement/Simple",
         inputs: [
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -512,7 +337,7 @@ extension DroneCardKit.Movement.Simple {
         name: "Land",
         subpath: "Movement/Simple",
         inputs: [
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -525,15 +350,22 @@ extension DroneCardKit.Movement.Simple {
         version: 0)
 }
 
-extension DroneCardKit.Movement.Sequence {
+extension DroneCardKit.Action.Movement {
+    /// Contains descriptors for Movement/Sequence cards
+    public struct Sequence {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Movement.Sequence {
     // MARK: Movement/Sequence/FlyPath
     public static let FlyPath = ActionCardDescriptor(
         name: "Fly Path",
         subpath: "Movement/Sequence",
         inputs: [
             InputSlot(name: "Path", descriptor: DroneCardKit.Input.Location.Path, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -551,8 +383,8 @@ extension DroneCardKit.Movement.Sequence {
         subpath: "Movement/Sequence",
         inputs: [
             InputSlot(name: "Path", descriptor: DroneCardKit.Input.Location.Path, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -565,33 +397,21 @@ extension DroneCardKit.Movement.Sequence {
         version: 0)
 }
 
-
-
-// MARK: - Tech Cards
-
-extension DroneCardKit.Tech {
-    public struct Camera {
-        fileprivate init() {}
-    }
-    
-    public struct Claw {
-        fileprivate init() {}
-    }
-    
-    public struct Gimbal {
-        fileprivate init() {}
-    }
-    
-    public struct Sensor {
-        fileprivate init() {}
-    }
-    
-    public struct Speaker {
+extension DroneCardKit.Action {
+    /// Contains descriptors for Action/Tech cards
+    public struct Tech {
         fileprivate init() {}
     }
 }
 
-extension DroneCardKit.Tech.Camera {
+extension DroneCardKit.Action.Tech {
+    /// Contains descriptors for Action/Tech/Camera cards
+    public struct Camera {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Tech.Camera {
     public static let RecordVideo = ActionCardDescriptor(
         name: "Record Video",
         subpath: "Tech/Camera",
@@ -635,9 +455,44 @@ extension DroneCardKit.Tech.Camera {
         version: 0)
 }
 
-// MARK: - Think Cards
+// TODO: Add descriptors for Claw, Gimbal, Sensor, Speaker
 
-extension DroneCardKit.Think {
+extension DroneCardKit.Action.Tech {
+    /// Contains descriptors for Action/Tech/Claw cards
+    public struct Claw {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Tech {
+    /// Contains descriptors for Action/Tech/Gimbal cards
+    public struct Gimbal {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Tech {
+    /// Contains descriptors for Action/Tech/Sensor cards
+    public struct Sensor {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Tech {
+    /// Contains descriptors for Action/Tech/Speaker cards
+    public struct Speaker {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action {
+    /// Contains descriptors for Action/Think cards
+    public struct Think {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Action.Think {
     public static let DetectInAir = ActionCardDescriptor(
         name: "Detect In Air",
         subpath: "Think",
@@ -648,7 +503,7 @@ extension DroneCardKit.Think {
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
-        yields: [Yield(type: Coordinate3D.self)],
+        yields: [Yield(type: DCKCoordinate3D.self)],
         yieldDescription: "Yields the coordinate of the detected object",
         ends: true,
         endsDescription: "Ends when the object has been detected",
@@ -665,7 +520,7 @@ extension DroneCardKit.Think {
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
-        yields: [Yield(type: Coordinate2D.self)],
+        yields: [Yield(type: DCKCoordinate2D.self)],
         yieldDescription: "Yields the coordinate of the detected object",
         ends: true,
         endsDescription: "Ends when the object has been detected",
@@ -682,14 +537,14 @@ extension DroneCardKit.Think {
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
-        yields: [Yield(type: Coordinate3D.self)],
+        yields: [Yield(type: DCKCoordinate3D.self)],
         yieldDescription: "Yields the coordinate of the detected object",
         ends: false,
         endsDescription: nil,
         assetCatalog: CardAssetCatalog(description: "Track an object in the air"),
         version: 0)
     
-    public static let DetectOnGround = ActionCardDescriptor(
+    public static let TrackOnGround = ActionCardDescriptor(
         name: "Track On Ground",
         subpath: "Think",
         inputs: [
@@ -699,7 +554,7 @@ extension DroneCardKit.Think {
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
-        yields: [Yield(type: Coordinate2D.self)],
+        yields: [Yield(type: DCKCoordinate2D.self)],
         yieldDescription: "Yields the coordinate of the detected object",
         ends: false,
         endsDescription: nil,
@@ -707,7 +562,194 @@ extension DroneCardKit.Think {
         version: 0)
 }
 
+// MARK: - Input Cards
+
+extension DroneCardKit {
+    /// Contains descriptors for Input cards
+    public struct Input {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Input {
+    /// Contains descriptors for Input/Location cards
+    public struct Location {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Input.Location {
+    // MARK: Location/Angle
+    /// Descriptor for the Angle card
+    public static let Angle = InputCardDescriptor(
+        name: "Angle",
+        subpath: "Location",
+        inputType: Double.self,
+        inputDescription: "Angle (in degrees)",
+        assetCatalog: CardAssetCatalog(description: "Angle (in degrees)"),
+        version: 0)
+    
+    // MARK: Location/BoundingBox
+    /// Descriptor for the Bounding Box card
+    public static let BoundingBox = InputCardDescriptor(
+        name: "Bounding Box",
+        subpath: "Location",
+        inputType: DCKCoordinate2DPath.self,
+        inputDescription: "Set of 2D coordinates",
+        assetCatalog: CardAssetCatalog(description: "Bounding Box (2D)"),
+        version: 0)
+    
+    // MARK: Location/BoundingBox3D
+    /// Descriptor for the Bounding Box 3D card
+    public static let BoundingBox3D = InputCardDescriptor(
+        name: "Bounding Box 3D",
+        subpath: "Location",
+        inputType: DCKCoordinate3DPath.self,
+        inputDescription: "Set of 3D coordinates",
+        assetCatalog: CardAssetCatalog(description: "Bounding Box (3D)"),
+        version: 0)
+    
+    // MARK: Location/CardinalDirection
+    /// Descriptor for the Cardinal Direction card
+    public static let CardinalDirection = InputCardDescriptor(
+        name: "Cardinal Direction",
+        subpath: "Location",
+        inputType: DCKCardinalDirection.self,
+        inputDescription: "Cardinal Direction",
+        assetCatalog: CardAssetCatalog(description: "Cardinal Direction (N, S, E, W)"),
+        version: 0)
+    
+    // MARK: Location/Distance
+    /// Descriptor for the Distance card
+    public static let Distance = InputCardDescriptor(
+        name: "Distance",
+        subpath: "Location",
+        inputType: Double.self,
+        inputDescription: "Distance (meters)",
+        assetCatalog: CardAssetCatalog(description: "Distance (meters)"),
+        version: 0)
+    
+    // MARK: Location/Coordinate2D
+    /// Descriptor for the Coordinate2D card
+    public static let Coordinate2D = InputCardDescriptor(
+        name: "Coordinate 2D",
+        subpath: "Location/Coordinate",
+        inputType: DCKCoordinate2D.self,
+        inputDescription: "Coordinate (2D)",
+        assetCatalog: CardAssetCatalog(description: "2D coordinate"),
+        version: 0)
+    
+    // MARK: Location/Coordinate3D
+    /// Descriptor for the Coordinate3D card
+    public static let Coordinate3D = InputCardDescriptor(
+        name: "Coordinate 3D",
+        subpath: "Location/Coordinate",
+        inputType: DCKCoordinate3D.self,
+        inputDescription: "Coordinate (3D)",
+        assetCatalog: CardAssetCatalog(description: "3D coordinate"),
+        version: 0)
+    
+    // MARK: Location/Path
+    /// Descriptor for the Path card
+    public static let Path = InputCardDescriptor(
+        name: "Path",
+        subpath: "Location",
+        inputType: DCKCoordinate2DPath.self,
+        inputDescription: "2D coordinate path",
+        assetCatalog: CardAssetCatalog(description: "Path (2D)"),
+        version: 0)
+    
+    // MARK: Location/Path3D
+    /// Descriptor for the Path 3D card
+    public static let Path3D = InputCardDescriptor(
+        name: "Path 3D",
+        subpath: "Location",
+        inputType: DCKCoordinate3DPath.self,
+        inputDescription: "3D coordinate path",
+        assetCatalog: CardAssetCatalog(description: "Path (3D)"),
+        version: 0)
+}
+
+extension DroneCardKit.Input {
+    /// Contains descriptors for Input/Modifier cards
+    public struct Modifier {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Input.Modifier {
+    /// Contains descriptors for Input/Modifier/Movement cards
+    public struct Movement {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Input.Modifier.Movement {
+    // MARK: Modifier/Movement/Altitude
+    public static let Altitude = InputCardDescriptor(
+        name: "Altitude",
+        subpath: "Modifier/Movement",
+        inputType: Double.self,
+        inputDescription: "Altitude (in meters)",
+        assetCatalog: CardAssetCatalog(description: "Altitude (in meters)"),
+        version: 0)
+    
+    // MARK: Modifier/Movement/AngularSpeed
+    public static let AngularSpeed = InputCardDescriptor(
+        name: "AngularSpeed",
+        subpath: "Modifier/Movement",
+        inputType: Double.self,
+        inputDescription: "Angular speed (in degrees/sec)",
+        assetCatalog: CardAssetCatalog(description: "Angular speed (in degress/sec)"),
+        version: 0)
+    
+    // MARK: Modifier/Movement/Speed
+    public static let Speed = InputCardDescriptor(
+        name: "Speed",
+        subpath: "Modifier/Movement",
+        inputType: Double.self,
+        inputDescription: "Speed (in meters/sec)",
+        assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"),
+        version: 0)
+}
+
+extension DroneCardKit.Input {
+    /// Contains descriptors for Input/Relative cards
+    public struct Relative {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Input.Relative {
+    // MARK: Relative/RelativeToLocation
+    /// Descriptor for the RelativeToLocation card
+    public static let RelativeToLocation = InputCardDescriptor(
+        name: "Relative To Location",
+        subpath: "Relative",
+        inputType: DCKCoordinate2D.self,
+        inputDescription: "Coordinate offset",
+        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset another coordinate"),
+        version: 0)
+    
+    // MARK: Relative/RelativeToObject
+    /// Descriptor for the RelativeToObject card
+    public static let RelativeToObject = InputCardDescriptor(
+        name: "Relative To Object",
+        subpath: "Relative",
+        inputType: DCKCoordinate2D.self,
+        inputDescription: "Coordinate offset",
+        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset from an object's location"),
+        version: 0)
+}
+
 // MARK: - Token Cards
+
+extension DroneCardKit {
+    /// Contains descriptors for Token cards
+    public struct Token {
+        fileprivate init() {}
+    }
+}
 
 extension DroneCardKit.Token {
     public static let Drone = TokenCardDescriptor(
@@ -903,10 +945,6 @@ extension DroneCardKit.Token {
         fileprivate init() {}
         fileprivate static let _class = CardPath(parent: _root, label : "Token")
         
-        public static let Movement = TokenCardDesc(
-            path: _class,
-            name: "Movement",
-            consumed: true)
         public static let Gas = TokenCardDesc(
             path: _class,
             name: "Gas",
@@ -919,21 +957,9 @@ extension DroneCardKit.Token {
             path: _class,
             name: "Button",
             consumed: true)
-        public static let Camera = TokenCardDesc(
-            path: _class,
-            name: "Camera",
-            consumed: true)
-        public static let Camera_Read_Only = TokenCardDesc(
-            path: _class,
-            name: "Camera",
-            consumed: false)
         public static let Claw = TokenCardDesc(
             path: _class,
             name: "Claw",
-            consumed: true)
-        public static let Gimbal = TokenCardDesc(
-            path: _class,
-            name: "Gimbal",
             consumed: true)
         public static let Speaker = TokenCardDesc(
             path: _class,

@@ -10,10 +10,9 @@ import Foundation
 
 import Freddy
 
+// MARK: DCKCoordinate2D
 
-// MARK: Coordinate2D
-
-public struct Coordinate2D {
+public struct DCKCoordinate2D {
     public let latitude: Double
     public let longitude: Double
     
@@ -23,21 +22,21 @@ public struct Coordinate2D {
     }
 }
 
-extension Coordinate2D: Equatable {
-    static public func == (lhs: Coordinate2D, rhs: Coordinate2D) -> Bool {
+extension DCKCoordinate2D: Equatable {
+    static public func == (lhs: DCKCoordinate2D, rhs: DCKCoordinate2D) -> Bool {
         return lhs.latitude == rhs.latitude
             && lhs.longitude == rhs.longitude
     }
 }
 
-extension Coordinate2D: JSONDecodable {
+extension DCKCoordinate2D: JSONDecodable {
     public init(json: JSON) throws {
         self.latitude = try json.getDouble(at: "latitude")
         self.longitude = try json.getDouble(at: "longitude")
     }
 }
 
-extension Coordinate2D: JSONEncodable {
+extension DCKCoordinate2D: JSONEncodable {
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
@@ -46,9 +45,37 @@ extension Coordinate2D: JSONEncodable {
     }
 }
 
-// MARK: Coordinate3D
+// MARK: DCKCoordinate2DPath
 
-public struct Coordinate3D {
+public struct DCKCoordinate2DPath {
+    public let path: [DCKCoordinate2D]
+    
+    public init(path: [DCKCoordinate2D]) {
+        self.path = path
+    }
+}
+
+extension DCKCoordinate2DPath: Equatable {
+    static public func == (lhs: DCKCoordinate2DPath, rhs: DCKCoordinate2DPath) -> Bool {
+        return lhs == rhs
+    }
+}
+
+extension DCKCoordinate2DPath: JSONDecodable {
+    public init(json: JSON) throws {
+        self.path = try json.decodedArray(type: DCKCoordinate2D.self)
+    }
+}
+
+extension DCKCoordinate2DPath: JSONEncodable {
+    public func toJSON() -> JSON {
+        return self.path.toJSON()
+    }
+}
+
+// MARK: DCKCoordinate3D
+
+public struct DCKCoordinate3D {
     public let latitude: Double
     public let longitude: Double
     public let altitudeMeters: Double
@@ -60,15 +87,15 @@ public struct Coordinate3D {
     }
 }
 
-extension Coordinate3D: Equatable {
-    static public func == (lhs: Coordinate3D, rhs: Coordinate3D) -> Bool {
+extension DCKCoordinate3D: Equatable {
+    static public func == (lhs: DCKCoordinate3D, rhs: DCKCoordinate3D) -> Bool {
         return lhs.latitude == rhs.latitude
             && lhs.longitude == rhs.longitude
             && lhs.altitudeMeters == rhs.altitudeMeters
     }
 }
 
-extension Coordinate3D: JSONDecodable {
+extension DCKCoordinate3D: JSONDecodable {
     public init(json: JSON) throws {
         self.latitude = try json.getDouble(at: "latitude")
         self.longitude = try json.getDouble(at: "longitude")
@@ -76,7 +103,7 @@ extension Coordinate3D: JSONDecodable {
     }
 }
 
-extension Coordinate3D: JSONEncodable {
+extension DCKCoordinate3D: JSONEncodable {
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
@@ -86,16 +113,44 @@ extension Coordinate3D: JSONEncodable {
     }
 }
 
-// MARK: CardinalDirection
+// MARK: DCKCoordinate3DPath
 
-public enum CardinalDirection: String {
+public struct DCKCoordinate3DPath {
+    public let path: [DCKCoordinate3D]
+    
+    public init(path: [DCKCoordinate3D]) {
+        self.path = path
+    }
+}
+
+extension DCKCoordinate3DPath: Equatable {
+    static public func == (lhs: DCKCoordinate3DPath, rhs: DCKCoordinate3DPath) -> Bool {
+        return lhs == rhs
+    }
+}
+
+extension DCKCoordinate3DPath: JSONDecodable {
+    public init(json: JSON) throws {
+        self.path = try json.decodedArray(type: DCKCoordinate3D.self)
+    }
+}
+
+extension DCKCoordinate3DPath: JSONEncodable {
+    public func toJSON() -> JSON {
+        return self.path.toJSON()
+    }
+}
+
+// MARK: DCKCardinalDirection
+
+public enum DCKCardinalDirection: String {
     case north
     case south
     case east
     case west
 }
 
-extension CardinalDirection: CustomStringConvertible {
+extension DCKCardinalDirection: CustomStringConvertible {
     public var description: String {
         switch self {
         case .north:
@@ -110,18 +165,18 @@ extension CardinalDirection: CustomStringConvertible {
     }
 }
 
-extension CardinalDirection: JSONDecodable {
+extension DCKCardinalDirection: JSONDecodable {
     public init(json: JSON) throws {
         let direction = try json.getString()
-        if let directionEnum = CardinalDirection(rawValue: direction) {
+        if let directionEnum = DCKCardinalDirection(rawValue: direction) {
             self = directionEnum
         } else {
-            throw JSON.Error.valueNotConvertible(value: json, to: CardinalDirection.self)
+            throw JSON.Error.valueNotConvertible(value: json, to: DCKCardinalDirection.self)
         }
     }
 }
 
-extension CardinalDirection: JSONEncodable {
+extension DCKCardinalDirection: JSONEncodable {
     public func toJSON() -> JSON {
         return .string(self.description)
     }
