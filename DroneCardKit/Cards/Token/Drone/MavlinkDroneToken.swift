@@ -8,29 +8,33 @@
 
 import Foundation
 
-//import CardKit
+import CardKitRuntime
 
 //import Mavlink
 
 public class MavlinkDroneToken: DroneToken {
     
-    public func takeOff() {
+    public override func takeOff() {
         print("drone taking off!")
     }
     
-    public func fly(to coordinate: DCKCoordinate3D) {
+    public override func takeOff(climbingTo altitude: Double) {
+        print("drone taking off and climbing to altitude \(altitude)")
+    }
+    
+    public override func fly(to coordinate: DCKCoordinate3D, atSpeed speed: Double = 2.0) {
         print("drone flying to: \(coordinate)")
     }
     
-    public func fly(to coordinate: DCKCoordinate2D) {
+    public override func fly(to coordinate: DCKCoordinate2D, atSpeed speed: Double = 2.0) {
         print("drone flying to: \(coordinate)")
     }
     
-    public func returnHome() {
+    public override func returnHome() {
         print("drone returning home!")
     }
     
-    public func land() {
+    public override func land() {
         print("drone landing!")
     }
 }
