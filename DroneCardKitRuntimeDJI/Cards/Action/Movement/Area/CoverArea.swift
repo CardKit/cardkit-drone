@@ -8,7 +8,6 @@
 
 import Foundation
 
-import CardKit
 import CardKitRuntime
 
 public class CoverArea: ExecutableActionCard {
@@ -54,6 +53,7 @@ public class CoverArea: ExecutableActionCard {
             return
         }
         
+        // fly!
         drone.takeOff(climbingTo: altitude)
         for point in area.path {
             drone.fly(to: point, atSpeed: speed)

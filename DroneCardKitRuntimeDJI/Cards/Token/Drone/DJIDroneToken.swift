@@ -1,5 +1,5 @@
 //
-//  MavlinkDroneToken.swift
+//  DJIDroneToken.swift
 //  DroneCardKit
 //
 //  Created by Justin Weisz on 9/23/16.
@@ -9,11 +9,9 @@
 import Foundation
 
 import CardKitRuntime
+import DJISDK
 
-//import Mavlink
-
-public class MavlinkDroneToken: DroneToken {
-    
+public class DJIDroneToken: DroneToken {
     public override func takeOff() {
         print("drone taking off!")
     }
