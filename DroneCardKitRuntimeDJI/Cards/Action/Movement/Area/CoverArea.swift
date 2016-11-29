@@ -10,21 +10,12 @@ import Foundation
 
 import CardKitRuntime
 
+import PromiseKit
+
 public class CoverArea: ExecutableActionCard {
-    // tokens
-    var drone: DroneToken? = nil
-    
     override public func main() {
         // mandatory inputs
-        var area: DCKCoordinate3DPath
-        
-        do {
-            let value: DCKCoordinate3DPath = try self.value(forInput: "Area")
-            area = value
-        } catch let error {
-            if let e = error as? ActionExecutionError {
-                self.error = e
-            }
+        guard let area: DCKCoordinate3DPath = self.value(forInput: "Area") else {
             return
         }
         
@@ -33,39 +24,34 @@ public class CoverArea: ExecutableActionCard {
         let speed: Double = self.optionalValue(forInput: "Speed") ?? 2.0
         
         // token
-        do {
-            let executable: ExecutableTokenCard = try self.token(named: "Drone")
-            
-            if let droneToken = executable as? DroneToken {
-                self.drone = droneToken
-            } else {
-                return
-            }
-            
-        } catch let error {
-            if let e = error as? ActionExecutionError {
-                self.error = e
-            }
-            return
-        }
-        
-        guard let drone = self.drone else {
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             return
         }
         
         // fly!
-        drone.takeOff(climbingTo: altitude)
-        for point in area.path {
-            drone.fly(to: point, atSpeed: speed)
+        firstly {
+            drone.takeOff(climbingTo: altitude)
+        }.then {
+            _ -> Promise<Void> in
+            drone.fly(on: area, atSpeed: speed)
+        }.then {
+            _ -> Promise<Void> in
+            drone.returnHome()
+        }.then {
+            _ -> Promise<Void> in
+            drone.land()
+        }.catch {
+            error in
+            print("error: \(error)")
         }
-        drone.returnHome()
-        drone.land()
     }
     
     override public func cancel() {
-        guard let drone = self.drone else {
+        // token
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             return
         }
+        
         drone.land()
     }
 }

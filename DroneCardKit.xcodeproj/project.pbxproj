@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F231DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F241DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F251DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F261DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F271DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F281DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F291DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
+		CC6F0F311DEDDF44005F802A /* DJIGimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F2A1DEDDF44005F802A /* DJIGimbalToken.swift */; };
+		CC6F0F321DEDDF44005F802A /* DJIGimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F2A1DEDDF44005F802A /* DJIGimbalToken.swift */; };
 		CC93187F1D4796DB001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318861D4796DB001B71B1 /* DroneCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */; };
 		CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
@@ -59,6 +69,7 @@
 		CCBE8CC71DA6D7CE00BD7638 /* DroneCardKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE8C5F1DA69F5900BD7638 /* DroneCardKit.swift */; };
 		CCBE8CCD1DA6D8A500BD7638 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBE8CCC1DA6D8A500BD7638 /* DJISDK.framework */; };
 		CCBE8CCE1DA6D8A500BD7638 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBE8CCC1DA6D8A500BD7638 /* DJISDK.framework */; };
+		CCD033531DC144CB001AE5C9 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD033521DC144CB001AE5C9 /* PromiseKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalToken.swift; sourceTree = "<group>"; };
+		CC6F0F2A1DEDDF44005F802A /* DJIGimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIGimbalToken.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC93187E1D4796DB001B71B1 /* DroneCardKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneCardKit.h; sourceTree = "<group>"; };
 		CC9318801D4796DB001B71B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +138,7 @@
 		CCBE8CB51DA6CE2300BD7638 /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
 		CCBE8CB81DA6CE2300BD7638 /* DJIDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJIDroneToken.swift; sourceTree = "<group>"; };
 		CCBE8CCC1DA6D8A500BD7638 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "Carthage/Checkouts/Mobile-SDK-iOS/Sample Code/DJISDK.framework"; sourceTree = "<group>"; };
+		CCD033521DC144CB001AE5C9 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,9 +199,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBE8CCD1DA6D8A500BD7638 /* DJISDK.framework in Frameworks */,
 				CCBE8CC01DA6D73B00BD7638 /* CardKit.framework in Frameworks */,
 				CCBE8CC11DA6D73E00BD7638 /* CardKitRuntime.framework in Frameworks */,
+				CCD033531DC144CB001AE5C9 /* PromiseKit.framework in Frameworks */,
+				CCBE8CCD1DA6D8A500BD7638 /* DJISDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +279,7 @@
 				CCBB79411D7897BB003B6458 /* CardKit.framework */,
 				CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */,
 				CCBB79431D7897BB003B6458 /* Freddy.framework */,
+				CCD033521DC144CB001AE5C9 /* PromiseKit.framework */,
 				CCBE8CCC1DA6D8A500BD7638 /* DJISDK.framework */,
 			);
 			name = iOS;
@@ -321,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				CCBE8C631DA69F5900BD7638 /* DroneToken.swift */,
+				CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -389,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				CCBE8CB81DA6CE2300BD7638 /* DJIDroneToken.swift */,
+				CC6F0F2A1DEDDF44005F802A /* DJIGimbalToken.swift */,
 			);
 			path = Drone;
 			sourceTree = "<group>";
@@ -857,6 +875,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
+				CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CCBE8C641DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C741DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -867,6 +886,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCBE8C751DA69F5900BD7638 /* DroneToken.swift in Sources */,
+				CC6F0F231DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C651DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C6D1DA69F5900BD7638 /* InputTypes.swift in Sources */,
@@ -878,6 +898,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCBE8C6E1DA69F5900BD7638 /* InputTypes.swift in Sources */,
+				CC6F0F241DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CCBE8C661DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C761DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -888,6 +909,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCBE8C771DA69F5900BD7638 /* DroneToken.swift in Sources */,
+				CC6F0F251DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C671DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C6F1DA69F5900BD7638 /* InputTypes.swift in Sources */,
@@ -899,6 +921,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCBE8C701DA69F5900BD7638 /* InputTypes.swift in Sources */,
+				CC6F0F261DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CCBE8C681DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C781DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -909,6 +932,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCBE8C791DA69F5900BD7638 /* DroneToken.swift in Sources */,
+				CC6F0F271DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C691DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C711DA69F5900BD7638 /* InputTypes.swift in Sources */,
@@ -924,6 +948,8 @@
 				CCBE8CBB1DA6CE2300BD7638 /* DJIDroneToken.swift in Sources */,
 				CCBE8CB91DA6CE2300BD7638 /* CoverArea.swift in Sources */,
 				CCBE8CC21DA6D7C500BD7638 /* DroneToken.swift in Sources */,
+				CC6F0F311DEDDF44005F802A /* DJIGimbalToken.swift in Sources */,
+				CC6F0F281DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,8 +960,10 @@
 				CCBE8CC31DA6D7C500BD7638 /* DroneToken.swift in Sources */,
 				CCBE8CBC1DA6CE2300BD7638 /* DJIDroneToken.swift in Sources */,
 				CCBE8CBA1DA6CE2300BD7638 /* CoverArea.swift in Sources */,
+				CC6F0F321DEDDF44005F802A /* DJIGimbalToken.swift in Sources */,
 				CCBE8CC71DA6D7CE00BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8CA81DA6CE1500BD7638 /* DroneCardKitRuntimeDJITests.swift in Sources */,
+				CC6F0F291DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CCBE8CC51DA6D7CB00BD7638 /* InputTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1340,6 +1368,7 @@
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1369,6 +1398,7 @@
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1499,6 +1529,7 @@
 				CCBE8CAD1DA6CE1500BD7638 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CCBE8CAE1DA6CE1500BD7638 /* Build configuration list for PBXNativeTarget "DroneCardKitRuntimeDJITests" */ = {
 			isa = XCConfigurationList;
@@ -1507,6 +1538,7 @@
 				CCBE8CB01DA6CE1500BD7638 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

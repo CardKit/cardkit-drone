@@ -22,6 +22,12 @@ public struct DCKCoordinate2D {
     }
 }
 
+extension DCKCoordinate2D: CustomStringConvertible {
+    public var description: String {
+        return "\(self.latitude), \(self.longitude)"
+    }
+}
+
 extension DCKCoordinate2D: Equatable {
     static public func == (lhs: DCKCoordinate2D, rhs: DCKCoordinate2D) -> Bool {
         return lhs.latitude == rhs.latitude
@@ -55,6 +61,13 @@ public struct DCKCoordinate2DPath {
     }
 }
 
+extension DCKCoordinate2DPath: CustomStringConvertible {
+    public var description: String {
+        let strs: [String] = self.path.map { $0.description }
+        return strs.joined(separator: ", ")
+    }
+}
+
 extension DCKCoordinate2DPath: Equatable {
     static public func == (lhs: DCKCoordinate2DPath, rhs: DCKCoordinate2DPath) -> Bool {
         return lhs == rhs
@@ -84,6 +97,12 @@ public struct DCKCoordinate3D {
         self.latitude = latitude
         self.longitude = longitude
         self.altitudeMeters = altitudeMeters
+    }
+}
+
+extension DCKCoordinate3D: CustomStringConvertible {
+    public var description: String {
+        return "\(self.latitude), \(self.longitude), \(self.altitudeMeters)m"
     }
 }
 
@@ -120,6 +139,13 @@ public struct DCKCoordinate3DPath {
     
     public init(path: [DCKCoordinate3D]) {
         self.path = path
+    }
+}
+
+extension DCKCoordinate3DPath: CustomStringConvertible {
+    public var description: String {
+        let strs: [String] = self.path.map { $0.description }
+        return strs.joined(separator: ", ")
     }
 }
 

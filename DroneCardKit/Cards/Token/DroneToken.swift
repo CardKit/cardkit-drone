@@ -8,30 +8,21 @@
 
 import Foundation
 
+import CardKit
 import CardKitRuntime
 
-public class DroneToken: ExecutableTokenCard {
-    func takeOff() {
-        fatalError("cannot call takeOff() on DroneToken")
-    }
+import PromiseKit
+
+protocol DroneToken {
+    func takeOff() -> Promise<Void>
+    func takeOff(climbingTo altitude: Double) -> Promise<Void>
     
-    func takeOff(climbingTo altitude: Double) {
-        fatalError("cannot call takeOff(climbingTo:) on DroneToken")
-    }
+    func fly(to coordinate: DCKCoordinate2D, atSpeed speed: Double) -> Promise<Void>
+    func fly(to coordinate: DCKCoordinate3D, atSpeed speed: Double) -> Promise<Void>
+    func fly(on path: DCKCoordinate2DPath, atSpeed speed: Double) -> Promise<Void>
+    func fly(on path: DCKCoordinate3DPath, atSpeed speed: Double) -> Promise<Void>
     
-    func fly(to coordinate: DCKCoordinate2D, atSpeed speed: Double = 2.0) {
-        fatalError("cannot call fly(to:atSpeed:) on DroneToken")
-    }
+    func returnHome() -> Promise<Void>
     
-    func fly(to coordinate: DCKCoordinate3D, atSpeed speed: Double = 2.0) {
-        fatalError("cannot call fly(to:atSpeed:) on DroneToken")
-    }
-    
-    func returnHome() {
-        fatalError("cannot call returnHome() on DroneToken")
-    }
-    
-    func land() {
-        fatalError("cannot call land() on DroneToken")
-    }
+    func land() -> Promise<Void>
 }
