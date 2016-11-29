@@ -1365,9 +1365,8 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJI/Info.plist;
@@ -1395,9 +1394,8 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJI/Info.plist;

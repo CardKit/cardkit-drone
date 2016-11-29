@@ -52,6 +52,9 @@ public class CoverArea: ExecutableActionCard {
             return
         }
         
-        drone.land()
+        drone.land().catch {
+            error in
+            print("error: \(error)")
+        }
     }
 }
