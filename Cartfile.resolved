@@ -1,5 +1,4 @@
 github "bignerdranch/Freddy" "3.0.1"
-github "dji-sdk/Mobile-SDK-iOS" "v3.4.1"
 github "mxcl/PromiseKit" "4.0.5"
-git "git@github.ibm.com:CMER/card-kit.git" "e92b1ca26882487a43d7cbaf990851fb6c32b1a0"
-git "git@github.ibm.com:CMER/card-kit-runtime.git" "a2cf293fd444037cd08f79a2f93e6bcf6b36fb08"
+git "git@github.ibm.com:CMER/card-kit.git" "f5b9a660bf6fa78850e443fb6f17869a822d18d5"
+git "git@github.ibm.com:CMER/card-kit-runtime.git" "b88a7717dda459f333a74d162f7ff527e32df99e"

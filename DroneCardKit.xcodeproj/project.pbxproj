@@ -1366,8 +1366,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/DroneCardKitRuntimeDJI/Frameworks",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1395,8 +1394,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/**",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/DroneCardKitRuntimeDJI/Frameworks",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1418,9 +1416,8 @@
 				DEVELOPMENT_TEAM = 76CMF53Q35;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
-					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/DroneCardKitRuntimeDJI/Frameworks",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1441,9 +1438,8 @@
 				DEVELOPMENT_TEAM = 76CMF53Q35;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
-					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/DroneCardKitRuntimeDJI/Frameworks",
 				);
 				INFOPLIST_FILE = DroneCardKitRuntimeDJITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

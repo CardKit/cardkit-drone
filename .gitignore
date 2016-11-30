@@ -62,3 +62,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+# Ignore the Frameworks/ directory because we have a script that will
+# check out the DJI framework to there
+Frameworks

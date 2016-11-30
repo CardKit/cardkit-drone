@@ -1,4 +1,0 @@
-module Mavlink [system] {
-    header "../Carthage/Checkouts/c_library_v2/common/mavlink.h"
-    export *
-}
