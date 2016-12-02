@@ -13,7 +13,7 @@ import CardKitRuntime
 
 import PromiseKit
 
-protocol GimbalToken {
+public protocol GimbalToken {
     func reset() -> Promise<Void>
     func rotateToAbsoluteAngle(pitch: Float, roll: Float, yaw: Float) -> Promise<Void>
     func rotateToRelativeAngle(pitch: Float, roll: Float, yaw: Float) -> Promise<Void>

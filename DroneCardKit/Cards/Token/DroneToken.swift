@@ -13,7 +13,7 @@ import CardKitRuntime
 
 import PromiseKit
 
-protocol DroneToken {
+public protocol DroneToken {
     func takeOff() -> Promise<Void>
     func takeOff(climbingTo altitude: Double) -> Promise<Void>
     

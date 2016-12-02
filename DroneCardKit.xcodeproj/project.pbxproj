@@ -702,10 +702,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBE8C641DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */,
-				CCBE8C641DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C741DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
