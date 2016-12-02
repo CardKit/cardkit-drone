@@ -51,12 +51,6 @@
 		CCBE8C771DA69F5900BD7638 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE8C631DA69F5900BD7638 /* DroneToken.swift */; };
 		CCBE8C781DA69F5900BD7638 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE8C631DA69F5900BD7638 /* DroneToken.swift */; };
 		CCBE8C791DA69F5900BD7638 /* DroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBE8C631DA69F5900BD7638 /* DroneToken.swift */; };
-		F90FCFF21DF1FA1A00C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */; };
-		F90FCFF31DF1FA1A00C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */; };
-		F90FCFF41DF1FA1A00C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */; };
-		F90FCFF51DF1FA1A00C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */; };
-		F90FCFF61DF1FA1A00C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */; };
-		F90FCFF71DF1FA1A00C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */; };
 		F90FCFF91DF1FA2600C26E86 /* CameraToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF81DF1FA2600C26E86 /* CameraToken.swift */; };
 		F90FCFFA1DF1FA2600C26E86 /* CameraToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF81DF1FA2600C26E86 /* CameraToken.swift */; };
 		F90FCFFB1DF1FA2600C26E86 /* CameraToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FCFF81DF1FA2600C26E86 /* CameraToken.swift */; };
@@ -66,6 +60,12 @@
 		F90FCFFF1DF1FA3300C26E86 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		F90FD0001DF1FA3400C26E86 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		F90FD0011DF1FA3400C26E86 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
+		F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
+		F90FD0041DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
+		F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
+		F90FD0061DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
+		F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
+		F90FD0081DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,8 +120,8 @@
 		CCBE8C631DA69F5900BD7638 /* DroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneToken.swift; sourceTree = "<group>"; };
 		CCBE8CCC1DA6D8A500BD7638 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "Carthage/Checkouts/Mobile-SDK-iOS/Sample Code/DJISDK.framework"; sourceTree = "<group>"; };
 		CCD033521DC144CB001AE5C9 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
-		F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyTo.swift; sourceTree = "<group>"; };
 		F90FCFF81DF1FA2600C26E86 /* CameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraToken.swift; sourceTree = "<group>"; };
+		F90FD0021DF1FAD200C26E86 /* FlyTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlyTo.swift; path = DroneCardKit/Cards/Action/Movement/Location/FlyTo.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,7 +339,7 @@
 		F90FCFF01DF1FA0000C26E86 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				F90FCFF11DF1FA1A00C26E86 /* FlyTo.swift */,
+				F90FD0021DF1FAD200C26E86 /* FlyTo.swift */,
 			);
 			name = Location;
 			path = Area;
@@ -738,11 +738,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F90FCFF21DF1FA1A00C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C641DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				F90FCFF91DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
+				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CCBE8C741DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -752,11 +752,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F90FCFF31DF1FA1A00C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C751DA69F5900BD7638 /* DroneToken.swift in Sources */,
 				F90FCFFF1DF1FA3300C26E86 /* CoverArea.swift in Sources */,
 				F90FCFFA1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CC6F0F231DEDDD3B005F802A /* GimbalToken.swift in Sources */,
+				F90FD0041DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C651DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C6D1DA69F5900BD7638 /* InputTypes.swift in Sources */,
@@ -767,11 +767,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F90FCFF41DF1FA1A00C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C6E1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				F90FCFFB1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC6F0F241DEDDD3B005F802A /* GimbalToken.swift in Sources */,
+				F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C661DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C761DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -781,11 +781,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F90FCFF51DF1FA1A00C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C771DA69F5900BD7638 /* DroneToken.swift in Sources */,
 				F90FD0001DF1FA3400C26E86 /* CoverArea.swift in Sources */,
 				F90FCFFC1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CC6F0F251DEDDD3B005F802A /* GimbalToken.swift in Sources */,
+				F90FD0061DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C671DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C6F1DA69F5900BD7638 /* InputTypes.swift in Sources */,
@@ -796,11 +796,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F90FCFF61DF1FA1A00C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C701DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				F90FCFFD1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC6F0F261DEDDD3B005F802A /* GimbalToken.swift in Sources */,
+				F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C681DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C781DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -810,11 +810,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F90FCFF71DF1FA1A00C26E86 /* FlyTo.swift in Sources */,
 				CCBE8C791DA69F5900BD7638 /* DroneToken.swift in Sources */,
 				F90FD0011DF1FA3400C26E86 /* CoverArea.swift in Sources */,
 				F90FCFFE1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CC6F0F271DEDDD3B005F802A /* GimbalToken.swift in Sources */,
+				F90FD0081DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C691DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C711DA69F5900BD7638 /* InputTypes.swift in Sources */,
