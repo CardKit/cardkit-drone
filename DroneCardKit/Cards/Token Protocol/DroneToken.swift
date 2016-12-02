@@ -16,13 +16,22 @@ import PromiseKit
 public protocol DroneToken {
     func takeOff() -> Promise<Void>
     func takeOff(climbingTo altitude: Double) -> Promise<Void>
+    func takeOffCancel() -> Promise<Void>
     
     func fly(to coordinate: DCKCoordinate2D, atSpeed speed: Double) -> Promise<Void>
     func fly(to coordinate: DCKCoordinate3D, atSpeed speed: Double) -> Promise<Void>
     func fly(on path: DCKCoordinate2DPath, atSpeed speed: Double) -> Promise<Void>
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: Double) -> Promise<Void>
     
+    func setHome(location: DCKCoordinate2D)
+    func getHome() -> DCKCoordinate2D
     func returnHome() -> Promise<Void>
+    func returnHomeCancel() -> Promise<Void>
     
     func land() -> Promise<Void>
+    func landCancel() -> Promise<Void>
+    
+    func landingGear(down: Bool) -> Promise<Void>
+    
+    func location() -> DCKCoordinate2D
 }
