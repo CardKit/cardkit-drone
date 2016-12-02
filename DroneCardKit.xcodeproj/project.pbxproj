@@ -100,7 +100,7 @@
 		CCBB79501D7897FA003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/tvOS/CardKit.framework; sourceTree = "<group>"; };
 		CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/tvOS/CardKitRuntime.framework; sourceTree = "<group>"; };
 		CCBB79521D7897FA003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/tvOS/Freddy.framework; sourceTree = "<group>"; };
-		CCBE8C5F1DA69F5900BD7638 /* DroneCardKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCardKit.swift; sourceTree = "<group>"; };
+		CCBE8C5F1DA69F5900BD7638 /* DroneCardKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCardKit.swift; path = Cards/DroneCardKit.swift; sourceTree = "<group>"; };
 		CCBE8C611DA69F5900BD7638 /* InputTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTypes.swift; sourceTree = "<group>"; };
 		CCBE8C631DA69F5900BD7638 /* DroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneToken.swift; sourceTree = "<group>"; };
 		CCBE8CCC1DA6D8A500BD7638 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "Carthage/Checkouts/Mobile-SDK-iOS/Sample Code/DJISDK.framework"; sourceTree = "<group>"; };
@@ -188,6 +188,15 @@
 			path = Area;
 			sourceTree = "<group>";
 		};
+		68DE99B01DF1E9BF0040D76A /* Descriptor */ = {
+			isa = PBXGroup;
+			children = (
+				CCBE8C5F1DA69F5900BD7638 /* DroneCardKit.swift */,
+			);
+			name = Descriptor;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		CC9318711D4796DB001B71B1 = {
 			isa = PBXGroup;
 			children = (
@@ -216,7 +225,7 @@
 			children = (
 				CC93187E1D4796DB001B71B1 /* DroneCardKit.h */,
 				CC9318801D4796DB001B71B1 /* Info.plist */,
-				CCBE8C5E1DA69F5900BD7638 /* Cards */,
+				CCBE8C5E1DA69F5900BD7638 /* Card */,
 				CC9318D31D4797BF001B71B1 /* Scenarios */,
 			);
 			path = DroneCardKit;
@@ -281,14 +290,15 @@
 			name = tvOS;
 			sourceTree = "<group>";
 		};
-		CCBE8C5E1DA69F5900BD7638 /* Cards */ = {
+		CCBE8C5E1DA69F5900BD7638 /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				CCBE8C5F1DA69F5900BD7638 /* DroneCardKit.swift */,
+				68DE99B01DF1E9BF0040D76A /* Descriptor */,
 				68DE99A41DF1C7670040D76A /* Action */,
 				CCBE8C601DA69F5900BD7638 /* Input */,
-				CCBE8C621DA69F5900BD7638 /* Token */,
+				CCBE8C621DA69F5900BD7638 /* Token Protocol */,
 			);
+			name = Card;
 			path = Cards;
 			sourceTree = "<group>";
 		};
@@ -300,12 +310,13 @@
 			path = Input;
 			sourceTree = "<group>";
 		};
-		CCBE8C621DA69F5900BD7638 /* Token */ = {
+		CCBE8C621DA69F5900BD7638 /* Token Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				CCBE8C631DA69F5900BD7638 /* DroneToken.swift */,
 				CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */,
 			);
+			name = "Token Protocol";
 			path = Token;
 			sourceTree = "<group>";
 		};
