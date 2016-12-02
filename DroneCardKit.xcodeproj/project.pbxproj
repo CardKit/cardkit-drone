@@ -341,8 +341,7 @@
 			children = (
 				F90FD0021DF1FAD200C26E86 /* FlyTo.swift */,
 			);
-			name = Location;
-			path = Area;
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
