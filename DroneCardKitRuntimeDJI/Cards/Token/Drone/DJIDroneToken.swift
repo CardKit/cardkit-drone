@@ -14,7 +14,7 @@ import CardKitRuntime
 import DJISDK
 import PromiseKit
 
-//MARK: DJIDroneToken
+// MARK: DJIDroneToken
 
 public class DJIDroneToken: ExecutableTokenCard, DroneToken {
     private let aircraft: DJIAircraft
@@ -26,7 +26,7 @@ public class DJIDroneToken: ExecutableTokenCard, DroneToken {
         super.init(with: card)
     }
     
-    //MARK: DroneToken
+    // MARK: DroneToken
     
     public func takeOff() -> Promise<Void> {
         print("drone taking off!")
@@ -136,7 +136,7 @@ public class DJIDroneToken: ExecutableTokenCard, DroneToken {
         }
     }
     
-    //MARK: Instance Methods
+    // MARK: Instance Methods
     
     private func executeWaypointMission(mission: DJIWaypointMission) -> Promise<Void> {
         // create a waypoint step
@@ -165,14 +165,14 @@ public class DJIDroneToken: ExecutableTokenCard, DroneToken {
     }
 }
 
-//MARK:- DJIDroneTokenDefaults
+// MARK: DJIDroneTokenDefaults
 
 fileprivate struct Defaults {
     static let speed: Double = 2.0
 }
 
 
-//MARK:- DJIDroneTokenError
+// MARK: DJIDroneTokenError
 
 public enum DJIDroneTokenError: Error {
     case failedToInstantiateCustomMission
@@ -182,7 +182,7 @@ public enum DJIDroneTokenError: Error {
 }
 
 
-//MARK:- FlightControllerDelegate
+// MARK: FlightControllerDelegate
 
 // DJIFlightControllerDelegates must inherit from NSObject. We can't make DJIDroneToken inherit from
 // NSObject since it inherits from ExecutableTokenCard (which isn't an NSObject), so we use a private
