@@ -114,7 +114,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
             ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -131,8 +131,7 @@ extension DroneCardKit.Action.Movement.Location {
         name: "Fly To",
         subpath: "Movement/Location",
         inputs: [
-            InputSlot(name: "Destination", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
-            InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
+            InputSlot(name: "Destination", descriptor: DroneCardKit.Input.Location.Coordinate2D, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
