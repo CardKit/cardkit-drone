@@ -10,6 +10,9 @@
 		68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
+		68DE99C31DF2160E0040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
+		68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
+		68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
 		CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
 		CC6F0F231DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
 		CC6F0F241DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9318861D4796DB001B71B1 /* DroneCardKit.framework in Frameworks */,
+				68DE99C31DF2160E0040D76A /* CardKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9318A41D4796F5001B71B1 /* DroneCardKit.framework in Frameworks */,
+				68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9318C01D479706001B71B1 /* DroneCardKit.framework in Frameworks */,
+				68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,6 +997,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1008,6 +1015,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1079,6 +1087,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -1100,6 +1109,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -1169,6 +1179,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1188,6 +1199,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Mobile-SDK-iOS/Sample\\ Code",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = DroneCardKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
