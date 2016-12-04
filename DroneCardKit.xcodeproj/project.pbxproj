@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
+		6809DF341DF4B7970077C6EE /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
+		6809DF351DF4B7970077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
+		6809DF361DF4B7970077C6EE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD033521DC144CB001AE5C9 /* PromiseKit.framework */; };
+		6809DF371DF4B7B80077C6EE /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
+		6809DF381DF4B7B80077C6EE /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
+		6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
+		6809DF3A1DF4B7B80077C6EE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD033521DC144CB001AE5C9 /* PromiseKit.framework */; };
 		68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
-		68DE99C31DF2160E0040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
 		68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
 		CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */; };
@@ -28,8 +35,6 @@
 		CC9318CE1D479716001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
 		CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
-		CCBB79441D7897BB003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
-		CCBB79461D7897BB003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
 		CCBB794C1D7897D8003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		CCBB794D1D7897D8003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */; };
 		CCBB794E1D7897D8003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794B1D7897D8003B6458 /* Freddy.framework */; };
@@ -132,8 +137,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBB79441D7897BB003B6458 /* CardKit.framework in Frameworks */,
-				CCBB79461D7897BB003B6458 /* Freddy.framework in Frameworks */,
+				6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */,
+				6809DF341DF4B7970077C6EE /* CardKitRuntime.framework in Frameworks */,
+				6809DF351DF4B7970077C6EE /* Freddy.framework in Frameworks */,
+				6809DF361DF4B7970077C6EE /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9318861D4796DB001B71B1 /* DroneCardKit.framework in Frameworks */,
-				68DE99C31DF2160E0040D76A /* CardKit.framework in Frameworks */,
+				6809DF371DF4B7B80077C6EE /* CardKit.framework in Frameworks */,
+				6809DF381DF4B7B80077C6EE /* CardKitRuntime.framework in Frameworks */,
+				6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */,
+				6809DF3A1DF4B7B80077C6EE /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,6 +659,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			outputPaths = (
 			);
@@ -697,6 +708,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			outputPaths = (
 			);
