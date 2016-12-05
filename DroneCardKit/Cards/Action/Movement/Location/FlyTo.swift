@@ -14,31 +14,46 @@ import PromiseKit
 
 public class FlyTo: ExecutableActionCard {
     override public func main() {
-        // mandatory inputs
         guard let location: DCKCoordinate2D = self.value(forInput: "Destination") else {
             return
         }
         
-        // optional inputs
-        let altitude: Double = self.optionalValue(forInput: "Altitude") ?? 2.0
-        let speed: Double = self.optionalValue(forInput: "Speed") ?? 2.0
+        let altitude: Double? = self.optionalValue(forInput: "Altitude")
+        let speed: Double? = self.optionalValue(forInput: "Speed")
         
-        // token
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            return
-        }
-        
-        
-        // fly!
-        firstly {
-            drone.takeOff(climbingTo: altitude)
-            }.then {
-                _ -> Promise<Void> in
-                drone.fly(to: location, atSpeed: speed)
-            }.catch {
-                error in
-                print("error: \(error)")
-        }
+//        // token
+//        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+//            return
+//        }
+//        
+////        let tp : Promise<Void> = Promise { fulfill, reject in
+////            if (drone.isFlying()) {
+////                
+////            }
+////            else {
+////                 fufill(drone.takeOff(climbingTo: altitude))
+////            }
+////        }
+////
+//        
+//        
+//        // fly!
+//        firstly {
+//            if !drone.flying() {
+//                return drone.takeOff(climbingTo: altitude)
+//            }
+//            else {
+//                
+//            }
+//            
+//            }
+//            .then {
+//                _ -> Promise<Void> in
+//                drone.fly(to: location, atSpeed: speed)
+//            }.catch {
+//                error in
+//                print("error: \(error)")
+//        }
     }
     
     override public func cancel() {
