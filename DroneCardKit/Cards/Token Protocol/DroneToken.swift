@@ -14,24 +14,93 @@ import CardKitRuntime
 import PromiseKit
 
 public protocol DroneToken {
-    func takeOff() -> Promise<Void>
-    func takeOff(climbingTo altitude: Double) -> Promise<Void>
-    func takeOffCancel() -> Promise<Void>
+    func areMotorsOn() -> Promise<Bool>
+    func motors(on: Bool) -> Promise<Void>
     
-    func fly(to coordinate: DCKCoordinate2D, atSpeed speed: Double) -> Promise<Void>
-    func fly(to coordinate: DCKCoordinate3D, atSpeed speed: Double) -> Promise<Void>
-    func fly(on path: DCKCoordinate2DPath, atSpeed speed: Double) -> Promise<Void>
-    func fly(on path: DCKCoordinate3DPath, atSpeed speed: Double) -> Promise<Void>
+    func currentLocation() -> Promise<DCKCoordinate3D>
+    func currentOrientation() -> Promise<DCKOrientation>
+    
+    func hover(withYaw yaw: DCKAngle?) -> Promise<Void>
+    
+    func fly(to altitude: DCKAltitude, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
+    func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
+    func fly(on path: DCKCoordinate2DPath, atSpeed speed: DCKVelocity?) -> Promise<Void>
+    func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKVelocity?) -> Promise<Void>
     
     func setHome(location: DCKCoordinate2D)
-    func getHome() -> DCKCoordinate2D
-    func returnHome() -> Promise<Void>
-    func returnHomeCancel() -> Promise<Void>
-    
-    func land() -> Promise<Void>
-    func landCancel() -> Promise<Void>
+    func homeLocation() -> Promise<DCKCoordinate2D>
+    func returnHome(withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
     
     func landingGear(down: Bool) -> Promise<Void>
     
-    func location() -> DCKCoordinate2D
+    func land() -> Promise<Void>
+}
+
+public extension DroneToken {
+    
+    final func fly(to altitude: DCKAltitude) -> Promise<Void> {
+        return fly(to: altitude, withYaw: nil, atSpeed: nil)
+    }
+    
+    final func fly(to altitude: DCKAltitude, withYaw yaw: DCKAngle?) -> Promise<Void> {
+        return fly(to: altitude, withYaw: yaw, atSpeed: nil)
+    }
+    
+    final func fly(to altitude: DCKAltitude, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+        return fly(to: altitude, withYaw: nil, atSpeed: speed)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D) -> Promise<Void> {
+        return fly(to: coordinate, atAltitude: nil, withYaw: nil, atSpeed: nil)
+    }
+   
+    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?) -> Promise<Void> {
+        return fly(to: coordinate, atAltitude: altitude, withYaw: nil, atSpeed: nil)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?, withYaw yaw: DCKAngle?) -> Promise<Void> {
+        return fly(to: coordinate, atAltitude: altitude, withYaw: yaw, atSpeed: nil)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+        return fly(to: coordinate, atAltitude: altitude, withYaw: nil, atSpeed: speed)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, withYaw yaw: DCKAngle?) -> Promise<Void> {
+        return fly(to: coordinate, atAltitude: nil, withYaw: yaw, atSpeed: nil)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+        return fly(to: coordinate, atAltitude: nil, withYaw: yaw, atSpeed: speed)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+        return fly(to: coordinate, atAltitude: nil, withYaw: nil, atSpeed: speed)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate3D) -> Promise<Void> {
+        return fly(to: coordinate.as2D, atAltitude: coordinate.altitude, withYaw: nil, atSpeed: nil)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate3D, withYaw yaw: DCKAngle?) -> Promise<Void> {
+        return fly(to: coordinate.as2D, atAltitude: coordinate.altitude, withYaw: yaw, atSpeed: nil)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate3D, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+        return fly(to: coordinate.as2D, atAltitude: coordinate.altitude, withYaw: yaw, atSpeed: speed)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate3D, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+        return fly(to: coordinate.as2D, atAltitude: coordinate.altitude, withYaw: nil, atSpeed: speed)
+    }
+    
+    final func returnHome(withYaw yaw: DCKAngle?) -> Promise<Void> {
+        return returnHome(withYaw: yaw, atSpeed: nil)
+    }
+    
+    final func returnHome(atSpeed speed: DCKVelocity?) -> Promise<Void> {
+        return returnHome(withYaw: nil, atSpeed: speed)
+    }
+    
+
 }

@@ -28,22 +28,22 @@ public class CoverArea: ExecutableActionCard {
             return
         }
         
-        // fly!
-        firstly {
-            drone.takeOff(climbingTo: altitude)
-        }.then {
-            _ -> Promise<Void> in
-            drone.fly(on: area, atSpeed: speed)
-        }.then {
-            _ -> Promise<Void> in
-            drone.returnHome()
-        }.then {
-            _ -> Promise<Void> in
-            drone.land()
-        }.catch {
-            error in
-            print("error: \(error)")
-        }
+//        // fly!
+//        firstly {
+//            drone.takeOff(climbingTo: altitude)
+//        }.then {
+//            _ -> Promise<Void> in
+//            drone.fly(on: area, atSpeed: speed)
+//        }.then {
+//            _ -> Promise<Void> in
+//            drone.returnHome()
+//        }.then {
+//            _ -> Promise<Void> in
+//            drone.land()
+//        }.catch {
+//            error in
+//            print("error: \(error)")
+//        }
     }
     
     override public func cancel() {
