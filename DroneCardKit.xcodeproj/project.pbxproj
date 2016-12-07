@@ -15,6 +15,7 @@
 		6809DF381DF4B7B80077C6EE /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
 		6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
 		6809DF3A1DF4B7B80077C6EE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD033521DC144CB001AE5C9 /* PromiseKit.framework */; };
+		686EE8A31DF855A40024F3E5 /* Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686EE8A21DF855A40024F3E5 /* Land.swift */; };
 		68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
@@ -101,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Land.swift; path = Simple/Land.swift; sourceTree = "<group>"; };
 		68DE99A71DF1C7670040D76A /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
 		CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalToken.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		686EE8A11DF8558B0024F3E5 /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+				686EE8A21DF855A40024F3E5 /* Land.swift */,
+			);
+			name = Simple;
+			sourceTree = "<group>";
+		};
 		68DE99A41DF1C7670040D76A /* Action */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +218,7 @@
 		68DE99A51DF1C7670040D76A /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				686EE8A11DF8558B0024F3E5 /* Simple */,
 				F90FCFF01DF1FA0000C26E86 /* Location */,
 				68DE99A61DF1C7670040D76A /* Area */,
 			);
@@ -759,6 +770,7 @@
 				F90FCFF91DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
+				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				CCBE8C741DA69F5900BD7638 /* DroneToken.swift in Sources */,

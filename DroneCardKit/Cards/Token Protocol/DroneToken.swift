@@ -14,6 +14,8 @@ import CardKitRuntime
 import PromiseKit
 
 public protocol DroneToken {
+    func isFlying() -> Promise<Bool>
+    
     func takeOff() -> Promise<Void>
     func takeOff(climbingTo altitude: Double) -> Promise<Void>
     func takeOffCancel() -> Promise<Void>
@@ -28,7 +30,7 @@ public protocol DroneToken {
     func returnHome() -> Promise<Void>
     func returnHomeCancel() -> Promise<Void>
     
-    func land() -> Promise<Void>
+    func land() -> Promise<Bool>
     func landCancel() -> Promise<Void>
     
     func landingGear(down: Bool) -> Promise<Void>
