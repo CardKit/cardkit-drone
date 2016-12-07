@@ -88,57 +88,63 @@ extension DCKCoordinate2DPath: JSONEncodable {
 
 // MARK: DCKCoordinate3D
 
-public struct DCKCoordinate3D {
+public struct DCKCoordinate3D: Equatable {
     public let latitude: Double
     public let longitude: Double
-    public let altitudeMeters: Double
+    public let altitude: DCKAltitude
     
-    public init(latitude: Double, longitude: Double, altitudeMeters: Double) {
+    public var as2D : DCKCoordinate2D {
+        get {
+            return DCKCoordinate2D(latitude: latitude, longitude: longitude)
+        }
+    }
+    
+    public init(latitude: Double, longitude: Double, altitude: DCKAltitude) {
         self.latitude = latitude
         self.longitude = longitude
-        self.altitudeMeters = altitudeMeters
+        self.altitude = altitude
+    }
+    
+    static public func == (lhs: DCKCoordinate3D, rhs: DCKCoordinate3D) -> Bool {
+        return lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude
+            && lhs.altitude == rhs.altitude
     }
 }
 
 extension DCKCoordinate3D: CustomStringConvertible {
     public var description: String {
-        return "\(self.latitude), \(self.longitude), \(self.altitudeMeters)m"
+        return "\(self.latitude), \(self.longitude), \(self.altitude.metersAboveSeaLevel)m"
     }
 }
 
-extension DCKCoordinate3D: Equatable {
-    static public func == (lhs: DCKCoordinate3D, rhs: DCKCoordinate3D) -> Bool {
-        return lhs.latitude == rhs.latitude
-            && lhs.longitude == rhs.longitude
-            && lhs.altitudeMeters == rhs.altitudeMeters
-    }
-}
-
-extension DCKCoordinate3D: JSONDecodable {
-    public init(json: JSON) throws {
-        self.latitude = try json.getDouble(at: "latitude")
-        self.longitude = try json.getDouble(at: "longitude")
-        self.altitudeMeters = try json.getDouble(at: "altitudeMeters")
-    }
-}
-
-extension DCKCoordinate3D: JSONEncodable {
+extension DCKCoordinate3D: JSONEncodable, JSONDecodable {
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
             "longitude": self.longitude.toJSON(),
-            "altitudeMeters": self.altitudeMeters.toJSON()
+            "altitude": self.altitude.toJSON()
             ])
+    }
+    
+    public init(json: JSON) throws {
+        self.latitude = try json.getDouble(at: "latitude")
+        self.longitude = try json.getDouble(at: "longitude")
+        self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
     }
 }
 
 // MARK: DCKCoordinate3DPath
 
-public struct DCKCoordinate3DPath {
+    public struct DCKCoordinate3DPath : Equatable {
     public let path: [DCKCoordinate3D]
     
     public init(path: [DCKCoordinate3D]) {
         self.path = path
+    }
+    
+    static public func == (lhs: DCKCoordinate3DPath, rhs: DCKCoordinate3DPath) -> Bool {
+        return lhs == rhs
     }
 }
 
@@ -148,25 +154,84 @@ extension DCKCoordinate3DPath: CustomStringConvertible {
         return strs.joined(separator: ", ")
     }
 }
-
-extension DCKCoordinate3DPath: Equatable {
-    static public func == (lhs: DCKCoordinate3DPath, rhs: DCKCoordinate3DPath) -> Bool {
-        return lhs == rhs
+    
+extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
+    public func toJSON() -> JSON {
+        return self.path.toJSON()
     }
-}
-
-extension DCKCoordinate3DPath: JSONDecodable {
+    
     public init(json: JSON) throws {
         self.path = try json.decodedArray(type: DCKCoordinate3D.self)
     }
 }
 
-extension DCKCoordinate3DPath: JSONEncodable {
-    public func toJSON() -> JSON {
-        return self.path.toJSON()
+// MARK: DCKAltitude
+
+public struct DCKAltitude: Equatable  {
+    public let metersAboveSeaLevel: Double
+    
+    public init (metersAboveSeaLevel: Double) {
+        self.metersAboveSeaLevel = metersAboveSeaLevel
+    }
+    
+    static public func == (lhs: DCKAltitude, rhs: DCKAltitude) -> Bool {
+        return lhs.metersAboveSeaLevel == rhs.metersAboveSeaLevel
     }
 }
 
+extension DCKAltitude : JSONEncodable, JSONDecodable {
+    public init(json: JSON) throws {
+        self.metersAboveSeaLevel = try json.getDouble(at: "metersAboveSeaLevel")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary([
+            "metersAboveSeaLevel": metersAboveSeaLevel.toJSON(),
+            ])
+    }
+}
+
+// MARK: DCKVelocity
+
+public struct DCKVelocity {
+    public let metersPerSec: Double
+    
+    public var milesPerHour : Double {
+        get {
+            // TODO: compute
+            return 0
+        }
+    }
+    
+    public init (metersPerSec: Double) {
+        self.metersPerSec = metersPerSec
+    }
+}
+
+// MARK: DCKAngle
+
+public struct DCKAngle {
+    public let degrees: Double
+    
+    public var radians : Double {
+        get {
+            // TODO:
+            return 0
+        }
+    }
+    
+}
+
+// MARK: DCKOrientation
+
+public struct DCKOrientation {
+    public let yaw: DCKAngle
+    public let pitch: DCKAngle
+    public let roll: DCKAngle
+    
+}
+
+    
 // MARK: DCKCardinalDirection
 
 public enum DCKCardinalDirection: String {
