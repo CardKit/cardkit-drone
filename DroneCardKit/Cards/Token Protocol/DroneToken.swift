@@ -101,6 +101,13 @@ public extension DroneToken {
     final func returnHome(atSpeed speed: DCKVelocity?) -> Promise<Void> {
         return returnHome(withYaw: nil, atSpeed: speed)
     }
-    
 
 }
+
+enum DroneTokenError: Error {
+    case TokenAquisitionFailed
+    case MandatoryInputAquisitionFailed
+    case FailureInFlightTriggersLand
+    case FailureDuringLand
+}
+

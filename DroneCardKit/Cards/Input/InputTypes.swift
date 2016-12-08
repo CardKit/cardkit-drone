@@ -93,7 +93,7 @@ public struct DCKCoordinate3D: Equatable {
     public let longitude: Double
     public let altitude: DCKAltitude
     
-    public var as2D : DCKCoordinate2D {
+    public var as2D: DCKCoordinate2D {
         get {
             return DCKCoordinate2D(latitude: latitude, longitude: longitude)
         }
@@ -136,7 +136,7 @@ extension DCKCoordinate3D: JSONEncodable, JSONDecodable {
 
 // MARK: DCKCoordinate3DPath
 
-    public struct DCKCoordinate3DPath : Equatable {
+    public struct DCKCoordinate3DPath: Equatable {
     public let path: [DCKCoordinate3D]
     
     public init(path: [DCKCoordinate3D]) {
@@ -167,7 +167,7 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
 
 // MARK: DCKAltitude
 
-public struct DCKAltitude: Equatable  {
+public struct DCKAltitude: Equatable {
     public let metersAboveSeaLevel: Double
     
     public init (metersAboveSeaLevel: Double) {
@@ -179,24 +179,22 @@ public struct DCKAltitude: Equatable  {
     }
 }
 
-extension DCKAltitude : JSONEncodable, JSONDecodable {
+extension DCKAltitude : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.metersAboveSeaLevel = try json.getDouble(at: "metersAboveSeaLevel")
     }
     
     public func toJSON() -> JSON {
-        return .dictionary([
-            "metersAboveSeaLevel": metersAboveSeaLevel.toJSON(),
-            ])
+        return .dictionary(["metersAboveSeaLevel": metersAboveSeaLevel.toJSON()])
     }
 }
 
 // MARK: DCKVelocity
 
-public struct DCKVelocity {
+public struct DCKVelocity: Equatable {
     public let metersPerSec: Double
     
-    public var milesPerHour : Double {
+    public var milesPerHour: Double {
         get {
             // TODO: compute
             return 0
@@ -205,6 +203,20 @@ public struct DCKVelocity {
     
     public init (metersPerSec: Double) {
         self.metersPerSec = metersPerSec
+    }
+    
+    static public func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+        return lhs.metersPerSec == rhs.metersPerSec
+    }
+}
+
+extension DCKVelocity : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.metersPerSec = try json.getDouble(at: "metersPerSec")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["metersPerSec": metersPerSec.toJSON()])
     }
 }
 
