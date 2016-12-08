@@ -15,66 +15,40 @@ import PromiseKit
 public class FlyTo: ExecutableActionCard {
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
         guard let location: DCKCoordinate2D = self.value(forInput: "Destination") else {
+            self.error = DroneTokenError.MandatoryInputAquisitionFailed
             return
         }
         
-        let altitude: Double? = self.optionalValue(forInput: "Altitude")
-        let speed: Double? = self.optionalValue(forInput: "Speed")
+        let altitude: DCKAltitude? = self.optionalValue(forInput: "Altitude")
+        let speed: DCKVelocity? = self.optionalValue(forInput: "Speed")
         
-//        firstly {
-//            drone.fly(to: location, atSpeed: speed)
-//        }
-//        
-//        
-        
-//        // token
-//        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-//            return
-//        }
-//        
-////        let tp : Promise<Void> = Promise { fulfill, reject in
-////            if (drone.isFlying()) {
-////                
-////            }
-////            else {
-////                 fufill(drone.takeOff(climbingTo: altitude))
-////            }
-////        }
-////
-//        
-//        
-//        // fly!
-//        firstly {
-//            if !drone.flying() {
-//                return drone.takeOff(climbingTo: altitude)
-//            }
-//            else {
-//                
-//            }
-//            
-//            }
-//            .then {
-//                _ -> Promise<Void> in
-//                drone.fly(to: location, atSpeed: speed)
-//            }.catch {
-//                error in
-//                print("error: \(error)")
-//        }
+        drone.motors(on: true)
+        .then {
+            drone.fly(to: location, atAltitude: altitude, atSpeed: speed)
+        }.catch { _ in
+            self.error = DroneTokenError.FailureInFlightTriggersLand
+            
+            drone.land().then { _ in
+                drone.motors(on: false)
+            }.catch { _ in
+            }
+        }
+
     }
     
     override public func cancel() {
-        // token
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
-        drone.land().catch {
-            error in
-            print("error: \(error)")
+        drone.land().catch { _ in
+            self.error = DroneTokenError.FailureDuringLand
         }
     }
 }

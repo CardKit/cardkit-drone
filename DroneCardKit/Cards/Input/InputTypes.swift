@@ -93,7 +93,7 @@ public struct DCKCoordinate3D: Equatable {
     public let longitude: Double
     public let altitude: DCKAltitude
     
-    public var as2D : DCKCoordinate2D {
+    public var as2D: DCKCoordinate2D {
         get {
             return DCKCoordinate2D(latitude: latitude, longitude: longitude)
         }
@@ -136,7 +136,7 @@ extension DCKCoordinate3D: JSONEncodable, JSONDecodable {
 
 // MARK: DCKCoordinate3DPath
 
-    public struct DCKCoordinate3DPath : Equatable {
+    public struct DCKCoordinate3DPath: Equatable {
     public let path: [DCKCoordinate3D]
     
     public init(path: [DCKCoordinate3D]) {
@@ -167,7 +167,7 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
 
 // MARK: DCKAltitude
 
-public struct DCKAltitude: Equatable  {
+public struct DCKAltitude: Equatable {
     public let metersAboveSeaLevel: Double
     
     public init (metersAboveSeaLevel: Double) {
@@ -179,47 +179,97 @@ public struct DCKAltitude: Equatable  {
     }
 }
 
-extension DCKAltitude : JSONEncodable, JSONDecodable {
+extension DCKAltitude : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.metersAboveSeaLevel = try json.getDouble(at: "metersAboveSeaLevel")
     }
     
     public func toJSON() -> JSON {
-        return .dictionary([
-            "metersAboveSeaLevel": metersAboveSeaLevel.toJSON(),
-            ])
+        return .dictionary(["metersAboveSeaLevel": metersAboveSeaLevel.toJSON()])
     }
 }
 
 // MARK: DCKVelocity
 
-public struct DCKVelocity {
-    public let metersPerSec: Double
+public struct DCKVelocity: Equatable {
+    public let metersPerSecond: Double
     
-    public var milesPerHour : Double {
+    public var milesPerHour: Double {
         get {
-            // TODO: compute
-            return 0
+            return metersPerSecond * 2.23694
         }
     }
     
-    public init (metersPerSec: Double) {
-        self.metersPerSec = metersPerSec
+    public init (metersPerSecond: Double) {
+        self.metersPerSecond = metersPerSecond
+    }
+    
+    static public func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+        return lhs.metersPerSecond == rhs.metersPerSecond
+    }
+}
+
+extension DCKVelocity : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.metersPerSecond = try json.getDouble(at: "metersPerSecond")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["metersPerSecond": metersPerSecond.toJSON()])
     }
 }
 
 // MARK: DCKAngle
 
-public struct DCKAngle {
+public struct DCKAngle: Equatable {
     public let degrees: Double
     
-    public var radians : Double {
+    public var radians: Double {
         get {
-            // TODO:
-            return 0
+            return degrees * .pi / 180
         }
     }
     
+    static public func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+        return lhs.degrees == rhs.degrees
+    }
+}
+
+extension DCKAngle : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.degrees = try json.getDouble(at: "degrees")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["degrees": degrees.toJSON()])
+    }
+}
+
+
+// MARK: DCKAngularSpeed
+
+public struct DCKAngularVelocity: Equatable {
+    public let degreesPerSecond: Double
+    
+    public var radiansPerSecond: Double {
+        get {
+            return degreesPerSecond * .pi / 180
+        }
+    }
+    
+    static public func == (lhs: DCKAngularVelocity, rhs: DCKAngularVelocity) -> Bool {
+        return lhs.degreesPerSecond == rhs.degreesPerSecond
+    }
+}
+
+extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.degreesPerSecond = try json.getDouble(at: "degreesPerSecond")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["degreesPerSecond": degreesPerSecond.toJSON()])
+    }
 }
 
 // MARK: DCKOrientation

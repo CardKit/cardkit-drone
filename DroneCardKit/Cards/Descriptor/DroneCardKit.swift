@@ -688,7 +688,7 @@ extension DroneCardKit.Input.Modifier.Movement {
     public static let Altitude = InputCardDescriptor(
         name: "Altitude",
         subpath: "Modifier/Movement",
-        inputType: Double.self,
+        inputType: DCKAltitude.self,
         inputDescription: "Altitude (in meters)",
         assetCatalog: CardAssetCatalog(description: "Altitude (in meters)"),
         version: 0)
@@ -697,7 +697,7 @@ extension DroneCardKit.Input.Modifier.Movement {
     public static let AngularSpeed = InputCardDescriptor(
         name: "AngularSpeed",
         subpath: "Modifier/Movement",
-        inputType: Double.self,
+        inputType: DCKAngularVelocity.self,
         inputDescription: "Angular speed (in degrees/sec)",
         assetCatalog: CardAssetCatalog(description: "Angular speed (in degress/sec)"),
         version: 0)
@@ -706,7 +706,7 @@ extension DroneCardKit.Input.Modifier.Movement {
     public static let Speed = InputCardDescriptor(
         name: "Speed",
         subpath: "Modifier/Movement",
-        inputType: Double.self,
+        inputType: DCKVelocity.self,
         inputDescription: "Speed (in meters/sec)",
         assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"),
         version: 0)
