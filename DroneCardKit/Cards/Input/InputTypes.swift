@@ -192,30 +192,30 @@ extension DCKAltitude : JSONDecodable, JSONEncodable {
 // MARK: DCKVelocity
 
 public struct DCKVelocity: Equatable {
-    public let metersPerSec: Double
+    public let metersPerSecond: Double
     
     public var milesPerHour: Double {
         get {
-            return metersPerSec * 2.23694
+            return metersPerSecond * 2.23694
         }
     }
     
-    public init (metersPerSec: Double) {
-        self.metersPerSec = metersPerSec
+    public init (metersPerSecond: Double) {
+        self.metersPerSecond = metersPerSecond
     }
     
     static public func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
-        return lhs.metersPerSec == rhs.metersPerSec
+        return lhs.metersPerSecond == rhs.metersPerSecond
     }
 }
 
 extension DCKVelocity : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
-        self.metersPerSec = try json.getDouble(at: "metersPerSec")
+        self.metersPerSecond = try json.getDouble(at: "metersPerSecond")
     }
     
     public func toJSON() -> JSON {
-        return .dictionary(["metersPerSec": metersPerSec.toJSON()])
+        return .dictionary(["metersPerSecond": metersPerSecond.toJSON()])
     }
 }
 
