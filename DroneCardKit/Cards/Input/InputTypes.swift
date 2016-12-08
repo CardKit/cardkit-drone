@@ -196,8 +196,7 @@ public struct DCKVelocity: Equatable {
     
     public var milesPerHour: Double {
         get {
-            // TODO: compute
-            return 0
+            return metersPerSec * 2.23694
         }
     }
     
@@ -227,8 +226,7 @@ public struct DCKAngle: Equatable {
     
     public var radians: Double {
         get {
-            // TODO:
-            return 0
+            return degrees * .pi / 180
         }
     }
     
@@ -255,8 +253,7 @@ public struct DCKAngularVelocity: Equatable {
     
     public var radiansPerSecond: Double {
         get {
-            // TODO:
-            return 0
+            return degreesPerSecond * .pi / 180
         }
     }
     
