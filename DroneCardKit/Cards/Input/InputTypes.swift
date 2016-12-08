@@ -222,16 +222,57 @@ extension DCKVelocity : JSONDecodable, JSONEncodable {
 
 // MARK: DCKAngle
 
-public struct DCKAngle {
+public struct DCKAngle: Equatable {
     public let degrees: Double
     
-    public var radians : Double {
+    public var radians: Double {
         get {
             // TODO:
             return 0
         }
     }
     
+    static public func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+        return lhs.degrees == rhs.degrees
+    }
+}
+
+extension DCKAngle : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.degrees = try json.getDouble(at: "degrees")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["degrees": degrees.toJSON()])
+    }
+}
+
+
+// MARK: DCKAngularSpeed
+
+public struct DCKAngularVelocity: Equatable {
+    public let degreesPerSecond: Double
+    
+    public var radiansPerSecond: Double {
+        get {
+            // TODO:
+            return 0
+        }
+    }
+    
+    static public func == (lhs: DCKAngularVelocity, rhs: DCKAngularVelocity) -> Bool {
+        return lhs.degreesPerSecond == rhs.degreesPerSecond
+    }
+}
+
+extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.degreesPerSecond = try json.getDouble(at: "degreesPerSecond")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["degreesPerSecond": degreesPerSecond.toJSON()])
+    }
 }
 
 // MARK: DCKOrientation
