@@ -49,7 +49,7 @@ class Hover: ExecutableActionCard {
     
     private func constructFlyHoverPromise(_ droneToken: DroneToken, altitude: DCKAltitude) -> Promise<Void> {
         return droneToken.fly(to: altitude).then { _ in
-            droneToken.hover(withYaw: nil)
+            return droneToken.hover(withYaw: nil)
         }
     }
     
