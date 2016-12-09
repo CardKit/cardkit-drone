@@ -274,51 +274,96 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
 
 // MARK: DCKOrientation
 
-public struct DCKOrientation {
+public struct DCKOrientation: Equatable {
     public let yaw: DCKAngle
     public let pitch: DCKAngle
     public let roll: DCKAngle
     
+    static public func == (lhs: DCKOrientation, rhs: DCKOrientation) -> Bool {
+        return lhs.yaw == rhs.yaw
+            && lhs.pitch == rhs.pitch
+            && lhs.roll == rhs.roll
+    }
+    
+    public func compassPoint() -> DCKCardinalDirection {
+        return DCKCardinalDirection.byAngle(yaw)
+    }
 }
 
-    
+extension DCKOrientation: JSONDecodable {
+    public init(json: JSON) throws {
+        self.yaw = try json.decode(at: "yaw", type: DCKAngle.self)
+        self.pitch = try json.decode(at: "pitch", type: DCKAngle.self)
+        self.roll = try json.decode(at: "roll", type: DCKAngle.self)
+    }
+}
+
 // MARK: DCKCardinalDirection
 
-public enum DCKCardinalDirection: String {
-    case north
-    case south
-    case east
-    case west
+public enum DCKCardinalDirection: Int {
+
+    // https://en.wikipedia.org/wiki/Points_of_the_compass
+    case North = 0
+    case NorthByEast = 1
+    case NorthNortheast = 2
+    case NortheastByNorth = 3
+    case Northeast = 4
+    case NortheastByEast = 5
+    case EastNortheast = 6
+    case EastByNorth = 7
+    case East = 8
+    case EastBySouth = 9
+    case EastSoutheast = 10
+    case SoutheastByEast = 11
+    case Southeast = 12
+    case SoutheastBySouth = 13
+    case SouthSoutheast = 14
+    case SouthByEast = 15
+    case South = 16
+    case SouthByWest = 17
+    case SouthSouthwest = 18
+    case SouthwestBySouth = 19
+    case Southwest = 20
+    case SouthwestByWest = 21
+    case WestSouthwest = 22
+    case WestBySouth = 23
+    case West = 24
+    case WestByNorth = 25
+    case WestNorthwest = 26
+    case NorthwestByWest = 27
+    case Northwest = 28
+    case NorthwestByNorth = 29
+    case NorthNorthwest = 30
+    case NorthByWest = 31
+    
+    private static let step : Double = 360 / 64.0
+    
+    private func base() -> Double {
+        return DCKCardinalDirection.step * (2 * Double(self.rawValue) - 1)
+    }
+    
+    public func min() -> Double {
+        return (base() + 360).truncatingRemainder(dividingBy: 360)
+    }
+    
+    public func azimuth() -> Double {
+        return base() + DCKCardinalDirection.step;
+    }
+    
+    public func max() -> Double {
+        return base() + DCKCardinalDirection.step * 2
+    }
+    
+    public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
+        let index : Int = Int((angle.degrees.truncatingRemainder(dividingBy: 360) * 32) / 360)
+        return DCKCardinalDirection(rawValue: index)!
+    }
+    
 }
 
 extension DCKCardinalDirection: CustomStringConvertible {
     public var description: String {
-        switch self {
-        case .north:
-            return "north"
-        case .south:
-            return "south"
-        case .east:
-            return "east"
-        case .west:
-            return "west"
-        }
+        return "\(self.description)-\(self.rawValue)"
     }
 }
 
-extension DCKCardinalDirection: JSONDecodable {
-    public init(json: JSON) throws {
-        let direction = try json.getString()
-        if let directionEnum = DCKCardinalDirection(rawValue: direction) {
-            self = directionEnum
-        } else {
-            throw JSON.Error.valueNotConvertible(value: json, to: DCKCardinalDirection.self)
-        }
-    }
-}
-
-extension DCKCardinalDirection: JSONEncodable {
-    public func toJSON() -> JSON {
-        return .string(self.description)
-    }
-}
