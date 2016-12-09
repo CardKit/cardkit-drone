@@ -54,8 +54,24 @@ public struct DCKAngle: Equatable, Comparable {
         return DCKAngle(degrees: lhs.degrees * rhs.degrees)
     }
     
+    public static func * (lhs: DCKAngle, rhs: Double) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees * rhs)
+    }
+    
+    public static func * (lhs: Double, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs * rhs.degrees)
+    }
+    
     public static func / (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
         return DCKAngle(degrees: lhs.degrees / rhs.degrees)
+    }
+    
+    public static func / (lhs: DCKAngle, rhs: Double) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees / rhs)
+    }
+    
+    public static func / (lhs: Double, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs / rhs.degrees)
     }
     
 }
