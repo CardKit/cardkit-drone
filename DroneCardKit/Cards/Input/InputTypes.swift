@@ -194,9 +194,11 @@ extension DCKAltitude : JSONDecodable, JSONEncodable {
 public struct DCKVelocity: Equatable {
     public let metersPerSecond: Double
     
+    private static let mpsToMphConversionFactor: Double = 2.23694
+    
     public var milesPerHour: Double {
         get {
-            return metersPerSecond * 2.23694
+            return metersPerSecond * DCKVelocity.mpsToMphConversionFactor
         }
     }
     
@@ -204,7 +206,15 @@ public struct DCKVelocity: Equatable {
         self.metersPerSecond = metersPerSecond
     }
     
+    public init (milesPerHour: Double) {
+        self.metersPerSecond = milesPerHour / DCKVelocity.mpsToMphConversionFactor
+    }
+    
     static public func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+        return lhs.metersPerSecond == rhs.metersPerSecond
+    }
+    
+    static public func <= (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
         return lhs.metersPerSecond == rhs.metersPerSecond
     }
 }
@@ -221,7 +231,7 @@ extension DCKVelocity : JSONDecodable, JSONEncodable {
 
 // MARK: DCKAngle
 
-public struct DCKAngle: Equatable {
+public struct DCKAngle: Equatable, Comparable {
     public let degrees: Double
     
     public var radians: Double {
@@ -230,9 +240,43 @@ public struct DCKAngle: Equatable {
         }
     }
     
-    static public func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+    public init(degrees: Double) {
+        self.degrees = degrees
+    }
+    
+    public init(radians: Double) {
+        self.degrees = radians * 180 / .pi
+    }
+    
+    public func normalized() -> DCKAngle {
+        let normalizedDegrees = degrees.truncatingRemainder(dividingBy: 360)
+        return DCKAngle(degrees: normalizedDegrees)
+    }
+    
+    public static func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
         return lhs.degrees == rhs.degrees
     }
+    
+    public static func < (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+        return lhs.degrees < rhs.degrees
+    }
+    
+    public static func + (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees + rhs.degrees)
+    }
+    
+    public static func - (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees - rhs.degrees)
+    }
+    
+    public static func * (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees * rhs.degrees)
+    }
+    
+    public static func / (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees / rhs.degrees)
+    }
+
 }
 
 extension DCKAngle : JSONDecodable, JSONEncodable {
@@ -274,51 +318,95 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
 
 // MARK: DCKOrientation
 
-public struct DCKOrientation {
+public struct DCKOrientation: Equatable {
     public let yaw: DCKAngle
     public let pitch: DCKAngle
     public let roll: DCKAngle
     
+    static public func == (lhs: DCKOrientation, rhs: DCKOrientation) -> Bool {
+        return lhs.yaw == rhs.yaw
+            && lhs.pitch == rhs.pitch
+            && lhs.roll == rhs.roll
+    }
+    
+    public func compassPoint() -> DCKCardinalDirection {
+        return DCKCardinalDirection.byAngle(yaw)
+    }
 }
 
-    
+extension DCKOrientation: JSONDecodable {
+    public init(json: JSON) throws {
+        self.yaw = try json.decode(at: "yaw", type: DCKAngle.self)
+        self.pitch = try json.decode(at: "pitch", type: DCKAngle.self)
+        self.roll = try json.decode(at: "roll", type: DCKAngle.self)
+    }
+}
+
 // MARK: DCKCardinalDirection
 
-public enum DCKCardinalDirection: String {
-    case north
-    case south
-    case east
-    case west
+public enum DCKCardinalDirection: Int {
+
+    // https://en.wikipedia.org/wiki/Points_of_the_compass
+    case North = 0
+    case NorthByEast = 1
+    case NorthNortheast = 2
+    case NortheastByNorth = 3
+    case Northeast = 4
+    case NortheastByEast = 5
+    case EastNortheast = 6
+    case EastByNorth = 7
+    case East = 8
+    case EastBySouth = 9
+    case EastSoutheast = 10
+    case SoutheastByEast = 11
+    case Southeast = 12
+    case SoutheastBySouth = 13
+    case SouthSoutheast = 14
+    case SouthByEast = 15
+    case South = 16
+    case SouthByWest = 17
+    case SouthSouthwest = 18
+    case SouthwestBySouth = 19
+    case Southwest = 20
+    case SouthwestByWest = 21
+    case WestSouthwest = 22
+    case WestBySouth = 23
+    case West = 24
+    case WestByNorth = 25
+    case WestNorthwest = 26
+    case NorthwestByWest = 27
+    case Northwest = 28
+    case NorthwestByNorth = 29
+    case NorthNorthwest = 30
+    case NorthByWest = 31
+    
+    private static let step: Double = 360 / 64.0
+    
+    private func base() -> Double {
+        return DCKCardinalDirection.step * (2 * Double(self.rawValue) - 1)
+    }
+    
+    public func min() -> DCKAngle {
+        return DCKAngle(degrees: (base() + 360)).normalized()
+    }
+    
+    public func azimuth() -> DCKAngle {
+        return DCKAngle(degrees: base() + DCKCardinalDirection.step)
+    }
+    
+    public func max() -> DCKAngle {
+        return DCKAngle(degrees: base() + DCKCardinalDirection.step * 2)
+    }
+    
+    public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
+        let index: Int = Int(((angle.degrees + DCKCardinalDirection.step) * 32) / 360) % 32
+        return DCKCardinalDirection(rawValue: index)!
+    }
+    
 }
 
-extension DCKCardinalDirection: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .north:
-            return "north"
-        case .south:
-            return "south"
-        case .east:
-            return "east"
-        case .west:
-            return "west"
-        }
-    }
-}
-
-extension DCKCardinalDirection: JSONDecodable {
-    public init(json: JSON) throws {
-        let direction = try json.getString()
-        if let directionEnum = DCKCardinalDirection(rawValue: direction) {
-            self = directionEnum
-        } else {
-            throw JSON.Error.valueNotConvertible(value: json, to: DCKCardinalDirection.self)
-        }
-    }
-}
-
-extension DCKCardinalDirection: JSONEncodable {
-    public func toJSON() -> JSON {
-        return .string(self.description)
-    }
-}
+//extension DCKCardinalDirection: CustomStringConvertible {
+//    public var description: String {
+//        return "\(self.description)-\(self.rawValue)"
+//    }
+//}

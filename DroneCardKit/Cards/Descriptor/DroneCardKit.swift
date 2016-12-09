@@ -613,7 +613,7 @@ extension DroneCardKit.Input.Location {
     public static let CardinalDirection = InputCardDescriptor(
         name: "Cardinal Direction",
         subpath: "Location",
-        inputType: DCKCardinalDirection.self,
+        inputType: DCKAngle.self,
         inputDescription: "Cardinal Direction",
         assetCatalog: CardAssetCatalog(description: "Cardinal Direction (N, S, E, W)"),
         version: 0)
