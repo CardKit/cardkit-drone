@@ -27,14 +27,14 @@ public class FlyTo: ExecutableActionCard {
         let altitude: DCKAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKVelocity? = self.optionalValue(forInput: "Speed")
         
-        drone.motors(on: true)
+        drone.motors(spinning: true)
         .then {
             drone.fly(to: location, atAltitude: altitude, atSpeed: speed)
         }.catch { _ in
             self.error = DroneTokenError.FailureInFlightTriggersLand
             
             drone.land().then { _ in
-                drone.motors(on: false)
+                drone.motors(spinning: false)
             }.catch { _ in
             }
         }
