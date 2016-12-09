@@ -543,4 +543,3 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
         return .dictionary(["degreesPerSecond": degreesPerSecond.toJSON()])
     }
 }
-

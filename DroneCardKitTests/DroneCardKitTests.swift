@@ -28,12 +28,12 @@ class DroneCardKitTests: XCTestCase {
             let angle = DCKAngle(degrees: Double(angleDegrees))
             let direction: DCKCardinalDirection = DCKCardinalDirection.byAngle(angle)
             
-            print("testing angle \(angle.degrees) degrees, \(direction) [\(direction.min()), \(direction.max()))")
+            print("testing angle \(angle.degrees) degrees, \(direction) [\(direction.min), \(direction.max))")
             
-            assert((angle - direction.min()).normalized().degrees <= directionRangeDegrees,
-                   "direction minimum angle \(direction.max().degrees) too far from compass angle \(angle.degrees) degrees")
-            assert((direction.max() - angle).normalized().degrees <= directionRangeDegrees,
-                   "direction maximum angle \(direction.max().degrees) too far from compass angle \(angle.degrees) degrees")
+            assert((angle - direction.min).normalized().degrees <= directionRangeDegrees,
+                   "direction minimum angle \(direction.max.degrees) too far from compass angle \(angle.degrees) degrees")
+            assert((direction.max - angle).normalized().degrees <= directionRangeDegrees,
+                   "direction maximum angle \(direction.max.degrees) too far from compass angle \(angle.degrees) degrees")
         }
     }
     
