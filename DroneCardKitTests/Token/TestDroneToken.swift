@@ -15,7 +15,7 @@ import Foundation
 
 // swiftlint:disable variable_name
 
-open class TestDroneToken: ExecutableTokenCard, DroneToken {
+public class TestDroneToken: ExecutableTokenCard, DroneToken {
     //MARK: - Properties for Unit Testing
     var val_homeLocation: DCKCoordinate2D
     var val_currentLocation: DCKCoordinate3D
