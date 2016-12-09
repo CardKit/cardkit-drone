@@ -173,7 +173,7 @@ public enum DCKCardinalDirection: Int {
     }
     
     public var min: DCKAngle {
-        return DCKAngle(degrees: (base + 360)).normalized()
+        return DCKAngle(degrees: base).normalized()
     }
     
     public var azimuth: DCKAngle {

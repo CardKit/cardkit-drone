@@ -62,8 +62,8 @@ public class TestDroneToken: ExecutableTokenCard, DroneToken {
         return Promise<Bool>.empty(result: true)
     }
     
-    public func motors(on: Bool) -> Promise<Void> {
-        self.val_motorOn = on
+    public func motors(spinning: Bool) -> Promise<Void> {
+        self.val_motorOn = spinning
         return Promise<Void>.empty(result: ())
     }
     
