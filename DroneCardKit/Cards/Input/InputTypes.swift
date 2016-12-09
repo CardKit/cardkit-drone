@@ -194,7 +194,7 @@ extension DCKAltitude : JSONDecodable, JSONEncodable {
 public struct DCKVelocity: Equatable {
     public let metersPerSecond: Double
     
-    private static let mpsToMphConversionFactor : Double = 2.23694
+    private static let mpsToMphConversionFactor: Double = 2.23694
     
     public var milesPerHour: Double {
         get {
@@ -350,7 +350,7 @@ public enum DCKCardinalDirection: Int {
     case NorthNorthwest = 30
     case NorthByWest = 31
     
-    private static let step : Double = 360 / 64.0
+    private static let step: Double = 360 / 64.0
     
     private func base() -> Double {
         return DCKCardinalDirection.step * (2 * Double(self.rawValue) - 1)
@@ -369,7 +369,7 @@ public enum DCKCardinalDirection: Int {
     }
     
     public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
-        let index : Int = Int((angle.degrees.truncatingRemainder(dividingBy: 360) * 32) / 360)
+        let index: Int = Int((angle.degrees.truncatingRemainder(dividingBy: 360) * 32) / 360)
         return DCKCardinalDirection(rawValue: index)!
     }
     
@@ -380,4 +380,3 @@ extension DCKCardinalDirection: CustomStringConvertible {
         return "\(self.description)-\(self.rawValue)"
     }
 }
-
