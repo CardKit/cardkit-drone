@@ -19,7 +19,7 @@ class Land: ExecutableActionCard {
         let _: Double? = self.optionalValue(forInput: "Speed")
         
         drone.land().then { _ in
-            drone.motors(on: false)
+            drone.motors(spinning: false)
             }.catch { _ in
                 self.error = DroneTokenError.FailureDuringLand
                 self.cancel()
