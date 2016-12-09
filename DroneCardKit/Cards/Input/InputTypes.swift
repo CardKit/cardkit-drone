@@ -568,6 +568,14 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
 
 public struct DCKFrequency: Equatable, Comparable {
     public let hertz: Double
+
+    public var kilohertz: Double {
+        return hertz / 1000
+    }
+    
+    public var megahertz: Double {
+        return hertz / 1000000
+    }
     
     public static func == (lhs: DCKFrequency, rhs: DCKFrequency) -> Bool {
         return lhs.hertz == rhs.hertz
