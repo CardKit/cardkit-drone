@@ -194,14 +194,20 @@ extension DCKAltitude : JSONDecodable, JSONEncodable {
 public struct DCKVelocity: Equatable {
     public let metersPerSecond: Double
     
+    private static let mpsToMphConversionFactor : Double = 2.23694
+    
     public var milesPerHour: Double {
         get {
-            return metersPerSecond * 2.23694
+            return metersPerSecond * DCKVelocity.mpsToMphConversionFactor
         }
     }
     
     public init (metersPerSecond: Double) {
         self.metersPerSecond = metersPerSecond
+    }
+    
+    public init (milesPerHour: Double) {
+        self.metersPerSecond = milesPerHour / DCKVelocity.mpsToMphConversionFactor
     }
     
     static public func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
@@ -228,6 +234,14 @@ public struct DCKAngle: Equatable {
         get {
             return degrees * .pi / 180
         }
+    }
+    
+    public init(degrees: Double) {
+        self.degrees = degrees
+    }
+    
+    public init(radians: Double) {
+        self.degrees = radians * 180 / .pi
     }
     
     static public func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
