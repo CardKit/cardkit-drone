@@ -16,6 +16,15 @@
 		6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
 		6809DF3A1DF4B7B80077C6EE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD033521DC144CB001AE5C9 /* PromiseKit.framework */; };
 		686EE8A31DF855A40024F3E5 /* Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686EE8A21DF855A40024F3E5 /* Land.swift */; };
+		68B635251DFB12BB00A2AA07 /* TestDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B635211DFB127400A2AA07 /* TestDroneToken.swift */; };
+		68B635261DFB12BC00A2AA07 /* TestDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B635211DFB127400A2AA07 /* TestDroneToken.swift */; };
+		68B635271DFB12BD00A2AA07 /* TestDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B635211DFB127400A2AA07 /* TestDroneToken.swift */; };
+		68D432961DFAFAB50080389E /* PromiseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D432951DFAFAB50080389E /* PromiseExtension.swift */; };
+		68D432981DFAFAB50080389E /* PromiseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D432951DFAFAB50080389E /* PromiseExtension.swift */; };
+		68D4329A1DFAFAB50080389E /* PromiseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D432951DFAFAB50080389E /* PromiseExtension.swift */; };
+		68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
+		68D4329E1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
+		68D4329F1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
 		68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
@@ -103,6 +112,9 @@
 
 /* Begin PBXFileReference section */
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Land.swift; path = Simple/Land.swift; sourceTree = "<group>"; };
+		68B635211DFB127400A2AA07 /* TestDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestDroneToken.swift; path = Token/TestDroneToken.swift; sourceTree = "<group>"; };
+		68D432951DFAFAB50080389E /* PromiseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseExtension.swift; path = Utils/Extensions/PromiseExtension.swift; sourceTree = "<group>"; };
+		68D4329C1DFAFBFB0080389E /* LandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandTests.swift; path = Action/Sinple/LandTests.swift; sourceTree = "<group>"; };
 		68DE99A71DF1C7670040D76A /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
 		CC6F0F211DEDDD3B005F802A /* GimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalToken.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +219,54 @@
 			name = Simple;
 			sourceTree = "<group>";
 		};
+		68B635201DFB125A00A2AA07 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				68B635211DFB127400A2AA07 /* TestDroneToken.swift */,
+			);
+			name = Token;
+			sourceTree = "<group>";
+		};
+		68D432931DFAFAA30080389E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				68D432941DFAFAAB0080389E /* Extension */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		68D432941DFAFAAB0080389E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				68D432951DFAFAB50080389E /* PromiseExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		68D432A01DFAFBFF0080389E /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				68D432A11DFAFC030080389E /* Movement */,
+			);
+			name = Action;
+			sourceTree = "<group>";
+		};
+		68D432A11DFAFC030080389E /* Movement */ = {
+			isa = PBXGroup;
+			children = (
+				68D432A21DFAFC0C0080389E /* Simple */,
+			);
+			name = Movement;
+			sourceTree = "<group>";
+		};
+		68D432A21DFAFC0C0080389E /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+				68D4329C1DFAFBFB0080389E /* LandTests.swift */,
+			);
+			name = Simple;
+			sourceTree = "<group>";
+		};
 		68DE99A41DF1C7670040D76A /* Action */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +327,7 @@
 		CC93187D1D4796DB001B71B1 /* DroneCardKit */ = {
 			isa = PBXGroup;
 			children = (
+				68D432931DFAFAA30080389E /* Utils */,
 				CC93187E1D4796DB001B71B1 /* DroneCardKit.h */,
 				CC9318801D4796DB001B71B1 /* Info.plist */,
 				CCBE8C5E1DA69F5900BD7638 /* Cards */,
@@ -278,8 +339,10 @@
 		CC9318891D4796DB001B71B1 /* DroneCardKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */,
+				68B635201DFB125A00A2AA07 /* Token */,
+				68D432A01DFAFBFF0080389E /* Action */,
 				CC93188C1D4796DB001B71B1 /* Info.plist */,
+				CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */,
 			);
 			path = DroneCardKitTests;
 			sourceTree = "<group>";
@@ -770,6 +833,7 @@
 				F90FCFF91DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
+				68D432961DFAFAB50080389E /* PromiseExtension.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC6F0F221DEDDD3B005F802A /* GimbalToken.swift in Sources */,
@@ -781,11 +845,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */,
 				CCBE8C751DA69F5900BD7638 /* DroneToken.swift in Sources */,
 				F90FCFFF1DF1FA3300C26E86 /* CoverArea.swift in Sources */,
 				F90FCFFA1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CC6F0F231DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				F90FD0041DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				68B635251DFB12BB00A2AA07 /* TestDroneToken.swift in Sources */,
 				CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C651DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C6D1DA69F5900BD7638 /* InputTypes.swift in Sources */,
@@ -801,6 +867,7 @@
 				68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC6F0F241DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				68D432981DFAFAB50080389E /* PromiseExtension.swift in Sources */,
 				CCBE8C661DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C761DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -810,11 +877,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D4329E1DFAFBFB0080389E /* LandTests.swift in Sources */,
 				CCBE8C771DA69F5900BD7638 /* DroneToken.swift in Sources */,
 				F90FD0001DF1FA3400C26E86 /* CoverArea.swift in Sources */,
 				F90FCFFC1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CC6F0F251DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				F90FD0061DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				68B635261DFB12BC00A2AA07 /* TestDroneToken.swift in Sources */,
 				CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C671DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C6F1DA69F5900BD7638 /* InputTypes.swift in Sources */,
@@ -830,6 +899,7 @@
 				68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC6F0F261DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				68D4329A1DFAFAB50080389E /* PromiseExtension.swift in Sources */,
 				CCBE8C681DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C781DA69F5900BD7638 /* DroneToken.swift in Sources */,
 			);
@@ -839,11 +909,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D4329F1DFAFBFB0080389E /* LandTests.swift in Sources */,
 				CCBE8C791DA69F5900BD7638 /* DroneToken.swift in Sources */,
 				F90FD0011DF1FA3400C26E86 /* CoverArea.swift in Sources */,
 				F90FCFFE1DF1FA2600C26E86 /* CameraToken.swift in Sources */,
 				CC6F0F271DEDDD3B005F802A /* GimbalToken.swift in Sources */,
 				F90FD0081DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				68B635271DFB12BD00A2AA07 /* TestDroneToken.swift in Sources */,
 				CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */,
 				CCBE8C691DA69F5900BD7638 /* DroneCardKit.swift in Sources */,
 				CCBE8C711DA69F5900BD7638 /* InputTypes.swift in Sources */,
