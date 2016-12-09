@@ -22,18 +22,18 @@ class DroneCardKitTests: XCTestCase {
     }
     
     func testCardinalDirectionAzimuth() {
-        for angle in 1 ... 360 {
-            //let randomCompassAngleDegrees: Double = Double(arc4random_uniform(359))
-//            let randomCompassAngle = DCKAngle(degrees: randomCompassAngleDegrees)
-            let randomCompassAngle = DCKAngle(degrees: Double(angle))
-            let direction: DCKCardinalDirection = DCKCardinalDirection.byAngle(randomCompassAngle)
+        let directionRangeDegrees: Double = 360 / 32.0
+        
+        for angleDegrees in stride(from: 0, to: 720, by: 7.12345) {
+            let angle = DCKAngle(degrees: Double(angleDegrees))
+            let direction: DCKCardinalDirection = DCKCardinalDirection.byAngle(angle)
             
-            print("testing angle \(randomCompassAngle.degrees) degrees, \(direction) [\(direction.min()), \(direction.max()))")
+            print("testing angle \(angle.degrees) degrees, \(direction) [\(direction.min()), \(direction.max()))")
             
-            assert(direction.min() <= randomCompassAngle,
-                   "direction minimum angle \(direction.max().degrees) degrees must be less than or equal to compass angle \(randomCompassAngle.degrees) degrees")
-            assert(direction.max() >= randomCompassAngle,
-                   "direction maximum angle \(direction.max().degrees) degrees must be greater than or equal to compass angle \(randomCompassAngle.degrees) degrees")
+            assert((angle - direction.min()).normalized().degrees <= directionRangeDegrees,
+                   "direction minimum angle \(direction.max().degrees) too far from compass angle \(angle.degrees) degrees")
+            assert((direction.max() - angle).normalized().degrees <= directionRangeDegrees,
+                   "direction maximum angle \(direction.max().degrees) too far from compass angle \(angle.degrees) degrees")
         }
     }
     

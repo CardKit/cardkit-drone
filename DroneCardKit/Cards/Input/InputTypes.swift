@@ -258,7 +258,23 @@ public struct DCKAngle: Equatable, Comparable {
     }
     
     public static func < (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
-        return lhs.normalized().degrees < rhs.normalized().degrees
+        return lhs.degrees < rhs.degrees
+    }
+    
+    public static func + (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees + rhs.degrees)
+    }
+    
+    public static func - (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees - rhs.degrees)
+    }
+    
+    public static func * (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees * rhs.degrees)
+    }
+    
+    public static func / (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
+        return DCKAngle(degrees: lhs.degrees / rhs.degrees)
     }
 
 }
@@ -383,7 +399,7 @@ public enum DCKCardinalDirection: Int {
     }
     
     public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
-        let index: Int = Int(((angle.normalized().degrees + DCKCardinalDirection.step) * 32) / 360)
+        let index: Int = Int(((angle.degrees + DCKCardinalDirection.step) * 32) / 360) % 32
         return DCKCardinalDirection(rawValue: index)!
     }
     
