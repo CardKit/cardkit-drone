@@ -15,7 +15,7 @@ import PromiseKit
 
 protocol CameraToken {
     func takeStillPicture() -> Promise<Void>
-    func takeStillPictureSequenceStart(hertz: Double) -> Promise<Void>
+    func takeStillPictureSequenceStart(rate: DCKFrequency) -> Promise<Void>
     func takeStillPictureSequenceEnd() -> Promise<Void>
     
     func videoRecordStart() -> Promise<Void>
