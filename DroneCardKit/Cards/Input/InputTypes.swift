@@ -12,7 +12,7 @@ import Freddy
 
 // MARK: DCKCoordinate2D
 
-public struct DCKCoordinate2D {
+public struct DCKCoordinate2D: Equatable {
     public let latitude: Double
     public let longitude: Double
     
@@ -20,18 +20,16 @@ public struct DCKCoordinate2D {
         self.latitude = latitude
         self.longitude = longitude
     }
+    
+    public static func == (lhs: DCKCoordinate2D, rhs: DCKCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude
+    }
 }
 
 extension DCKCoordinate2D: CustomStringConvertible {
     public var description: String {
         return "\(self.latitude), \(self.longitude)"
-    }
-}
-
-extension DCKCoordinate2D: Equatable {
-    static public func == (lhs: DCKCoordinate2D, rhs: DCKCoordinate2D) -> Bool {
-        return lhs.latitude == rhs.latitude
-            && lhs.longitude == rhs.longitude
     }
 }
 
@@ -53,11 +51,15 @@ extension DCKCoordinate2D: JSONEncodable {
 
 // MARK: DCKCoordinate2DPath
 
-public struct DCKCoordinate2DPath {
+public struct DCKCoordinate2DPath: Equatable {
     public let path: [DCKCoordinate2D]
     
     public init(path: [DCKCoordinate2D]) {
         self.path = path
+    }
+    
+    public static func == (lhs: DCKCoordinate2DPath, rhs: DCKCoordinate2DPath) -> Bool {
+        return lhs == rhs
     }
 }
 
@@ -65,12 +67,6 @@ extension DCKCoordinate2DPath: CustomStringConvertible {
     public var description: String {
         let strs: [String] = self.path.map { $0.description }
         return strs.joined(separator: ", ")
-    }
-}
-
-extension DCKCoordinate2DPath: Equatable {
-    static public func == (lhs: DCKCoordinate2DPath, rhs: DCKCoordinate2DPath) -> Bool {
-        return lhs == rhs
     }
 }
 
@@ -167,15 +163,27 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
 
 // MARK: DCKAltitude
 
-public struct DCKAltitude: Equatable {
+public struct DCKAltitude: Equatable, Comparable {
     public let metersAboveSeaLevel: Double
     
     public init (metersAboveSeaLevel: Double) {
         self.metersAboveSeaLevel = metersAboveSeaLevel
     }
     
-    static public func == (lhs: DCKAltitude, rhs: DCKAltitude) -> Bool {
+    public static func == (lhs: DCKAltitude, rhs: DCKAltitude) -> Bool {
         return lhs.metersAboveSeaLevel == rhs.metersAboveSeaLevel
+    }
+    
+    public static func < (lhs: DCKAltitude, rhs: DCKAltitude) -> Bool {
+        return lhs.metersAboveSeaLevel < rhs.metersAboveSeaLevel
+    }
+    
+    public static func + (lhs: DCKAltitude, rhs: DCKAltitude) -> DCKAltitude {
+        return DCKAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel + rhs.metersAboveSeaLevel)
+    }
+    
+    public static func - (lhs: DCKAltitude, rhs: DCKAltitude) -> DCKAltitude {
+        return DCKAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel - rhs.metersAboveSeaLevel)
     }
 }
 
@@ -191,7 +199,7 @@ extension DCKAltitude : JSONDecodable, JSONEncodable {
 
 // MARK: DCKVelocity
 
-public struct DCKVelocity: Equatable {
+public struct DCKVelocity: Equatable, Comparable {
     public let metersPerSecond: Double
     
     private static let mpsToMphConversionFactor: Double = 2.23694
@@ -210,12 +218,20 @@ public struct DCKVelocity: Equatable {
         self.metersPerSecond = milesPerHour / DCKVelocity.mpsToMphConversionFactor
     }
     
-    static public func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+    public static func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
         return lhs.metersPerSecond == rhs.metersPerSecond
     }
     
-    static public func <= (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
-        return lhs.metersPerSecond == rhs.metersPerSecond
+    public static func < (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+        return lhs.metersPerSecond < rhs.metersPerSecond
+    }
+    
+    public static func + (lhs: DCKVelocity, rhs: DCKVelocity) -> DCKVelocity {
+        return DCKVelocity(metersPerSecond: lhs.metersPerSecond + rhs.metersPerSecond)
+    }
+    
+    public static func - (lhs: DCKVelocity, rhs: DCKVelocity) -> DCKVelocity {
+        return DCKVelocity(metersPerSecond: lhs.metersPerSecond - rhs.metersPerSecond)
     }
 }
 
@@ -292,7 +308,7 @@ extension DCKAngle : JSONDecodable, JSONEncodable {
 
 // MARK: DCKAngularSpeed
 
-public struct DCKAngularVelocity: Equatable {
+public struct DCKAngularVelocity: Equatable, Comparable {
     public let degreesPerSecond: Double
     
     public var radiansPerSecond: Double {
@@ -301,8 +317,16 @@ public struct DCKAngularVelocity: Equatable {
         }
     }
     
-    static public func == (lhs: DCKAngularVelocity, rhs: DCKAngularVelocity) -> Bool {
+    public static func == (lhs: DCKAngularVelocity, rhs: DCKAngularVelocity) -> Bool {
         return lhs.degreesPerSecond == rhs.degreesPerSecond
+    }
+    
+    public static func < (lhs: DCKAngularVelocity, rhs: DCKAngularVelocity) -> Bool {
+        return lhs.degreesPerSecond < rhs.degreesPerSecond
+    }
+    
+    public static func + (lhs: DCKAngularVelocity, rhs: DCKAngularVelocity) -> DCKAngularVelocity {
+        return DCKAngularVelocity(degreesPerSecond: lhs.degreesPerSecond + rhs.degreesPerSecond)
     }
 }
 
@@ -331,6 +355,10 @@ public struct DCKOrientation: Equatable {
     
     public func compassPoint() -> DCKCardinalDirection {
         return DCKCardinalDirection.byAngle(yaw)
+    }
+    
+    public static func + (lhs: DCKOrientation, rhs: DCKOrientation) -> DCKOrientation {
+        return DCKOrientation(yaw: lhs.yaw + rhs.yaw, pitch: lhs.pitch + rhs.pitch, roll: lhs.roll + rhs.roll)
     }
 }
 
