@@ -213,6 +213,10 @@ public struct DCKVelocity: Equatable {
     static public func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
         return lhs.metersPerSecond == rhs.metersPerSecond
     }
+    
+    static public func <= (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+        return lhs.metersPerSecond == rhs.metersPerSecond
+    }
 }
 
 extension DCKVelocity : JSONDecodable, JSONEncodable {
@@ -227,7 +231,7 @@ extension DCKVelocity : JSONDecodable, JSONEncodable {
 
 // MARK: DCKAngle
 
-public struct DCKAngle: Equatable {
+public struct DCKAngle: Equatable, Comparable {
     public let degrees: Double
     
     public var radians: Double {
@@ -244,9 +248,19 @@ public struct DCKAngle: Equatable {
         self.degrees = radians * 180 / .pi
     }
     
-    static public func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+    public func normalized() -> DCKAngle {
+        let normalizedDegrees = degrees.truncatingRemainder(dividingBy: 360)
+        return DCKAngle(degrees: normalizedDegrees)
+    }
+    
+    public static func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
         return lhs.degrees == rhs.degrees
     }
+    
+    public static func < (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+        return lhs.normalized().degrees < rhs.normalized().degrees
+    }
+
 }
 
 extension DCKAngle : JSONDecodable, JSONEncodable {
@@ -357,7 +371,7 @@ public enum DCKCardinalDirection: Int {
     }
     
     public func min() -> DCKAngle {
-        return DCKAngle(degrees: (base() + 360).truncatingRemainder(dividingBy: 360))
+        return DCKAngle(degrees: (base() + 360)).normalized()
     }
     
     public func azimuth() -> DCKAngle {
@@ -369,14 +383,14 @@ public enum DCKCardinalDirection: Int {
     }
     
     public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
-        let index: Int = Int((angle.degrees.truncatingRemainder(dividingBy: 360) * 32) / 360)
+        let index: Int = Int(((angle.normalized().degrees + DCKCardinalDirection.step) * 32) / 360)
         return DCKCardinalDirection(rawValue: index)!
     }
     
 }
 
-extension DCKCardinalDirection: CustomStringConvertible {
-    public var description: String {
-        return "\(self.description)-\(self.rawValue)"
-    }
-}
+//extension DCKCardinalDirection: CustomStringConvertible {
+//    public var description: String {
+//        return "\(self.description)-\(self.rawValue)"
+//    }
+//}
