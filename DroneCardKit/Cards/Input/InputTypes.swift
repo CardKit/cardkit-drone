@@ -563,3 +563,38 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
         return .dictionary(["degreesPerSecond": degreesPerSecond.toJSON()])
     }
 }
+
+// MARK: DCKFrequency
+
+public struct DCKFrequency: Equatable, Comparable {
+    public let hertz: Double
+    
+    public static func == (lhs: DCKFrequency, rhs: DCKFrequency) -> Bool {
+        return lhs.hertz == rhs.hertz
+    }
+    
+    public static func < (lhs: DCKFrequency, rhs: DCKFrequency) -> Bool {
+        return lhs.hertz < rhs.hertz
+    }
+    
+    public static func + (lhs: DCKFrequency, rhs: DCKFrequency) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs.hertz + rhs.hertz)
+    }
+    
+    public static func * (lhs: DCKFrequency, rhs: Double) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs.hertz * rhs)
+    }
+
+    public static func * (lhs: Double, rhs: DCKFrequency) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs * rhs.hertz)
+    }
+    
+    public static func / (lhs: DCKFrequency, rhs: Double) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs.hertz / rhs)
+    }
+    
+    public static func / (lhs: Double, rhs: DCKFrequency) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs / rhs.hertz)
+    }
+    
+}
