@@ -342,16 +342,16 @@ public enum DCKCardinalDirection: Int {
         return DCKCardinalDirection.step * (2 * Double(self.rawValue) - 1)
     }
     
-    public func min() -> Double {
-        return (base() + 360).truncatingRemainder(dividingBy: 360)
+    public func min() -> DCKAngle {
+        return DCKAngle(degrees: (base() + 360).truncatingRemainder(dividingBy: 360))
     }
     
-    public func azimuth() -> Double {
-        return base() + DCKCardinalDirection.step;
+    public func azimuth() -> DCKAngle {
+        return DCKAngle(degrees: base() + DCKCardinalDirection.step)
     }
     
-    public func max() -> Double {
-        return base() + DCKCardinalDirection.step * 2
+    public func max() -> DCKAngle {
+        return DCKAngle(degrees: base() + DCKCardinalDirection.step * 2)
     }
     
     public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
