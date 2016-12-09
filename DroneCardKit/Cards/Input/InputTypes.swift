@@ -106,6 +106,10 @@ public struct DCKOrientation: Equatable {
     public static func + (lhs: DCKOrientation, rhs: DCKOrientation) -> DCKOrientation {
         return DCKOrientation(yaw: lhs.yaw + rhs.yaw, pitch: lhs.pitch + rhs.pitch, roll: lhs.roll + rhs.roll)
     }
+    
+    public static func - (lhs: DCKOrientation, rhs: DCKOrientation) -> DCKOrientation {
+        return DCKOrientation(yaw: lhs.yaw - rhs.yaw, pitch: lhs.pitch - rhs.pitch, roll: lhs.roll - rhs.roll)
+    }
 }
 
 extension DCKOrientation: JSONDecodable, JSONEncodable {
