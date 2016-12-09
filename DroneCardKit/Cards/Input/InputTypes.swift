@@ -563,3 +563,60 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
         return .dictionary(["degreesPerSecond": degreesPerSecond.toJSON()])
     }
 }
+
+// MARK: DCKFrequency
+
+public struct DCKFrequency: Equatable, Comparable {
+    public let hertz: Double
+    
+    //https://en.wikipedia.org/wiki/Hertz
+
+    public var kilohertz: Double {
+        return hertz / 1000
+    }
+    
+    public var megahertz: Double {
+        return hertz / 1000000
+    }
+    
+    public init(hertz: Double) {
+        self.hertz = hertz
+    }
+    
+    public init(kilohertz: Double) {
+        self.hertz = kilohertz * 1000
+    }
+    
+    public init(megahertz: Double) {
+        self.hertz = megahertz * 1000000
+    }
+    
+    public static func == (lhs: DCKFrequency, rhs: DCKFrequency) -> Bool {
+        return lhs.hertz == rhs.hertz
+    }
+    
+    public static func < (lhs: DCKFrequency, rhs: DCKFrequency) -> Bool {
+        return lhs.hertz < rhs.hertz
+    }
+    
+    public static func + (lhs: DCKFrequency, rhs: DCKFrequency) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs.hertz + rhs.hertz)
+    }
+    
+    public static func * (lhs: DCKFrequency, rhs: Double) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs.hertz * rhs)
+    }
+
+    public static func * (lhs: Double, rhs: DCKFrequency) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs * rhs.hertz)
+    }
+    
+    public static func / (lhs: DCKFrequency, rhs: Double) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs.hertz / rhs)
+    }
+    
+    public static func / (lhs: Double, rhs: DCKFrequency) -> DCKFrequency {
+        return DCKFrequency(hertz: lhs / rhs.hertz)
+    }
+    
+}
