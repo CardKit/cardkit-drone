@@ -14,7 +14,10 @@ import CardKitRuntime
 class Land: ExecutableActionCard {
     
     override public func main() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else { return }
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+            self.error = DroneTokenError.TokenAquisitionFailed
+            return
+        }
         
         let _: Double? = self.optionalValue(forInput: "Speed")
         
@@ -27,7 +30,10 @@ class Land: ExecutableActionCard {
     }
     
     override public func cancel() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else { return }
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+            self.error = DroneTokenError.TokenAquisitionFailed
+            return
+        }
         
         drone.areMotorsOn().then(execute: { (result) -> Promise<Void> in
             if result {

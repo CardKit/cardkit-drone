@@ -133,4 +133,5 @@ enum DroneTokenError: Error {
     case MandatoryInputAquisitionFailed
     case FailureInFlightTriggersLand
     case FailureDuringLand
+    case FailureDuringHover
 }
