@@ -33,15 +33,9 @@ public struct DCKAngle: Equatable, Comparable {
         let normalizedDegrees = degrees.truncatingRemainder(dividingBy: 360)
         return DCKAngle(degrees: normalizedDegrees)
     }
-    
-    public static func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
-        return lhs.degrees == rhs.degrees
-    }
-    
-    public static func < (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
-        return lhs.degrees < rhs.degrees
-    }
-    
+}
+
+extension DCKAngle {
     public static func + (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
         return DCKAngle(degrees: lhs.degrees + rhs.degrees)
     }
@@ -73,7 +67,18 @@ public struct DCKAngle: Equatable, Comparable {
     public static func / (lhs: Double, rhs: DCKAngle) -> DCKAngle {
         return DCKAngle(degrees: lhs / rhs.degrees)
     }
-    
+}
+
+extension DCKAngle: Equatable {
+    public static func == (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+        return lhs.degrees == rhs.degrees
+    }
+}
+
+extension DCKAngle: Comparable {
+    public static func < (lhs: DCKAngle, rhs: DCKAngle) -> Bool {
+        return lhs.degrees < rhs.degrees
+    }
 }
 
 extension DCKAngle : JSONDecodable, JSONEncodable {
@@ -193,7 +198,6 @@ public enum DCKCardinalDirection: Int {
         let index: Int = Int(((angle.degrees + DCKCardinalDirection.step) * 32) / 360) % 32
         return DCKCardinalDirection(rawValue: index)!
     }
-    
 }
 
 // MARK: DCKCoordinate2D
@@ -232,7 +236,7 @@ extension DCKCoordinate2D: JSONDecodable, JSONEncodable {
 
 // MARK: DCKOrientedCoordinate2D
 
-public struct DCKOrientedCoordinate2D: Equatable {
+public struct DCKOrientedCoordinate2D {
     public let latitude: Double
     public let longitude: Double
     public let yaw: DCKAngle
@@ -280,7 +284,7 @@ extension DCKOrientedCoordinate2D: JSONDecodable, JSONEncodable {
 
 // MARK: DCKCoordinate3D
 
-public struct DCKCoordinate3D: Equatable {
+public struct DCKCoordinate3D {
     public let latitude: Double
     public let longitude: Double
     public let altitude: DCKAltitude
@@ -458,7 +462,7 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
 
 // MARK: DCKAltitude
 
-public struct DCKAltitude: Equatable, Comparable {
+public struct DCKAltitude {
     public let metersAboveSeaLevel: Double
     
     public init (metersAboveSeaLevel: Double) {
@@ -553,7 +557,7 @@ extension DCKVelocity : JSONDecodable, JSONEncodable {
 
 // MARK: DCKAngularSpeed
 
-public struct DCKAngularVelocity: Equatable, Comparable {
+public struct DCKAngularVelocity {
     public let degreesPerSecond: Double
     
     public var radiansPerSecond: Double {
@@ -595,7 +599,7 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
 
 // MARK: DCKFrequency
 
-public struct DCKFrequency: Equatable, Comparable {
+public struct DCKFrequency {
     public let hertz: Double
     
     //https://en.wikipedia.org/wiki/Hertz
