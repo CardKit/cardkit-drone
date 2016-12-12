@@ -21,10 +21,6 @@ public struct DCKAngle: Equatable, Comparable {
         return degrees * .pi / 180
     }
     
-    public init(degrees: Double) {
-        self.degrees = degrees
-    }
-    
     public init(radians: Double) {
         self.degrees = radians * 180 / .pi
     }
@@ -241,12 +237,6 @@ public struct DCKOrientedCoordinate2D {
     public let longitude: Double
     public let yaw: DCKAngle
     
-    public init(latitude: Double, longitude: Double, yaw: DCKAngle) {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.yaw = yaw
-    }
-    
     public func asNonOriented() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
     }
@@ -289,12 +279,6 @@ public struct DCKCoordinate3D {
     public let longitude: Double
     public let altitude: DCKAltitude
     
-    public init(latitude: Double, longitude: Double, altitude: DCKAltitude) {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.altitude = altitude
-    }
-    
     public func as2D() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
     }
@@ -314,19 +298,19 @@ extension DCKCoordinate3D: CustomStringConvertible {
     }
 }
 
-extension DCKCoordinate3D: JSONEncodable, JSONDecodable {
+extension DCKCoordinate3D: JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.latitude = try json.getDouble(at: "latitude")
+        self.longitude = try json.getDouble(at: "longitude")
+        self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
+    }
+
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
             "longitude": self.longitude.toJSON(),
             "altitude": self.altitude.toJSON()
             ])
-    }
-    
-    public init(json: JSON) throws {
-        self.latitude = try json.getDouble(at: "latitude")
-        self.longitude = try json.getDouble(at: "longitude")
-        self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
     }
 }
 
@@ -337,13 +321,6 @@ public struct DCKOrientedCoordinate3D {
     public let longitude: Double
     public let altitude: DCKAltitude
     public let attitude: DCKAttitude
-    
-    public init(latitude: Double, longitude: Double, altitude: DCKAltitude, attitude: DCKAttitude) {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.altitude = altitude
-        self.attitude = attitude
-    }
     
     public init(latitude: Double, longitude: Double, altitude: DCKAltitude, yaw: DCKAngle = DCKAngle.zero, pitch: DCKAngle = DCKAngle.zero, roll: DCKAngle = DCKAngle.zero) {
         self.latitude = latitude
@@ -376,7 +353,14 @@ extension DCKOrientedCoordinate3D: CustomStringConvertible {
     }
 }
 
-extension DCKOrientedCoordinate3D: JSONEncodable, JSONDecodable {
+extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.latitude = try json.getDouble(at: "latitude")
+        self.longitude = try json.getDouble(at: "longitude")
+        self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
+        self.orientation = try json.decode(at: "orientation", type: DCKOrientation.self)
+    }
+    
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
@@ -385,23 +369,12 @@ extension DCKOrientedCoordinate3D: JSONEncodable, JSONDecodable {
             "orientation": self.orientation.toJSON()
             ])
     }
-    
-    public init(json: JSON) throws {
-        self.latitude = try json.getDouble(at: "latitude")
-        self.longitude = try json.getDouble(at: "longitude")
-        self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
-        self.orientation = try json.decode(at: "orientation", type: DCKOrientation.self)
-    }
 }
 
 // MARK: DCKCoordinate2DPath
 
 public struct DCKCoordinate2DPath {
     public let path: [DCKCoordinate2D]
-    
-    public init(path: [DCKCoordinate2D]) {
-        self.path = path
-    }
 }
 
 extension DCKCoordinate2DPath: Equatable {
@@ -431,10 +404,6 @@ extension DCKCoordinate2DPath: JSONDecodable, JSONEncodable {
 
 public struct DCKCoordinate3DPath {
     public let path: [DCKCoordinate3D]
-    
-    public init(path: [DCKCoordinate3D]) {
-        self.path = path
-    }
 }
 
 extension DCKCoordinate3DPath: Equatable {
@@ -464,10 +433,6 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
 
 public struct DCKAltitude {
     public let metersAboveSeaLevel: Double
-    
-    public init (metersAboveSeaLevel: Double) {
-        self.metersAboveSeaLevel = metersAboveSeaLevel
-    }
 }
 
 extension DCKAltitude {
@@ -511,10 +476,6 @@ public struct DCKVelocity {
     
     public var milesPerHour: Double {
         return metersPerSecond * DCKVelocity.mpsToMphConversionFactor
-    }
-    
-    public init (metersPerSecond: Double) {
-        self.metersPerSecond = metersPerSecond
     }
     
     public init (milesPerHour: Double) {
@@ -610,10 +571,6 @@ public struct DCKFrequency {
     
     public var megahertz: Double {
         return hertz / 1000000
-    }
-    
-    public init(hertz: Double) {
-        self.hertz = hertz
     }
     
     public init(kilohertz: Double) {
