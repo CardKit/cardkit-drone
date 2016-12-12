@@ -26,22 +26,46 @@ class LandTests: XCTestCase {
     }
     
     func testLand() {
+//        // setup land card
+//        let landCard = DroneCardKit.Action.Movement.Simple.Land.makeCard()
+//        let landExecutableCard = Land(with: landCard)
+//        
+//        // setup token
+//        let tokenCardDescriptor = TokenCardDescriptor(name: "Drone", subpath: nil, isConsumed: true, assetCatalog: CardAssetCatalog(description: "test"))
+//        let tokenCard = tokenCardDescriptor.makeCard()
+//        let tokenSlot = TokenSlot(name: "Drone", descriptor: tokenCardDescriptor)
+//        
+//        let tokenExecutableCard = TestDroneToken(with: tokenCard)
+//        //print(tokenExecutableCard as? DroneToken)
+//        
+//        landExecutableCard.setup([:], tokens: [tokenSlot: tokenExecutableCard])
+//       
+//        landExecutableCard.main()
+//        
+//        XCTAssert(tokenExecutableCard.funcCalled_land == true, "land should have been called")
+        
+        
         // setup land card
         let landCard = DroneCardKit.Action.Movement.Simple.Land.makeCard()
         let landExecutableCard = Land(with: landCard)
         
-        // setup token
         let tokenCardDescriptor = TokenCardDescriptor(name: "Drone", subpath: nil, isConsumed: true, assetCatalog: CardAssetCatalog(description: "test"))
         let tokenCard = tokenCardDescriptor.makeCard()
         let tokenSlot = TokenSlot(name: "Drone", descriptor: tokenCardDescriptor)
         
         let tokenExecutableCard = TestDroneToken(with: tokenCard)
-        //print(tokenExecutableCard as? DroneToken)
         
         landExecutableCard.setup([:], tokens: [tokenSlot: tokenExecutableCard])
-       
-        landExecutableCard.main()
         
-        XCTAssert(tokenExecutableCard.funcCalled_land == true, "land should have been called")
+        let returnedToken: TestDroneToken? = landExecutableCard.token(named: "Drone")
+        
+        let cast: DroneToken! = returnedToken as DroneToken?
+        
+        let cast2: DroneToken = cast!
+        
+        print(cast2)
+        
+        landExecutableCard.main()
+
     }
 }
