@@ -21,7 +21,7 @@ public class CoverArea: ExecutableActionCard {
         
         // optional inputs
         let altitude: DCKAltitude? = self.optionalValue(forInput: "Altitude")
-        let speed: DCKVelocity? = self.optionalValue(forInput: "Speed")
+        let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
         // token
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {

@@ -706,7 +706,7 @@ extension DroneCardKit.Input.Modifier.Movement {
     public static let Speed = InputCardDescriptor(
         name: "Speed",
         subpath: "Modifier/Movement",
-        inputType: DCKVelocity.self,
+        inputType: DCKSpeed.self,
         inputDescription: "Speed (in meters/sec)",
         assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"),
         version: 0)

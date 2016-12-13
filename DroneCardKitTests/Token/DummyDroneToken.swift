@@ -96,7 +96,7 @@ class DummyDroneToken: ExecutableTokenCard, DroneToken {
         return Promise<Void>.empty(result: ())
     }
     
-    func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+    func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKSpeed?) -> Promise<Void> {
         self.methodCall(named: "fly:to:atYaw:atAltitude:atSpeed:")
         
         let newYaw: DCKAngle
@@ -119,7 +119,7 @@ class DummyDroneToken: ExecutableTokenCard, DroneToken {
         return Promise<Void>.empty(result: ())
     }
     
-    func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+    func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKSpeed?) -> Promise<Void> {
         self.methodCall(named: "fly:on:atAltitude:atSpeed:")
         
         var flightPromise: Promise<Void> = firstly {
@@ -135,7 +135,7 @@ class DummyDroneToken: ExecutableTokenCard, DroneToken {
         return flightPromise
     }
     
-    func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+    func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) -> Promise<Void> {
         self.methodCall(named: "fly:on:atSpeed:")
         
         var flightPromise: Promise<Void> = firstly {
@@ -152,7 +152,7 @@ class DummyDroneToken: ExecutableTokenCard, DroneToken {
         return flightPromise
     }
     
-    func returnHome(atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+    func returnHome(atAltitude altitude: DCKAltitude?, atSpeed speed: DCKSpeed?) -> Promise<Void> {
         self.methodCall(named: "returnHome:atAltitude:atSpeed:")
         
         return self.fly(to: self.homeLocation!)

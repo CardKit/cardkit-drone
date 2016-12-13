@@ -25,7 +25,7 @@ public class FlyTo: ExecutableActionCard {
         }
         
         let altitude: DCKAltitude? = self.optionalValue(forInput: "Altitude")
-        let speed: DCKVelocity? = self.optionalValue(forInput: "Speed")
+        let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
         firstly {
             drone.turnMotorsOn()

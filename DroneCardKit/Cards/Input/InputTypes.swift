@@ -471,15 +471,15 @@ extension DCKAltitude : JSONDecodable, JSONEncodable {
     }
 }
 
-// MARK: DCKVelocity
+// MARK: DCKSpeed
 
-public struct DCKVelocity {
+public struct DCKSpeed {
     public let metersPerSecond: Double
     
     private static let mpsToMphConversionFactor: Double = 2.23694
     
     public var milesPerHour: Double {
-        return metersPerSecond * DCKVelocity.mpsToMphConversionFactor
+        return metersPerSecond * DCKSpeed.mpsToMphConversionFactor
     }
     
     public init(metersPerSecond: Double) {
@@ -487,33 +487,33 @@ public struct DCKVelocity {
     }
     
     public init(milesPerHour: Double) {
-        self.metersPerSecond = milesPerHour / DCKVelocity.mpsToMphConversionFactor
+        self.metersPerSecond = milesPerHour / DCKSpeed.mpsToMphConversionFactor
     }
 }
 
-extension DCKVelocity {
-    public static func + (lhs: DCKVelocity, rhs: DCKVelocity) -> DCKVelocity {
-        return DCKVelocity(metersPerSecond: lhs.metersPerSecond + rhs.metersPerSecond)
+extension DCKSpeed {
+    public static func + (lhs: DCKSpeed, rhs: DCKSpeed) -> DCKSpeed {
+        return DCKSpeed(metersPerSecond: lhs.metersPerSecond + rhs.metersPerSecond)
     }
     
-    public static func - (lhs: DCKVelocity, rhs: DCKVelocity) -> DCKVelocity {
-        return DCKVelocity(metersPerSecond: lhs.metersPerSecond - rhs.metersPerSecond)
+    public static func - (lhs: DCKSpeed, rhs: DCKSpeed) -> DCKSpeed {
+        return DCKSpeed(metersPerSecond: lhs.metersPerSecond - rhs.metersPerSecond)
     }
 }
 
-extension DCKVelocity: Equatable {
-    public static func == (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+extension DCKSpeed: Equatable {
+    public static func == (lhs: DCKSpeed, rhs: DCKSpeed) -> Bool {
         return lhs.metersPerSecond == rhs.metersPerSecond
     }
 }
 
-extension DCKVelocity: Comparable {
-    public static func < (lhs: DCKVelocity, rhs: DCKVelocity) -> Bool {
+extension DCKSpeed: Comparable {
+    public static func < (lhs: DCKSpeed, rhs: DCKSpeed) -> Bool {
         return lhs.metersPerSecond < rhs.metersPerSecond
     }
 }
 
-extension DCKVelocity : JSONDecodable, JSONEncodable {
+extension DCKSpeed : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.metersPerSecond = try json.getDouble(at: "metersPerSecond")
     }
