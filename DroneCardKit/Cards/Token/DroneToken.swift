@@ -21,19 +21,14 @@ public protocol DroneToken {
     
     // Motor state
     var areMotorsOn: Bool? { get }
-    func motorOnState() -> Promise<Bool>
     func turnMotorsOn() -> Promise<Void>
     func turnMotorsOff() -> Promise<Void>
     
     // Take off
-    func takeOff() -> Promise<Void>
+    func takeOff(at altitude: DCKRelativeAltitude?) -> Promise<Void>
     
     // Hover
-    func hover() -> Promise<Void>
-    func hover(at altitude: DCKRelativeAltitude) -> Promise<Void>
-    
-    // Orient
-    func orient(to yaw: DCKAngle) -> Promise<Void>
+    func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?) -> Promise<Void>
     
     // Fly
     func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) -> Promise<Void>
@@ -53,6 +48,24 @@ public protocol DroneToken {
 }
 
 // MARK: Fly convenience methods
+
+public extension DroneToken {
+    func takeOff() -> Promise<Void> {
+        return takeOff(at: nil)
+    }
+    
+    func hover() -> Promise<Void> {
+        return hover(at: nil, withYaw: nil)
+    }
+    
+    func hover(at altitude: DCKRelativeAltitude?) -> Promise<Void> {
+        return hover(at: altitude, withYaw: nil)
+    }
+    
+    func hover(withYaw yaw: DCKAngle?) -> Promise<Void> {
+        return hover(at: nil, withYaw: yaw)
+    }
+}
 
 // DCKCoordinate2D
 public extension DroneToken {

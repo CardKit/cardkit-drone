@@ -36,21 +36,8 @@ class Land: ExecutableActionCard {
             return
         }
         
-        firstly {
-            drone.motorOnState()
-        }.then {
-            isOn -> Promise<Void> in
-            
-            if isOn {
-                return drone.hover()
-            } else {
-                return Promise {
-                    fulfill, reject in fulfill()
-                }
-            }
-        }.catch {
-            error in
-            if self.error == nil {
+        if let isOn = drone.areMotorsOn, isOn {
+            drone.hover().catch { _ in
                 self.error = DroneTokenError.FailureDuringLand
             }
         }

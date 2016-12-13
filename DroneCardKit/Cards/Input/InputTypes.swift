@@ -100,6 +100,12 @@ public struct DCKAttitude {
     public let pitch: DCKAngle
     public let roll: DCKAngle
     
+    public init(yaw: DCKAngle, pitch: DCKAngle, roll: DCKAngle) {
+        self.yaw = yaw
+        self.pitch = pitch
+        self.roll = roll
+    }
+    
     public var compassPoint: DCKCardinalDirection {
         return DCKCardinalDirection.byAngle(yaw)
     }
@@ -205,6 +211,11 @@ public enum DCKCardinalDirection: Int {
 public struct DCKCoordinate2D {
     public let latitude: Double
     public let longitude: Double
+    
+    public init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
 
 extension DCKCoordinate2D: Equatable {
@@ -444,6 +455,10 @@ extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
 
 public struct DCKRelativeAltitude {
     public let metersAboveGroundAtTakeoff: Double
+    
+    public init(metersAboveGroundAtTakeoff: Double) {
+        self.metersAboveGroundAtTakeoff = metersAboveGroundAtTakeoff
+    }
 }
 
 extension DCKRelativeAltitude : JSONDecodable, JSONEncodable {
