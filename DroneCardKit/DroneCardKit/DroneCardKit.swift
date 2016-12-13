@@ -688,7 +688,7 @@ extension DroneCardKit.Input.Modifier.Movement {
     public static let Altitude = InputCardDescriptor(
         name: "Altitude",
         subpath: "Modifier/Movement",
-        inputType: DCKAltitude.self,
+        inputType: DCKRelativeAltitude.self,
         inputDescription: "Altitude (in meters)",
         assetCatalog: CardAssetCatalog(description: "Altitude (in meters)"),
         version: 0)

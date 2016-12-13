@@ -20,7 +20,7 @@ public class CoverArea: ExecutableActionCard {
         }
         
         // optional inputs
-        let altitude: DCKAltitude? = self.optionalValue(forInput: "Altitude")
+        let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
         // token

@@ -123,11 +123,11 @@ public extension DroneToken {
 // DCKOrientedCoordinate3D
 public extension DroneToken {
     final func fly(to coordinate: DCKOrientedCoordinate3D) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.attitude.yaw, atSpeed: nil)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atSpeed: nil)
     }
     
     final func fly(to coordinate: DCKOrientedCoordinate3D, atSpeed speed: DCKSpeed?) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.attitude.yaw, atSpeed: speed)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atSpeed: speed)
     }
 }
 

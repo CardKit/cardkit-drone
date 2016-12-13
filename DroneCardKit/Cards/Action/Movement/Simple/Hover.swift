@@ -23,7 +23,7 @@ class Hover: ExecutableActionCard {
         let hover: Promise<Void>
         
         if let altitude = altitudeInMeters {
-            hover = drone.hover(at: DCKAltitude(metersAboveSeaLevel: altitude))
+            hover = drone.hover(at: DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitude))
         } else {
             hover = drone.hover()
         }

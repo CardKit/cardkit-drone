@@ -281,24 +281,16 @@ extension DCKOrientedCoordinate2D: JSONDecodable, JSONEncodable {
 public struct DCKCoordinate3D {
     public let latitude: Double
     public let longitude: Double
-    public let altitude: DCKAltitude
+    public let altitude: DCKRelativeAltitude
     
     public func as2D() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
 
-extension DCKCoordinate3D: Equatable {
-    static public func == (lhs: DCKCoordinate3D, rhs: DCKCoordinate3D) -> Bool {
-        return lhs.latitude == rhs.latitude
-            && lhs.longitude == rhs.longitude
-            && lhs.altitude == rhs.altitude
-    }
-}
-
 extension DCKCoordinate3D: CustomStringConvertible {
     public var description: String {
-        return "\(self.latitude), \(self.longitude), \(self.altitude.metersAboveSeaLevel)m"
+        return "\(self.latitude), \(self.longitude), \(self.altitude.metersAboveGroundAtTakeoff)"
     }
 }
 
@@ -306,7 +298,7 @@ extension DCKCoordinate3D: JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.latitude = try json.getDouble(at: "latitude")
         self.longitude = try json.getDouble(at: "longitude")
-        self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
+        self.altitude = try json.decode(at: "altitude", type: DCKRelativeAltitude.self)
     }
 
     public func toJSON() -> JSON {
@@ -323,18 +315,11 @@ extension DCKCoordinate3D: JSONDecodable, JSONEncodable {
 public struct DCKOrientedCoordinate3D {
     public let latitude: Double
     public let longitude: Double
-    public let altitude: DCKAltitude
-    public let attitude: DCKAttitude
-    
-    public init(latitude: Double, longitude: Double, altitude: DCKAltitude, yaw: DCKAngle = DCKAngle.zero, pitch: DCKAngle = DCKAngle.zero, roll: DCKAngle = DCKAngle.zero) {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.altitude = altitude
-        self.attitude = DCKAttitude(yaw: yaw, pitch: pitch, roll: roll)
-    }
+    public let altitude: DCKRelativeAltitude
+    public let yaw: DCKAngle
     
     public func as2D() -> DCKOrientedCoordinate2D {
-        return DCKOrientedCoordinate2D(latitude: latitude, longitude: longitude, yaw: attitude.yaw)
+        return DCKOrientedCoordinate2D(latitude: latitude, longitude: longitude, yaw: yaw)
     }
     
     public func asNonOriented() -> DCKCoordinate3D {
@@ -342,18 +327,9 @@ public struct DCKOrientedCoordinate3D {
     }
 }
 
-extension DCKOrientedCoordinate3D: Equatable {
-    static public func == (lhs: DCKOrientedCoordinate3D, rhs: DCKOrientedCoordinate3D) -> Bool {
-        return lhs.latitude == rhs.latitude
-            && lhs.longitude == rhs.longitude
-            && lhs.altitude == rhs.altitude
-            && lhs.attitude == rhs.attitude
-    }
-}
-
 extension DCKOrientedCoordinate3D: CustomStringConvertible {
     public var description: String {
-        return "\(self.latitude), \(self.longitude), \(self.altitude.metersAboveSeaLevel)m"
+        return "\(self.latitude), \(self.longitude), \(self.altitude.metersAboveGroundAtTakeoff)m"
     }
 }
 
@@ -361,8 +337,8 @@ extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.latitude = try json.getDouble(at: "latitude")
         self.longitude = try json.getDouble(at: "longitude")
-        self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
-        self.attitude = try json.decode(at: "attitude", type: DCKAttitude.self)
+        self.altitude = try json.decode(at: "altitude", type: DCKRelativeAltitude.self)
+        self.yaw = try json.decode(at: "yaw", type: DCKAngle.self)
     }
     
     public func toJSON() -> JSON {
@@ -370,7 +346,7 @@ extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
             "latitude": self.latitude.toJSON(),
             "longitude": self.longitude.toJSON(),
             "altitude": self.altitude.toJSON(),
-            "attitude": self.attitude.toJSON()
+            "yaw": self.yaw.toJSON()
             ])
     }
 }
@@ -410,12 +386,6 @@ public struct DCKCoordinate3DPath {
     public let path: [DCKCoordinate3D]
 }
 
-extension DCKCoordinate3DPath: Equatable {
-    public static func == (lhs: DCKCoordinate3DPath, rhs: DCKCoordinate3DPath) -> Bool {
-        return lhs.path == rhs.path
-    }
-}
-
 extension DCKCoordinate3DPath: CustomStringConvertible {
     public var description: String {
         let strs: [String] = self.path.map { $0.description }
@@ -448,19 +418,19 @@ public struct DCKAbsoluteAltitude {
     }
 }
 
-public extension DCKAbsoluteAltitude: Equatable {
+extension DCKAbsoluteAltitude: Equatable {
     public static func == (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> Bool {
         return lhs.metersAboveSeaLevel == rhs.metersAboveSeaLevel
     }
 }
 
-public extension DCKAbsoluteAltitude: Comparable {
+extension DCKAbsoluteAltitude: Comparable {
     public static func < (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> Bool {
         return lhs.metersAboveSeaLevel < rhs.metersAboveSeaLevel
     }
 }
 
-public extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
+extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.metersAboveSeaLevel = try json.getDouble(at: "metersAboveSeaLevel")
     }
@@ -472,11 +442,11 @@ public extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
 
 // MARK: DCKRelativeAltitude
 
-public struct DCKRelativeAltitude{
+public struct DCKRelativeAltitude {
     public let metersAboveGroundAtTakeoff: Double
 }
 
-public extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
+extension DCKRelativeAltitude : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.metersAboveGroundAtTakeoff = try json.getDouble(at: "metersAboveGroundAtTakeoff")
     }
