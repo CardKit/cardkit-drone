@@ -12,13 +12,17 @@ import Freddy
 
 // MARK: DCKAngle
 
-public struct DCKAngle: Equatable, Comparable {
+public struct DCKAngle {
     public static let zero = DCKAngle(degrees: 0)
     
     public let degrees: Double
     
     public var radians: Double {
         return degrees * .pi / 180
+    }
+    
+    public init(degrees: Double) {
+        self.degrees = degrees
     }
     
     public init(radians: Double) {
@@ -90,7 +94,7 @@ extension DCKAngle : JSONDecodable, JSONEncodable {
 // MARK: DCKAttitude
 
 public struct DCKAttitude {
-    public static let zero = DCKAttitude(yaw: DCKAngle.zero, pitch: DCKAngle.zero, roll: DCKAngle.zerio)
+    public static let zero = DCKAttitude(yaw: DCKAngle.zero, pitch: DCKAngle.zero, roll: DCKAngle.zero)
     
     public let yaw: DCKAngle
     public let pitch: DCKAngle
@@ -102,17 +106,17 @@ public struct DCKAttitude {
 }
 
 extension DCKAttitude {
-    public static func + (lhs: DCKOrientation, rhs: DCKOrientation) -> DCKOrientation {
-        return DCKOrientation(yaw: lhs.yaw + rhs.yaw, pitch: lhs.pitch + rhs.pitch, roll: lhs.roll + rhs.roll)
+    public static func + (lhs: DCKAttitude, rhs: DCKAttitude) -> DCKAttitude {
+        return DCKAttitude(yaw: lhs.yaw + rhs.yaw, pitch: lhs.pitch + rhs.pitch, roll: lhs.roll + rhs.roll)
     }
     
-    public static func - (lhs: DCKOrientation, rhs: DCKOrientation) -> DCKOrientation {
-        return DCKOrientation(yaw: lhs.yaw - rhs.yaw, pitch: lhs.pitch - rhs.pitch, roll: lhs.roll - rhs.roll)
+    public static func - (lhs: DCKAttitude, rhs: DCKAttitude) -> DCKAttitude {
+        return DCKAttitude(yaw: lhs.yaw - rhs.yaw, pitch: lhs.pitch - rhs.pitch, roll: lhs.roll - rhs.roll)
     }
 }
 
 extension DCKAttitude: Equatable {
-    public static func == (lhs: DCKOrientation, rhs: DCKOrientation) -> Bool {
+    public static func == (lhs: DCKAttitude, rhs: DCKAttitude) -> Bool {
         return lhs.yaw == rhs.yaw
             && lhs.pitch == rhs.pitch
             && lhs.roll == rhs.roll
@@ -330,7 +334,7 @@ public struct DCKOrientedCoordinate3D {
     }
     
     public func as2D() -> DCKOrientedCoordinate2D {
-        return DCKOrientedCoordinate2D(latitude: latitude, longitude: longitude, yaw: orientation.yaw)
+        return DCKOrientedCoordinate2D(latitude: latitude, longitude: longitude, yaw: attitude.yaw)
     }
     
     public func asNonOriented() -> DCKCoordinate3D {
@@ -343,7 +347,7 @@ extension DCKOrientedCoordinate3D: Equatable {
         return lhs.latitude == rhs.latitude
             && lhs.longitude == rhs.longitude
             && lhs.altitude == rhs.altitude
-            && lhs.orientation == rhs.orientation
+            && lhs.attitude == rhs.attitude
     }
 }
 
@@ -358,7 +362,7 @@ extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
         self.latitude = try json.getDouble(at: "latitude")
         self.longitude = try json.getDouble(at: "longitude")
         self.altitude = try json.decode(at: "altitude", type: DCKAltitude.self)
-        self.orientation = try json.decode(at: "orientation", type: DCKOrientation.self)
+        self.attitude = try json.decode(at: "attitude", type: DCKAttitude.self)
     }
     
     public func toJSON() -> JSON {
@@ -366,7 +370,7 @@ extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
             "latitude": self.latitude.toJSON(),
             "longitude": self.longitude.toJSON(),
             "altitude": self.altitude.toJSON(),
-            "orientation": self.orientation.toJSON()
+            "attitude": self.attitude.toJSON()
             ])
     }
 }
@@ -478,7 +482,11 @@ public struct DCKVelocity {
         return metersPerSecond * DCKVelocity.mpsToMphConversionFactor
     }
     
-    public init (milesPerHour: Double) {
+    public init(metersPerSecond: Double) {
+        self.metersPerSecond = metersPerSecond
+    }
+    
+    public init(milesPerHour: Double) {
         self.metersPerSecond = milesPerHour / DCKVelocity.mpsToMphConversionFactor
     }
 }
@@ -571,6 +579,10 @@ public struct DCKFrequency {
     
     public var megahertz: Double {
         return hertz / 1000000
+    }
+    
+    public init(hertz: Double) {
+        self.hertz = hertz
     }
     
     public init(kilohertz: Double) {

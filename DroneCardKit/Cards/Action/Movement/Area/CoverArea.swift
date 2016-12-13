@@ -15,35 +15,33 @@ import PromiseKit
 public class CoverArea: ExecutableActionCard {
     override public func main() {
         // mandatory inputs
-        guard let area: DCKCoordinate3DPath = self.value(forInput: "Area") else {
+        guard let area: DCKCoordinate2DPath = self.value(forInput: "Area") else {
             return
         }
         
         // optional inputs
-        let altitude: Double = self.optionalValue(forInput: "Altitude") ?? 2.0
-        let speed: Double = self.optionalValue(forInput: "Speed") ?? 2.0
+        let altitude: DCKAltitude? = self.optionalValue(forInput: "Altitude")
+        let speed: DCKVelocity? = self.optionalValue(forInput: "Speed")
         
         // token
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             return
         }
         
-//        // fly!
-//        firstly {
-//            drone.takeOff(climbingTo: altitude)
-//        }.then {
-//            _ -> Promise<Void> in
-//            drone.fly(on: area, atSpeed: speed)
-//        }.then {
-//            _ -> Promise<Void> in
-//            drone.returnHome()
-//        }.then {
-//            _ -> Promise<Void> in
-//            drone.land()
-//        }.catch {
-//            error in
-//            print("error: \(error)")
-//        }
+        firstly {
+            drone.takeOff()
+        }.then {
+            drone.fly(on: area, atAltitude: altitude, atSpeed: speed)
+        }.then {
+            drone.returnHome()
+        }.then {
+            drone.land()
+        }.catch {
+            error in
+            print("error: \(error)")
+            self.error = DroneTokenError.FailureInFlightTriggersLand
+            self.cancel()
+        }
     }
     
     override public func cancel() {
@@ -52,9 +50,14 @@ public class CoverArea: ExecutableActionCard {
             return
         }
         
-        drone.land().catch {
+        firstly {
+            drone.land()
+        }.catch {
             error in
             print("error: \(error)")
+            if self.error == nil {
+                self.error = DroneTokenError.FailureDuringLand
+            }
         }
     }
 }

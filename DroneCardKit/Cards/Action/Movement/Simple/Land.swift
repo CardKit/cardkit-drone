@@ -12,9 +12,7 @@ import PromiseKit
 import CardKitRuntime
 
 class Land: ExecutableActionCard {
-    
     override public func main() {
-        
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             self.error = DroneTokenError.TokenAquisitionFailed
             return
@@ -22,11 +20,13 @@ class Land: ExecutableActionCard {
         
         let _: Double? = self.optionalValue(forInput: "Speed")
         
-        drone.land().then { _ in
-            drone.motors(spinning: false)
-            }.catch { _ in
-                self.error = DroneTokenError.FailureDuringLand
-                self.cancel()
+        firstly {
+            drone.land()
+        }.then {
+            drone.turnMotorsOff()
+        }.catch { _ in
+            self.error = DroneTokenError.FailureDuringLand
+            self.cancel()
         }
     }
     
@@ -36,15 +36,23 @@ class Land: ExecutableActionCard {
             return
         }
         
-        drone.areMotorsOn().then(execute: { (result) -> Promise<Void> in
-            if result {
-                return drone.hover(withYaw: nil)
-            }
+        firstly {
+            drone.motorOnState()
+        }.then {
+            isOn -> Promise<Void> in
             
-            return Promise<Void>.empty(result: ())
-        }).catch(execute: { _ in
-            // not sure how to handle an error with continuing to hover
-            // we can't land because land either failed or cancel was called on this operation
-        })
+            if isOn {
+                return drone.hover()
+            } else {
+                return Promise {
+                    fulfill, reject in fulfill()
+                }
+            }
+        }.catch {
+            error in
+            if self.error == nil {
+                self.error = DroneTokenError.FailureDuringLand
+            }
+        }
     }
 }
