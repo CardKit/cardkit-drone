@@ -12,7 +12,6 @@ import PromiseKit
 import CardKitRuntime
 
 class Hover: ExecutableActionCard {
-    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             self.error = DroneTokenError.TokenAquisitionFailed
@@ -21,16 +20,20 @@ class Hover: ExecutableActionCard {
         
         let altitudeInMeters: Double? = self.optionalValue(forInput: "Altitude")
         
-        let constructedPromise: Promise<Void>
-        if let meters = altitudeInMeters {
-            constructedPromise = constructFlyHoverPromise(drone, altitude: DCKAltitude(metersAboveSeaLevel: meters))
+        let hover: Promise<Void>
+        
+        if let altitude = altitudeInMeters {
+            hover = drone.hover(at: DCKAltitude(metersAboveSeaLevel: altitude))
         } else {
-            constructedPromise = constructHoverPromise(drone)
+            hover = drone.hover()
         }
         
-        constructedPromise.catch { _ in
-                self.error = DroneTokenError.FailureDuringHover
-                self.cancel()
+        firstly {
+            hover
+        }.catch {
+            error in
+            self.error = DroneTokenError.FailureDuringHover
+            self.cancel()
         }
     }
     
@@ -40,20 +43,15 @@ class Hover: ExecutableActionCard {
             return
         }
         
-        drone.land().then { _ in
-            drone.motors(spinning: false)
-            }.catch { _ in
+        firstly {
+            drone.land()
+        }.then {
+            drone.turnMotorsOff()
+        }.catch {
+            _ in
+            if self.error == nil {
                 self.error = DroneTokenError.FailureDuringLand
+            }
         }
-    }
-    
-    private func constructFlyHoverPromise(_ droneToken: DroneToken, altitude: DCKAltitude) -> Promise<Void> {
-        return droneToken.fly(to: altitude).then { _ in
-            return droneToken.hover(withYaw: nil)
-        }
-    }
-    
-    private func constructHoverPromise(_ droneToken: DroneToken) -> Promise<Void> {
-        return droneToken.hover(withYaw: nil)
     }
 }

@@ -25,16 +25,17 @@ public class FlyTo: ExecutableActionCard {
         }
         
         let altitude: DCKAltitude? = self.optionalValue(forInput: "Altitude")
-        let speed: DCKVelocity? = self.optionalValue(forInput: "Speed")
+        let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
-        drone.motors(spinning: true)
-            .then {
-                drone.fly(to: location, atAltitude: altitude, atSpeed: speed)
-            }.catch { _ in
-                self.error = DroneTokenError.FailureInFlightTriggersLand
-                self.cancel()
+        firstly {
+            drone.turnMotorsOn()
+        }.then {
+            drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed)
+        }.catch {
+            error in
+            self.error = DroneTokenError.FailureInFlightTriggersLand
+            self.cancel()
         }
-        
     }
     
     override public func cancel() {
@@ -43,10 +44,15 @@ public class FlyTo: ExecutableActionCard {
             return
         }
         
-        drone.land().then { _ in
-            drone.motors(spinning: false)
-            }.catch { _ in
+        firstly {
+            drone.land()
+        }.then {
+            drone.turnMotorsOff()
+        }.catch {
+            _ in
+            if self.error == nil {
                 self.error = DroneTokenError.FailureDuringLand
+            }
         }
     }
 }
