@@ -12,7 +12,7 @@ public struct UserStudySenarios {
     private static let clawToken        = DummyMovementToken.defaultInstance
     private static let speakerToken     = DummyMovementToken.defaultInstance
     
-    public static func mapYourFarm(boundingBox : InputCoordinate3DPath) -> DeckSpec {
+    public static func mapYourFarm(boundingBox: InputCoordinate3DPath) -> DeckSpec {
         let coverArea = DroneCardDescs.Movement.Area.CoverArea
             <- ["area" : boundingBox]
             <- ["drone" : movementToken]
