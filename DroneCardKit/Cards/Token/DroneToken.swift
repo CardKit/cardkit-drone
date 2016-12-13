@@ -29,14 +29,14 @@ public protocol DroneToken {
     
     // Hover
     func hover() -> Promise<Void>
+    func hover(at altitude: DCKAltitude) -> Promise<Void>
     
     // Orient
     func orient(to yaw: DCKAngle) -> Promise<Void>
-    func orient(to altitude: DCKAltitude) -> Promise<Void>
     
     // Fly
-    func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void>
-    func fly(to coordinate: DCKCoordinate3D, atSpeed speed: DCKVelocity?) -> Promise<Void>
+    func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void>
+    func fly(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
     func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void>
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKVelocity?) -> Promise<Void>
     
@@ -52,49 +52,77 @@ public protocol DroneToken {
     func land() -> Promise<Void>
 }
 
-// MARK: Fly To variants
+// MARK: Fly convenience methods
 
+// DCKCoordinate2D
 public extension DroneToken {
     final func fly(to coordinate: DCKCoordinate2D) -> Promise<Void> {
-        return fly(to: coordinate, atAltitude: nil, atSpeed: nil)
+        return fly(to: coordinate, atYaw: nil, atAltitude: nil, atSpeed: nil)
     }
-   
+    
+    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle) -> Promise<Void> {
+        return fly(to: coordinate, atYaw: yaw, atAltitude: nil, atSpeed: nil)
+    }
+    
     final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude) -> Promise<Void> {
-        let coordinate3D = DCKCoordinate3D(latitude: coordinate.latitude, longitude: coordinate.longitude, altitude: altitude)
-        return fly(to: coordinate3D, atSpeed: nil)
+        return fly(to: coordinate, atYaw: nil, atAltitude: altitude, atSpeed: nil)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, atSpeed speed: DCKVelocity) -> Promise<Void> {
+        return fly(to: coordinate, atYaw: nil, atAltitude: nil, atSpeed: speed)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle, atAltitude altitude: DCKAltitude) -> Promise<Void> {
+        return fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: nil)
+    }
+    
+    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle, atSpeed speed: DCKVelocity) -> Promise<Void> {
+        return fly(to: coordinate, atYaw: yaw, atAltitude: nil, atSpeed: speed)
     }
     
     final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude, atSpeed speed: DCKVelocity) -> Promise<Void> {
-        let coordinate3D = DCKCoordinate3D(latitude: coordinate.latitude, longitude: coordinate.longitude, altitude: altitude)
-        return fly(to: coordinate3D, atSpeed: speed)
+        return fly(to: coordinate, atYaw: nil, atAltitude: altitude, atSpeed: speed)
     }
     
+    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle, atAltitude altitude: DCKAltitude, atSpeed speed: DCKVelocity) -> Promise<Void> {
+        return fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed)
+    }
+}
+
+// DCKOrientedCoordiante2D
+public extension DroneToken {
     final func fly(to coordinate: DCKOrientedCoordinate2D) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atAltitude: nil, atSpeed: nil)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: nil, atSpeed: nil)
     }
     
     final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKAltitude) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atAltitude: altitude)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude)
     }
     
     final func fly(to coordinate: DCKOrientedCoordinate2D, atSpeed speed: DCKVelocity) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atAltitude: nil, atSpeed: speed)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: nil, atSpeed: speed)
     }
     
     final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKAltitude, atSpeed speed: DCKVelocity) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atAltitude: altitude, atSpeed: speed)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude, atSpeed: speed)
     }
-    
+}
+
+// DCKCoordiante3D
+public extension DroneToken {
     final func fly(to coordinate: DCKCoordinate3D) -> Promise<Void> {
-        return fly(to: coordinate, atSpeed: nil)
+        return fly(to: coordinate, atYaw: nil, atSpeed: nil)
     }
-    
+}
+
+// DCKOrientedCoordinate3D
+public extension DroneToken {
     final func fly(to coordinate: DCKOrientedCoordinate3D) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atSpeed: nil)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.attitude.yaw, atSpeed: nil)
     }
     
     final func fly(to coordinate: DCKOrientedCoordinate3D, atSpeed speed: DCKVelocity) -> Promise<Void> {
-        return fly(to: coordinate.asNonOriented(), atSpeed: speed)
+        return fly(to: coordinate.asNonOriented(), atYaw: coordinate.attitude.yaw, atSpeed: speed)
     }
 }
 

@@ -30,7 +30,7 @@ public class FlyTo: ExecutableActionCard {
         firstly {
             drone.turnMotorsOn()
         }.then {
-            drone.fly(to: location, atAltitude: altitude, atSpeed: speed)
+            drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed)
         }.catch {
             error in
             self.error = DroneTokenError.FailureInFlightTriggersLand
