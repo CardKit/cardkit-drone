@@ -9,8 +9,8 @@
 import Foundation
 import PromiseKit
 
-extension Promise {
-    static func empty<T>(result: T) -> Promise<T> {
+public extension Promise {
+    public static func empty<T>(result: T) -> Promise<T> {
         return Promise<T> { fulfill, reject in
             fulfill(result)
         }

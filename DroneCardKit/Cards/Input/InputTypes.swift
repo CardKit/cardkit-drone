@@ -445,33 +445,33 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
     }
 }
 
-// MARK: DCKAltitude
+// MARK: DCKAbsoluteAltitude
 
-public struct DCKAltitude: Equatable, Comparable {
+public struct DCKAbsoluteAltitude: Equatable, Comparable {
     public let metersAboveSeaLevel: Double
     
     public init (metersAboveSeaLevel: Double) {
         self.metersAboveSeaLevel = metersAboveSeaLevel
     }
     
-    public static func == (lhs: DCKAltitude, rhs: DCKAltitude) -> Bool {
+    public static func == (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> Bool {
         return lhs.metersAboveSeaLevel == rhs.metersAboveSeaLevel
     }
     
-    public static func < (lhs: DCKAltitude, rhs: DCKAltitude) -> Bool {
+    public static func < (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> Bool {
         return lhs.metersAboveSeaLevel < rhs.metersAboveSeaLevel
     }
     
-    public static func + (lhs: DCKAltitude, rhs: DCKAltitude) -> DCKAltitude {
-        return DCKAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel + rhs.metersAboveSeaLevel)
+    public static func + (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> DCKAbsoluteAltitude {
+        return DCKAbsoluteAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel + rhs.metersAboveSeaLevel)
     }
     
-    public static func - (lhs: DCKAltitude, rhs: DCKAltitude) -> DCKAltitude {
-        return DCKAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel - rhs.metersAboveSeaLevel)
+    public static func - (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> DCKAbsoluteAltitude {
+        return DCKAbsoluteAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel - rhs.metersAboveSeaLevel)
     }
 }
 
-extension DCKAltitude : JSONDecodable, JSONEncodable {
+extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.metersAboveSeaLevel = try json.getDouble(at: "metersAboveSeaLevel")
     }
@@ -480,6 +480,23 @@ extension DCKAltitude : JSONDecodable, JSONEncodable {
         return .dictionary(["metersAboveSeaLevel": metersAboveSeaLevel.toJSON()])
     }
 }
+
+// MARK: DCKRelativeAltitude
+
+public struct DCKRelativeAltitude{
+    public let metersAboveGroundAtTakeoff: Double
+}
+
+public extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.metersAboveGroundAtTakeoff = try json.getDouble(at: "metersAboveGroundAtTakeoff")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["metersAboveGroundAtTakeoff": metersAboveGroundAtTakeoff.toJSON()])
+    }
+}
+
 
 // MARK: DCKVelocity
 

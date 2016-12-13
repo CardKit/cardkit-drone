@@ -22,8 +22,8 @@ public protocol DroneToken {
     
     func hover(withYaw yaw: DCKAngle?) -> Promise<Void>
     
-    func fly(to altitude: DCKAltitude, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
-    func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
+    func fly(to altitude: DCKRelativeAltitude, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
+    func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?, atSpeed speed: DCKVelocity?) -> Promise<Void>
     func fly(on path: DCKCoordinate2DPath, atSpeed speed: DCKVelocity?) -> Promise<Void>
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKVelocity?) -> Promise<Void>
     
@@ -38,15 +38,15 @@ public protocol DroneToken {
 
 public extension DroneToken {
     
-    final func fly(to altitude: DCKAltitude) -> Promise<Void> {
+    final func fly(to altitude: DCKRelativeAltitude) -> Promise<Void> {
         return fly(to: altitude, withYaw: nil, atSpeed: nil)
     }
     
-    final func fly(to altitude: DCKAltitude, withYaw yaw: DCKAngle?) -> Promise<Void> {
+    final func fly(to altitude: DCKRelativeAltitude, withYaw yaw: DCKAngle?) -> Promise<Void> {
         return fly(to: altitude, withYaw: yaw, atSpeed: nil)
     }
     
-    final func fly(to altitude: DCKAltitude, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+    final func fly(to altitude: DCKRelativeAltitude, atSpeed speed: DCKVelocity?) -> Promise<Void> {
         return fly(to: altitude, withYaw: nil, atSpeed: speed)
     }
     
@@ -54,15 +54,15 @@ public extension DroneToken {
         return fly(to: coordinate, atAltitude: nil, withYaw: nil, atSpeed: nil)
     }
    
-    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?) -> Promise<Void> {
+    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?) -> Promise<Void> {
         return fly(to: coordinate, atAltitude: altitude, withYaw: nil, atSpeed: nil)
     }
     
-    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?, withYaw yaw: DCKAngle?) -> Promise<Void> {
+    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?) -> Promise<Void> {
         return fly(to: coordinate, atAltitude: altitude, withYaw: yaw, atSpeed: nil)
     }
     
-    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
         return fly(to: coordinate, atAltitude: altitude, withYaw: nil, atSpeed: speed)
     }
     
@@ -82,7 +82,7 @@ public extension DroneToken {
         return fly(to: coordinate.asNonOriented(), atAltitude: nil, withYaw: coordinate.yaw, atSpeed: nil)
     }
     
-    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKAltitude?) -> Promise<Void> {
+    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude?) -> Promise<Void> {
         return fly(to: coordinate.asNonOriented(), atAltitude: altitude, withYaw: coordinate.yaw, atSpeed: nil)
     }
     
@@ -90,7 +90,7 @@ public extension DroneToken {
         return fly(to: coordinate.asNonOriented(), atAltitude: nil, withYaw: coordinate.yaw, atSpeed: speed)
     }
     
-    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
+    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKVelocity?) -> Promise<Void> {
         return fly(to: coordinate.asNonOriented(), atAltitude: altitude, withYaw: coordinate.yaw, atSpeed: speed)
     }
     
@@ -128,10 +128,11 @@ public extension DroneToken {
 
 }
 
-enum DroneTokenError: Error {
+public enum DroneTokenError: Error {
     case TokenAquisitionFailed
     case MandatoryInputAquisitionFailed
     case FailureInFlightTriggersLand
     case FailureDuringLand
     case FailureDuringHover
+    case FailureRetrievingState
 }
