@@ -294,6 +294,12 @@ public struct DCKCoordinate3D {
     public let longitude: Double
     public let altitude: DCKRelativeAltitude
     
+    public init(latitude: Double, longitude: Double, altitude: DCKRelativeAltitude) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = altitude
+    }
+    
     public func as2D() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
     }
@@ -366,6 +372,10 @@ extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
 
 public struct DCKCoordinate2DPath {
     public let path: [DCKCoordinate2D]
+    
+    public init(path: [DCKCoordinate2D]) {
+        self.path = path;
+    }
 }
 
 extension DCKCoordinate2DPath: Equatable {
@@ -395,6 +405,10 @@ extension DCKCoordinate2DPath: JSONDecodable, JSONEncodable {
 
 public struct DCKCoordinate3DPath {
     public let path: [DCKCoordinate3D]
+    
+    public init(path: [DCKCoordinate3D]) {
+        self.path = path;
+    }
 }
 
 extension DCKCoordinate3DPath: CustomStringConvertible {
