@@ -13,6 +13,8 @@ import CardKitRuntime
 import PromiseKit
 
 public class FlyTo: ExecutableActionCard {
+    var promise: Promise<Any>?
+    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             self.error = DroneTokenError.TokenAquisitionFailed
@@ -30,7 +32,7 @@ public class FlyTo: ExecutableActionCard {
         let semaphore = DispatchSemaphore(value: 0)
         
         print("###### >>> starting promise")
-        firstly {
+        promise = firstly {
             print("###### >>> turn motors on")
             return drone.turnMotorsOn()
             }.then {
