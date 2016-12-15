@@ -27,15 +27,28 @@ public class FlyTo: ExecutableActionCard {
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        print("###### >>> starting promise")
         firstly {
-            drone.turnMotorsOn()
-        }.then {
-            drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed)
-        }.catch {
-            error in
-            self.error = DroneTokenError.FailureInFlightTriggersLand
-            self.cancel()
+            print("###### >>> turn motors on")
+            return drone.turnMotorsOn()
+            }.then {
+                print("###### >>> fly to")
+                return drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed)
+            }.then {
+                semaphore.signal()
+            }.catch {
+                error in
+                print("###### >>> error caught")
+                self.error = DroneTokenError.FailureInFlightTriggersLand
+                self.cancel()
+                semaphore.signal()
         }
+        
+        print("###### >>> waiting on semaphore")
+        semaphore.wait()
+        print("###### >>> semaphore done")
     }
     
     override public func cancel() {
@@ -46,13 +59,13 @@ public class FlyTo: ExecutableActionCard {
         
         firstly {
             drone.land()
-        }.then {
-            drone.turnMotorsOff()
-        }.catch {
-            _ in
-            if self.error == nil {
-                self.error = DroneTokenError.FailureDuringLand
-            }
+            }.then {
+                drone.turnMotorsOff()
+            }.catch {
+                _ in
+                if self.error == nil {
+                    self.error = DroneTokenError.FailureDuringLand
+                }
         }
     }
 }
