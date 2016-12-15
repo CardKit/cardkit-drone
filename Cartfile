@@ -1,4 +1,4 @@
-git "git@github.ibm.com:CMER/card-kit-runtime.git" "master"
+git "git@github.ibm.com:CMER/card-kit-runtime.git" "dji_drone_token"
 github "mxcl/PromiseKit" ~> 4.0
 
 # for the pixhawk, which we aren't implementing (yet?)
