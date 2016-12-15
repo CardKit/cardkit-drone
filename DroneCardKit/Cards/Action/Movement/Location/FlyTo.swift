@@ -32,14 +32,13 @@ public class FlyTo: ExecutableActionCard {
         let semaphore = DispatchSemaphore(value: 0)
         
         print("###### >>> starting promise")
-        promise = firstly {
-            print("###### >>> turn motors on")
-            return drone.turnMotorsOn()
-            }.then {
+        drone.turnMotorsOn().then(on: DispatchQueue.global(qos: .background)) {
                 print("###### >>> fly to")
                 return drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed)
-            }.then {
+            }.then(on: DispatchQueue.global(qos: .background)) {
+                print("###### >>> semaphore signaled")
                 semaphore.signal()
+                return AnyPromise(Promise<Void>.empty(result: ()))
             }.catch {
                 error in
                 print("###### >>> error caught")
@@ -47,6 +46,7 @@ public class FlyTo: ExecutableActionCard {
                 self.cancel()
                 semaphore.signal()
         }
+        
         
         print("###### >>> waiting on semaphore")
         semaphore.wait()
