@@ -11,7 +11,6 @@ import Foundation
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
-@testable import PromiseKit
 
 class DummyDroneToken: ExecutableTokenCard, DroneToken {
     var homeLocation: DCKCoordinate2D?
