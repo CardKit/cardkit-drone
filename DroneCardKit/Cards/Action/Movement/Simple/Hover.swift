@@ -20,21 +20,21 @@ public class Hover: ExecutableActionCard {
         
         let altitudeInMeters: Double? = self.optionalValue(forInput: "Altitude")
         
-        let hover: Promise<Void>
-        
-        if let altitude = altitudeInMeters {
-            hover = drone.hover(at: DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitude))
-        } else {
-            hover = drone.hover()
-        }
-        
-        firstly {
-            hover
-        }.catch {
-            error in
-            self.error = DroneTokenError.FailureDuringHover
-            self.cancel()
-        }
+//        let hover: Promise<Void>
+//        
+//        if let altitude = altitudeInMeters {
+//            hover = drone.hover(at: DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitude))
+//        } else {
+//            hover = drone.hover()
+//        }
+//        
+//        firstly {
+//            hover
+//        }.catch {
+//            error in
+//            self.error = DroneTokenError.FailureDuringHover
+//            self.cancel()
+//        }
     }
     
     override public func cancel() {
@@ -43,15 +43,15 @@ public class Hover: ExecutableActionCard {
             return
         }
         
-        firstly {
-            drone.land()
-        }.then {
-            drone.turnMotorsOff()
-        }.catch {
-            _ in
-            if self.error == nil {
-                self.error = DroneTokenError.FailureDuringLand
-            }
-        }
+//        firstly {
+//            drone.land()
+//        }.then {
+//            drone.turnMotorsOff()
+//        }.catch {
+//            _ in
+//            if self.error == nil {
+//                self.error = DroneTokenError.FailureDuringLand
+//            }
+//        }
     }
 }

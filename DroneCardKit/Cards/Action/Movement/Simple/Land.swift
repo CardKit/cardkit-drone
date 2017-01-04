@@ -20,14 +20,14 @@ public class Land: ExecutableActionCard {
         
         let _: Double? = self.optionalValue(forInput: "Speed")
         
-        firstly {
-            drone.land()
-        }.then {
-            drone.turnMotorsOff()
-        }.catch { _ in
-            self.error = DroneTokenError.FailureDuringLand
-            self.cancel()
-        }
+//        firstly {
+//            drone.land()
+//        }.then {
+//            drone.turnMotorsOff()
+//        }.catch { _ in
+//            self.error = DroneTokenError.FailureDuringLand
+//            self.cancel()
+//        }
     }
     
     override public func cancel() {
@@ -36,10 +36,10 @@ public class Land: ExecutableActionCard {
             return
         }
         
-        if let isOn = drone.areMotorsOn, isOn {
-            drone.hover().catch { _ in
-                self.error = DroneTokenError.FailureDuringLand
-            }
-        }
+//        if let isOn = drone.areMotorsOn, isOn {
+//            drone.hover().catch { _ in
+//                self.error = DroneTokenError.FailureDuringLand
+//            }
+//        }
     }
 }
