@@ -12,7 +12,7 @@ import CardKit
 import CardKitRuntime
 
 public protocol GimbalToken {
-    func reset() -> Promise<Void>
+    func reset(completionHandler: DroneTokenCompletionHandler?)
     func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relative: Bool, completionHandler: DroneTokenCompletionHandler?)
 }
 

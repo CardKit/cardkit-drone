@@ -24,15 +24,15 @@ public class Hover: ExecutableActionCard {
             let semaphore = DispatchSemaphore(value: 0)
             
             if let altitude = altitudeInMeters {
-                drone.hover(at: altitude, completionHandler: { (error) in
+                drone.hover(at: DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitude)) { (error) in
                     self.error = error
                     semaphore.signal()
-                })
+                }
             } else {            
-                drone.hover(completionHandler: { (error) in
+                drone.hover{ (error) in
                     self.error = error
                     semaphore.signal()
-                })
+                }
             }
             
             semaphore.wait()
