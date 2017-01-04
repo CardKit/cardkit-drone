@@ -11,8 +11,6 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-import PromiseKit
-
 public typealias DroneTokenCompletionHandler = (Error?) -> Void
 
 public protocol DroneToken {
