@@ -61,8 +61,6 @@
 		CCD6D6F51DFF0F65004CEB71 /* PromiseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6F41DFF0F65004CEB71 /* PromiseExtensions.swift */; };
 		CCD6D6F61DFF0F65004CEB71 /* PromiseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6F41DFF0F65004CEB71 /* PromiseExtensions.swift */; };
 		CCD6D6F71DFF0F65004CEB71 /* PromiseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6F41DFF0F65004CEB71 /* PromiseExtensions.swift */; };
-		CCD6D6F91DFF1840004CEB71 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD6D6F81DFF1840004CEB71 /* PromiseKit.framework */; };
-		CCD6D6FB1DFF1855004CEB71 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD6D6FA1DFF1855004CEB71 /* PromiseKit.framework */; };
 		F90FD0001DF1FA3400C26E86 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		F90FD0011DF1FA3400C26E86 /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
@@ -169,7 +167,6 @@
 				CCBB794C1D7897D8003B6458 /* CardKit.framework in Frameworks */,
 				CCBB794D1D7897D8003B6458 /* CardKitRuntime.framework in Frameworks */,
 				CCBB794E1D7897D8003B6458 /* Freddy.framework in Frameworks */,
-				CCD6D6F91DFF1840004CEB71 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +186,6 @@
 				CCBB79531D7897FA003B6458 /* CardKit.framework in Frameworks */,
 				CCBB79541D7897FA003B6458 /* CardKitRuntime.framework in Frameworks */,
 				CCBB79551D7897FA003B6458 /* Freddy.framework in Frameworks */,
-				CCD6D6FB1DFF1855004CEB71 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,7 +717,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			outputPaths = (
 			);
