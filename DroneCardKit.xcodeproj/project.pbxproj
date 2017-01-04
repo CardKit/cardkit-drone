@@ -10,7 +10,6 @@
 		6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
 		6809DF341DF4B7970077C6EE /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
 		6809DF351DF4B7970077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
-		6809DF361DF4B7970077C6EE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD033521DC144CB001AE5C9 /* PromiseKit.framework */; };
 		6809DF371DF4B7B80077C6EE /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
 		6809DF381DF4B7B80077C6EE /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
 		6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
@@ -148,7 +147,6 @@
 				6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */,
 				6809DF341DF4B7970077C6EE /* CardKitRuntime.framework in Frameworks */,
 				6809DF351DF4B7970077C6EE /* Freddy.framework in Frameworks */,
-				6809DF361DF4B7970077C6EE /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,7 +770,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			outputPaths = (
 			);
@@ -789,7 +786,6 @@
 				"$(SRCROOT)/Carthage/Build/Mac/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/CardKitRuntime.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/PromiseKit.framework",
 			);
 			outputPaths = (
 			);
@@ -806,7 +802,6 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/CardKitRuntime.framework",
-				"$(SRCROOT)/Carthage/Build/tvOS/PromiseKit.framework",
 			);
 			outputPaths = (
 			);
