@@ -19,28 +19,23 @@ public class Hover: ExecutableActionCard {
         
         let altitudeInMeters: Double? = self.optionalValue(forInput: "Altitude")
         
-        if shouldExecute {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            if let altitude = altitudeInMeters {
-                drone.hover(at: DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitude)) { (error) in
-                    self.error = error
-                    semaphore.signal()
-                }
-            } else {            
-                drone.hover{ (error) in
-                    self.error = error
-                    semaphore.signal()
-                }
+        do {
+            let altitude: DCKRelativeAltitude? =
+                altitudeInMeters == nil
+                    ? nil
+                    : DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitudeInMeters!)
+
+            if !isCancelled {
+                try drone.hoverSync(at: altitude)
             }
+        }
+        catch {
+            self.error = error
             
-            semaphore.wait()
+            if !isCancelled {
+                cancel()
+            }
         }
-        
-        if shouldCancel {
-            cancel()
-        }
-        
     }
     
     override public func cancel() {
@@ -50,25 +45,13 @@ public class Hover: ExecutableActionCard {
         }
         
         do {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.land { error in
-                self.error = error
-                semaphore.signal()
-            }
-            
-            semaphore.wait()
+            try drone.landSync()
+            try drone.spinMotorsSync(on: false)
         }
-        
-        if error == nil {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.turnMotorsOff { error in
+        catch {
+            if self.error == nil {
                 self.error = error
-                semaphore.signal()
             }
-            
-            semaphore.wait()
         }
     }
 }

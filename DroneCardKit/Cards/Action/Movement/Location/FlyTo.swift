@@ -26,30 +26,21 @@ public class FlyTo: ExecutableActionCard {
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
-        if shouldExecute {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.turnMotorsOn { error in
-                self.error = error
-                semaphore.signal()
+        do {
+            if !isCancelled {
+                try drone.spinMotorsSync(on: true)
             }
             
-            semaphore.wait()
-        }
-        
-        if shouldExecute {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed) { error in
-                self.error = error
-                semaphore.signal()
+            if !isCancelled {
+                try drone.flySync(to: location, atAltitude: altitude, atSpeed: speed)
             }
-            
-            semaphore.wait()
         }
-        
-        if shouldCancel {
-            cancel()
+        catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     
@@ -58,27 +49,15 @@ public class FlyTo: ExecutableActionCard {
             self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
-    
-        do {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.land { error in
-                self.error = error
-                semaphore.signal()
-            }
-            
-            semaphore.wait()
-        }
         
-        if error == nil {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.turnMotorsOff { error in
+        do {
+            try drone.landSync()
+            try drone.spinMotorsSync(on: false)
+        }
+        catch {
+            if self.error == nil {
                 self.error = error
-                semaphore.signal()
             }
-            
-            semaphore.wait()
         }
     }
     

@@ -20,30 +20,21 @@ public class Land: ExecutableActionCard {
         
         let _: Double? = self.optionalValue(forInput: "Speed")
         
-        if shouldExecute {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.land { error in
-                self.error = error
-                semaphore.signal()
+        do {
+            if !isCancelled {
+                try drone.landSync()
             }
-            
-            semaphore.wait()
-        }
         
-        if shouldExecute {
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            drone.turnMotorsOff { error in
-                self.error = error
-                semaphore.signal()
+            if !isCancelled {
+                try drone.spinMotorsSync(on: false)
             }
-            
-            semaphore.wait()
         }
-        
-        if shouldCancel {
-            cancel()
+        catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     
