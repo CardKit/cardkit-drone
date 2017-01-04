@@ -10,8 +10,6 @@ import Foundation
 
 import CardKitRuntime
 
-import PromiseKit
-
 public class CoverArea: ExecutableActionCard {
     override public func main() {
         // mandatory inputs
