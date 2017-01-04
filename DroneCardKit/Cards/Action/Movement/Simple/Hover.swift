@@ -20,21 +20,28 @@ public class Hover: ExecutableActionCard {
         
         let altitudeInMeters: Double? = self.optionalValue(forInput: "Altitude")
         
-//        let hover: Promise<Void>
-//        
-//        if let altitude = altitudeInMeters {
-//            hover = drone.hover(at: DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitude))
-//        } else {
-//            hover = drone.hover()
-//        }
-//        
-//        firstly {
-//            hover
-//        }.catch {
-//            error in
-//            self.error = DroneTokenError.FailureDuringHover
-//            self.cancel()
-//        }
+        if shouldExecute {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            if let altitude = altitudeInMeters {
+                drone.hover(at: altitude, completionHandler: { (error) in
+                    self.error = error
+                    semaphore.signal()
+                })
+            } else {            
+                drone.hover(completionHandler: { (error) in
+                    self.error = error
+                    semaphore.signal()
+                })
+            }
+            
+            semaphore.wait()
+        }
+        
+        if shouldCancel {
+            cancel()
+        }
+        
     }
     
     override public func cancel() {
@@ -43,15 +50,26 @@ public class Hover: ExecutableActionCard {
             return
         }
         
-//        firstly {
-//            drone.land()
-//        }.then {
-//            drone.turnMotorsOff()
-//        }.catch {
-//            _ in
-//            if self.error == nil {
-//                self.error = DroneTokenError.FailureDuringLand
-//            }
-//        }
+        do {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            drone.land { error in
+                self.error = error
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
+        }
+        
+        if error == nil {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            drone.turnMotorsOff { error in
+                self.error = error
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
+        }
     }
 }
