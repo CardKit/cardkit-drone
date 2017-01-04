@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import PromiseKit
 
 import CardKitRuntime
 
 public class Land: ExecutableActionCard {
+    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             self.error = DroneTokenError.TokenAquisitionFailed
@@ -20,26 +20,34 @@ public class Land: ExecutableActionCard {
         
         let _: Double? = self.optionalValue(forInput: "Speed")
         
-//        firstly {
-//            drone.land()
-//        }.then {
-//            drone.turnMotorsOff()
-//        }.catch { _ in
-//            self.error = DroneTokenError.FailureDuringLand
-//            self.cancel()
-//        }
+        if shouldExecute {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            drone.land { error in
+                self.error = error
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
+        }
+        
+        if shouldExecute {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            drone.turnMotorsOff { error in
+                self.error = error
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
+        }
+        
+        if shouldCancel {
+            cancel()
+        }
     }
     
     override public func cancel() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
-            return
-        }
-        
-//        if let isOn = drone.areMotorsOn, isOn {
-//            drone.hover().catch { _ in
-//                self.error = DroneTokenError.FailureDuringLand
-//            }
-//        }
     }
+    
 }

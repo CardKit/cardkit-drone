@@ -12,31 +12,34 @@ import CardKitRuntime
 
 public class FlyTo: ExecutableActionCard {
     
-    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
+            error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
         guard let location: DCKCoordinate2D = self.value(forInput: "Destination") else {
-            self.error = DroneTokenError.MandatoryInputAquisitionFailed
+            error = DroneTokenError.MandatoryInputAquisitionFailed
             return
         }
         
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        drone.turnMotorsOn { error in
-            self.error = error
-            semaphore.signal()
+        if shouldExecute {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            drone.turnMotorsOn { error in
+                self.error = error
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
         }
         
-        semaphore.wait()
-        
-        if error == nil {
+        if shouldExecute {
+            let semaphore = DispatchSemaphore(value: 0)
+            
             drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed) { error in
                 self.error = error
                 semaphore.signal()
@@ -45,7 +48,7 @@ public class FlyTo: ExecutableActionCard {
             semaphore.wait()
         }
         
-        if error != nil {
+        if shouldCancel {
             cancel()
         }
     }
@@ -55,21 +58,28 @@ public class FlyTo: ExecutableActionCard {
             self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
-        
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        drone.land { error in
-            self.error = error
-            semaphore.signal()
+    
+        do {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            drone.land { error in
+                self.error = error
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
         }
         
         if error == nil {
+            let semaphore = DispatchSemaphore(value: 0)
+            
             drone.turnMotorsOff { error in
                 self.error = error
                 semaphore.signal()
             }
+            
+            semaphore.wait()
         }
-        
-        semaphore.wait()
     }
+    
 }
