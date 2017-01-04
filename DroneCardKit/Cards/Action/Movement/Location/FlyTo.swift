@@ -13,7 +13,7 @@ import CardKitRuntime
 import PromiseKit
 
 public class FlyTo: ExecutableActionCard {
-    var promise: Any?
+    
     
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
@@ -33,13 +33,13 @@ public class FlyTo: ExecutableActionCard {
         
         print("###### >>> pre starting promise")
         print("###### >>> starting promise")
-        promise = firstly {
+        firstly {
             print("###### >>> firstly - turn motors on")
             return drone.turnMotorsOn()
-        }.then {
+        }.then(on: DispatchQueue.global(qos: .background)) { 
                 print("###### >>> fly to")
                 return drone.fly(to: location, atYaw: nil, atAltitude: altitude, atSpeed: speed)
-            }.then {
+            }.then(on: DispatchQueue.global(qos: .background)) {
                 print("###### >>> semaphore signaled")
                 semaphore.signal()
                 return AnyPromise(Promise<Void>.empty(result: ()))
@@ -54,7 +54,6 @@ public class FlyTo: ExecutableActionCard {
 //        print(promise)
         print("###### >>> waiting on semaphore")
         semaphore.wait()
-        print(promise)
         print("###### >>> semaphore done")
     }
     

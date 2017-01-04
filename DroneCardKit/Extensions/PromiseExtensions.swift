@@ -10,9 +10,16 @@ import Foundation
 import PromiseKit
 
 public extension Promise {
-    public static func empty<T>(result: T) -> Promise<T> {
+    public static func empty<T>(result: T, execute: (() -> ())? = nil) -> Promise<T> {
         return Promise<T> { fulfill, reject in
+            execute?()
             fulfill(result)
+        }
+    }
+    
+    public static func empty<T>(result: T, secondsToWait: TimeInterval) -> Promise<T> {
+        return Promise.empty(result: result) {
+            Thread.sleep(forTimeInterval: secondsToWait)
         }
     }
 }
