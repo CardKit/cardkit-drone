@@ -28,7 +28,7 @@ public class FlyTo: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try drone.spinMotorsSync(on: true)
+                try drone.takeOffSync()
             }
             
             if !isCancelled {

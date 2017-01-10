@@ -25,12 +25,29 @@ public protocol DroneToken {
     func spinMotors(on: Bool, completionHandler: DroneTokenCompletionHandler?)
     
     // Take off
+    
+    /// Takes off to a default altitude or custom altitude (if specified).
+    /// If the drone is already in the air, this function should not do anything.
+    ///
+    /// - Parameters:
+    ///   - altitude: the altitude the drone will climb to. if nil, the drone will take off to it's default take off altitude.
+    ///   - completionHandler: DroneTokenCompletionHandler
     func takeOff(at altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?)
     
     // Hover
     func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?)
     
     // Fly
+    
+    /// Fly to a coordinate at an altitude, speed, and yaw. The drone will change its yaw angle and then fly to the location.
+    /// The yaw angle will be updated by calling the hover(withYaw:) function.
+    ///
+    /// - Parameters:
+    ///   - coordinate: the location the drone needs to fly to
+    ///   - yaw: the angle the drone should be facing. if nil, the yaw will not change.
+    ///   - altitude: the height the drone should be at. if nil, the altitude will not change.
+    ///   - speed: the speed the drone should be flying. if nil, the default speed will be used (8 m/s)
+    ///   - completionHandler: DroneTokenCompletionHandler
     func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?)
     func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?)
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?)
