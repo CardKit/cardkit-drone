@@ -13,18 +13,17 @@ import CardKitRuntime
 
 public typealias DroneTokenCompletionHandler = (Error?) -> Void
 
-// MARK: Protocol methods to be implemented
 public protocol DroneToken {
-    // Location & attitude
+    // MARK: Location & attitude
     var currentLocation: DCKCoordinate2D? { get }
     var currentAltitude: DCKRelativeAltitude? { get }
     var currentAttitude: DCKAttitude? { get }
     
-    // Motor state
+    // MARK: Motor state
     var areMotorsOn: Bool? { get }
     func spinMotors(on: Bool, completionHandler: DroneTokenCompletionHandler?)
     
-    // Take off
+    // MARK: Take off
     
     /// Takes off to a default altitude or custom altitude (if specified).
     /// If the drone is already in the air, this function should not do anything.
@@ -34,10 +33,17 @@ public protocol DroneToken {
     ///   - completionHandler: DroneTokenCompletionHandler
     func takeOff(at altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?)
     
-    // Hover
+    // MARK: Hover
+    
+    /// Cancels all current operations and hovers. The drone will fly to an altitude (if specified) and change its yaw (if specified).
+    ///
+    /// - Parameters:
+    ///   - altitude: the height the drone should be at. if nil, the altitude will not change.
+    ///   - yaw: the angle the drone should be facing. if nil, the yaw will not change.
+    ///   - completionHandler: DroneTokenCompletionHandler
     func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?)
     
-    // Fly
+    // MARK: Fly
     
     /// Fly to a coordinate at an altitude, speed, and yaw. The drone will change its yaw angle and then fly to the location.
     /// The yaw angle will be updated by calling the hover(withYaw:) function.
@@ -52,19 +58,23 @@ public protocol DroneToken {
     func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?)
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?)
     
-    // Return home
+    // MARK: Return home
     var homeLocation: DCKCoordinate2D? { get }
     func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?)
     
-    // Landing gear
+    // MARK: Landing gear
     var isLandingGearDown: Bool? { get }
     func landingGear(down: Bool, completionHandler: DroneTokenCompletionHandler?)
     
-    // Land
+    // MARK: Land
+    
+    /// Lands the drone at the current location. Once the drone has landed, the motors will automatically turn off.
+    ///
+    /// - Parameter completionHandler: DroneTokenCompletionHandler
     func land(completionHandler: DroneTokenCompletionHandler?)
 }
 
-// MARK: Convienience -- turn motors on/off
+// MARK: - Convienience -- turn motors on/off
 public extension DroneToken {
     final func spinMotorsSync(on: Bool) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -83,7 +93,7 @@ public extension DroneToken {
     }
 }
 
-// MARK: Convienience -- take off
+// MARK: - Convienience -- take off
 public extension DroneToken {
     func takeOffSync(at altitude: DCKRelativeAltitude?) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -111,7 +121,7 @@ public extension DroneToken {
 }
 
 
-// MARK: Convienience -- hover
+// MARK: - Convienience -- hover
 public extension DroneToken {
     final func hoverSync(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -154,7 +164,7 @@ public extension DroneToken {
     }
 }
 
-// MARK: Convienience -- fly to coordinate
+// MARK: - Convienience -- fly to coordinate
 public extension DroneToken {
     final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -277,7 +287,7 @@ public extension DroneToken {
     }
 }
 
-// MARK: Convienience -- fly 2D path
+// MARK: - Convienience -- fly 2D path
 public extension DroneToken {
     final func flySync(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -312,7 +322,7 @@ public extension DroneToken {
     }
 }
 
-// MARK: Convienience -- fly 3D path
+// MARK: - Convienience -- fly 3D path
 public extension DroneToken {
     final func flySync(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -340,7 +350,7 @@ public extension DroneToken {
 }
 
 
-// MARK: Convienience -- return home
+// MARK: - Convienience -- return home
 public extension DroneToken {
     final func returnHomeSync(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -375,7 +385,7 @@ public extension DroneToken {
     }
 }
 
-// MARK: Convienience -- landing gear
+// MARK: - Convienience -- landing gear
 public extension DroneToken {
     final func landingGearSync(down: Bool) throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -394,7 +404,7 @@ public extension DroneToken {
     }
 }
 
-// MARK: Convienience -- land
+// MARK: - Convienience -- land
 public extension DroneToken {
     final func landSync() throws {
         let semaphore = DispatchSemaphore(value: 0)
@@ -413,7 +423,7 @@ public extension DroneToken {
     }
 }
 
-// MARK: - DroneTokenError
+// MARK: - - DroneTokenError
 public enum DroneTokenError: Error {
     case TokenAquisitionFailed
     case MandatoryInputAquisitionFailed

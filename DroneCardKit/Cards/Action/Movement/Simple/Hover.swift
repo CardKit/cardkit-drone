@@ -17,14 +17,9 @@ public class Hover: ExecutableActionCard {
             return
         }
         
-        let altitudeInMeters: Double? = self.optionalValue(forInput: "Altitude")
+        let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         
         do {
-            let altitude: DCKRelativeAltitude? =
-                altitudeInMeters == nil
-                    ? nil
-                    : DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitudeInMeters!)
-
             if !isCancelled {
                 try drone.hoverSync(at: altitude)
             }
@@ -46,7 +41,6 @@ public class Hover: ExecutableActionCard {
         
         do {
             try drone.landSync()
-            try drone.spinMotorsSync(on: false)
         }
         catch {
             if self.error == nil {

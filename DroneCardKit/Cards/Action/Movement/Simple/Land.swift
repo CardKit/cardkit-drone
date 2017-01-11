@@ -18,16 +18,24 @@ public class Land: ExecutableActionCard {
             return
         }
         
-        let _: Double? = self.optionalValue(forInput: "Speed")
+        let dckSpeed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
         do {
+            // note: DJI drones will always land at their default speed: ~3 m/s. 
+            // The speed parameter cannot be used when changing altitude.
+            // It can only be used when flying to a location. (for DJI drones)
+            
+            if let speed = dckSpeed, let currentLocation = drone.currentLocation {
+                if !isCancelled {
+                    let altitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 1.0)
+                    try drone.flySync(to: currentLocation, atYaw: nil, atAltitude: altitude, atSpeed: speed)
+                }
+            }
+            
             if !isCancelled {
                 try drone.landSync()
             }
-        
-            if !isCancelled {
-                try drone.spinMotorsSync(on: false)
-            }
+           
         }
         catch {
             self.error = error

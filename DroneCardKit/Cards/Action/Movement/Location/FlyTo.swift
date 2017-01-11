@@ -52,7 +52,6 @@ public class FlyTo: ExecutableActionCard {
         
         do {
             try drone.landSync()
-            try drone.spinMotorsSync(on: false)
         }
         catch {
             if self.error == nil {
