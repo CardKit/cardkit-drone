@@ -12,8 +12,6 @@ import XCTest
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-@testable import PromiseKit
-
 class LandTests: XCTestCase {
     
     override func setUp() {

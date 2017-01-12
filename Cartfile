@@ -1,5 +1,4 @@
 git "git@github.ibm.com:CMER/card-kit-runtime.git" "master"
-github "mxcl/PromiseKit" ~> 4.0
 
 # for the pixhawk, which we aren't implementing (yet?)
 #github "mavlink/c_library_v1" "master"

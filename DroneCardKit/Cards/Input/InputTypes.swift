@@ -100,6 +100,12 @@ public struct DCKAttitude {
     public let pitch: DCKAngle
     public let roll: DCKAngle
     
+    public init(yaw: DCKAngle, pitch: DCKAngle, roll: DCKAngle) {
+        self.yaw = yaw
+        self.pitch = pitch
+        self.roll = roll
+    }
+    
     public var compassPoint: DCKCardinalDirection {
         return DCKCardinalDirection.byAngle(yaw)
     }
@@ -205,6 +211,11 @@ public enum DCKCardinalDirection: Int {
 public struct DCKCoordinate2D {
     public let latitude: Double
     public let longitude: Double
+    
+    public init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
 
 extension DCKCoordinate2D: Equatable {
@@ -283,6 +294,12 @@ public struct DCKCoordinate3D {
     public let longitude: Double
     public let altitude: DCKRelativeAltitude
     
+    public init(latitude: Double, longitude: Double, altitude: DCKRelativeAltitude) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = altitude
+    }
+    
     public func as2D() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
     }
@@ -355,6 +372,10 @@ extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
 
 public struct DCKCoordinate2DPath {
     public let path: [DCKCoordinate2D]
+    
+    public init(path: [DCKCoordinate2D]) {
+        self.path = path;
+    }
 }
 
 extension DCKCoordinate2DPath: Equatable {
@@ -384,6 +405,10 @@ extension DCKCoordinate2DPath: JSONDecodable, JSONEncodable {
 
 public struct DCKCoordinate3DPath {
     public let path: [DCKCoordinate3D]
+    
+    public init(path: [DCKCoordinate3D]) {
+        self.path = path;
+    }
 }
 
 extension DCKCoordinate3DPath: CustomStringConvertible {
@@ -444,6 +469,10 @@ extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
 
 public struct DCKRelativeAltitude {
     public let metersAboveGroundAtTakeoff: Double
+    
+    public init(metersAboveGroundAtTakeoff: Double) {
+        self.metersAboveGroundAtTakeoff = metersAboveGroundAtTakeoff
+    }
 }
 
 extension DCKRelativeAltitude : JSONDecodable, JSONEncodable {

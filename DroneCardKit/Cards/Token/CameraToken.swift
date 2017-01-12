@@ -11,13 +11,11 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-import PromiseKit
-
 protocol CameraToken {
-    func takeStillPicture() -> Promise<Void>
-    func takeStillPictureSequenceStart(rate: DCKFrequency) -> Promise<Void>
-    func takeStillPictureSequenceEnd() -> Promise<Void>
+    func takeStillPicture(completionHandler: DroneTokenCompletionHandler?)
+    func takeStillPictureSequenceStart(rate: DCKFrequency, completionHandler: DroneTokenCompletionHandler?)
+    func takeStillPictureSequenceEnd(completionHandler: DroneTokenCompletionHandler?)
     
-    func videoRecordStart() -> Promise<Void>
-    func vidoRecordEnd() -> Promise<Void>
+    func videoRecordStart(completionHandler: DroneTokenCompletionHandler?)
+    func vidoRecordEnd(completionHandler: DroneTokenCompletionHandler?)
 }

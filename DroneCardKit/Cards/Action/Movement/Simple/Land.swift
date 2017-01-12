@@ -7,52 +7,46 @@
 //
 
 import Foundation
-import PromiseKit
 
 import CardKitRuntime
 
-class Land: ExecutableActionCard {
+public class Land: ExecutableActionCard {
+    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
-        let _: Double? = self.optionalValue(forInput: "Speed")
+        let dckSpeed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
-        firstly {
-            drone.land()
-        }.then {
-            drone.turnMotorsOff()
-        }.catch { _ in
-            self.error = DroneTokenError.FailureDuringLand
-            self.cancel()
+        do {
+            // note: DJI drones will always land at their default speed: ~3 m/s. 
+            // The speed parameter cannot be used when changing altitude.
+            // It can only be used when flying to a location. (for DJI drones)
+            
+            if let speed = dckSpeed, let currentLocation = drone.currentLocation {
+                if !isCancelled {
+                    let altitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 1.0)
+                    try drone.flySync(to: currentLocation, atYaw: nil, atAltitude: altitude, atSpeed: speed)
+                }
+            }
+            
+            if !isCancelled {
+                try drone.landSync()
+            }
+           
+        }
+        catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     
     override public func cancel() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
-            return
-        }
-        
-        firstly {
-            drone.motorOnState()
-        }.then {
-            isOn -> Promise<Void> in
-            
-            if isOn {
-                return drone.hover()
-            } else {
-                return Promise {
-                    fulfill, reject in fulfill()
-                }
-            }
-        }.catch {
-            error in
-            if self.error == nil {
-                self.error = DroneTokenError.FailureDuringLand
-            }
-        }
     }
+    
 }

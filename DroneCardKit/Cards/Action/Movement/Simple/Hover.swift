@@ -7,33 +7,29 @@
 //
 
 import Foundation
-import PromiseKit
 
 import CardKitRuntime
 
-class Hover: ExecutableActionCard {
+public class Hover: ExecutableActionCard {
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
-        let altitudeInMeters: Double? = self.optionalValue(forInput: "Altitude")
+        let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         
-        let hover: Promise<Void>
-        
-        if let altitude = altitudeInMeters {
-            hover = drone.hover(at: DCKRelativeAltitude(metersAboveGroundAtTakeoff: altitude))
-        } else {
-            hover = drone.hover()
+        do {
+            if !isCancelled {
+                try drone.hoverSync(at: altitude)
+            }
         }
-        
-        firstly {
-            hover
-        }.catch {
-            error in
-            self.error = DroneTokenError.FailureDuringHover
-            self.cancel()
+        catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     
@@ -43,14 +39,12 @@ class Hover: ExecutableActionCard {
             return
         }
         
-        firstly {
-            drone.land()
-        }.then {
-            drone.turnMotorsOff()
-        }.catch {
-            _ in
+        do {
+            try drone.landSync()
+        }
+        catch {
             if self.error == nil {
-                self.error = DroneTokenError.FailureDuringLand
+                self.error = error
             }
         }
     }

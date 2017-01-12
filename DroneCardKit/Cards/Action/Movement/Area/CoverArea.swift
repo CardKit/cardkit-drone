@@ -10,8 +10,6 @@ import Foundation
 
 import CardKitRuntime
 
-import PromiseKit
-
 public class CoverArea: ExecutableActionCard {
     override public func main() {
         // mandatory inputs
@@ -28,20 +26,20 @@ public class CoverArea: ExecutableActionCard {
             return
         }
         
-        firstly {
-            drone.takeOff()
-        }.then {
-            drone.fly(on: area, atAltitude: altitude, atSpeed: speed)
-        }.then {
-            drone.returnHome()
-        }.then {
-            drone.land()
-        }.catch {
-            error in
-            print("error: \(error)")
-            self.error = DroneTokenError.FailureInFlightTriggersLand
-            self.cancel()
-        }
+//        firstly {
+//            drone.takeOff()
+//        }.then {
+//            drone.fly(on: area, atAltitude: altitude, atSpeed: speed)
+//        }.then {
+//            drone.returnHome()
+//        }.then {
+//            drone.land()
+//        }.catch {
+//            error in
+//            print("error: \(error)")
+//            self.error = DroneTokenError.FailureInFlightTriggersLand
+//            self.cancel()
+//        }
     }
     
     override public func cancel() {
@@ -50,14 +48,14 @@ public class CoverArea: ExecutableActionCard {
             return
         }
         
-        firstly {
-            drone.land()
-        }.catch {
-            error in
-            print("error: \(error)")
-            if self.error == nil {
-                self.error = DroneTokenError.FailureDuringLand
-            }
-        }
+//        firstly {
+//            drone.land()
+//        }.catch {
+//            error in
+//            print("error: \(error)")
+//            if self.error == nil {
+//                self.error = DroneTokenError.FailureDuringLand
+//            }
+//        }
     }
 }
