@@ -40,11 +40,12 @@ class LandTests: XCTestCase {
         let dummyDrone = DummyDroneToken(with: droneCard)
         
         // bind
-        land.setup([:], tokens: [droneTokenSlot : dummyDrone])
+        land.setup([:], tokens: [droneTokenSlot: dummyDrone])
         
         // execute
         land.main()
         
-        XCTAssertTrue(dummyDrone.methodCalls.contains("land"), "land should have been called")
+        XCTAssertTrue(dummyDrone.calledFunctions.contains("land"), "land should have been called")
+        XCTAssertTrue(dummyDrone.calledFunctions.count == 1, "only one card should have been called")
     }
 }

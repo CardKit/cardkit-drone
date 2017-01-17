@@ -11,6 +11,8 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
+// swiftlint:disable variable_name
+
 public typealias DroneTokenCompletionHandler = (Error?) -> Void
 
 public protocol DroneToken {
@@ -410,7 +412,7 @@ public extension DroneToken {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
-        land() { tokenError in
+        land { tokenError in
             error = tokenError
             semaphore.signal()
         }

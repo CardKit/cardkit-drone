@@ -34,8 +34,7 @@ public class FlyTo: ExecutableActionCard {
             if !isCancelled {
                 try drone.flySync(to: location, atAltitude: altitude, atSpeed: speed)
             }
-        }
-        catch {
+        } catch {
             self.error = error
             
             if !isCancelled {
@@ -52,8 +51,7 @@ public class FlyTo: ExecutableActionCard {
         
         do {
             try drone.landSync()
-        }
-        catch {
+        } catch {
             if self.error == nil {
                 self.error = error
             }

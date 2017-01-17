@@ -17,11 +17,11 @@ public protocol GimbalToken {
 }
 
 public extension GimbalToken {
-    func rotate(yaw: DCKAngle, completionHandler: DroneTokenCompletionHandler?){
+    func rotate(yaw: DCKAngle, completionHandler: DroneTokenCompletionHandler?) {
         return rotate(yaw: yaw, pitch: nil, roll: nil, relative: false, completionHandler: completionHandler)
     }
     
-    func rotate(pitch: DCKAngle, completionHandler: DroneTokenCompletionHandler?){
+    func rotate(pitch: DCKAngle, completionHandler: DroneTokenCompletionHandler?) {
         return rotate(yaw: nil, pitch: pitch, roll: nil, relative: false, completionHandler: completionHandler)
     }
     
