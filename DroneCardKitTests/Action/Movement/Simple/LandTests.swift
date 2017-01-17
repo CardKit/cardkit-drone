@@ -45,6 +45,7 @@ class LandTests: XCTestCase {
         // execute
         land.main()
         
-        XCTAssertTrue(dummyDrone.methodCalls.contains("land"), "land should have been called")
+        XCTAssertTrue(dummyDrone.calledFunctions.contains("land"), "land should have been called")
+        XCTAssertTrue(dummyDrone.calledFunctions.count == 1, "only one card should have been called")
     }
 }
