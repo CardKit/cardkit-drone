@@ -13,16 +13,16 @@ import CardKitRuntime
 public class CoverArea: ExecutableActionCard {
     override public func main() {
         // mandatory inputs
-        guard let area: DCKCoordinate2DPath = self.value(forInput: "Area") else {
+        guard let _: DCKCoordinate2DPath = self.value(forInput: "Area") else {
             return
         }
         
         // optional inputs
-        let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
-        let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
+        let _: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
+        let _: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
         // token
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+        guard let _: DroneToken = self.token(named: "Drone") as? DroneToken else {
             return
         }
         
@@ -44,7 +44,7 @@ public class CoverArea: ExecutableActionCard {
     
     override public func cancel() {
         // token
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+        guard let _: DroneToken = self.token(named: "Drone") as? DroneToken else {
             return
         }
         

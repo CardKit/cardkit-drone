@@ -40,7 +40,7 @@ class LandTests: XCTestCase {
         let dummyDrone = DummyDroneToken(with: droneCard)
         
         // bind
-        land.setup([:], tokens: [droneTokenSlot : dummyDrone])
+        land.setup([:], tokens: [droneTokenSlot: dummyDrone])
         
         // execute
         land.main()

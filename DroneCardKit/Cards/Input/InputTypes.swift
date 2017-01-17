@@ -282,7 +282,7 @@ extension DCKOrientedCoordinate2D: JSONDecodable, JSONEncodable {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
             "longitude": self.longitude.toJSON(),
-            "yaw" : self.yaw.toJSON()
+            "yaw": self.yaw.toJSON()
             ])
     }
 }
@@ -374,7 +374,7 @@ public struct DCKCoordinate2DPath {
     public let path: [DCKCoordinate2D]
     
     public init(path: [DCKCoordinate2D]) {
-        self.path = path;
+        self.path = path
     }
 }
 
@@ -407,7 +407,7 @@ public struct DCKCoordinate3DPath {
     public let path: [DCKCoordinate3D]
     
     public init(path: [DCKCoordinate3D]) {
-        self.path = path;
+        self.path = path
     }
 }
 

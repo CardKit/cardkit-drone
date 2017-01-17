@@ -36,8 +36,7 @@ public class Land: ExecutableActionCard {
                 try drone.landSync()
             }
            
-        }
-        catch {
+        } catch {
             self.error = error
             
             if !isCancelled {

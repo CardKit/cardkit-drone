@@ -1,0 +1,202 @@
+//
+//  DummyDroneToken.swift
+//  DroneCardKit
+//
+//  Created by ismails on 12/9/16.
+//  Copyright © 2016 IBM. All rights reserved.
+//
+
+// swiftlint:disable variable_name
+
+import Foundation
+
+import CardKit
+import CardKitRuntime
+
+public class DummyDroneToken: ExecutableTokenCard, DroneToken {
+    let prefix = ">> "
+    let delay: TimeInterval = 3.0
+    
+    public var homeLocation: DCKCoordinate2D?
+    
+    public var currentLocation: DCKCoordinate2D?
+    public var currentAltitude: DCKRelativeAltitude?
+    public var currentAttitude: DCKAttitude?
+    
+    public var areMotorsOn: Bool?
+    public var isLandingGearDown: Bool?
+    
+    var methodCalls: [String] = []
+    
+    override public init(with card: TokenCard) {
+        self.homeLocation = DCKCoordinate2D(latitude: 0, longitude: 0)
+        self.currentLocation = DCKCoordinate2D(latitude: 0, longitude: 0)
+        self.currentAltitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 0)
+        self.currentAttitude = DCKAttitude(yaw: DCKAngle(degrees: 0), pitch: DCKAngle(degrees: 0), roll: DCKAngle(degrees: 0))
+        self.areMotorsOn = false
+        self.isLandingGearDown = true
+        
+        super.init(with: card)
+    }
+    
+    // MARK: Instance Methods
+    private func methodCall(named name: String) {
+        self.methodCalls.append(name)
+    }
+    
+    // MARK: DroneToken
+    public func spinMotors(on: Bool, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "spinMotors")
+        print("\(prefix) DummyDJIDroneToken > turnMotorsOn()")
+        Thread.sleep(forTimeInterval: delay)
+        
+        areMotorsOn = on
+        completionHandler?(nil)
+    }
+    
+    public func takeOff(at altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "takeOff")
+        print("\(prefix) DummyDJIDroneToken > takeOff(at: \(altitude))")
+        Thread.sleep(forTimeInterval: delay)
+        
+        spinMotors(on: true) { (error) in
+            if let error = error {
+                completionHandler?(error)
+                return
+            }
+        }
+        
+        landingGear(down: false) { (error) in
+            if let error = error {
+                completionHandler?(error)
+                return
+            }
+        }
+        
+        var newAltitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 1)
+        
+        if let specifiedAltitude = altitude {
+            newAltitude = specifiedAltitude
+        }
+        
+        self.currentAltitude = newAltitude
+        
+        completionHandler?(nil)
+    }
+    
+    public func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "hover")
+        print("\(prefix) DummyDJIDroneToken > hover(at: \(altitude), withYaw: \(yaw))")
+        Thread.sleep(forTimeInterval: delay)
+        
+        if let specifiedAltitude = altitude {
+            self.currentAltitude = specifiedAltitude
+        }
+        
+        completionHandler?(nil)
+    }
+    
+    public func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "fly:to:atYaw:atAltitude:atSpeed:completionHandler")
+        print("\(prefix) DummyDJIDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
+        Thread.sleep(forTimeInterval: delay)
+        
+        let newYaw: DCKAngle
+        
+        if let yaw = yaw {
+            newYaw = yaw
+        } else {
+            newYaw = self.currentAttitude!.yaw
+        }
+        
+        let newCoord = DCKCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        self.currentLocation = newCoord
+        
+        if let altitude = altitude {
+            self.currentAltitude = altitude
+        }
+        
+        let newAttitude = DCKAttitude(yaw: newYaw, pitch: self.currentAttitude!.pitch, roll: self.currentAttitude!.roll)
+        self.currentAttitude = newAttitude
+        
+        completionHandler?(nil)
+    }
+    
+    public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "fly:on:atAltitude:atSpeed:completionHandler")
+        print("\(prefix) DummyDJIDroneToken > fly(on: \(path), atAltitude: \(altitude), atSpeed: \(speed))")
+        Thread.sleep(forTimeInterval: delay)
+        
+        var error: Error? = nil
+        for coord in path.path {
+            
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            self.fly(to: coord, atAltitude: altitude, atSpeed: speed) { e in
+                error = e
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
+            
+            if error != nil {
+                break
+            }
+        }
+        
+        completionHandler?(error)
+    }
+    
+    public func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "fly:on:atSpeed:completionHandler")
+        print("\(prefix) DummyDJIDroneToken > fly(on: \(path), atSpeed: \(speed))")
+        Thread.sleep(forTimeInterval: delay)
+        
+        var error: Error? = nil
+        for coord in path.path {
+            
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            self.fly(to: coord.as2D(), atAltitude: coord.altitude, atSpeed: speed) { e in
+                error = e
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
+            
+            if error != nil {
+                break
+            }
+        }
+        
+        completionHandler?(error)
+    }
+    
+    public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "returnHome")
+        print("\(prefix) DummyDJIDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")
+        Thread.sleep(forTimeInterval: delay)
+        
+        self.fly(to: self.homeLocation!) { error in
+            completionHandler?(error)
+        }
+    }
+    
+    public func landingGear(down: Bool, completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "landingGear")
+        print("\(prefix) DummyDJIDroneToken > landingGear(down: \(down))")
+        Thread.sleep(forTimeInterval: delay)
+        
+        self.isLandingGearDown = down
+    }
+    
+    public func land(completionHandler: DroneTokenCompletionHandler?) {
+        self.methodCall(named: "land")
+        print("\(prefix) DummyDJIDroneToken > land()")
+        Thread.sleep(forTimeInterval: delay)
+        
+        let newAltitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 0)
+        self.currentAltitude = newAltitude
+        completionHandler?(nil)
+    }
+}
