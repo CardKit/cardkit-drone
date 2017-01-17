@@ -15,12 +15,12 @@
 		6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
 		686EE8A31DF855A40024F3E5 /* Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686EE8A21DF855A40024F3E5 /* Land.swift */; };
 		68B635301DFB5B0E00A2AA07 /* Hover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B6352F1DFB5B0E00A2AA07 /* Hover.swift */; };
+		68BC43FC1E2E7ED100A2C2BD /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC43FB1E2E7ED100A2C2BD /* DummyDroneToken.swift */; };
+		68BC43FD1E2E7ED100A2C2BD /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC43FB1E2E7ED100A2C2BD /* DummyDroneToken.swift */; };
+		68BC43FE1E2E7ED100A2C2BD /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC43FB1E2E7ED100A2C2BD /* DummyDroneToken.swift */; };
 		68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
 		68D4329E1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
 		68D4329F1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
-		68DAC1CE1E2E73010028BDE4 /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAC1CD1E2E73010028BDE4 /* DummyDroneToken.swift */; };
-		68DAC1CF1E2E73080028BDE4 /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAC1CD1E2E73010028BDE4 /* DummyDroneToken.swift */; };
-		68DAC1D01E2E73090028BDE4 /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAC1CD1E2E73010028BDE4 /* DummyDroneToken.swift */; };
 		68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
@@ -94,8 +94,8 @@
 /* Begin PBXFileReference section */
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
 		68B6352F1DFB5B0E00A2AA07 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
+		68BC43FB1E2E7ED100A2C2BD /* DummyDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyDroneToken.swift; path = Token/DummyTokens/DummyDroneToken.swift; sourceTree = "<group>"; };
 		68D4329C1DFAFBFB0080389E /* LandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandTests.swift; sourceTree = "<group>"; };
-		68DAC1CD1E2E73010028BDE4 /* DummyDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyDroneToken.swift; path = DummyToken/DummyDroneToken.swift; sourceTree = "<group>"; };
 		68DE99A71DF1C7670040D76A /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC93187E1D4796DB001B71B1 /* DroneCardKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneCardKit.h; sourceTree = "<group>"; };
@@ -224,12 +224,13 @@
 			path = Simple;
 			sourceTree = "<group>";
 		};
-		68DAC1CC1E2E72DF0028BDE4 /* DummyToken */ = {
+		68DAC1CC1E2E72DF0028BDE4 /* DummyTokens */ = {
 			isa = PBXGroup;
 			children = (
-				68DAC1CD1E2E73010028BDE4 /* DummyDroneToken.swift */,
+				68BC43FB1E2E7ED100A2C2BD /* DummyDroneToken.swift */,
 			);
-			name = DummyToken;
+			name = DummyTokens;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		68DE99A41DF1C7670040D76A /* Action */ = {
@@ -361,7 +362,6 @@
 				68DE99A41DF1C7670040D76A /* Action */,
 				CCBE8C601DA69F5900BD7638 /* Input */,
 				CCD6D6E61DFF0EA9004CEB71 /* Token */,
-				68DAC1CC1E2E72DF0028BDE4 /* DummyToken */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -385,6 +385,7 @@
 		CCD6D6E61DFF0EA9004CEB71 /* Token */ = {
 			isa = PBXGroup;
 			children = (
+				68DAC1CC1E2E72DF0028BDE4 /* DummyTokens */,
 				CCD6D6E71DFF0EA9004CEB71 /* CameraToken.swift */,
 				CCD6D6E81DFF0EA9004CEB71 /* DroneToken.swift */,
 				CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */,
@@ -803,7 +804,7 @@
 				68B635301DFB5B0E00A2AA07 /* Hover.swift in Sources */,
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CCD6D6F01DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
-				68DAC1CE1E2E73010028BDE4 /* DummyDroneToken.swift in Sources */,
+				68BC43FC1E2E7ED100A2C2BD /* DummyDroneToken.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CCD6D6ED1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
@@ -829,7 +830,7 @@
 				F9617B941E1D74E3003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EB1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
-				68DAC1CF1E2E73080028BDE4 /* DummyDroneToken.swift in Sources */,
+				68BC43FD1E2E7ED100A2C2BD /* DummyDroneToken.swift in Sources */,
 				CCD6D6E41DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
 				CCBE8C6E1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */,
@@ -856,7 +857,7 @@
 				F9617B951E1D74E4003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EC1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
-				68DAC1D01E2E73090028BDE4 /* DummyDroneToken.swift in Sources */,
+				68BC43FE1E2E7ED100A2C2BD /* DummyDroneToken.swift in Sources */,
 				CCD6D6E51DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
 				CCBE8C701DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */,
