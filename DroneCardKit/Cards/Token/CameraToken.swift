@@ -33,6 +33,12 @@ public protocol CameraToken {
     
     /// Stop taking a timelapse movie.
     func stopTimelapse(completionHandler: CameraTokenCompletionHandler?)
+    
+    /// Start taking a video.
+    func startVideo(options: Set<CameraVideoOption>, completionHandler: CameraTokenCompletionHandler?)
+    
+    /// Stop taking a video.
+    func stopVideo(completionHandler: CameraTokenCompletionHandler?)
 }
 
 // MARK: - Convienience -- take photo
@@ -89,8 +95,8 @@ public enum PhotoQuality {
 
 public enum CameraVideoOption {
     case SlowMotionEnabled
-    case VideoResolution(VideoResolution)
     case VideoFramerate(VideoFramerate)
+    case VideoResolution(VideoResolution)
 }
 
 public enum VideoResolution {

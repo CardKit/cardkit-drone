@@ -414,7 +414,11 @@ extension DroneCardKit.Action.Tech.Camera {
     public static let RecordVideo = ActionCardDescriptor(
         name: "Record Video",
         subpath: "Tech/Camera",
-        inputs: nil,
+        inputs: [
+            InputSlot(name: "Framerate", descriptor: DroneCardKit.Input.Camera.Framerate, isOptional: true),
+            InputSlot(name: "Resolution", descriptor: DroneCardKit.Input.Camera.Resolution, isOptional: true),
+            InputSlot(name: "SlowMotionEnabled", descriptor: CardKit.Input.Logical.Boolean, isOptional: true)
+        ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
@@ -425,10 +429,14 @@ extension DroneCardKit.Action.Tech.Camera {
         assetCatalog: CardAssetCatalog(description: "Record a video"),
         version: 0)
     
-    public static let TakeAPhoto = ActionCardDescriptor(
+    public static let TakePhoto = ActionCardDescriptor(
         name: "Take a Photo",
         subpath: "Tech/Camera",
-        inputs: nil,
+        inputs: [
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
+            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
+            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+        ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
@@ -439,10 +447,34 @@ extension DroneCardKit.Action.Tech.Camera {
         assetCatalog: CardAssetCatalog(description: "Take a photo"),
         version: 0)
     
+    public static let TakePhotoBurst = ActionCardDescriptor(
+        name: "Take a Photo Burst",
+        subpath: "Tech/Camera",
+        inputs: [
+            InputSlot(name: "BurstCount", descriptor: DroneCardKit.Input.Camera.BurstCount, isOptional: false),
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
+            InputSlot(name: "HDR", descriptor: DroneCardKit.Input.Logical.Boolean, isOptional: true),
+            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+        ],
+        tokens: [
+            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+        ],
+        yields: [Yield(type: Data.self)],
+        ends: true,
+        endsDescription: "Ends when the photo burst has been taken",
+        assetCatalog: CardAssetCatalog(description: "Take a photo burst"),
+        version: 0)
+    )
+    
     public static let TakePhotos = ActionCardDescriptor(
         name: "Take Photos",
         subpath: "Tech/Camera",
-        inputs: nil,
+        inputs: [
+            InputSlot(name: "Interval", descriptor: CardKit.Input.Numeric.Real, isOptional: false),
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
+            InputSlot(name: "HDR", descriptor: DroneCardKit.Input.Logical.Boolean, isOptional: true),
+            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+        ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
@@ -452,6 +484,23 @@ extension DroneCardKit.Action.Tech.Camera {
         endsDescription: nil,
         assetCatalog: CardAssetCatalog(description: "Take photos"),
         version: 0)
+    
+    public static let TakeTimelapse = ActionCardDescriptor(
+        name: "Take a Timelapse",
+        subpath: "Tech/Camera",
+        inputs: [
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
+            InputSlot(name: "HDR", descriptor: DroneCardKit.Input.Logical.Boolean, isOptional: true),
+            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+        ],
+        tokens: [
+            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+        ],
+        ends: false,
+        endDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Take a timelapse"),
+        version: 0)
+    )
 }
 
 // TODO: Add descriptors for Claw, Gimbal, Sensor, Speaker
@@ -568,6 +617,66 @@ extension DroneCardKit {
     public struct Input {
         fileprivate init() {}
     }
+}
+
+extension DroneCardKit.Input {
+    /// Contains descriptors for Input/Camera cards
+    public struct Camera {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Input.Camera {
+    // MARK: Camera/AspectRatio
+    /// Descriptor for the AspectRatio card
+    public static let AspectRatio = InputCardDescriptor(
+        name: "Aspect Ratio",
+        subpath: "Camera",
+        inputType: PhotoAspectRatio.self,
+        inputDescription: "Photo aspect ratio (16x9 or 4x3)",
+        assetCatalog: CardAssetCatalog(description: "Aspect ratio"),
+        version: 0)
+    
+    // MARK: Camera/BurstCount
+    /// Descriptor for the BurstCount card
+    public static let BurstCount = InputCardDescriptor(
+        name: "Burst Count",
+        subpath: "Camera",
+        inputType: PhotoBurstCount.self,
+        inputDescription: "Photo burst count",
+        assetCatalog: CardAssetCatalog(description: "Burst count"),
+        version: 0)
+    
+    // MARK: Camera/Framerate
+    /// Descriptor for the Framerate card
+    public static let Framerate = InputCardDescriptor(
+        name: "Framerate",
+        subpath: "Camera",
+        inputType: VideoFramerate.self,
+        inputDescription: "Video framerate",
+        assetCatalog: CardAssetCatalog(description: "Framerate"),
+        version: 0)
+    
+    // MARK: Camera/Quality
+    /// Descriptor for the Quality card
+    public static let Quality = InputCardDescriptor(
+        name: "Quality",
+        subpath: "Camera",
+        inputType: PhotoQuality.self,
+        inputDescription: "Photo quality",
+        assetCatalog: CardAssetCatalog(description: "Quality"),
+        version: 0)
+    
+    // MARK: Camera/Resolution
+    /// Descriptor for the Resolution card
+    public static let Resolution = InputCardDescriptor(
+        name: "Resolution",
+        subpath: "Camera",
+        inputType: VideoResolution.self,
+        inputDescription: "Video resolution",
+        assetCatalog: CardAssetCatalog(description: "Resolution"),
+        version: 0)
+    )
 }
 
 extension DroneCardKit.Input {
