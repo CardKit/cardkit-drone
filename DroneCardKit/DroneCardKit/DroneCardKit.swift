@@ -453,18 +453,18 @@ extension DroneCardKit.Action.Tech.Camera {
         inputs: [
             InputSlot(name: "BurstCount", descriptor: DroneCardKit.Input.Camera.BurstCount, isOptional: false),
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "HDR", descriptor: DroneCardKit.Input.Logical.Boolean, isOptional: true),
+            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
         yields: [Yield(type: Data.self)],
+        yieldDescription: "Yields a photo burst",
         ends: true,
         endsDescription: "Ends when the photo burst has been taken",
         assetCatalog: CardAssetCatalog(description: "Take a photo burst"),
         version: 0)
-    )
     
     public static let TakePhotos = ActionCardDescriptor(
         name: "Take Photos",
@@ -472,7 +472,7 @@ extension DroneCardKit.Action.Tech.Camera {
         inputs: [
             InputSlot(name: "Interval", descriptor: CardKit.Input.Numeric.Real, isOptional: false),
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "HDR", descriptor: DroneCardKit.Input.Logical.Boolean, isOptional: true),
+            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
@@ -490,17 +490,18 @@ extension DroneCardKit.Action.Tech.Camera {
         subpath: "Tech/Camera",
         inputs: [
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "HDR", descriptor: DroneCardKit.Input.Logical.Boolean, isOptional: true),
+            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
+        yields: [Yield(type: Data.self)],
+        yieldDescription: "Yields a timelapse video",
         ends: false,
-        endDescription: nil,
+        endsDescription: nil,
         assetCatalog: CardAssetCatalog(description: "Take a timelapse"),
         version: 0)
-    )
 }
 
 // TODO: Add descriptors for Claw, Gimbal, Sensor, Speaker
@@ -676,7 +677,6 @@ extension DroneCardKit.Input.Camera {
         inputDescription: "Video resolution",
         assetCatalog: CardAssetCatalog(description: "Resolution"),
         version: 0)
-    )
 }
 
 extension DroneCardKit.Input {

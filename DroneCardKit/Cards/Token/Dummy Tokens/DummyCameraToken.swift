@@ -17,23 +17,24 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     
     var isTakingPhotos = false
     var isTakingTimelapse = false
+    var isTakingVideo = false
     
-    func takePhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func takePhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
         print("\(prefix) DummyCameraToken > takePhoto()")
         Thread.sleep(forTimeInterval: delay)
         completionHandler?(nil)
     }
     
-    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
         print("\(prefix) DummyCameraToken > takePhotoBurst(count: \(count), options: \(options))")
         Thread.sleep(forTimeInterval: delay)
         completionHandler?(nil)
     }
     
-    func startTakingPhotos(at interval: TimeInterval, completionHandler: CameraTokenCompletionHandler?) {
+    public func startTakingPhotos(at interval: TimeInterval, completionHandler: CameraTokenCompletionHandler?) {
         print("\(prefix) DummyCameraToken > startTakingPhotos(at: \(interval))")
         
-        if self.isTakingPhotos || self.isTakingTimelapse {
+        if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             let error = CameraTokenError.CameraAlreadyInUse
             completionHandler?(error)
             return
@@ -43,17 +44,17 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         completionHandler?(nil)
     }
     
-    func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler?) {
+    public func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler?) {
         print("\(prefix) DummyCameraToken > stopTakingPhotos()")
         self.isTakingPhotos = false
         completionHandler?(nil)
     }
     
     /// Start taking a timelapse movie.
-    func startTimelapse(completionHandler: CameraTokenCompletionHandler?) {
+    public func startTimelapse(completionHandler: CameraTokenCompletionHandler?) {
         print("\(prefix) DummyCameraToken > startTimelapse()")
         
-        if self.isTakingPhotos || self.isTakingTimelapse {
+        if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             let error = CameraTokenError.CameraAlreadyInUse
             completionHandler?(error)
             return
@@ -64,9 +65,28 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     }
     
     /// Stop taking a timelapse movie.
-    func stopTimelapse(completionHandler: CameraTokenCompletionHandler?) {
+    public func stopTimelapse(completionHandler: CameraTokenCompletionHandler?) {
         print("\(prefix) DummyCameraToken > stopTimelapse()")
         self.isTakingTimelapse = false
+        completionHandler?(nil)
+    }
+    
+    public func startVideo(options: Set<CameraVideoOption>, completionHandler: CameraTokenCompletionHandler?) {
+        print("\(prefix) DummyCameraToken > startVideo(options: \(options))")
+        
+        if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
+            let error = CameraTokenError.CameraAlreadyInUse
+            completionHandler?(error)
+            return
+        }
+        
+        self.isTakingVideo = true
+        completionHandler?(nil)
+    }
+    
+    public func stopVideo(completionHandler: CameraTokenCompletionHandler?) {
+        print("\(prefix) DummyCameraToken > stopVideo()")
+        self.isTakingVideo = false
         completionHandler?(nil)
     }
 }

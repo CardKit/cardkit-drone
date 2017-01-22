@@ -19,21 +19,21 @@ public class RecordVideo: ExecutableActionCard {
         
         let framerate: VideoFramerate? = self.optionalValue(forInput: "Framerate")
         let resolution: VideoResolution? = self.optionalValue(forInput: "Resolution")
-        let slowmo: Bool = self.optionalValue(forInput: "SlowMotionEnabled")
+        let slowmo: Bool? = self.optionalValue(forInput: "SlowMotionEnabled")
         
         var cameraOptions: Set<CameraVideoOption> = []
         if let framerate = framerate {
-            cameraOptions.add(.VideoFramerate(framerate))
+            cameraOptions.insert(.Framerate(framerate))
         }
         if let resolution = resolution {
-            cameraOptions.add(.VideoResolution(resolution))
+            cameraOptions.insert(.Resolution(resolution))
         }
-        if let slomo = slomo {
-            cameraOptions.add(.SlowMotionEnabled)
+        if let _ = slowmo {
+            cameraOptions.insert(.SlowMotionEnabled)
         }
         
         if !isCancelled {
-            camera.startVideo(cameraOptions, {
+            camera.startVideo(options: cameraOptions, completionHandler: {
                 error in
                 self.error = error
             })
