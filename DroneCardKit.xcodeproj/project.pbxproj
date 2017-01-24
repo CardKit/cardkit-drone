@@ -35,6 +35,9 @@
 		CC0F32CD1E316D56008423AC /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32CC1E316D56008423AC /* RecordVideo.swift */; };
 		CC0F32CE1E316D56008423AC /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32CC1E316D56008423AC /* RecordVideo.swift */; };
 		CC0F32CF1E316D56008423AC /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32CC1E316D56008423AC /* RecordVideo.swift */; };
+		CC56E0121E36B1C700F669BC /* TakePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56E0111E36B1C700F669BC /* TakePhoto.swift */; };
+		CC56E0131E36B1C700F669BC /* TakePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56E0111E36B1C700F669BC /* TakePhoto.swift */; };
+		CC56E0141E36B1C700F669BC /* TakePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56E0111E36B1C700F669BC /* TakePhoto.swift */; };
 		CC93187F1D4796DB001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318861D4796DB001B71B1 /* DroneCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */; };
 		CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
@@ -109,6 +112,7 @@
 		CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCameraToken.swift; sourceTree = "<group>"; };
 		CC0F32C61E316CB8008423AC /* InputTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTests.swift; sourceTree = "<group>"; };
 		CC0F32CC1E316D56008423AC /* RecordVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideo.swift; sourceTree = "<group>"; };
+		CC56E0111E36B1C700F669BC /* TakePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhoto.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC93187E1D4796DB001B71B1 /* DroneCardKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneCardKit.h; sourceTree = "<group>"; };
 		CC9318801D4796DB001B71B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				CC0F32CC1E316D56008423AC /* RecordVideo.swift */,
+				CC56E0111E36B1C700F669BC /* TakePhoto.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 				CCD6D6E31DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				CC56E0121E36B1C700F669BC /* TakePhoto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,6 +887,7 @@
 				CCD6D6EE1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				F9FDA9501DFF07EE00256F2C /* Land.swift in Sources */,
+				CC56E0131E36B1C700F669BC /* TakePhoto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +918,7 @@
 				CCD6D6EF1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				F9FDA9521DFF07EF00256F2C /* Land.swift in Sources */,
+				CC56E0141E36B1C700F669BC /* TakePhoto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
