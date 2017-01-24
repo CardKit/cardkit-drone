@@ -47,6 +47,9 @@
 		CC9318CE1D479716001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
 		CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
+		CCB598791E37EC7C009464A9 /* TakePhotoBurst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB598781E37EC7C009464A9 /* TakePhotoBurst.swift */; };
+		CCB5987A1E37EC7C009464A9 /* TakePhotoBurst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB598781E37EC7C009464A9 /* TakePhotoBurst.swift */; };
+		CCB5987B1E37EC7C009464A9 /* TakePhotoBurst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB598781E37EC7C009464A9 /* TakePhotoBurst.swift */; };
 		CCBB794C1D7897D8003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		CCBB794D1D7897D8003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */; };
 		CCBB794E1D7897D8003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794B1D7897D8003B6458 /* Freddy.framework */; };
@@ -124,6 +127,7 @@
 		CC9318B61D479706001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318BF1D479706001B71B1 /* DroneCardKitTests tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DroneCardKitTests tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStudyScenarios.swift; sourceTree = "<group>"; };
+		CCB598781E37EC7C009464A9 /* TakePhotoBurst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoBurst.swift; sourceTree = "<group>"; };
 		CCBB79411D7897BB003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/iOS/CardKit.framework; sourceTree = "<group>"; };
 		CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/iOS/CardKitRuntime.framework; sourceTree = "<group>"; };
 		CCBB79431D7897BB003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 			children = (
 				CC0F32CC1E316D56008423AC /* RecordVideo.swift */,
 				CC56E0111E36B1C700F669BC /* TakePhoto.swift */,
+				CCB598781E37EC7C009464A9 /* TakePhotoBurst.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -845,6 +850,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB598791E37EC7C009464A9 /* TakePhotoBurst.swift in Sources */,
 				68B635301DFB5B0E00A2AA07 /* Hover.swift in Sources */,
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CCD6D6F01DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
@@ -875,6 +881,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB5987A1E37EC7C009464A9 /* TakePhotoBurst.swift in Sources */,
 				F9617B941E1D74E3003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EB1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
@@ -906,6 +913,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB5987B1E37EC7C009464A9 /* TakePhotoBurst.swift in Sources */,
 				F9617B951E1D74E4003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EC1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
