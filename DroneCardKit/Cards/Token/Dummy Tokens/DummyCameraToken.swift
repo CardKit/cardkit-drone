@@ -51,8 +51,8 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     }
     
     /// Start taking a timelapse movie.
-    public func startTimelapse(completionHandler: CameraTokenCompletionHandler?) {
-        print("\(prefix) DummyCameraToken > startTimelapse()")
+    public func startTimelapse(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+        print("\(prefix) DummyCameraToken > startTimelapse(options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             let error = CameraTokenError.CameraAlreadyInUse

@@ -31,7 +31,7 @@ public protocol CameraToken {
     func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler?)
     
     /// Start taking a timelapse movie.
-    func startTimelapse(completionHandler: CameraTokenCompletionHandler?)
+    func startTimelapse(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
     
     /// Stop taking a timelapse movie.
     func stopTimelapse(completionHandler: CameraTokenCompletionHandler?)
