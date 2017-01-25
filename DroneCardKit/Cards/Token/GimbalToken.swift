@@ -22,7 +22,7 @@ public protocol GimbalToken {
     func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds: Double, completionHandler: DroneTokenCompletionHandler?)
 }
 
-// MARK: - Convienience -- calibrate
+// MARK: - Convienience -- reset
 public extension GimbalToken {
     func reset(completionHandler: DroneTokenCompletionHandler? = nil) {
         self.reset(completionHandler: completionHandler)
