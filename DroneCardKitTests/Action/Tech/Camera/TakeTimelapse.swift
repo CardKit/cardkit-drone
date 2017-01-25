@@ -28,11 +28,16 @@ public class TakeTimelapse: ExecutableActionCard {
             cameraOptions.insert(.quality(quality))
         }
         
-        if !isCancelled {
-            camera.startTimelapse(options: cameraOptions, completionHandler: {
-                error in
-                self.error = error
-            })
+        do {
+            if !isCancelled {
+                try camera.startTimelapseSync(options: cameraOptions)
+            }
+        } catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     
@@ -42,9 +47,10 @@ public class TakeTimelapse: ExecutableActionCard {
             return
         }
         
-        camera.stopTimelapse(completionHandler: {
-            error in
+        do {
+            try camera.stopTimelapseSync()
+        } catch let error {
             self.error = error
-        })
+        }
     }
 }

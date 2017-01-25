@@ -32,11 +32,16 @@ public class RecordVideo: ExecutableActionCard {
             cameraOptions.insert(.slowMotionEnabled)
         }
         
-        if !isCancelled {
-            camera.startVideo(options: cameraOptions, completionHandler: {
-                error in
-                self.error = error
-            })
+        do {
+            if !isCancelled {
+                try camera.startVideoSync(options: cameraOptions)
+            }
+        } catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     
@@ -46,9 +51,10 @@ public class RecordVideo: ExecutableActionCard {
             return
         }
         
-        camera.stopVideo(completionHandler: {
-            error in
+        do {
+            try camera.stopVideoSync()
+        } catch let error {
             self.error = error
-        })
+        }
     }
 }

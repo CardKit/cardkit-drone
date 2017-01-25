@@ -33,11 +33,16 @@ public class TakePhotoBurst: ExecutableActionCard {
             cameraOptions.insert(.quality(quality))
         }
         
-        if !isCancelled {
-            camera.takePhotoBurst(count: burstCount, options: cameraOptions, completionHandler: {
-                error in
-                self.error = error
-            })
+        do {
+            if !isCancelled {
+                try camera.takePhotoBurstSync(count: burstCount, options: cameraOptions)
+            }
+        } catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     

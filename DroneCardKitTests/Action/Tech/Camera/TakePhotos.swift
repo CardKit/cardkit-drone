@@ -33,11 +33,16 @@ public class TakePhotos: ExecutableActionCard {
             cameraOptions.insert(.quality(quality))
         }
         
-        if !isCancelled {
-            camera.startTakingPhotos(at: interval, options: cameraOptions, completionHandler: {
-                error in
-                self.error = error
-            })
+        do {
+            if !isCancelled {
+                try camera.startTakingPhotosSync(at: interval, options: cameraOptions)
+            }
+        } catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
         }
     }
     
@@ -47,9 +52,10 @@ public class TakePhotos: ExecutableActionCard {
             return
         }
         
-        camera.stopTakingPhotos(completionHandler: {
-            error in
+        do {
+            try camera.stopTakingPhotosSync()
+        } catch let error {
             self.error = error
-        })
+        }
     }
 }

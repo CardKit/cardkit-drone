@@ -29,17 +29,19 @@ public class TakePhoto: ExecutableActionCard {
             cameraOptions.insert(.quality(quality))
         }
         
-        if !isCancelled {
-            if hdr {
-                camera.takeHDRPhoto(options: cameraOptions, completionHandler: {
-                    error in
-                    self.error = error
-                })
-            } else {
-                camera.takePhoto(options: cameraOptions, completionHandler: {
-                    error in
-                    self.error = error
-                })
+        do {
+            if !isCancelled {
+                if hdr {
+                    try camera.takeHDRPhotoSync(options: cameraOptions)
+                } else {
+                    try camera.takePhotoSync(options: cameraOptions)
+                }
+            }
+        } catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
             }
         }
     }
