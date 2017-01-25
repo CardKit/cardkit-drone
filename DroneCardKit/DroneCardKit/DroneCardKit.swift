@@ -55,8 +55,7 @@ extension DroneCardKit.Action.Movement.Area {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the area has been covered.",
-        assetCatalog: CardAssetCatalog(description: "Cover an area"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Cover an area"))
     
     // MARK: Movement/Area/Survey
     public static let Survey = ActionCardDescriptor(
@@ -74,8 +73,7 @@ extension DroneCardKit.Action.Movement.Area {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the area has been surveyed.",
-        assetCatalog: CardAssetCatalog(description: "Survey an area"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Survey an area"))
 }
 
 extension DroneCardKit.Action.Movement {
@@ -103,8 +101,7 @@ extension DroneCardKit.Action.Movement.Location {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has made one full circle around the center coordinate",
-        assetCatalog: CardAssetCatalog(description: "Circle around the target"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Circle around the target"))
     
     // MARK: Movement/Location/CircleRepeatedly
     public static let CircleRepeatedly = ActionCardDescriptor(
@@ -123,8 +120,7 @@ extension DroneCardKit.Action.Movement.Location {
         yieldDescription: nil,
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Circle repeatedly around the target"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Circle repeatedly around the target"))
     
     // MARK: Movement/Location/FlyTo
     public static let FlyTo = ActionCardDescriptor(
@@ -142,8 +138,7 @@ extension DroneCardKit.Action.Movement.Location {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the destination is reached",
-        assetCatalog: CardAssetCatalog(description: "Fly to the specified location"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Fly to the specified location"))
     
     // MARK: Movement/Location/ReturnHome
     public static let ReturnHome = ActionCardDescriptor(
@@ -160,8 +155,7 @@ extension DroneCardKit.Action.Movement.Location {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has returned home",
-        assetCatalog: CardAssetCatalog(description: "Return home"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Return home"))
 }
 
 extension DroneCardKit.Action.Movement {
@@ -188,8 +182,7 @@ extension DroneCardKit.Action.Movement.Orientation {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has rotated the specified angle",
-        assetCatalog: CardAssetCatalog(description: "Rotate a specified number of degrees"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Rotate a specified number of degrees"))
     
     // MARK: Movement/Orientation/SpinAround
     public static let SpinAround = ActionCardDescriptor(
@@ -206,8 +199,7 @@ extension DroneCardKit.Action.Movement.Orientation {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has completely spun around",
-        assetCatalog: CardAssetCatalog(description: "Spin around"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Spin around"))
 }
 
 extension DroneCardKit.Action.Movement {
@@ -235,8 +227,7 @@ extension DroneCardKit.Action.Movement.Path {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the area has been traced",
-        assetCatalog: CardAssetCatalog(description: "Trace around an area"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Trace around an area"))
     
     // MARK: Movement/Path/TraceRepeatedly
     public static let TraceRepeatedly = ActionCardDescriptor(
@@ -255,8 +246,7 @@ extension DroneCardKit.Action.Movement.Path {
         yieldDescription: nil,
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Trace around an area repeatedly"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Trace around an area repeatedly"))
 }
 
 extension DroneCardKit.Action.Movement {
@@ -284,8 +274,7 @@ extension DroneCardKit.Action.Movement.Relative {
         yieldDescription: nil,
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Follow an object"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Follow an object"))
 }
 
 extension DroneCardKit.Action.Movement {
@@ -311,8 +300,7 @@ extension DroneCardKit.Action.Movement.Simple {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has flown the specified distance",
-        assetCatalog: CardAssetCatalog(description: "Fly forward"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Fly forward"))
     
     // MARK: Movement/Simple/Hover
     public static let Hover = ActionCardDescriptor(
@@ -328,8 +316,7 @@ extension DroneCardKit.Action.Movement.Simple {
         yieldDescription: nil,
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Hover in the air"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Hover in the air"))
     
     // MARK: Movement/Simple/Land
     public static let Land = ActionCardDescriptor(
@@ -345,8 +332,7 @@ extension DroneCardKit.Action.Movement.Simple {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has landed",
-        assetCatalog: CardAssetCatalog(description: "Land"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Land"))
 }
 
 extension DroneCardKit.Action.Movement {
@@ -373,8 +359,7 @@ extension DroneCardKit.Action.Movement.Sequence {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has flown the path",
-        assetCatalog: CardAssetCatalog(description: "Fly path"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Fly path"))
     
     // MARK: Movement/Sequence/Pace
     public static let Pace = ActionCardDescriptor(
@@ -392,8 +377,7 @@ extension DroneCardKit.Action.Movement.Sequence {
         yieldDescription: nil,
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Pace forwards and backwards along the path"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Pace forwards and backwards along the path"))
 }
 
 extension DroneCardKit.Action {
@@ -426,8 +410,7 @@ extension DroneCardKit.Action.Tech.Camera {
         yieldDescription: nil,
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Record a video"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Record a video"))
     
     public static let TakePhoto = ActionCardDescriptor(
         name: "Take a Photo",
@@ -444,8 +427,7 @@ extension DroneCardKit.Action.Tech.Camera {
         yieldDescription: "Yields a photo",
         ends: true,
         endsDescription: "Ends when the photo has been taken",
-        assetCatalog: CardAssetCatalog(description: "Take a photo"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Take a photo"))
     
     public static let TakeHDRPhoto = ActionCardDescriptor(
         name: "Take an HDR Photo",
@@ -461,8 +443,7 @@ extension DroneCardKit.Action.Tech.Camera {
         yieldDescription: "Yields an HDR photo",
         ends: true,
         endsDescription: "Ends when the photo has been taken",
-        assetCatalog: CardAssetCatalog(description: "Take an HDR photo"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Take an HDR photo"))
     
     public static let TakePhotoBurst = ActionCardDescriptor(
         name: "Take a Photo Burst",
@@ -479,8 +460,7 @@ extension DroneCardKit.Action.Tech.Camera {
         yieldDescription: "Yields a photo burst",
         ends: true,
         endsDescription: "Ends when the photo burst has been taken",
-        assetCatalog: CardAssetCatalog(description: "Take a photo burst"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Take a photo burst"))
     
     public static let TakePhotos = ActionCardDescriptor(
         name: "Take Photos",
@@ -497,8 +477,7 @@ extension DroneCardKit.Action.Tech.Camera {
         yieldDescription: "Yields a sequence of photos",
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Take photos"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Take photos"))
     
     public static let TakeTimelapse = ActionCardDescriptor(
         name: "Take a Timelapse",
@@ -514,8 +493,7 @@ extension DroneCardKit.Action.Tech.Camera {
         yieldDescription: "Yields a timelapse video",
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Take a timelapse"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Take a timelapse"))
 }
 
 // TODO: Add descriptors for Claw, Gimbal, Sensor, Speaker
@@ -570,8 +548,7 @@ extension DroneCardKit.Action.Think {
         yieldDescription: "Yields the coordinate of the detected object",
         ends: true,
         endsDescription: "Ends when the object has been detected",
-        assetCatalog: CardAssetCatalog(description: "Detect an object in the air"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Detect an object in the air"))
     
     public static let DetectOnGround = ActionCardDescriptor(
         name: "Detect On Ground",
@@ -587,8 +564,7 @@ extension DroneCardKit.Action.Think {
         yieldDescription: "Yields the coordinate of the detected object",
         ends: true,
         endsDescription: "Ends when the object has been detected",
-        assetCatalog: CardAssetCatalog(description: "Detect an object on the ground"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Detect an object on the ground"))
     
     public static let TrackInAir = ActionCardDescriptor(
         name: "Track In Air",
@@ -604,8 +580,7 @@ extension DroneCardKit.Action.Think {
         yieldDescription: "Yields the coordinate of the detected object",
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Track an object in the air"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Track an object in the air"))
     
     public static let TrackOnGround = ActionCardDescriptor(
         name: "Track On Ground",
@@ -621,8 +596,7 @@ extension DroneCardKit.Action.Think {
         yieldDescription: "Yields the coordinate of the detected object",
         ends: false,
         endsDescription: nil,
-        assetCatalog: CardAssetCatalog(description: "Track an object on the ground"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Track an object on the ground"))
 }
 
 // MARK: - Input Cards
@@ -649,8 +623,7 @@ extension DroneCardKit.Input.Camera {
         subpath: "Camera",
         inputType: PhotoAspectRatio.self,
         inputDescription: "Photo aspect ratio (16x9 or 4x3)",
-        assetCatalog: CardAssetCatalog(description: "Aspect ratio"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Aspect ratio"))
     
     // MARK: Camera/BurstCount
     /// Descriptor for the BurstCount card
@@ -659,8 +632,7 @@ extension DroneCardKit.Input.Camera {
         subpath: "Camera",
         inputType: PhotoBurstCount.self,
         inputDescription: "Photo burst count",
-        assetCatalog: CardAssetCatalog(description: "Burst count"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Burst count"))
     
     // MARK: Camera/Framerate
     /// Descriptor for the Framerate card
@@ -669,8 +641,7 @@ extension DroneCardKit.Input.Camera {
         subpath: "Camera",
         inputType: VideoFramerate.self,
         inputDescription: "Video framerate",
-        assetCatalog: CardAssetCatalog(description: "Framerate"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Framerate"))
     
     // MARK: Camera/Quality
     /// Descriptor for the Quality card
@@ -679,8 +650,7 @@ extension DroneCardKit.Input.Camera {
         subpath: "Camera",
         inputType: PhotoQuality.self,
         inputDescription: "Photo quality",
-        assetCatalog: CardAssetCatalog(description: "Quality"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Quality"))
     
     // MARK: Camera/Resolution
     /// Descriptor for the Resolution card
@@ -689,8 +659,7 @@ extension DroneCardKit.Input.Camera {
         subpath: "Camera",
         inputType: VideoResolution.self,
         inputDescription: "Video resolution",
-        assetCatalog: CardAssetCatalog(description: "Resolution"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Resolution"))
 }
 
 extension DroneCardKit.Input {
@@ -708,8 +677,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location",
         inputType: Double.self,
         inputDescription: "Angle (in degrees)",
-        assetCatalog: CardAssetCatalog(description: "Angle (in degrees)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Angle (in degrees)"))
     
     // MARK: Location/BoundingBox
     /// Descriptor for the Bounding Box card
@@ -718,8 +686,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location",
         inputType: DCKCoordinate2DPath.self,
         inputDescription: "Set of 2D coordinates",
-        assetCatalog: CardAssetCatalog(description: "Bounding Box (2D)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Bounding Box (2D)"))
     
     // MARK: Location/BoundingBox3D
     /// Descriptor for the Bounding Box 3D card
@@ -728,8 +695,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location",
         inputType: DCKCoordinate3DPath.self,
         inputDescription: "Set of 3D coordinates",
-        assetCatalog: CardAssetCatalog(description: "Bounding Box (3D)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Bounding Box (3D)"))
     
     // MARK: Location/CardinalDirection
     /// Descriptor for the Cardinal Direction card
@@ -738,8 +704,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location",
         inputType: DCKAngle.self,
         inputDescription: "Cardinal Direction",
-        assetCatalog: CardAssetCatalog(description: "Cardinal Direction (N, S, E, W)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Cardinal Direction (N, S, E, W)"))
     
     // MARK: Location/Distance
     /// Descriptor for the Distance card
@@ -748,8 +713,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location",
         inputType: Double.self,
         inputDescription: "Distance (meters)",
-        assetCatalog: CardAssetCatalog(description: "Distance (meters)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Distance (meters)"))
     
     // MARK: Location/Coordinate2D
     /// Descriptor for the Coordinate2D card
@@ -758,8 +722,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location/Coordinate",
         inputType: DCKCoordinate2D.self,
         inputDescription: "Coordinate (2D)",
-        assetCatalog: CardAssetCatalog(description: "2D coordinate"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "2D coordinate"))
     
     // MARK: Location/Coordinate3D
     /// Descriptor for the Coordinate3D card
@@ -768,8 +731,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location/Coordinate",
         inputType: DCKCoordinate3D.self,
         inputDescription: "Coordinate (3D)",
-        assetCatalog: CardAssetCatalog(description: "3D coordinate"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "3D coordinate"))
     
     // MARK: Location/Path
     /// Descriptor for the Path card
@@ -778,8 +740,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location",
         inputType: DCKCoordinate2DPath.self,
         inputDescription: "2D coordinate path",
-        assetCatalog: CardAssetCatalog(description: "Path (2D)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Path (2D)"))
     
     // MARK: Location/Path3D
     /// Descriptor for the Path 3D card
@@ -788,8 +749,7 @@ extension DroneCardKit.Input.Location {
         subpath: "Location",
         inputType: DCKCoordinate3DPath.self,
         inputDescription: "3D coordinate path",
-        assetCatalog: CardAssetCatalog(description: "Path (3D)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Path (3D)"))
 }
 
 extension DroneCardKit.Input {
@@ -813,8 +773,7 @@ extension DroneCardKit.Input.Modifier.Movement {
         subpath: "Modifier/Movement",
         inputType: DCKRelativeAltitude.self,
         inputDescription: "Altitude (in meters)",
-        assetCatalog: CardAssetCatalog(description: "Altitude (in meters)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Altitude (in meters)"))
     
     // MARK: Modifier/Movement/AngularSpeed
     public static let AngularSpeed = InputCardDescriptor(
@@ -822,8 +781,7 @@ extension DroneCardKit.Input.Modifier.Movement {
         subpath: "Modifier/Movement",
         inputType: DCKAngularVelocity.self,
         inputDescription: "Angular speed (in degrees/sec)",
-        assetCatalog: CardAssetCatalog(description: "Angular speed (in degress/sec)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Angular speed (in degress/sec)"))
     
     // MARK: Modifier/Movement/Speed
     public static let Speed = InputCardDescriptor(
@@ -831,8 +789,7 @@ extension DroneCardKit.Input.Modifier.Movement {
         subpath: "Modifier/Movement",
         inputType: DCKSpeed.self,
         inputDescription: "Speed (in meters/sec)",
-        assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"))
 }
 
 extension DroneCardKit.Input {
@@ -850,8 +807,7 @@ extension DroneCardKit.Input.Relative {
         subpath: "Relative",
         inputType: DCKCoordinate2D.self,
         inputDescription: "Coordinate offset",
-        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset another coordinate"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset another coordinate"))
     
     // MARK: Relative/RelativeToObject
     /// Descriptor for the RelativeToObject card
@@ -860,8 +816,7 @@ extension DroneCardKit.Input.Relative {
         subpath: "Relative",
         inputType: DCKCoordinate2D.self,
         inputDescription: "Coordinate offset",
-        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset from an object's location"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "A coordinate used to offset from an object's location"))
 }
 
 // MARK: - Token Cards
@@ -878,22 +833,19 @@ extension DroneCardKit.Token {
         name: "Drone",
         subpath: nil,
         isConsumed: true,
-        assetCatalog: CardAssetCatalog(description: "Drone token"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Drone token"))
  
     public static let Camera = TokenCardDescriptor(
         name: "Camera",
         subpath: nil,
         isConsumed: false,
-        assetCatalog: CardAssetCatalog(description: "Camera token"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Camera token"))
     
     public static let Gimbal = TokenCardDescriptor(
         name: "Gimbal",
         subpath: nil,
         isConsumed: false,
-        assetCatalog: CardAssetCatalog(description: "Gimbal token"),
-        version: 0)
+        assetCatalog: CardAssetCatalog(description: "Gimbal token"))
 }
 
 /*
