@@ -23,13 +23,13 @@ public class RecordVideo: ExecutableActionCard {
         
         var cameraOptions: Set<CameraVideoOption> = []
         if let framerate = framerate {
-            cameraOptions.insert(.Framerate(framerate))
+            cameraOptions.insert(.framerate(framerate))
         }
         if let resolution = resolution {
-            cameraOptions.insert(.Resolution(resolution))
+            cameraOptions.insert(.resolution(resolution))
         }
         if let _ = slowmo {
-            cameraOptions.insert(.SlowMotionEnabled)
+            cameraOptions.insert(.slowMotionEnabled)
         }
         
         if !isCancelled {

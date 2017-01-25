@@ -27,10 +27,10 @@ public class TakePhotos: ExecutableActionCard {
         
         var cameraOptions: Set<CameraPhotoOption> = []
         if let aspect = aspect {
-            cameraOptions.insert(.AspectRatio(aspect))
+            cameraOptions.insert(.aspectRatio(aspect))
         }
         if let quality = quality {
-            cameraOptions.insert(.Quality(quality))
+            cameraOptions.insert(.quality(quality))
         }
         
         if !isCancelled {

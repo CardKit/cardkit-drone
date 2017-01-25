@@ -41,7 +41,7 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         print("\(prefix) DummyCameraToken > startTakingPhotos(at: \(interval), options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
-            let error = CameraTokenError.CameraAlreadyInUse
+            let error = CameraTokenError.cameraAlreadyInUse
             completionHandler?(error)
             return
         }
@@ -61,7 +61,7 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         print("\(prefix) DummyCameraToken > startTimelapse(options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
-            let error = CameraTokenError.CameraAlreadyInUse
+            let error = CameraTokenError.cameraAlreadyInUse
             completionHandler?(error)
             return
         }
@@ -81,7 +81,7 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         print("\(prefix) DummyCameraToken > startVideo(options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
-            let error = CameraTokenError.CameraAlreadyInUse
+            let error = CameraTokenError.cameraAlreadyInUse
             completionHandler?(error)
             return
         }

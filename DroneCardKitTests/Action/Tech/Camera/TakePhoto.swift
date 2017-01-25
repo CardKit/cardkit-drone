@@ -17,22 +17,30 @@ public class TakePhoto: ExecutableActionCard {
             return
         }
         
+        let hdr: Bool = self.optionalValue(forInput: "HDR") ?? false
         let aspect: PhotoAspectRatio? = self.optionalValue(forInput: "AspectRatio")
         let quality: PhotoQuality? = self.optionalValue(forInput: "Quality")
         
         var cameraOptions: Set<CameraPhotoOption> = []
         if let aspect = aspect {
-            cameraOptions.insert(.AspectRatio(aspect))
+            cameraOptions.insert(.aspectRatio(aspect))
         }
         if let quality = quality {
-            cameraOptions.insert(.Quality(quality))
+            cameraOptions.insert(.quality(quality))
         }
         
         if !isCancelled {
-            camera.takePhoto(options: cameraOptions, completionHandler: {
-                error in
-                self.error = error
-            })
+            if hdr {
+                camera.takeHDRPhoto(options: cameraOptions, completionHandler: {
+                    error in
+                    self.error = error
+                })
+            } else {
+                camera.takePhoto(options: cameraOptions, completionHandler: {
+                    error in
+                    self.error = error
+                })
+            }
         }
     }
     

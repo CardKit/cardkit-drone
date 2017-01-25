@@ -433,6 +433,7 @@ extension DroneCardKit.Action.Tech.Camera {
         name: "Take a Photo",
         subpath: "Tech/Camera",
         inputs: [
+            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
