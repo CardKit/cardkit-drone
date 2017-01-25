@@ -552,7 +552,7 @@ public struct DCKAngularVelocity {
         return degreesPerSecond * .pi / 180
     }
     
-    public var direction: RotationDirection {
+    public var rotationDirection: RotationDirection {
         return degreesPerSecond < 0 ? .counterClockwise : .clockwise
     }
 }
