@@ -434,7 +434,6 @@ extension DroneCardKit.Action.Tech.Camera {
         subpath: "Tech/Camera",
         inputs: [
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
@@ -447,13 +446,29 @@ extension DroneCardKit.Action.Tech.Camera {
         assetCatalog: CardAssetCatalog(description: "Take a photo"),
         version: 0)
     
+    public static let TakeHDRPhoto = ActionCardDescriptor(
+        name: "Take an HDR Photo",
+        subpath: "Tech/Camera",
+        inputs: [
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
+            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+        ],
+        tokens: [
+            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+        ],
+        yields: [Yield(type: Data.self)],
+        yieldDescription: "Yields an HDR photo",
+        ends: true,
+        endsDescription: "Ends when the photo has been taken",
+        assetCatalog: CardAssetCatalog(description: "Take an HDR photo"),
+        version: 0)
+    
     public static let TakePhotoBurst = ActionCardDescriptor(
         name: "Take a Photo Burst",
         subpath: "Tech/Camera",
         inputs: [
             InputSlot(name: "BurstCount", descriptor: DroneCardKit.Input.Camera.BurstCount, isOptional: false),
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
@@ -472,7 +487,6 @@ extension DroneCardKit.Action.Tech.Camera {
         inputs: [
             InputSlot(name: "Interval", descriptor: CardKit.Input.Numeric.Real, isOptional: false),
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
@@ -490,7 +504,6 @@ extension DroneCardKit.Action.Tech.Camera {
         subpath: "Tech/Camera",
         inputs: [
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [

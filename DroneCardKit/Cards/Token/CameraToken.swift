@@ -21,11 +21,14 @@ public protocol CameraToken {
     /// Take a single photo, with the given photo options specified.
     func takePhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
     
+    /// Take an HDR photo
+    func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    
     /// Take a burst of photos, with the given photo options specified.
     func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
     
     /// Start taking photos with a given time interval.
-    func startTakingPhotos(at interval: TimeInterval, completionHandler: CameraTokenCompletionHandler?)
+    func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
     
     /// Stop taking photos.
     func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler?)
@@ -80,7 +83,6 @@ extension PhotoBurstCount: JSONEncodable, JSONDecodable {}
 public enum CameraPhotoOption {
     case None
     case AspectRatio(PhotoAspectRatio)
-    case HDR
     case Quality(PhotoQuality)
 }
 
@@ -99,12 +101,6 @@ extension CameraPhotoOption: Equatable {
             } else {
                 return false
             }
-        case .HDR:
-            if case .HDR = rhs {
-                return true
-            } else {
-                return false
-            }
         case .Quality(let lhs_quality):
             if case .Quality(let rhs_quality) = rhs {
                 return lhs_quality == rhs_quality
@@ -119,13 +115,11 @@ extension CameraPhotoOption: Hashable {
     public var hashValue: Int {
         switch self {
         case .None:
-            return 0x000
+            return 0x00
         case .AspectRatio(let ratio):
-            return 0x00F + ratio.hashValue
-        case .HDR:
-            return 0x0F0
+            return 0x0F + ratio.hashValue
         case .Quality(let quality):
-            return 0xF00 + quality.hashValue
+            return 0xF0 + quality.hashValue
         }
     }
 }
@@ -146,8 +140,6 @@ extension CameraPhotoOption: JSONEncodable, JSONDecodable {
             } catch {
                 self = .None
             }
-        case "hdr":
-            self = .HDR
         case "quality":
             do {
                 let value = try json.getString(at: "value")
@@ -175,10 +167,6 @@ extension CameraPhotoOption: JSONEncodable, JSONDecodable {
                 "type": "aspectRatio",
                 "value": ratio.toJSON()
                 ])
-        case .HDR:
-            return .dictionary([
-                "type": "hdr"
-            ])
         case .Quality(let quality):
             return .dictionary([
                 "type": "quality",

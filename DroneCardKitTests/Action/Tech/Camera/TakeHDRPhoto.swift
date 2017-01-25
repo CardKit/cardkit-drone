@@ -1,5 +1,5 @@
 //
-//  TakePhotos.swift
+//  TakeHDRPhoto.swift
 //  DroneCardKit
 //
 //  Created by Justin Weisz on 1/24/17.
@@ -10,15 +10,10 @@ import Foundation
 
 import CardKitRuntime
 
-public class TakePhotos: ExecutableActionCard {
+public class TakeHDRPhoto: ExecutableActionCard {
     override public func main() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
             self.error = DroneTokenError.TokenAquisitionFailed
-            return
-        }
-        
-        guard let interval: TimeInterval = self.value(forInput: "Interval") else {
-            self.error = DroneTokenError.MandatoryInputAquisitionFailed
             return
         }
         
@@ -34,7 +29,7 @@ public class TakePhotos: ExecutableActionCard {
         }
         
         if !isCancelled {
-            camera.startTakingPhotos(at: interval, options: cameraOptions, completionHandler: {
+            camera.takeHDRPhoto(options: cameraOptions, completionHandler: {
                 error in
                 self.error = error
             })
@@ -42,14 +37,7 @@ public class TakePhotos: ExecutableActionCard {
     }
     
     override public func cancel() {
-        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
-            return
-        }
-        
-        camera.stopTakingPhotos(completionHandler: {
-            error in
-            self.error = error
-        })
+        // TakePhoto seems to be an atomic operation;
+        // either it's taken or it's not taken
     }
 }

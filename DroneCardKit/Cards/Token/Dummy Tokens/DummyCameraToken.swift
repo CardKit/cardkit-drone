@@ -20,7 +20,13 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     var isTakingVideo = false
     
     public func takePhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
-        print("\(prefix) DummyCameraToken > takePhoto()")
+        print("\(prefix) DummyCameraToken > takePhoto(options: \(options))")
+        Thread.sleep(forTimeInterval: delay)
+        completionHandler?(nil)
+    }
+    
+    public func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+        print("\(prefix) DummyCameraToken > takeHDRPhoto(options: \(options))")
         Thread.sleep(forTimeInterval: delay)
         completionHandler?(nil)
     }
@@ -31,8 +37,8 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         completionHandler?(nil)
     }
     
-    public func startTakingPhotos(at interval: TimeInterval, completionHandler: CameraTokenCompletionHandler?) {
-        print("\(prefix) DummyCameraToken > startTakingPhotos(at: \(interval))")
+    public func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+        print("\(prefix) DummyCameraToken > startTakingPhotos(at: \(interval), options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             let error = CameraTokenError.CameraAlreadyInUse
