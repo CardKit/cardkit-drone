@@ -15,6 +15,8 @@ import CardKit
 import CardKitRuntime
 
 public protocol GimbalToken {
+    var currentAttitude: DCKAttitude { get }
+    
     func calibrate(completionHandler: DroneTokenCompletionHandler?)
     func reset(completionHandler: DroneTokenCompletionHandler?)
     
