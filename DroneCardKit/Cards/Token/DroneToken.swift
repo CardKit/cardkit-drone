@@ -168,7 +168,13 @@ public extension DroneToken {
 
 // MARK: - Convienience -- fly to coordinate
 public extension DroneToken {
-    final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
+    
+    //fly to with DCKCoordinate2D
+    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
+        fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
+    }
+    
+    final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
@@ -184,114 +190,32 @@ public extension DroneToken {
         }
     }
     
-    final func fly(to coordinate: DCKCoordinate2D, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate, atYaw: nil, atAltitude: nil, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate2D) throws {
-        try flySync(to: coordinate, atYaw: nil, atAltitude: nil, atSpeed: nil)
-    }
-    
-    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate, atYaw: yaw, atAltitude: nil, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?) throws {
-        try flySync(to: coordinate, atYaw: yaw, atAltitude: nil, atSpeed: nil)
-    }
-    
-    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate, atYaw: nil, atAltitude: altitude, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?) throws {
-        try flySync(to: coordinate, atYaw: nil, atAltitude: altitude, atSpeed: nil)
-    }
-    
-    final func fly(to coordinate: DCKCoordinate2D, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate, atYaw: nil, atAltitude: nil, atSpeed: speed, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate2D, atSpeed speed: DCKSpeed?) throws {
-        try flySync(to: coordinate, atYaw: nil, atAltitude: nil, atSpeed: speed)
-    }
-    
-    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?) throws {
-        try flySync(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: nil)
-    }
-    
-    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate, atYaw: yaw, atAltitude: nil, atSpeed: speed, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atSpeed speed: DCKSpeed?) throws {
-        try flySync(to: coordinate, atYaw: yaw, atAltitude: nil, atSpeed: speed)
-    }
-
-    final func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate, atYaw: nil, atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
-        try flySync(to: coordinate, atYaw: nil, atAltitude: altitude, atSpeed: speed)
-    }
-    
-    final func fly(to coordinate: DCKOrientedCoordinate2D, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: nil, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKOrientedCoordinate2D) throws {
-        try flySync(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: nil, atSpeed: nil)
-    }
-    
-    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude?) throws {
-        try flySync(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude)
-    }
-    
-    final func fly(to coordinate: DCKOrientedCoordinate2D, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: nil, atSpeed: speed, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKOrientedCoordinate2D, atSpeed speed: DCKSpeed?) throws {
-        try flySync(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: nil, atSpeed: speed)
-    }
-    
-    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+    //fly to with DCKOrientedCoordinate2D
+    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
         fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
     }
     
-    final func flySync(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
+    final func flySync(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try flySync(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude, atSpeed: speed)
     }
     
-    final func fly(to coordinate: DCKCoordinate3D, completionHandler: DroneTokenCompletionHandler?) {
-        fly(to: coordinate.as2D(), atYaw: nil, atAltitude: coordinate.altitude, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(to coordinate: DCKCoordinate3D) throws {
-        try flySync(to: coordinate.as2D(), atYaw: nil, atAltitude: coordinate.altitude, atSpeed: nil)
-    }
-    
-    final func fly(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+    //fly to with DCKCoordinate3D
+    final func fly(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
         fly(to: coordinate.as2D(), atYaw: yaw, atAltitude: coordinate.altitude, atSpeed: speed, completionHandler: completionHandler)
     }
     
-    final func flySync(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle?, atSpeed speed: DCKSpeed?) throws {
+    final func flySync(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try flySync(to: coordinate.as2D(), atYaw: yaw, atAltitude: coordinate.altitude, atSpeed: speed)
     }
 }
 
 // MARK: - Convienience -- fly 2D path
 public extension DroneToken {
-    final func flySync(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
+    final func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
+        fly(on: path, atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
+    }
+    
+    final func flySync(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
@@ -306,27 +230,15 @@ public extension DroneToken {
             throw error!
         }
     }
-    
-    final func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(on: path, atAltitude: altitude, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?) throws {
-        try flySync(on: path, atAltitude: altitude, atSpeed: nil)
-    }
-    
-    final func fly(on path: DCKCoordinate2DPath, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
-        fly(on: path, atAltitude: nil, atSpeed: speed, completionHandler: completionHandler)
-    }
-
-    final func flySync(on path: DCKCoordinate2DPath, atSpeed speed: DCKSpeed?) throws {
-        try flySync(on: path, atAltitude: nil, atSpeed: speed)
-    }
 }
 
 // MARK: - Convienience -- fly 3D path
 public extension DroneToken {
-    final func flySync(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws {
+    final func fly(on path: DCKCoordinate3DPath,  atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
+        fly(on: path, atSpeed: speed, completionHandler: completionHandler)
+    }
+    
+    final func flySync(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed? = nil) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
@@ -341,20 +253,16 @@ public extension DroneToken {
             throw error!
         }
     }
-    
-    final func fly(on path: DCKCoordinate3DPath, completionHandler: DroneTokenCompletionHandler?) {
-        fly(on: path, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func flySync(on path: DCKCoordinate3DPath, atAltitude altitude: DCKRelativeAltitude?) throws {
-        try flySync(on: path, atSpeed: nil)
-    }
 }
 
 
 // MARK: - Convienience -- return home
 public extension DroneToken {
-    final func returnHomeSync(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
+    final func returnHome(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
+        returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
+    }
+    
+    final func returnHomeSync(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
@@ -368,22 +276,6 @@ public extension DroneToken {
         if error != nil {
             throw error!
         }
-    }
-    
-    final func returnHome(completionHandler: DroneTokenCompletionHandler?) {
-        returnHome(atAltitude: nil, atSpeed: nil, completionHandler: completionHandler)
-    }
-    
-    final func returnHomeSync() throws {
-        try returnHomeSync(atAltitude: nil, atSpeed: nil)
-    }
-    
-    final func returnHome(atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
-        returnHome(atAltitude: nil, atSpeed: speed, completionHandler: completionHandler)
-    }
-    
-    final func returnHomeSync(atSpeed speed: DCKSpeed?) throws {
-        try returnHomeSync(atAltitude: nil, atSpeed: speed)
     }
 }
 
