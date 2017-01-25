@@ -97,7 +97,7 @@ public extension DroneToken {
 
 // MARK: - Convienience -- take off
 public extension DroneToken {
-    func takeOffSync(at altitude: DCKRelativeAltitude?) throws {
+    final func takeOffSync(at altitude: DCKRelativeAltitude?) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
@@ -113,11 +113,11 @@ public extension DroneToken {
         }
     }
     
-    func takeOff(completionHandler: DroneTokenCompletionHandler?) {
+    final func takeOff(completionHandler: DroneTokenCompletionHandler?) {
         return takeOff(at: nil, completionHandler: completionHandler)
     }
     
-    func takeOffSync() throws {
+    final func takeOffSync() throws {
         return try takeOffSync(at: nil)
     }
 }
@@ -425,7 +425,8 @@ public extension DroneToken {
     }
 }
 
-// MARK: - - DroneTokenError
+// MARK: - DroneTokenError
+
 public enum DroneTokenError: Error {
     case TokenAquisitionFailed
     case MandatoryInputAquisitionFailed
