@@ -37,7 +37,7 @@ public class TakeHDRPhoto: ExecutableActionCard {
     }
     
     override public func cancel() {
-        // TakePhoto seems to be an atomic operation;
+        // TakeHDRPhoto seems to be an atomic operation;
         // either it's taken or it's not taken
     }
 }
