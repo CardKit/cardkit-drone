@@ -12,7 +12,7 @@ import XCTest
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class LandTests: XCTestCase {
+class InputTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
