@@ -66,6 +66,97 @@ public extension CameraToken {
     }
 }
 
+// MARK: - Convenience -- synchronous methods
+
+public extension CameraToken {
+    final func takePhotoSync(options: Set<CameraPhotoOption>) throws {
+        try self.callUnarySync(asyncMethod: self.takePhoto, argument: options)
+    }
+    
+    final func takeHDRPhotoSync(options: Set<CameraPhotoOption>) throws {
+        try self.callUnarySync(asyncMethod: self.takeHDRPhoto, argument: options)
+    }
+    
+    final func takePhotoBurstSync(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws {
+        try self.callBinarySync(asyncMethod: self.takePhotoBurst, firstArg: count, secondArg: options)
+    }
+    
+    final func startTakingPhotosSync(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws {
+        try self.callBinarySync(asyncMethod: self.startTakingPhotos, firstArg: interval, secondArg: options)
+    }
+    
+    final func stopTakingPhotosSync() throws {
+        try self.callNullarySync(asyncMethod: self.stopTakingPhotos)
+    }
+    
+    final func startTimelapseSync(options: Set<CameraPhotoOption>) throws {
+        try self.callUnarySync(asyncMethod: self.startTimelapse, argument: options)
+    }
+    
+    final func stopTimelapseSync() throws {
+        try self.callNullarySync(asyncMethod: self.stopTimelapse)
+    }
+    
+    final func startVideoSync(options: Set<CameraVideoOption>) throws {
+        try self.callUnarySync(asyncMethod: self.startVideo, argument: options)
+    }
+    
+    final func stopVideoSync() throws {
+        try self.callNullarySync(asyncMethod: self.stopVideo)
+    }
+    
+    fileprivate func callNullarySync(asyncMethod method: ((CameraTokenCompletionHandler?) -> Void)) throws {
+        let semaphore = DispatchSemaphore(value: 0)
+        var methodError: Error? = nil
+        
+        method({
+            error in
+            methodError = error
+            semaphore.signal()
+        })
+        
+        semaphore.wait()
+        
+        if let error = methodError {
+            throw error
+        }
+    }
+    
+    fileprivate func callUnarySync<T>(asyncMethod method: ((T, CameraTokenCompletionHandler?) -> Void), argument: T) throws {
+        let semaphore = DispatchSemaphore(value: 0)
+        var methodError: Error? = nil
+        
+        method(argument, {
+            error in
+            methodError = error
+            semaphore.signal()
+        })
+        
+        semaphore.wait()
+        
+        if let error = methodError {
+            throw error
+        }
+    }
+    
+    fileprivate func callBinarySync<T, U>(asyncMethod method: ((T, U, CameraTokenCompletionHandler?) -> Void), firstArg first: T, secondArg second: U) throws {
+        let semaphore = DispatchSemaphore(value: 0)
+        var methodError: Error? = nil
+        
+        method(first, second, {
+            error in
+            methodError = error
+            semaphore.signal()
+        })
+        
+        semaphore.wait()
+        
+        if let error = methodError {
+            throw error
+        }
+    }
+}
+
 // MARK: - PhotoBurstCount
 
 public enum PhotoBurstCount: String {
