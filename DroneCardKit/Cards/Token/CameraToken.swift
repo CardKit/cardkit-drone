@@ -318,12 +318,11 @@ public enum VideoResolution: String {
 extension VideoResolution: JSONEncodable, JSONDecodable {}
 
 public enum VideoFramerate: String {
-    case framerate_23_976fps
     case framerate_24fps
     case framerate_25fps
-    case framerate_29_970fps
-    case framerate_47_950fps
-    case framerate_59_940fps
+    case framerate_30fps
+    case framerate_48fps
+    case framerate_60fps
     case framerate_96fps
     case framerate_120fps
 }
