@@ -6,9 +6,6 @@
 //  Copyright © 2016 IBM. All rights reserved.
 //
 
-//swiftlint:disable function_parameter_count
-//swiftlint:disable variable_name
-
 import Foundation
 
 import CardKit
@@ -20,6 +17,7 @@ public protocol GimbalToken {
     func calibrate(completionHandler: DroneTokenCompletionHandler?)
     func reset(completionHandler: DroneTokenCompletionHandler?)
     
+    //swiftlint:disable:next function_parameter_count
     func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relativeToDrone: Bool, withinTimeInSeconds: Double?, completionHandler: DroneTokenCompletionHandler?)
     func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds: Double, completionHandler: DroneTokenCompletionHandler?)
 }
