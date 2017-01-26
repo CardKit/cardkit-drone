@@ -125,7 +125,11 @@ public extension DroneToken {
 
 // MARK: - Convienience -- hover
 public extension DroneToken {
-    final func hoverSync(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?) throws {
+    final func hover(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil, completionHandler: DroneTokenCompletionHandler?) {
+        hover(at: altitude, withYaw: nil, completionHandler: completionHandler)
+    }
+    
+    final func hoverSync(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
@@ -140,30 +144,6 @@ public extension DroneToken {
             throw error!
         }
     }
-    
-    final func hover(completionHandler: DroneTokenCompletionHandler?) {
-        hover(at: nil, withYaw: nil, completionHandler: completionHandler)
-    }
-    
-    final func hoverSync() throws {
-        try hoverSync(at: nil, withYaw: nil)
-    }
-    
-    final func hover(at altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
-        hover(at: altitude, withYaw: nil, completionHandler: completionHandler)
-    }
-    
-    final func hoverSync(at altitude: DCKRelativeAltitude?) throws {
-        try hoverSync(at: altitude, withYaw: nil)
-    }
-    
-    final func hover(withYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?) {
-        hover(at: nil, withYaw: yaw, completionHandler: completionHandler)
-    }
-    
-    final func hoverSync(withYaw yaw: DCKAngle?) throws {
-        try hoverSync(at: nil, withYaw: yaw)
-    }
 }
 
 // MARK: - Convienience -- fly to coordinate
@@ -171,6 +151,7 @@ public extension DroneToken {
     
     //fly to with DCKCoordinate2D
     final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
+        print("in extension")
         fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
     }
     
