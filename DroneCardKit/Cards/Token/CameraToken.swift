@@ -82,7 +82,7 @@ public extension CameraToken {
         startVideo(options: options, completionHandler: completionHandler)
     }
     
-    final func stopVideo(completionHandler: CameraTokenCompletionHandler? = nil){
+    final func stopVideo(completionHandler: CameraTokenCompletionHandler? = nil) {
         stopVideo(completionHandler: completionHandler)
     }
 }
