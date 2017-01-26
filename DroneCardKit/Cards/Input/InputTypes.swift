@@ -539,12 +539,13 @@ extension DCKSpeed : JSONDecodable, JSONEncodable {
 }
 
 
-// MARK: DCKAngularSpeed
-public enum RotationDirection {
+// MARK: DCKRotationDirection
+public enum DCKRotationDirection {
     case clockwise
     case counterClockwise
 }
 
+// MARK: DCKAngularVelocity
 public struct DCKAngularVelocity {
     public let degreesPerSecond: Double
     
@@ -552,7 +553,7 @@ public struct DCKAngularVelocity {
         return degreesPerSecond * .pi / 180
     }
     
-    public var rotationDirection: RotationDirection {
+    public var rotationDirection: DCKRotationDirection {
         return degreesPerSecond < 0 ? .counterClockwise : .clockwise
     }
 }
