@@ -78,6 +78,10 @@ public protocol DroneToken {
 
 // MARK: - Convienience -- turn motors on/off
 public extension DroneToken {
+    final func spinMotors(on: Bool, completionHandler: DroneTokenCompletionHandler? = nil) {
+        spinMotors(on: on, completionHandler: completionHandler)
+    }
+    
     final func spinMotorsSync(on: Bool) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
@@ -97,7 +101,11 @@ public extension DroneToken {
 
 // MARK: - Convienience -- take off
 public extension DroneToken {
-    func takeOffSync(at altitude: DCKRelativeAltitude?) throws {
+    final func takeOff(at altitude: DCKRelativeAltitude? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
+        return takeOff(at: nil, completionHandler: completionHandler)
+    }
+    
+    final func takeOffSync(at altitude: DCKRelativeAltitude? = nil) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
         
@@ -111,14 +119,6 @@ public extension DroneToken {
         if error != nil {
             throw error!
         }
-    }
-    
-    func takeOff(completionHandler: DroneTokenCompletionHandler?) {
-        return takeOff(at: nil, completionHandler: completionHandler)
-    }
-    
-    func takeOffSync() throws {
-        return try takeOffSync(at: nil)
     }
 }
 
@@ -151,7 +151,6 @@ public extension DroneToken {
     
     //fly to with DCKCoordinate2D
     final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
-        print("in extension")
         fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
     }
     
@@ -215,7 +214,7 @@ public extension DroneToken {
 
 // MARK: - Convienience -- fly 3D path
 public extension DroneToken {
-    final func fly(on path: DCKCoordinate3DPath,  atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
+    final func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed? = nil, completionHandler: DroneTokenCompletionHandler? = nil) {
         fly(on: path, atSpeed: speed, completionHandler: completionHandler)
     }
     
@@ -262,6 +261,10 @@ public extension DroneToken {
 
 // MARK: - Convienience -- landing gear
 public extension DroneToken {
+    final func landingGear(down: Bool, completionHandler: DroneTokenCompletionHandler? = nil) {
+        landingGear(down: down, completionHandler: completionHandler)
+    }
+    
     final func landingGearSync(down: Bool) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
@@ -281,6 +284,10 @@ public extension DroneToken {
 
 // MARK: - Convienience -- land
 public extension DroneToken {
+    final func land(completionHandler: DroneTokenCompletionHandler? = nil) {
+        land(completionHandler: completionHandler)
+    }
+    
     final func landSync() throws {
         let semaphore = DispatchSemaphore(value: 0)
         var error: Error? = nil
