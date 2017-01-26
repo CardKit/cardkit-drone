@@ -444,8 +444,8 @@
 		CCD6D6E61DFF0EA9004CEB71 /* Token */ = {
 			isa = PBXGroup;
 			children = (
-				CCD6D6E71DFF0EA9004CEB71 /* CameraToken.swift */,
 				CCD6D6E81DFF0EA9004CEB71 /* DroneToken.swift */,
+				CCD6D6E71DFF0EA9004CEB71 /* CameraToken.swift */,
 				CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */,
 				CC0F32BC1E2FFBC2008423AC /* Dummy Tokens */,
 			);
