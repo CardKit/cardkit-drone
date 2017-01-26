@@ -47,7 +47,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     // MARK: DroneToken
     public func spinMotors(on: Bool, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "spinMotors")
-        print("\(prefix) DummyDJIDroneToken > turnMotorsOn()")
+        print("\(prefix) DummyDroneToken > turnMotorsOn()")
         Thread.sleep(forTimeInterval: delay)
         
         areMotorsOn = on
@@ -56,7 +56,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func takeOff(at altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "takeOff")
-        print("\(prefix) DummyDJIDroneToken > takeOff(at: \(altitude))")
+        print("\(prefix) DummyDroneToken > takeOff(at: \(altitude))")
         Thread.sleep(forTimeInterval: delay)
         
         spinMotors(on: true) { (error) in
@@ -86,7 +86,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "hover")
-        print("\(prefix) DummyDJIDroneToken > hover(at: \(altitude), withYaw: \(yaw))")
+        print("\(prefix) DummyDroneToken > hover(at: \(altitude), withYaw: \(yaw))")
         Thread.sleep(forTimeInterval: delay)
         
         if let specifiedAltitude = altitude {
@@ -98,7 +98,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "fly:to:atYaw:atAltitude:atSpeed:completionHandler")
-        print("\(prefix) DummyDJIDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
+        print("\(prefix) DummyDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
         let newYaw: DCKAngle
@@ -124,7 +124,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "fly:on:atAltitude:atSpeed:completionHandler")
-        print("\(prefix) DummyDJIDroneToken > fly(on: \(path), atAltitude: \(altitude), atSpeed: \(speed))")
+        print("\(prefix) DummyDroneToken > fly(on: \(path), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
         var error: Error? = nil
@@ -149,7 +149,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "fly:on:atSpeed:completionHandler")
-        print("\(prefix) DummyDJIDroneToken > fly(on: \(path), atSpeed: \(speed))")
+        print("\(prefix) DummyDroneToken > fly(on: \(path), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
         var error: Error? = nil
@@ -174,7 +174,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "returnHome")
-        print("\(prefix) DummyDJIDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")
+        print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
         self.fly(to: self.homeLocation!) { error in
@@ -184,7 +184,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func landingGear(down: Bool, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "landingGear")
-        print("\(prefix) DummyDJIDroneToken > landingGear(down: \(down))")
+        print("\(prefix) DummyDroneToken > landingGear(down: \(down))")
         Thread.sleep(forTimeInterval: delay)
         
         self.isLandingGearDown = down
@@ -192,7 +192,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     
     public func land(completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "land")
-        print("\(prefix) DummyDJIDroneToken > land()")
+        print("\(prefix) DummyDroneToken > land()")
         Thread.sleep(forTimeInterval: delay)
         
         let newAltitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 0)

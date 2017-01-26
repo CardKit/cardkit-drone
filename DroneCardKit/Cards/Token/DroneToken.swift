@@ -305,7 +305,8 @@ public extension DroneToken {
     }
 }
 
-// MARK: - - DroneTokenError
+// MARK: - DroneTokenError
+
 public enum DroneTokenError: Error {
     case TokenAquisitionFailed
     case MandatoryInputAquisitionFailed
