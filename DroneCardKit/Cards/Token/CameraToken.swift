@@ -46,23 +46,44 @@ public protocol CameraToken {
     func stopVideo(completionHandler: CameraTokenCompletionHandler?)
 }
 
-// MARK: - Convienience -- take photo
+// MARK: - Convienience methods with default parameters
 
 public extension CameraToken {
     /// Take a single photo (16x9, Normal quality).
-    final func takePhoto(completionHandler: CameraTokenCompletionHandler?) {
-        let options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]
+    final func takePhoto(options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)],
+                         completionHandler: CameraTokenCompletionHandler? = nil) {
         self.takePhoto(options: options, completionHandler: completionHandler)
     }
-}
-
-// MARK: - Convienience -- take photo burst
-
-public extension CameraToken {
+    
+    final func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler? = nil) {
+        takeHDRPhoto(options: options, completionHandler: completionHandler)
+    }
+    
     /// Take a burst of photos (16x9, Normal quality).
-    final func takePhotoBurst(count: PhotoBurstCount, completionHandler: CameraTokenCompletionHandler?) {
-        let options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]
+    final func takePhotoBurst(count: PhotoBurstCount,
+                              options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)],
+                              completionHandler: CameraTokenCompletionHandler?) {
         self.takePhotoBurst(count: count, options: options, completionHandler: completionHandler)
+    }
+    
+    final func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption> = [], completionHandler: CameraTokenCompletionHandler? = nil) {
+        startTakingPhotos(at: interval, options: options, completionHandler: completionHandler)
+    }
+    
+    final func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler? = nil) {
+        stopTakingPhotos(completionHandler: completionHandler)
+    }
+    
+    final func startTimelapse(options: Set<CameraPhotoOption> = [], completionHandler: CameraTokenCompletionHandler? = nil) {
+        startTimelapse(options: options, completionHandler: completionHandler)
+    }
+    
+    func startVideo(options: Set<CameraVideoOption> = [], completionHandler: CameraTokenCompletionHandler? = nil) {
+        startVideo(options: options, completionHandler: completionHandler)
+    }
+    
+    final func stopVideo(completionHandler: CameraTokenCompletionHandler? = nil) {
+        stopVideo(completionHandler: completionHandler)
     }
 }
 
