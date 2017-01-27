@@ -109,8 +109,7 @@ public extension CameraToken {
         let semaphore = DispatchSemaphore(value: 0)
         var methodError: Error? = nil
         
-        method({
-            error in
+        method({ error in
             methodError = error
             semaphore.signal()
         })
@@ -126,8 +125,7 @@ public extension CameraToken {
         let semaphore = DispatchSemaphore(value: 0)
         var methodError: Error? = nil
         
-        method(argument, {
-            error in
+        method(argument, { error in
             methodError = error
             semaphore.signal()
         })
@@ -143,8 +141,7 @@ public extension CameraToken {
         let semaphore = DispatchSemaphore(value: 0)
         var methodError: Error? = nil
         
-        method(first, second, {
-            error in
+        method(first, second, { error in
             methodError = error
             semaphore.signal()
         })
