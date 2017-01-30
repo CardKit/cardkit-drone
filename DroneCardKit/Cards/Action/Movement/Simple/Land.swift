@@ -14,7 +14,6 @@ public class Land: ExecutableActionCard {
     
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         

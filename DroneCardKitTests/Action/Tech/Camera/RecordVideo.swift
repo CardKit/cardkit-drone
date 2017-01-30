@@ -13,7 +13,6 @@ import CardKitRuntime
 public class RecordVideo: ExecutableActionCard {
     override public func main() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
@@ -47,7 +46,6 @@ public class RecordVideo: ExecutableActionCard {
     
     override public func cancel() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
