@@ -13,12 +13,10 @@ import CardKitRuntime
 public class TakePhotoBurst: ExecutableActionCard {
     override public func main() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
         guard let burstCount: PhotoBurstCount = self.value(forInput: "BurstCount") else {
-            error = DroneTokenError.MandatoryInputAquisitionFailed
             return
         }
         

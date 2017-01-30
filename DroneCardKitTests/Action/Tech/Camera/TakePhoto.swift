@@ -13,7 +13,6 @@ import CardKitRuntime
 public class TakePhoto: ExecutableActionCard {
     override public func main() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         

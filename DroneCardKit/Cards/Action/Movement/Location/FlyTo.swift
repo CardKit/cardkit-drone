@@ -14,12 +14,10 @@ public class FlyTo: ExecutableActionCard {
     
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
         guard let location: DCKCoordinate2D = self.value(forInput: "Destination") else {
-            error = DroneTokenError.MandatoryInputAquisitionFailed
             return
         }
         
@@ -45,7 +43,6 @@ public class FlyTo: ExecutableActionCard {
     
     override public func cancel() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
