@@ -45,7 +45,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     }
     
     // MARK: DroneToken
-    public func spinMotors(on: Bool, completionHandler: DroneTokenCompletionHandler?) {
+    public func spinMotors(on: Bool, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "spinMotors")
         print("\(prefix) DummyDroneToken > turnMotorsOn()")
         Thread.sleep(forTimeInterval: delay)
@@ -54,7 +54,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(nil)
     }
     
-    public func takeOff(at altitude: DCKRelativeAltitude?, completionHandler: DroneTokenCompletionHandler?) {
+    public func takeOff(at altitude: DCKRelativeAltitude?, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "takeOff")
         print("\(prefix) DummyDroneToken > takeOff(at: \(altitude))")
         Thread.sleep(forTimeInterval: delay)
@@ -84,7 +84,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(nil)
     }
     
-    public func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?, completionHandler: DroneTokenCompletionHandler?) {
+    public func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "hover")
         print("\(prefix) DummyDroneToken > hover(at: \(altitude), withYaw: \(yaw))")
         Thread.sleep(forTimeInterval: delay)
@@ -96,7 +96,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(nil)
     }
     
-    public func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+    public func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "fly:to:atYaw:atAltitude:atSpeed:completionHandler")
         print("\(prefix) DummyDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
@@ -122,7 +122,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(nil)
     }
     
-    public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+    public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "fly:on:atAltitude:atSpeed:completionHandler")
         print("\(prefix) DummyDroneToken > fly(on: \(path), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
@@ -147,7 +147,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(error)
     }
     
-    public func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+    public func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "fly:on:atSpeed:completionHandler")
         print("\(prefix) DummyDroneToken > fly(on: \(path), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
@@ -172,7 +172,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(error)
     }
     
-    public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
+    public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "returnHome")
         print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
@@ -182,7 +182,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         }
     }
     
-    public func landingGear(down: Bool, completionHandler: DroneTokenCompletionHandler?) {
+    public func landingGear(down: Bool, completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "landingGear")
         print("\(prefix) DummyDroneToken > landingGear(down: \(down))")
         Thread.sleep(forTimeInterval: delay)
@@ -190,7 +190,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         self.isLandingGearDown = down
     }
     
-    public func land(completionHandler: DroneTokenCompletionHandler?) {
+    public func land(completionHandler: AsyncCompletionHandler?) {
         self.registerFunctionCall(named: "land")
         print("\(prefix) DummyDroneToken > land()")
         Thread.sleep(forTimeInterval: delay)
