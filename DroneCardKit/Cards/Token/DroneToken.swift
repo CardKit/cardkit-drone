@@ -81,19 +81,7 @@ public extension DroneToken {
     }
     
     final func spinMotorsSync(on: Bool) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        spinMotors(on: on) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.spinMotors(on: on, completionHandler: $0) }
     }
 }
 
@@ -104,19 +92,7 @@ public extension DroneToken {
     }
     
     final func takeOffSync(at altitude: DCKRelativeAltitude? = nil) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        takeOff(at: altitude) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.takeOff(at: altitude, completionHandler: $0) }
     }
 }
 
@@ -128,19 +104,7 @@ public extension DroneToken {
     }
     
     final func hoverSync(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        hover(at: altitude, withYaw: yaw) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.hover(at: altitude, completionHandler: $0) }
     }
 }
 
@@ -153,19 +117,7 @@ public extension DroneToken {
     }
     
     final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
     
     //fly to with DCKOrientedCoordinate2D
@@ -194,19 +146,7 @@ public extension DroneToken {
     }
     
     final func flySync(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        fly(on: path, atAltitude: altitude, atSpeed: speed) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.fly(on: path, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -217,19 +157,7 @@ public extension DroneToken {
     }
     
     final func flySync(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed? = nil) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        fly(on: path, atSpeed: speed) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.fly(on: path, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -241,19 +169,7 @@ public extension DroneToken {
     }
     
     final func returnHomeSync(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        returnHome(atAltitude: altitude, atSpeed: speed) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -264,19 +180,7 @@ public extension DroneToken {
     }
     
     final func landingGearSync(down: Bool) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        landingGear(down: down) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.landingGear(down: down, completionHandler: $0) }
     }
 }
 
@@ -287,19 +191,7 @@ public extension DroneToken {
     }
     
     final func landSync() throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        land { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+        try TokenDispatch.executeSynchronously() { self.land(completionHandler: $0) }
     }
 }
 

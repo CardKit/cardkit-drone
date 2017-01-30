@@ -24,6 +24,8 @@
 		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
+		68F6B5281E3FC70B0038A002 /* TokenDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68657C2E1E3FBEE900612ECC /* TokenDispatch.swift */; };
+		68F6B5291E3FC70B0038A002 /* TokenDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68657C2E1E3FBEE900612ECC /* TokenDispatch.swift */; };
 		CC0F32BE1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */; };
 		CC0F32BF1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */; };
 		CC0F32C01E2FFBC2008423AC /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */; };
@@ -919,6 +921,7 @@
 				68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CCB5987E1E37F121009464A9 /* TakePhotos.swift in Sources */,
 				CCD6D6EE1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
+				68F6B5281E3FC70B0038A002 /* TokenDispatch.swift in Sources */,
 				F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				F9FDA9501DFF07EE00256F2C /* Land.swift in Sources */,
 				CC56E0131E36B1C700F669BC /* TakePhoto.swift in Sources */,
@@ -953,6 +956,7 @@
 				68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CCB5987F1E37F121009464A9 /* TakePhotos.swift in Sources */,
 				CCD6D6EF1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
+				68F6B5291E3FC70B0038A002 /* TokenDispatch.swift in Sources */,
 				F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				F9FDA9521DFF07EF00256F2C /* Land.swift in Sources */,
 				CC56E0141E36B1C700F669BC /* TakePhoto.swift in Sources */,

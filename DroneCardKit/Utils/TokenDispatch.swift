@@ -15,8 +15,7 @@ class TokenDispatch {
         let semaphore = DispatchSemaphore(value: 0)
         var methodError: Error? = nil
         
-        method({
-            error in
+        method({ error in
             methodError = error
             semaphore.signal()
         })
