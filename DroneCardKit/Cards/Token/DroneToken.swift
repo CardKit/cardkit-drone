@@ -13,8 +13,6 @@ import CardKitRuntime
 
 // swiftlint:disable variable_name
 
-public typealias DroneTokenCompletionHandler = (Error?) -> Void
-
 public protocol DroneToken {
     // MARK: Location & attitude
     var currentLocation: DCKCoordinate2D? { get }

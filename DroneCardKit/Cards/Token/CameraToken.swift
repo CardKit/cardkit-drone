@@ -13,44 +13,42 @@ import Freddy
 import CardKit
 import CardKitRuntime
 
-public typealias CameraTokenCompletionHandler = (Error?) -> Void
-
 // MARK: CameraToken
 
 public protocol CameraToken {
     /// Take a single photo, with the given photo options specified.
-    func takePhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func takePhoto(options: Set<CameraPhotoOption>, completionHandler: DroneTokenCompletionHandler?)
     
     /// Take an HDR photo
-    func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: DroneTokenCompletionHandler?)
     
     /// Take a burst of photos, with the given photo options specified.
-    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: DroneTokenCompletionHandler?)
     
     /// Start taking photos with a given time interval.
-    func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>, completionHandler: DroneTokenCompletionHandler?)
     
     /// Stop taking photos.
-    func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler?)
+    func stopTakingPhotos(completionHandler: DroneTokenCompletionHandler?)
     
     /// Start taking a timelapse movie.
-    func startTimelapse(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func startTimelapse(options: Set<CameraPhotoOption>, completionHandler: DroneTokenCompletionHandler?)
     
     /// Stop taking a timelapse movie.
-    func stopTimelapse(completionHandler: CameraTokenCompletionHandler?)
+    func stopTimelapse(completionHandler: DroneTokenCompletionHandler?)
     
     /// Start taking a video.
-    func startVideo(options: Set<CameraVideoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func startVideo(options: Set<CameraVideoOption>, completionHandler: DroneTokenCompletionHandler?)
     
     /// Stop taking a video.
-    func stopVideo(completionHandler: CameraTokenCompletionHandler?)
+    func stopVideo(completionHandler: DroneTokenCompletionHandler?)
 }
 
 // MARK: - Convienience -- take photo
 
 public extension CameraToken {
     /// Take a single photo (16x9, Normal quality).
-    final func takePhoto(completionHandler: CameraTokenCompletionHandler?) {
+    final func takePhoto(completionHandler: DroneTokenCompletionHandler?) {
         let options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]
         self.takePhoto(options: options, completionHandler: completionHandler)
     }
@@ -60,7 +58,7 @@ public extension CameraToken {
 
 public extension CameraToken {
     /// Take a burst of photos (16x9, Normal quality).
-    final func takePhotoBurst(count: PhotoBurstCount, completionHandler: CameraTokenCompletionHandler?) {
+    final func takePhotoBurst(count: PhotoBurstCount, completionHandler: DroneTokenCompletionHandler?) {
         let options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]
         self.takePhotoBurst(count: count, options: options, completionHandler: completionHandler)
     }
@@ -70,90 +68,39 @@ public extension CameraToken {
 
 public extension CameraToken {
     final func takePhotoSync(options: Set<CameraPhotoOption>) throws {
-        try self.callUnarySync(asyncMethod: self.takePhoto, argument: options)
+        try TokenDispatch.executeSynchronously() { self.takePhoto(options: options, completionHandler: $0) }
     }
     
     final func takeHDRPhotoSync(options: Set<CameraPhotoOption>) throws {
-        try self.callUnarySync(asyncMethod: self.takeHDRPhoto, argument: options)
+        try TokenDispatch.executeSynchronously() { self.takeHDRPhoto(options: options, completionHandler: $0) }
     }
     
     final func takePhotoBurstSync(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws {
-        try self.callBinarySync(asyncMethod: self.takePhotoBurst, firstArg: count, secondArg: options)
+        try TokenDispatch.executeSynchronously() { self.takePhotoBurst(count: count, options: options, completionHandler: $0) }
     }
     
     final func startTakingPhotosSync(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws {
-        try self.callBinarySync(asyncMethod: self.startTakingPhotos, firstArg: interval, secondArg: options)
+        try TokenDispatch.executeSynchronously() { self.startTakingPhotos(at: interval, options: options, completionHandler: $0) }
     }
     
     final func stopTakingPhotosSync() throws {
-        try self.callNullarySync(asyncMethod: self.stopTakingPhotos)
+        try TokenDispatch.executeSynchronously() { self.stopTakingPhotos(completionHandler: $0) }
     }
     
     final func startTimelapseSync(options: Set<CameraPhotoOption>) throws {
-        try self.callUnarySync(asyncMethod: self.startTimelapse, argument: options)
+        try TokenDispatch.executeSynchronously() { self.startTimelapse(options: options, completionHandler: $0) }
     }
     
     final func stopTimelapseSync() throws {
-        try self.callNullarySync(asyncMethod: self.stopTimelapse)
+        try TokenDispatch.executeSynchronously() { self.stopTimelapse(completionHandler: $0) }
     }
     
     final func startVideoSync(options: Set<CameraVideoOption>) throws {
-        try self.callUnarySync(asyncMethod: self.startVideo, argument: options)
+        try TokenDispatch.executeSynchronously() { self.startVideo(options: options, completionHandler: $0) }
     }
     
     final func stopVideoSync() throws {
-        try self.callNullarySync(asyncMethod: self.stopVideo)
-    }
-    
-    fileprivate func callNullarySync(asyncMethod method: ((CameraTokenCompletionHandler?) -> Void)) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var methodError: Error? = nil
-        
-        method({
-            error in
-            methodError = error
-            semaphore.signal()
-        })
-        
-        semaphore.wait()
-        
-        if let error = methodError {
-            throw error
-        }
-    }
-    
-    fileprivate func callUnarySync<T>(asyncMethod method: ((T, CameraTokenCompletionHandler?) -> Void), argument: T) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var methodError: Error? = nil
-        
-        method(argument, {
-            error in
-            methodError = error
-            semaphore.signal()
-        })
-        
-        semaphore.wait()
-        
-        if let error = methodError {
-            throw error
-        }
-    }
-    
-    fileprivate func callBinarySync<T, U>(asyncMethod method: ((T, U, CameraTokenCompletionHandler?) -> Void), firstArg first: T, secondArg second: U) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var methodError: Error? = nil
-        
-        method(first, second, {
-            error in
-            methodError = error
-            semaphore.signal()
-        })
-        
-        semaphore.wait()
-        
-        if let error = methodError {
-            throw error
-        }
+        try TokenDispatch.executeSynchronously() { self.stopVideo(completionHandler: $0) }
     }
 }
 

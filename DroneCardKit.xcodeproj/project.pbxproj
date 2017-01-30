@@ -13,6 +13,7 @@
 		6809DF371DF4B7B80077C6EE /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
 		6809DF381DF4B7B80077C6EE /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
 		6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
+		68657C2F1E3FBEE900612ECC /* TokenDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68657C2E1E3FBEE900612ECC /* TokenDispatch.swift */; };
 		686EE8A31DF855A40024F3E5 /* Land.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686EE8A21DF855A40024F3E5 /* Land.swift */; };
 		68B635301DFB5B0E00A2AA07 /* Hover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B6352F1DFB5B0E00A2AA07 /* Hover.swift */; };
 		68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
@@ -113,6 +114,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68657C2E1E3FBEE900612ECC /* TokenDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenDispatch.swift; path = DroneCardKit/Utils/TokenDispatch.swift; sourceTree = SOURCE_ROOT; };
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
 		68B6352F1DFB5B0E00A2AA07 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
 		68D4329C1DFAFBFB0080389E /* LandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandTests.swift; sourceTree = "<group>"; };
@@ -219,6 +221,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68657C2D1E3FBEB900612ECC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		686EE8A11DF8558B0024F3E5 /* Simple */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,7 +357,7 @@
 				CCD6D6E11DFF0E38004CEB71 /* DroneCardKit */,
 				CCBE8C5E1DA69F5900BD7638 /* Cards */,
 				CC9318D31D4797BF001B71B1 /* Scenarios */,
-				CCD6D6F31DFF0F65004CEB71 /* Extensions */,
+				CCD6D6F31DFF0F65004CEB71 /* Util */,
 			);
 			path = DroneCardKit;
 			sourceTree = "<group>";
@@ -452,10 +461,13 @@
 			path = Token;
 			sourceTree = "<group>";
 		};
-		CCD6D6F31DFF0F65004CEB71 /* Extensions */ = {
+		CCD6D6F31DFF0F65004CEB71 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				68657C2D1E3FBEB900612ECC /* Extensions */,
+				68657C2E1E3FBEE900612ECC /* TokenDispatch.swift */,
 			);
+			name = Util;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -873,6 +885,7 @@
 				CCD6D6ED1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				CCB5987D1E37F121009464A9 /* TakePhotos.swift in Sources */,
 				CCD6D6E31DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				68657C2F1E3FBEE900612ECC /* TokenDispatch.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC56E0121E36B1C700F669BC /* TakePhoto.swift in Sources */,
