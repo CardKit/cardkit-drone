@@ -81,7 +81,7 @@ public extension DroneToken {
     }
     
     final func spinMotorsSync(on: Bool) throws {
-        try performSynchronous() { self.spinMotors(on: on, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.spinMotors(on: on, completionHandler: $0) }
     }
 }
 
@@ -92,7 +92,7 @@ public extension DroneToken {
     }
     
     final func takeOffSync(at altitude: DCKRelativeAltitude? = nil) throws {
-        try performSynchronous() { self.takeOff(at: altitude, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.takeOff(at: altitude, completionHandler: $0) }
     }
 }
 
@@ -104,7 +104,7 @@ public extension DroneToken {
     }
     
     final func hoverSync(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
-        try performSynchronous() { self.hover(at: altitude, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.hover(at: altitude, completionHandler: $0) }
     }
 }
 
@@ -117,7 +117,7 @@ public extension DroneToken {
     }
     
     final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try performSynchronous() { self.fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
     
     //fly to with DCKOrientedCoordinate2D
@@ -146,7 +146,7 @@ public extension DroneToken {
     }
     
     final func flySync(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try performSynchronous() { self.fly(on: path, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.fly(on: path, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -157,7 +157,7 @@ public extension DroneToken {
     }
     
     final func flySync(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed? = nil) throws {
-        try performSynchronous() { self.fly(on: path, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.fly(on: path, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -169,7 +169,7 @@ public extension DroneToken {
     }
     
     final func returnHomeSync(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try performSynchronous() { self.returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -180,7 +180,7 @@ public extension DroneToken {
     }
     
     final func landingGearSync(down: Bool) throws {
-        try performSynchronous() { self.landingGear(down: down, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.landingGear(down: down, completionHandler: $0) }
     }
 }
 
@@ -191,7 +191,7 @@ public extension DroneToken {
     }
     
     final func landSync() throws {
-        try performSynchronous() { self.land(completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.land(completionHandler: $0) }
     }
 }
 

@@ -91,39 +91,39 @@ public extension CameraToken {
 
 public extension CameraToken {
     final func takePhotoSync(options: Set<CameraPhotoOption>) throws {
-        try performSynchronous() { self.takePhoto(options: options, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.takePhoto(options: options, completionHandler: $0) }
     }
     
     final func takeHDRPhotoSync(options: Set<CameraPhotoOption>) throws {
-        try performSynchronous() { self.takeHDRPhoto(options: options, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.takeHDRPhoto(options: options, completionHandler: $0) }
     }
     
     final func takePhotoBurstSync(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws {
-        try performSynchronous() { self.takePhotoBurst(count: count, options: options, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.takePhotoBurst(count: count, options: options, completionHandler: $0) }
     }
     
     final func startTakingPhotosSync(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws {
-        try performSynchronous() { self.startTakingPhotos(at: interval, options: options, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.startTakingPhotos(at: interval, options: options, completionHandler: $0) }
     }
     
     final func stopTakingPhotosSync() throws {
-        try performSynchronous() { self.stopTakingPhotos(completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.stopTakingPhotos(completionHandler: $0) }
     }
     
     final func startTimelapseSync(options: Set<CameraPhotoOption>) throws {
-        try performSynchronous() { self.startTimelapse(options: options, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.startTimelapse(options: options, completionHandler: $0) }
     }
     
     final func stopTimelapseSync() throws {
-        try performSynchronous() { self.stopTimelapse(completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.stopTimelapse(completionHandler: $0) }
     }
     
     final func startVideoSync(options: Set<CameraVideoOption>) throws {
-        try performSynchronous() { self.startVideo(options: options, completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.startVideo(options: options, completionHandler: $0) }
     }
     
     final func stopVideoSync() throws {
-        try performSynchronous() { self.stopVideo(completionHandler: $0) }
+        try DispatchQueue.performSynchronous() { self.stopVideo(completionHandler: $0) }
     }
 }
 
