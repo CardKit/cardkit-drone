@@ -47,6 +47,24 @@
 		CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC751E3FCEA600F7010D /* TakeTimelapse.swift */; };
 		CC64EC831E3FCEA600F7010D /* TakeTimelapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC751E3FCEA600F7010D /* TakeTimelapse.swift */; };
 		CC64EC841E3FCEA600F7010D /* TakeTimelapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC751E3FCEA600F7010D /* TakeTimelapse.swift */; };
+		CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC861E3FD1D700F7010D /* PointAtFront.swift */; };
+		CC64EC881E3FD1D700F7010D /* PointAtFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC861E3FD1D700F7010D /* PointAtFront.swift */; };
+		CC64EC891E3FD1D700F7010D /* PointAtFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC861E3FD1D700F7010D /* PointAtFront.swift */; };
+		CC64EC8B1E3FE4D800F7010D /* PointAtMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */; };
+		CC64EC8C1E3FE4D800F7010D /* PointAtMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */; };
+		CC64EC8D1E3FE4D800F7010D /* PointAtMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */; };
+		CC64EC8F1E3FE4E100F7010D /* PointAtLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */; };
+		CC64EC901E3FE4E100F7010D /* PointAtLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */; };
+		CC64EC911E3FE4E100F7010D /* PointAtLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */; };
+		CC64EC931E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC921E3FE4E900F7010D /* PanBetweenLocations.swift */; };
+		CC64EC941E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC921E3FE4E900F7010D /* PanBetweenLocations.swift */; };
+		CC64EC951E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC921E3FE4E900F7010D /* PanBetweenLocations.swift */; };
+		CC64EC971E3FE4F200F7010D /* PointAtGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC961E3FE4F200F7010D /* PointAtGround.swift */; };
+		CC64EC981E3FE4F200F7010D /* PointAtGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC961E3FE4F200F7010D /* PointAtGround.swift */; };
+		CC64EC991E3FE4F200F7010D /* PointAtGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC961E3FE4F200F7010D /* PointAtGround.swift */; };
+		CC64EC9B1E3FE4FB00F7010D /* PointInDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC9A1E3FE4FB00F7010D /* PointInDirection.swift */; };
+		CC64EC9C1E3FE4FB00F7010D /* PointInDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC9A1E3FE4FB00F7010D /* PointInDirection.swift */; };
+		CC64EC9D1E3FE4FB00F7010D /* PointInDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC9A1E3FE4FB00F7010D /* PointInDirection.swift */; };
 		CC93187F1D4796DB001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318861D4796DB001B71B1 /* DroneCardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */; };
 		CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
@@ -125,6 +143,12 @@
 		CC64EC731E3FCEA600F7010D /* TakePhotoBurst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoBurst.swift; sourceTree = "<group>"; };
 		CC64EC741E3FCEA600F7010D /* TakePhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotos.swift; sourceTree = "<group>"; };
 		CC64EC751E3FCEA600F7010D /* TakeTimelapse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeTimelapse.swift; sourceTree = "<group>"; };
+		CC64EC861E3FD1D700F7010D /* PointAtFront.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtFront.swift; sourceTree = "<group>"; };
+		CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtMovement.swift; sourceTree = "<group>"; };
+		CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtLocation.swift; sourceTree = "<group>"; };
+		CC64EC921E3FE4E900F7010D /* PanBetweenLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanBetweenLocations.swift; sourceTree = "<group>"; };
+		CC64EC961E3FE4F200F7010D /* PointAtGround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtGround.swift; sourceTree = "<group>"; };
+		CC64EC9A1E3FE4FB00F7010D /* PointInDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointInDirection.swift; sourceTree = "<group>"; };
 		CC93187B1D4796DB001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC93187E1D4796DB001B71B1 /* DroneCardKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DroneCardKit.h; sourceTree = "<group>"; };
 		CC9318801D4796DB001B71B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -300,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				CC64EC701E3FCEA600F7010D /* Camera */,
+				CC64EC851E3FD1B900F7010D /* Gimbal */,
 			);
 			path = Tech;
 			sourceTree = "<group>";
@@ -314,6 +339,19 @@
 				CC64EC751E3FCEA600F7010D /* TakeTimelapse.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		CC64EC851E3FD1B900F7010D /* Gimbal */ = {
+			isa = PBXGroup;
+			children = (
+				CC64EC921E3FE4E900F7010D /* PanBetweenLocations.swift */,
+				CC64EC861E3FD1D700F7010D /* PointAtFront.swift */,
+				CC64EC961E3FE4F200F7010D /* PointAtGround.swift */,
+				CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */,
+				CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */,
+				CC64EC9A1E3FE4FB00F7010D /* PointInDirection.swift */,
+			);
+			path = Gimbal;
 			sourceTree = "<group>";
 		};
 		CC9318711D4796DB001B71B1 = {
@@ -860,11 +898,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC64EC7C1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
+				CC64EC971E3FE4F200F7010D /* PointAtGround.swift in Sources */,
+				CC64EC931E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
 				68B635301DFB5B0E00A2AA07 /* Hover.swift in Sources */,
 				CCBE8C6C1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CCD6D6F01DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
 				CC0F32BE1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
+				CC64EC8B1E3FE4D800F7010D /* PointAtMovement.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */,
@@ -872,9 +913,12 @@
 				CCD6D6ED1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				CC64EC7F1E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6E31DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				CC64EC8F1E3FE4E100F7010D /* PointAtLocation.swift in Sources */,
 				CC64EC791E3FCEA600F7010D /* TakePhoto.swift in Sources */,
+				CC64EC9B1E3FE4FB00F7010D /* PointInDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,11 +937,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC64EC7D1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
+				CC64EC981E3FE4F200F7010D /* PointAtGround.swift in Sources */,
+				CC64EC941E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
 				F9617B941E1D74E3003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EB1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
 				CC0F32BF1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */,
 				CCD6D6E41DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				CC64EC8C1E3FE4D800F7010D /* PointAtMovement.swift in Sources */,
 				CCBE8C6E1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CC64EC831E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */,
@@ -905,9 +952,12 @@
 				68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC64EC801E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6EE1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
+				CC64EC881E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				F9FDA9501DFF07EE00256F2C /* Land.swift in Sources */,
+				CC64EC901E3FE4E100F7010D /* PointAtLocation.swift in Sources */,
 				CC64EC7A1E3FCEA600F7010D /* TakePhoto.swift in Sources */,
+				CC64EC9C1E3FE4FB00F7010D /* PointInDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,11 +977,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC64EC7E1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
+				CC64EC991E3FE4F200F7010D /* PointAtGround.swift in Sources */,
+				CC64EC951E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
 				F9617B951E1D74E4003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EC1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
 				CC0F32C01E2FFBC2008423AC /* DummyDroneToken.swift in Sources */,
 				CCD6D6E51DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				CC64EC8D1E3FE4D800F7010D /* PointAtMovement.swift in Sources */,
 				CCBE8C701DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CC64EC841E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */,
@@ -939,9 +992,12 @@
 				68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC64EC811E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6EF1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
+				CC64EC891E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				F9FDA9521DFF07EF00256F2C /* Land.swift in Sources */,
+				CC64EC911E3FE4E100F7010D /* PointAtLocation.swift in Sources */,
 				CC64EC7B1E3FCEA600F7010D /* TakePhoto.swift in Sources */,
+				CC64EC9D1E3FE4FB00F7010D /* PointInDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

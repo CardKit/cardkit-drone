@@ -496,7 +496,7 @@ extension DroneCardKit.Action.Tech.Camera {
         assetCatalog: CardAssetCatalog(description: "Take a timelapse"))
 }
 
-// TODO: Add descriptors for Claw, Gimbal, Sensor, Speaker
+// TODO: Add descriptors for Claw, Sensor, Speaker
 
 extension DroneCardKit.Action.Tech {
     /// Contains descriptors for Action/Tech/Claw cards
@@ -510,6 +510,92 @@ extension DroneCardKit.Action.Tech {
     public struct Gimbal {
         fileprivate init() {}
     }
+}
+
+extension DroneCardKit.Action.Tech.Gimbal {
+    public static let PanBetweenLocations = ActionCardDescriptor(
+        name: "Pan Between Locations",
+        subpath: "Tech/Gimbal",
+        inputs: [
+            InputSlot(name: "StartLocation", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
+            InputSlot(name: "EndLocation", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
+            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true)
+        ],
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Pan Between Locations"))
+    
+    public static let PointAtFront = ActionCardDescriptor(
+        name: "Point at Front",
+        subpath: "Tech/Gimbal",
+        inputs: nil,
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Front"))
+    
+    public static let PointAtGround = ActionCardDescriptor(
+        name: "Point at Ground",
+        subpath: "Tech/Gimbal",
+        inputs: nil,
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Ground"))
+    
+    public static let PointAtLocation = ActionCardDescriptor(
+        name: "Point at Location",
+        subpath: "Tech/Gimbal",
+        inputs: [
+            InputSlot(name: "Location", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false)
+        ],
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Location"))
+    
+    public static let PointAtMovement = ActionCardDescriptor(
+        name: "Point at Movement",
+        subpath: "Tech/Gimbal",
+        inputs: nil,
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Movement"))
+    
+    public static let PointInDirection = ActionCardDescriptor(
+        name: "Point in Direction",
+        subpath: "Tech/Gimbal",
+        inputs: nil,
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point in Direction"))
 }
 
 extension DroneCardKit.Action.Tech {
