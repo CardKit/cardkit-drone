@@ -16,24 +16,9 @@ public class PointAtFront: ExecutableActionCard {
             return
         }
         
-        let framerate: VideoFramerate? = self.optionalValue(forInput: "Framerate")
-        let resolution: VideoResolution? = self.optionalValue(forInput: "Resolution")
-        let slowmo: Bool? = self.optionalValue(forInput: "SlowMotionEnabled")
-        
-        var cameraOptions: Set<CameraVideoOption> = []
-        if let framerate = framerate {
-            cameraOptions.insert(.framerate(framerate))
-        }
-        if let resolution = resolution {
-            cameraOptions.insert(.resolution(resolution))
-        }
-        if let _ = slowmo {
-            cameraOptions.insert(.slowMotionEnabled)
-        }
-        
         do {
             if !isCancelled {
-                try camera.startVideoSync(options: cameraOptions)
+                try gimbal.rotateSync(yaw: DCKAngle.zero, pitch: DCKAngle.zero, roll: DCKAngle.zero, relative: true)
             }
         } catch {
             self.error = error
@@ -45,14 +30,10 @@ public class PointAtFront: ExecutableActionCard {
     }
     
     override public func cancel() {
-        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
+        guard let _: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
             return
         }
         
-        do {
-            try camera.stopVideoSync()
-        } catch let error {
-            self.error = error
-        }
+        // can we actually cancel the gimbal rotate command?
     }
 }
