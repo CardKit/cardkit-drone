@@ -13,12 +13,10 @@ import CardKitRuntime
 public class TakePhotos: ExecutableActionCard {
     override public func main() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
         guard let interval: TimeInterval = self.value(forInput: "Interval") else {
-            self.error = DroneTokenError.MandatoryInputAquisitionFailed
             return
         }
         
@@ -48,7 +46,6 @@ public class TakePhotos: ExecutableActionCard {
     
     override public func cancel() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            self.error = DroneTokenError.TokenAquisitionFailed
             return
         }
         
