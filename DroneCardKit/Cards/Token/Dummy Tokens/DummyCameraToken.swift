@@ -19,25 +19,25 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     var isTakingTimelapse = false
     var isTakingVideo = false
     
-    public func takePhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func takePhoto(options: Set<CameraPhotoOption>, completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > takePhoto(options: \(options))")
         Thread.sleep(forTimeInterval: delay)
         completionHandler?(nil)
     }
     
-    public func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > takeHDRPhoto(options: \(options))")
         Thread.sleep(forTimeInterval: delay)
         completionHandler?(nil)
     }
     
-    public func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > takePhotoBurst(count: \(count), options: \(options))")
         Thread.sleep(forTimeInterval: delay)
         completionHandler?(nil)
     }
     
-    public func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>, completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > startTakingPhotos(at: \(interval), options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
@@ -50,14 +50,14 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         completionHandler?(nil)
     }
     
-    public func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler?) {
+    public func stopTakingPhotos(completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > stopTakingPhotos()")
         self.isTakingPhotos = false
         completionHandler?(nil)
     }
     
     /// Start taking a timelapse movie.
-    public func startTimelapse(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func startTimelapse(options: Set<CameraPhotoOption>, completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > startTimelapse(options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
@@ -71,13 +71,13 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     }
     
     /// Stop taking a timelapse movie.
-    public func stopTimelapse(completionHandler: CameraTokenCompletionHandler?) {
+    public func stopTimelapse(completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > stopTimelapse()")
         self.isTakingTimelapse = false
         completionHandler?(nil)
     }
     
-    public func startVideo(options: Set<CameraVideoOption>, completionHandler: CameraTokenCompletionHandler?) {
+    public func startVideo(options: Set<CameraVideoOption>, completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > startVideo(options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
@@ -90,7 +90,7 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         completionHandler?(nil)
     }
     
-    public func stopVideo(completionHandler: CameraTokenCompletionHandler?) {
+    public func stopVideo(completionHandler: AsyncExecutionCompletionHandler?) {
         print("\(prefix) DummyCameraToken > stopVideo()")
         self.isTakingVideo = false
         completionHandler?(nil)
