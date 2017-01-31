@@ -8,10 +8,10 @@
 
 import Foundation
 
-public typealias AsyncCompletionHandler = (Error?) -> Void
+public typealias AsyncExecutionCompletionHandler = (Error?) -> Void
 
 extension DispatchQueue {
-    static func performSynchronous(asyncMethod method: (AsyncCompletionHandler?) -> Void) throws {
+    static func executeSynchronously(asyncMethod method: (AsyncExecutionCompletionHandler?) -> Void) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var methodError: Error? = nil
         
