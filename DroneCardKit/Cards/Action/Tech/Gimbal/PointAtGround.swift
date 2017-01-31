@@ -7,3 +7,33 @@
 //
 
 import Foundation
+
+import CardKitRuntime
+
+public class PointAtGround: ExecutableActionCard {
+    override public func main() {
+        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
+            return
+        }
+        
+        do {
+            if !isCancelled {
+                try gimbal.rotateSync(yaw: DCKAngle.zero, pitch: DCKAngle(degrees: -90), roll: DCKAngle.zero, relative: false)
+            }
+        } catch {
+            self.error = error
+            
+            if !isCancelled {
+                cancel()
+            }
+        }
+    }
+    
+    override public func cancel() {
+        guard let _: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
+            return
+        }
+        
+        // can we actually cancel the gimbal rotate command?
+    }
+}
