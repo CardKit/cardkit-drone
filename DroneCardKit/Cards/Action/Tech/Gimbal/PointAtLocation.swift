@@ -12,7 +12,7 @@ import CardKitRuntime
 
 public class PointAtLocation: ExecutableActionCard {
     override public func main() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken else {
             return
         }
         

@@ -10,6 +10,7 @@ import Foundation
 
 import CardKit
 import CardKitRuntime
+
 public protocol GimbalToken {
     var currentAttitude: DCKAttitude? { get }
     
@@ -87,5 +88,13 @@ public extension GimbalToken {
     
     func rotate(yaw: DCKAngularVelocity? = nil, pitch: DCKAngularVelocity? = nil, roll: DCKAngularVelocity? = nil, forTimeInSeconds seconds: Double) throws {
         try DispatchQueue.executeSynchronously { self.rotate(yaw: yaw, pitch: pitch, roll: roll, forTimeInSeconds: seconds, completionHandler: $0) }
+    }
+}
+
+// MARK: - Convenience -- orient
+
+public extension GimbalToken {
+    func orientSync(to position: GimbalOrientation) throws {
+        try DispatchQueue.executeSynchronously { self.orient(to: position, completionHandler: $0) }
     }
 }

@@ -12,11 +12,11 @@ import CardKitRuntime
 
 public class PointInDirection: ExecutableActionCard {
     override public func main() {
-        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
+        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken else {
             return
         }
         
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
             return
         }
         
@@ -24,7 +24,7 @@ public class PointInDirection: ExecutableActionCard {
             return
         }
         
-        guard let droneYaw = drone.currentAttitude?.yaw else {
+        guard let droneYaw = droneTelemetry.currentAttitude?.yaw else {
             self.error = DroneTokenError.FailureRetrievingDroneState
             return
         }
@@ -43,10 +43,6 @@ public class PointInDirection: ExecutableActionCard {
     }
     
     override public func cancel() {
-        guard let _: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
-            return
-        }
-        
-        // can we actually cancel the gimbal rotate command?
+        // gimbal rotations cannot be cancelled
     }
 }

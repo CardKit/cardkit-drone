@@ -18,7 +18,7 @@ public class PointAtGround: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try gimbal.rotateSync(yaw: DCKAngle.zero, pitch: DCKAngle(degrees: -90), roll: DCKAngle.zero, relative: false)
+                try gimbal.orientSync(to: .facingDownward)
             }
         } catch {
             self.error = error
@@ -30,10 +30,6 @@ public class PointAtGround: ExecutableActionCard {
     }
     
     override public func cancel() {
-        guard let _: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
-            return
-        }
-        
-        // can we actually cancel the gimbal rotate command?
+        // gimbal rotations cannot be cancelled
     }
 }
