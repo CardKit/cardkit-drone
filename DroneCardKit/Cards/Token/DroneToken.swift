@@ -11,7 +11,8 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public protocol DroneToken {
+/// Current drone state, read-only. Carries current location, altitude, attitude, and motor state.
+public protocol DroneTelemetryToken {
     // MARK: Location & attitude
     var currentLocation: DCKCoordinate2D? { get }
     var currentAltitude: DCKRelativeAltitude? { get }
@@ -22,7 +23,9 @@ public protocol DroneToken {
     
     // MARK: Motor state
     var areMotorsOn: Bool? { get }
-    
+}
+
+public protocol DroneToken: DroneTelemetryToken {
     //swiftlint:disable:next variable_name
     func spinMotors(on: Bool, completionHandler: AsyncExecutionCompletionHandler?)
     

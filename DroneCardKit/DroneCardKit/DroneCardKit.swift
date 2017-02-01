@@ -563,7 +563,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Location", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone),
+            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
@@ -592,8 +592,8 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "CardinalDirection", descriptor: DroneCardKit.Input.Location.CardinalDirection, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -924,7 +924,13 @@ extension DroneCardKit.Token {
         subpath: nil,
         isConsumed: true,
         assetCatalog: CardAssetCatalog(description: "Drone token"))
- 
+    
+    public static let DroneTelemetry = TokenCardDescriptor(
+        name: "Drone Telemetry",
+        subpath: nil,
+        isConsumed: false,
+        assetCatalog: CardAssetCatalog(description: "Drone telemetry token"))
+    
     public static let Camera = TokenCardDescriptor(
         name: "Camera",
         subpath: nil,
