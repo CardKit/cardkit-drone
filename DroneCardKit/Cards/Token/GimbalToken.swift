@@ -30,6 +30,16 @@ public protocol GimbalToken {
     func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relativeToDrone: Bool, withinTimeInSeconds duration: Double?, completionHandler: AsyncExecutionCompletionHandler?)
     func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds duration: Double, completionHandler: AsyncExecutionCompletionHandler?)
     //swiftlint:enable function_parameter_count
+    
+    /// Rotate the gimbal to a given position.
+    func orient(to position: GimbalOrientation, completionHandler: AsyncExecutionCompletionHandler?)
+}
+
+// MARK: - GimbalOrientation
+
+public enum GimbalOrientation {
+    case facingForward
+    case facingDownward
 }
 
 // MARK: - Convienience -- reset
