@@ -17,6 +17,9 @@ public protocol DroneToken {
     // MARK: Location & attitude
     var currentLocation: DCKCoordinate2D? { get }
     var currentAltitude: DCKRelativeAltitude? { get }
+    
+    /// If the values of the pitch, roll, and yaw are 0, the aircraft will be hovering level with a True North heading.
+    /// Values range from 0 to 360. 0º represents North, 90º:East, 180º:South, 270º:West, 360º:North
     var currentAttitude: DCKAttitude? { get }
     
     // MARK: Motor state
@@ -81,7 +84,7 @@ public extension DroneToken {
     }
     
     final func spinMotorsSync(on: Bool) throws {
-        try DispatchQueue.executeSynchronously() { self.spinMotors(on: on, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.spinMotors(on: on, completionHandler: $0) }
     }
 }
 
@@ -92,7 +95,7 @@ public extension DroneToken {
     }
     
     final func takeOffSync(at altitude: DCKRelativeAltitude? = nil) throws {
-        try DispatchQueue.executeSynchronously() { self.takeOff(at: altitude, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.takeOff(at: altitude, completionHandler: $0) }
     }
 }
 
@@ -104,7 +107,7 @@ public extension DroneToken {
     }
     
     final func hoverSync(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
-        try DispatchQueue.executeSynchronously() { self.hover(at: altitude, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.hover(at: altitude, completionHandler: $0) }
     }
 }
 
@@ -117,7 +120,7 @@ public extension DroneToken {
     }
     
     final func flySync(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try DispatchQueue.executeSynchronously() { self.fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
     
     //fly to with DCKOrientedCoordinate2D
@@ -146,7 +149,7 @@ public extension DroneToken {
     }
     
     final func flySync(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try DispatchQueue.executeSynchronously() { self.fly(on: path, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.fly(on: path, atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -157,7 +160,7 @@ public extension DroneToken {
     }
     
     final func flySync(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed? = nil) throws {
-        try DispatchQueue.executeSynchronously() { self.fly(on: path, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.fly(on: path, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -169,7 +172,7 @@ public extension DroneToken {
     }
     
     final func returnHomeSync(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try DispatchQueue.executeSynchronously() { self.returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
 }
 
@@ -180,7 +183,7 @@ public extension DroneToken {
     }
     
     final func landingGearSync(down: Bool) throws {
-        try DispatchQueue.executeSynchronously() { self.landingGear(down: down, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.landingGear(down: down, completionHandler: $0) }
     }
 }
 
@@ -191,7 +194,7 @@ public extension DroneToken {
     }
     
     final func landSync() throws {
-        try DispatchQueue.executeSynchronously() { self.land(completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.land(completionHandler: $0) }
     }
 }
 

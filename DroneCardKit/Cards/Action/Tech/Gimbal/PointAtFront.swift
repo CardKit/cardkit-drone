@@ -18,7 +18,7 @@ public class PointAtFront: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try gimbal.rotateSync(yaw: DCKAngle.zero, pitch: DCKAngle.zero, roll: DCKAngle.zero, relative: true)
+                try gimbal.rotateSync(yaw: DCKAngle.zero, pitch: DCKAngle.zero, roll: DCKAngle.zero, relative: false)
             }
         } catch {
             self.error = error
