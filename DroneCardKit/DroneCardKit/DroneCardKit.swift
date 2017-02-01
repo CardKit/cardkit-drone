@@ -587,9 +587,12 @@ extension DroneCardKit.Action.Tech.Gimbal {
     public static let PointInDirection = ActionCardDescriptor(
         name: "Point in Direction",
         subpath: "Tech/Gimbal",
-        inputs: nil,
+        inputs: [
+            InputSlot(name: "CardinalDirection", descriptor: DroneCardKit.Input.Location.CardinalDirection, isOptional: false)
+        ],
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
+            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -788,7 +791,7 @@ extension DroneCardKit.Input.Location {
     public static let CardinalDirection = InputCardDescriptor(
         name: "Cardinal Direction",
         subpath: "Location",
-        inputType: DCKAngle.self,
+        inputType: DCKAngle.self, // 0º:North, 90º:East, 180º:South, 270º:West
         inputDescription: "Cardinal Direction",
         assetCatalog: CardAssetCatalog(description: "Cardinal Direction (N, S, E, W)"))
     
