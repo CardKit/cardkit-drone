@@ -17,11 +17,12 @@ public protocol GimbalToken {
     func reset(completionHandler: AsyncExecutionCompletionHandler?)
     
     //swiftlint:disable:next function_parameter_count
-    func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relativeToDrone: Bool, withinTimeInSeconds: Double?, completionHandler: AsyncExecutionCompletionHandler?)
-    func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds: Double, completionHandler: AsyncExecutionCompletionHandler?)
+    func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relativeToDrone: Bool, withinTimeInSeconds duration: Double?, completionHandler: AsyncExecutionCompletionHandler?)
+    func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds duration: Double, completionHandler: AsyncExecutionCompletionHandler?)
 }
 
 // MARK: - Convienience -- reset
+
 public extension GimbalToken {
     func reset(completionHandler: AsyncExecutionCompletionHandler? = nil) {
         self.reset(completionHandler: completionHandler)
@@ -33,6 +34,7 @@ public extension GimbalToken {
 }
 
 // MARK: - Convienience -- calibrate
+
 public extension GimbalToken {
     func calibrate(completionHandler: AsyncExecutionCompletionHandler? = nil) {
         self.calibrate(completionHandler: completionHandler)
@@ -44,6 +46,7 @@ public extension GimbalToken {
 }
 
 // MARK: - Convienience -- rotate with yaw/pitch/roll
+
 public extension GimbalToken {
     func rotate(yaw: DCKAngle? = nil, pitch: DCKAngle? = nil, roll: DCKAngle? = nil, relative: Bool = false, withinTimeInSeconds: Double? = nil, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         self.rotate(yaw: yaw, pitch: pitch, roll: roll, relative: relative, withinTimeInSeconds: withinTimeInSeconds, completionHandler: completionHandler)
@@ -55,6 +58,7 @@ public extension GimbalToken {
 }
 
 // MARK: - Convienience -- rotate with angular velocity
+
 public extension GimbalToken {
     func rotate(yaw: DCKAngularVelocity? = nil, pitch: DCKAngularVelocity? = nil, roll: DCKAngularVelocity? = nil, forTimeInSeconds seconds: Double, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         self.rotate(yaw: yaw, pitch: pitch, roll: roll, forTimeInSeconds: seconds, completionHandler: completionHandler)

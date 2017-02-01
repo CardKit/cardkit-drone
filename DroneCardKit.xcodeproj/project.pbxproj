@@ -396,8 +396,8 @@
 				CC9318801D4796DB001B71B1 /* Info.plist */,
 				CCD6D6E11DFF0E38004CEB71 /* DroneCardKit */,
 				CCBE8C5E1DA69F5900BD7638 /* Cards */,
-				CC9318D31D4797BF001B71B1 /* Scenarios */,
 				68657C2D1E3FBEB900612ECC /* Extensions */,
+				CC9318D31D4797BF001B71B1 /* Scenarios */,
 			);
 			path = DroneCardKit;
 			sourceTree = "<group>";

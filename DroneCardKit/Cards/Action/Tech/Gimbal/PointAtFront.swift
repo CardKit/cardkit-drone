@@ -34,6 +34,6 @@ public class PointAtFront: ExecutableActionCard {
             return
         }
         
-        // can we actually cancel the gimbal rotate command?
+        // TODO can we actually cancel the gimbal rotate command?
     }
 }
