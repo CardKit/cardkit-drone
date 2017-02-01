@@ -28,7 +28,7 @@ public extension GimbalToken {
     }
     
     func resetSync() throws {
-        try DispatchQueue.executeSynchronously() { self.reset(completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.reset(completionHandler: $0) }
     }
 }
 
@@ -39,7 +39,7 @@ public extension GimbalToken {
     }
     
     func calibrateSync() throws {
-        try DispatchQueue.executeSynchronously() { self.calibrate(completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.calibrate(completionHandler: $0) }
     }
 }
 
@@ -50,7 +50,7 @@ public extension GimbalToken {
     }
     
     public func rotateSync(yaw: DCKAngle? = nil, pitch: DCKAngle? = nil, roll: DCKAngle? = nil, relative: Bool = false, withinTimeInSeconds: Double? = nil) throws {
-        try DispatchQueue.executeSynchronously() { self.rotate(yaw: yaw, pitch: pitch, roll: roll, relative: relative, withinTimeInSeconds: withinTimeInSeconds, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.rotate(yaw: yaw, pitch: pitch, roll: roll, relative: relative, withinTimeInSeconds: withinTimeInSeconds, completionHandler: $0) }
     }
 }
 
@@ -61,6 +61,6 @@ public extension GimbalToken {
     }
     
     func rotate(yaw: DCKAngularVelocity? = nil, pitch: DCKAngularVelocity? = nil, roll: DCKAngularVelocity? = nil, forTimeInSeconds seconds: Double) throws {
-        try DispatchQueue.executeSynchronously() { self.rotate(yaw: yaw, pitch: pitch, roll: roll, forTimeInSeconds: seconds, completionHandler: $0) }
+        try DispatchQueue.executeSynchronously { self.rotate(yaw: yaw, pitch: pitch, roll: roll, forTimeInSeconds: seconds, completionHandler: $0) }
     }
 }
