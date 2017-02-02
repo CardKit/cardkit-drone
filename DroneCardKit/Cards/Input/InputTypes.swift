@@ -30,7 +30,7 @@ public struct DCKAngle {
     }
     
     public func normalized() -> DCKAngle {
-        let normalizedDegrees = degrees.truncatingRemainder(dividingBy: 360)
+        let normalizedDegrees = (degrees + 360).truncatingRemainder(dividingBy: 360)
         return DCKAngle(degrees: normalizedDegrees)
     }
 }
@@ -206,8 +206,14 @@ public enum DCKCardinalDirection: Int {
     }
 }
 
-// MARK: DCKCoordinate2D
+// MARK: DCKDegrees
 
+extension FloatingPoint {
+    var degreesToRadians: Self { return self * .pi / 180 }
+    var radiansToDegrees: Self { return self * 180 / .pi }
+}
+
+// MARK: DCKCoordinate2D
 public struct DCKCoordinate2D {
     public let latitude: Double
     public let longitude: Double
@@ -215,6 +221,55 @@ public struct DCKCoordinate2D {
     public init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
+    }
+    
+    
+    /// Finds the distance between two DCKCoordinate2Ds using the haversine formula.
+    /// See here for more info: http://www.movable-type.co.uk/scripts/latlong.html
+    ///
+    /// - Parameter secondCoordinate: second coordinate used for calculating distance
+    /// - Returns: returns  in meters
+    public func distanceTo(secondCoordinate: DCKCoordinate2D) -> Double {
+        let earthsRadius = 6371e3; // in meters
+        
+        let lat1Rad = self.latitude.degreesToRadians
+        let lat2Rad = secondCoordinate.latitude.degreesToRadians
+        
+        let latDelta = (secondCoordinate.latitude-self.latitude).degreesToRadians
+        let lonDelta = (secondCoordinate.longitude-self.longitude).degreesToRadians
+        
+        let a = sin(latDelta/2) * sin(latDelta/2) +
+            cos(lat1Rad) * cos(lat2Rad) *
+            sin(lonDelta/2) * sin(lonDelta/2)
+        
+        let angularDistanceInRadians = 2 * atan2(sqrt(a), sqrt(1-a))
+        
+        let distance = earthsRadius * angularDistanceInRadians
+        
+        return distance
+    }
+    
+    /// Calculates the bearing (angle measureed in clockwise from North) to the second coordinate.
+    /// See here for more info: http://www.movable-type.co.uk/scripts/latlong.html
+    /// Also see this for more info: http://www.igismap.com/formula-to-find-bearing-or-heading-angle-between-two-points-latitude-longitude/
+    ///
+    /// - Parameter secondCoordinate: second coordinate used for calculating bearing
+    /// - Returns: returns bearing (angle measured in clockwise from North)
+    public func bearingTo(secondCoordinate: DCKCoordinate2D) -> DCKAngle {
+        let lat1Rad = self.latitude.degreesToRadians
+        let lat2Rad = secondCoordinate.latitude.degreesToRadians
+        
+        let lon1Rad = self.longitude.degreesToRadians
+        let lon2Rad = secondCoordinate.longitude.degreesToRadians
+        
+        let y = sin(lon2Rad-lon1Rad) * cos(lat2Rad)
+       
+        let x = cos(lat1Rad)*sin(lat2Rad) -
+        sin(lat1Rad)*cos(lat2Rad)*cos(lon2Rad-lon1Rad)
+        
+        let bearing = atan2(y, x).radiansToDegrees
+        
+        return DCKAngle(degrees: bearing)
     }
 }
 

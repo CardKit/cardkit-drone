@@ -20,16 +20,36 @@ public class PointAtLocation: ExecutableActionCard {
             return
         }
         
-        guard let location: Bool = self.value(forInput: "Location") else {
+        guard let desiredLocation: DCKCoordinate3D = self.value(forInput: "Location") else {
             return
         }
         
-        // figure out the right angle at which to point
-//        let droneLocation: DCKCoordinate3D = drone.currentLocation
+        guard let currentLocation = droneTelemetry.currentLocation,
+            let currentAltitude = droneTelemetry.currentAltitude,
+            let currentDroneAttitude = droneTelemetry.currentAttitude else {
+            self.error = DroneTokenError.FailureRetrievingDroneState
+            return
+        }
+        
+        //calculate yaw movement
+        let bearing = currentLocation.bearingTo(secondCoordinate: desiredLocation.as2D()).degrees
+        
+        //bearing relative to current drone attitude
+        let relativeBearing = bearing - currentDroneAttitude.yaw.degrees
+        let yawAngleNormalized = DCKAngle(degrees: relativeBearing).normalized()
+        
+        //using sohcahtoa to calculate the change in pitch
+        //we have the opposite value (change in altitude) and the hypotoneuse (distance to location)
+        //sin(theta) = opposite/hypotoneuse .. which is..  sin(theta) = altitude/distance
+        let altitudeDelta = desiredLocation.altitude.metersAboveGroundAtTakeoff - currentAltitude.metersAboveGroundAtTakeoff
+        let distanceToLocation = currentLocation.distanceTo(secondCoordinate: desiredLocation.as2D())
+        
+        let pitchAngle = asin(altitudeDelta/distanceToLocation)
+        let pitchAngleNormalized = DCKAngle(degrees: pitchAngle).normalized()
         
         do {
             if !isCancelled {
-                try gimbal.rotateSync(yaw: DCKAngle.zero, pitch: DCKAngle.zero, roll: DCKAngle.zero, relative: true)
+                try gimbal.rotateSync(yaw: yawAngleNormalized, pitch: pitchAngleNormalized, relative: false)
             }
         } catch {
             self.error = error
@@ -41,10 +61,6 @@ public class PointAtLocation: ExecutableActionCard {
     }
     
     override public func cancel() {
-        guard let _: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
-            return
-        }
-        
-        // TODO can we actually cancel the gimbal rotate command?
+        // gimbal rotations cannot be cancelled
     }
 }
