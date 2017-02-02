@@ -26,30 +26,29 @@ public class PointAtLocation: ExecutableActionCard {
         
         guard let currentLocation = droneTelemetry.currentLocation,
             let currentAltitude = droneTelemetry.currentAltitude,
-            let currentDroneAttitude = droneTelemetry.currentAttitude else {
+            let currentAttitude = droneTelemetry.currentAttitude else {
             self.error = DroneTokenError.FailureRetrievingDroneState
             return
         }
         
-        //calculate yaw movement
-        let bearing = currentLocation.bearingTo(secondCoordinate: desiredLocation.as2D()).degrees
+        // make a 3D coordinate for the drone's location
+        let droneLocation = DCKCoordinate3D(latitude: currentLocation.latitude, longitude: currentLocation.longitude, altitude: currentAltitude)
         
-        //bearing relative to current drone attitude
-        let relativeBearing = bearing - currentDroneAttitude.yaw.degrees
-        let yawAngleNormalized = DCKAngle(degrees: relativeBearing).normalized()
+        // calculate the absolute bearing between the drone and the desiredLocation
+        let bearing = droneLocation.bearing(to: desiredLocation)
         
-        //using sohcahtoa to calculate the change in pitch
-        //we have the opposite value (change in altitude) and the hypotoneuse (distance to location)
-        //sin(theta) = opposite/hypotoneuse .. which is..  sin(theta) = altitude/distance
-        let altitudeDelta = desiredLocation.altitude.metersAboveGroundAtTakeoff - currentAltitude.metersAboveGroundAtTakeoff
-        let distanceToLocation = currentLocation.distanceTo(secondCoordinate: desiredLocation.as2D())
+        // calculate the relative bearing between the drone's yaw and the absolute bearing
+        let relativeBearing = bearing - currentAttitude.yaw
         
-        let pitchAngle = asin(altitudeDelta/distanceToLocation)
-        let pitchAngleNormalized = DCKAngle(degrees: pitchAngle).normalized()
+        // normalize the bearing (so negative angles become positive)
+        let normalizedRelativeBearing = relativeBearing.normalized()
+        
+        // calculate the pitch angle needed to orient the gimbal to the desiredLocation
+        let pitch = droneLocation.pitch(to: desiredLocation)
         
         do {
             if !isCancelled {
-                try gimbal.rotateSync(yaw: yawAngleNormalized, pitch: pitchAngleNormalized, relative: false)
+                try gimbal.rotateSync(yaw: normalizedRelativeBearing, pitch: pitch, relative: false)
             }
         } catch {
             self.error = error
