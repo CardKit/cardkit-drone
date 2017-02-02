@@ -28,58 +28,69 @@ public class PanBetweenLocations: ExecutableActionCard {
             return
         }
         
-        // rotate to the start location
-        var currentLocation: LocationChoice = .start
+        let duration: Double? = self.optionalValue(forInput: "Duration")
         
+        // rotate to the start location
+        var coordinate: DCKCoordinate3D = startLocation
         
         // pan between locations until we are finished executing
         while !self.isCancelled {
             // get the current location of the drone
-            
-        }
-        
-        guard let currentLocation = droneTelemetry.currentLocation,
-            let currentAltitude = droneTelemetry.currentAltitude,
-            let currentDroneAttitude = droneTelemetry.currentAttitude else {
-                self.error = DroneTokenError.FailureRetrievingDroneState
-                return
-        }
-        
-        // calculate yaw movement
-        let bearing = currentLocation.bearingTo(secondCoordinate: desiredLocation.as2D()).degrees
-        
-        // bearing relative to current drone attitude
-        let relativeBearing = bearing - currentDroneAttitude.yaw.degrees
-        let yawAngleNormalized = DCKAngle(degrees: relativeBearing).normalized()
-        
-        // using sohcahtoa to calculate the change in pitch
-        // we have the opposite value (change in altitude) and the hypotoneuse (distance to location)
-        // sin(theta) = opposite/hypotoneuse .. which is..  sin(theta) = altitude/distance
-        let altitudeDelta = desiredLocation.altitude.metersAboveGroundAtTakeoff - currentAltitude.metersAboveGroundAtTakeoff
-        let distanceToLocation = currentLocation.distanceTo(secondCoordinate: desiredLocation.as2D())
-        
-        let pitchAngle = asin(altitudeDelta/distanceToLocation)
-        let pitchAngleNormalized = DCKAngle(degrees: pitchAngle).normalized()
-        
-        do {
-            if !isCancelled {
-                try gimbal.rotateSync(yaw: yawAngleNormalized, pitch: pitchAngleNormalized, relative: false)
+            guard let currentLocation = droneTelemetry.currentLocation,
+                let currentAltitude = droneTelemetry.currentAltitude,
+                let currentAttitude = droneTelemetry.currentAttitude else {
+                    self.error = DroneTokenError.FailureRetrievingDroneState
+                    return
             }
-        } catch {
-            self.error = error
             
-            if !isCancelled {
-                cancel()
+            // make an oriented 3D coordinate for the drone's location
+            let droneLocation = DCKOrientedCoordinate3D(latitude: currentLocation.latitude, longitude: currentLocation.longitude, altitude: currentAltitude, yaw: currentAttitude.yaw)
+            
+            // calculate the bearing between the drone and the coordinate
+            let yaw = droneLocation.bearing(to: coordinate)
+            
+            // calculate the pitch angle needed to orient the gimbal to the coordinate
+            let pitch = droneLocation.asNonOriented().pitch(to: coordinate)
+            
+            // rotate the gimbal
+            do {
+                if !self.isCancelled {
+                    if let duration = duration {
+                        try gimbal.rotateSync(yaw: yaw, pitch: pitch, relative: false, withinTimeInSeconds: duration)
+                    } else {
+                        try gimbal.rotateSync(yaw: yaw, pitch: pitch, relative: false)
+                    }
+                }
+            } catch {
+                self.error = error
+                
+                if !self.isCancelled {
+                    self.cancel()
+                }
             }
+            
+            // set up for the other coordinate
+            coordinate = (coordinate == startLocation) ? endLocation : startLocation
         }
     }
     
     override public func cancel() {
         // panning will stop automatically when cancel() is called
     }
-}
-
-fileprivate enum LocationChoice {
-    case start
-    case end
+    
+    func pitchAndYaw(from startCoordinate: DCKCoordinate3D, to endCoordinate: DCKCoordinate3D, relativeToYaw yaw: DCKAngle) -> (DCKAngle, DCKAngle) {
+        // calculate the absolute bearing between the two coordinates
+        let bearing = startCoordinate.bearing(to: endCoordinate)
+        
+        // calculate the relative bearing between the drone's yaw and the absolute bearing
+        let relativeBearing = bearing - yaw
+        
+        // normalize the bearing (so negative angles become positive)
+        let normalizedRelativeBearing = relativeBearing.normalized()
+        
+        // calculate the pitch angle needed to orient the gimbal to the desiredLocation
+        let pitch = startCoordinate.pitch(to: endCoordinate)
+        
+        return (normalizedRelativeBearing, pitch)
+    }
 }

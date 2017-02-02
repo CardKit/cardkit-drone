@@ -310,6 +310,19 @@ public struct DCKOrientedCoordinate2D {
     public func asNonOriented() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    
+    /// Compute the relative bearing angle between this coordinate (oriented toward its yaw)
+    /// and the given coordinate.
+    public func bearing(to coordinate: DCKCoordinate2D) -> DCKAngle {
+        // calculate the absolute bearing
+        let bearing = self.bearing(to: coordinate)
+        
+        // calculate the relative bearing
+        let relativeBearing = bearing - self.yaw
+        
+        // return the normalized bearing (so negative angles become positive)
+        return relativeBearing.normalized()
+    }
 }
 
 extension DCKOrientedCoordinate2D: Equatable {
@@ -382,6 +395,14 @@ public struct DCKCoordinate3D {
     }
 }
 
+extension DCKCoordinate3D: Equatable {
+    public static func == (lhs: DCKCoordinate3D, rhs: DCKCoordinate3D) -> Bool {
+        return lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude
+            && lhs.altitude == rhs.altitude
+    }
+}
+
 extension DCKCoordinate3D: CustomStringConvertible {
     public var description: String {
         return "\(self.latitude), \(self.longitude), \(self.altitude.metersAboveGroundAtTakeoff)"
@@ -418,6 +439,27 @@ public struct DCKOrientedCoordinate3D {
     
     public func asNonOriented() -> DCKCoordinate3D {
         return DCKCoordinate3D(latitude: latitude, longitude: longitude, altitude: altitude)
+    }
+    
+    /// Compute the relative bearing angle between this coordinate (oriented toward its yaw)
+    /// and the given coordinate.
+    public func bearing(to coordinate: DCKCoordinate3D) -> DCKAngle {
+        // calculate the absolute bearing
+        let bearing = self.bearing(to: coordinate)
+        
+        // calculate the relative bearing
+        let relativeBearing = bearing - self.yaw
+        
+        // return the normalized bearing (so negative angles become positive)
+        return relativeBearing.normalized()
+    }
+}
+
+extension DCKOrientedCoordinate3D: Equatable {
+    public static func == (lhs: DCKOrientedCoordinate3D, rhs: DCKOrientedCoordinate3D) -> Bool {
+        return lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude
+            && lhs.yaw == rhs.yaw
     }
 }
 
@@ -549,6 +591,12 @@ public struct DCKRelativeAltitude {
     
     public init(metersAboveGroundAtTakeoff: Double) {
         self.metersAboveGroundAtTakeoff = metersAboveGroundAtTakeoff
+    }
+}
+
+extension DCKRelativeAltitude: Equatable {
+    public static func == (lhs: DCKRelativeAltitude, rhs: DCKRelativeAltitude) -> Bool {
+        return lhs.metersAboveGroundAtTakeoff == rhs.metersAboveGroundAtTakeoff
     }
 }
 

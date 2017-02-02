@@ -31,24 +31,18 @@ public class PointAtLocation: ExecutableActionCard {
             return
         }
         
-        // make a 3D coordinate for the drone's location
-        let droneLocation = DCKCoordinate3D(latitude: currentLocation.latitude, longitude: currentLocation.longitude, altitude: currentAltitude)
+        // make an oriented 3D coordinate for the drone's location
+        let droneLocation = DCKOrientedCoordinate3D(latitude: currentLocation.latitude, longitude: currentLocation.longitude, altitude: currentAltitude, yaw: currentAttitude.yaw)
         
-        // calculate the absolute bearing between the drone and the desiredLocation
-        let bearing = droneLocation.bearing(to: desiredLocation)
-        
-        // calculate the relative bearing between the drone's yaw and the absolute bearing
-        let relativeBearing = bearing - currentAttitude.yaw
-        
-        // normalize the bearing (so negative angles become positive)
-        let normalizedRelativeBearing = relativeBearing.normalized()
+        // calculate the bearing between the drone and the desiredLocation
+        let yaw = droneLocation.bearing(to: desiredLocation)
         
         // calculate the pitch angle needed to orient the gimbal to the desiredLocation
-        let pitch = droneLocation.pitch(to: desiredLocation)
+        let pitch = droneLocation.asNonOriented().pitch(to: desiredLocation)
         
         do {
             if !isCancelled {
-                try gimbal.rotateSync(yaw: normalizedRelativeBearing, pitch: pitch, relative: false)
+                try gimbal.rotateSync(yaw: yaw, pitch: pitch, relative: false)
             }
         } catch {
             self.error = error

@@ -519,7 +519,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
         inputs: [
             InputSlot(name: "StartLocation", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
             InputSlot(name: "EndLocation", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true)
+            InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
