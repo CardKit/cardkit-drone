@@ -496,7 +496,7 @@ extension DroneCardKit.Action.Tech.Camera {
         assetCatalog: CardAssetCatalog(description: "Take a timelapse"))
 }
 
-// TODO: Add descriptors for Claw, Sensor, Speaker
+// NOTE we still need: Add descriptors for Claw, Gimbal, Sensor, Speaker
 
 extension DroneCardKit.Action.Tech {
     /// Contains descriptors for Action/Tech/Claw cards
