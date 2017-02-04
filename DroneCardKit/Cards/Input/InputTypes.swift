@@ -611,6 +611,10 @@ public struct DCKAngularVelocity {
     public var rotationDirection: DCKRotationDirection {
         return degreesPerSecond < 0 ? .counterClockwise : .clockwise
     }
+    
+    public init(degreesPerSecond: Double) {
+        self.degreesPerSecond = degreesPerSecond
+    }
 }
 
 extension DCKAngularVelocity {

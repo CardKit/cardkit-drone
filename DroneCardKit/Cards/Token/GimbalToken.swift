@@ -18,7 +18,7 @@ public protocol GimbalToken {
     func reset(completionHandler: AsyncExecutionCompletionHandler?)
     
     //swiftlint:disable function_parameter_count
-    /// Rotates the gimbal to a yaw, pitch, and roll in the specified amount of time. 0º always points towards the front of the drone. Values can range from -360 to 360. Value being negative indicates a reverse movement.
+    /// Rotates the gimbal to a yaw, pitch, and roll in the specified amount of time. 0º always points towards the front of the drone. Values can range from 0 to 360. Value being negative indicates a reverse movement.
     /// Picture this unit circle: https://i.stack.imgur.com/FR229.png perpendicular to the axis of yaw, pitch, or roll. The gimbal will rotate the number of degrees specified in the direction of the unit circle. See below for examples.
     ///
     /// - Parameters:
@@ -29,6 +29,7 @@ public protocol GimbalToken {
     ///   - withinTimeInSeconds: the amount of time in which the drone should perform the rotation.
     ///   - completionHandler: get's called upon success or failure
     func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relativeToDrone: Bool, withinTimeInSeconds duration: Double?, completionHandler: AsyncExecutionCompletionHandler?)
+    
     func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds duration: Double, completionHandler: AsyncExecutionCompletionHandler?)
     //swiftlint:enable function_parameter_count
     
