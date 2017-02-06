@@ -634,6 +634,7 @@
 					};
 					CC9318841D4796DB001B71B1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 76CMF53Q35;
 						LastSwiftMigration = 0800;
 					};
 					CC9318991D4796F5001B71B1 = {
@@ -1135,6 +1136,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 76CMF53Q35;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1151,6 +1153,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 76CMF53Q35;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
