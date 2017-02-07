@@ -56,9 +56,6 @@
 		CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC861E3FD1D700F7010D /* PointAtFront.swift */; };
 		CC64EC881E3FD1D700F7010D /* PointAtFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC861E3FD1D700F7010D /* PointAtFront.swift */; };
 		CC64EC891E3FD1D700F7010D /* PointAtFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC861E3FD1D700F7010D /* PointAtFront.swift */; };
-		CC64EC8B1E3FE4D800F7010D /* PointAtMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */; };
-		CC64EC8C1E3FE4D800F7010D /* PointAtMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */; };
-		CC64EC8D1E3FE4D800F7010D /* PointAtMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */; };
 		CC64EC8F1E3FE4E100F7010D /* PointAtLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */; };
 		CC64EC901E3FE4E100F7010D /* PointAtLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */; };
 		CC64EC911E3FE4E100F7010D /* PointAtLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */; };
@@ -152,7 +149,6 @@
 		CC64EC741E3FCEA600F7010D /* TakePhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotos.swift; sourceTree = "<group>"; };
 		CC64EC751E3FCEA600F7010D /* TakeTimelapse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeTimelapse.swift; sourceTree = "<group>"; };
 		CC64EC861E3FD1D700F7010D /* PointAtFront.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtFront.swift; sourceTree = "<group>"; };
-		CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtMovement.swift; sourceTree = "<group>"; };
 		CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtLocation.swift; sourceTree = "<group>"; };
 		CC64EC921E3FE4E900F7010D /* PanBetweenLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanBetweenLocations.swift; sourceTree = "<group>"; };
 		CC64EC961E3FE4F200F7010D /* PointAtGround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointAtGround.swift; sourceTree = "<group>"; };
@@ -365,7 +361,6 @@
 				CC64EC861E3FD1D700F7010D /* PointAtFront.swift */,
 				CC64EC961E3FE4F200F7010D /* PointAtGround.swift */,
 				CC64EC8E1E3FE4E100F7010D /* PointAtLocation.swift */,
-				CC64EC8A1E3FE4D800F7010D /* PointAtMovement.swift */,
 				CC64EC9A1E3FE4FB00F7010D /* PointInDirection.swift */,
 			);
 			path = Gimbal;
@@ -916,7 +911,6 @@
 				CC0F32BE1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */,
 				68D3BD511E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
-				CC64EC8B1E3FE4D800F7010D /* PointAtMovement.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */,
@@ -957,7 +951,6 @@
 				CC0F32BF1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */,
 				68D3BD521E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCD6D6E41DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
-				CC64EC8C1E3FE4D800F7010D /* PointAtMovement.swift in Sources */,
 				CCBE8C6E1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CC64EC831E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */,
@@ -999,7 +992,6 @@
 				CC0F32C01E2FFBC2008423AC /* DummyDroneToken.swift in Sources */,
 				68D3BD531E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCD6D6E51DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
-				CC64EC8D1E3FE4D800F7010D /* PointAtMovement.swift in Sources */,
 				CCBE8C701DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CC64EC841E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */,
