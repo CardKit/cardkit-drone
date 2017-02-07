@@ -59,7 +59,7 @@ public protocol DroneToken {
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?, completionHandler: AsyncExecutionCompletionHandler?)
     
     // MARK: Circle
-    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise:DCKMovementDirection?, toCircleRepeatedly toRepeat:Bool, completionHandler: DroneTokenCompletionHandler?)
+    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise:DCKMovementDirection?, toCircleRepeatedly toRepeat:Bool, completionHandler: AsyncExecutionCompletionHandler?)
     
     // MARK: Return home
     var homeLocation: DCKCoordinate2D? { get }
@@ -168,24 +168,13 @@ public extension DroneToken {
 public extension DroneToken {
     
     //fly to with DCKCoordinate2D
-    final func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity? = nil, atClockwise isClockwise:DCKMovementDirection? = nil, toCircleRepeatedly toRepeat:Bool, completionHandler: DroneTokenCompletionHandler? = nil) {
+    final func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity? = nil, atClockwise isClockwise:DCKMovementDirection? = nil, toCircleRepeatedly toRepeat:Bool, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, atClockwise: isClockwise, toCircleRepeatedly:toRepeat, completionHandler: completionHandler)
     }
     
-    final func circleSync(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity? = nil, atClockwise isClockwise:DCKMovementDirection? = nil, toCircleRepeatedly toRepeat:Bool) throws {
-        let semaphore = DispatchSemaphore(value: 0)
-        var error: Error? = nil
-        
-        circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, atClockwise: isClockwise,toCircleRepeatedly: toRepeat) { tokenError in
-            error = tokenError
-            semaphore.signal()
-        }
-        
-        semaphore.wait()
-        
-        if error != nil {
-            throw error!
-        }
+    final func circleSync(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity? = nil, atClockwise
+        isClockwise:DCKMovementDirection? = nil, toCircleRepeatedly toRepeat:Bool) throws {
+        try DispatchQueue.executeSynchronously { self.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, atClockwise: isClockwise,toCircleRepeatedly: toRepeat, completionHandler: $0) }
     }
 }
 
