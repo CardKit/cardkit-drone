@@ -184,8 +184,8 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     }
 
     
-    public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncExecutionCompletionHandler?) {
-        self.registerFunctionCall(named: "returnHome")
+    public func flyBackHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncExecutionCompletionHandler?) {
+        self.registerFunctionCall(named: "flyBackHome")
         print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         

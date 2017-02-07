@@ -63,7 +63,7 @@ public protocol DroneToken {
     
     // MARK: Return home
     var homeLocation: DCKCoordinate2D? { get }
-    func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncExecutionCompletionHandler?)
+    func flyBackHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncExecutionCompletionHandler?)
     
     // MARK: Landing gear
     var isLandingGearDown: Bool? { get }
@@ -181,12 +181,12 @@ public extension DroneToken {
 
 // MARK: - Convienience -- return home
 public extension DroneToken {
-    final func returnHome(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: AsyncExecutionCompletionHandler? = nil) {
-        returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
+    final func flyBackHome(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: AsyncExecutionCompletionHandler? = nil) {
+        flyBackHome(atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
     }
     
-    final func returnHomeSync(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try DispatchQueue.executeSynchronously { self.returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
+    final func flyBackHomeSync(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+        try DispatchQueue.executeSynchronously { self.flyBackHome(atAltitude: altitude, atSpeed: speed, completionHandler: $0) }
     }
 }
 
