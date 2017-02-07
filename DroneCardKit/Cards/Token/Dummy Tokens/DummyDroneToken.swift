@@ -172,6 +172,18 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(error)
     }
     
+    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise:DCKMovementDirection?, toCircleRepeatedly toRepeat:Bool, completionHandler: DroneTokenCompletionHandler?) {
+        self.registerFunctionCall(named: "circle:around:atRadius:atAltitude:atAngularSpeed:atClockwise")
+        print("\(prefix) DummyDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(angularSpeed), atClockwise: \(isClockwise), toCircleRepeatedly: \(toRepeat)")
+        Thread.sleep(forTimeInterval: delay)
+        
+        var error: Error? = nil
+        
+        
+        completionHandler?(error)
+    }
+
+    
     public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: DroneTokenCompletionHandler?) {
         self.registerFunctionCall(named: "returnHome")
         print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")

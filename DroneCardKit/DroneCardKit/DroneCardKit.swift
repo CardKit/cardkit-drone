@@ -89,10 +89,11 @@ extension DroneCardKit.Action.Movement.Location {
         name: "Circle",
         subpath: "Movement/Location",
         inputs: [
-            InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
+            InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate2D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
+            InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true),
+            InputSlot(name: "isClockWise", descriptor: DroneCardKit.Input.Modifier.Movement.MovementDirection, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -108,11 +109,12 @@ extension DroneCardKit.Action.Movement.Location {
         name: "Circle Repeatedly",
         subpath: "Movement/Location",
         inputs: [
-            InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
+            InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate2D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
-            ],
+            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
+            InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true),
+            InputSlot(name: "isClockWise", descriptor: DroneCardKit.Input.Modifier.Movement.MovementDirection, isOptional: true)
+        ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
         ],
@@ -711,7 +713,7 @@ extension DroneCardKit.Input.Location {
     public static let Distance = InputCardDescriptor(
         name: "Distance",
         subpath: "Location",
-        inputType: Double.self,
+        inputType: DCKDistance.self,
         inputDescription: "Distance (meters)",
         assetCatalog: CardAssetCatalog(description: "Distance (meters)"))
     
@@ -790,6 +792,15 @@ extension DroneCardKit.Input.Modifier.Movement {
         inputType: DCKSpeed.self,
         inputDescription: "Speed (in meters/sec)",
         assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"))
+    
+    // MARK: Modifier/Movement/MovementDirection
+    public static let MovementDirection = InputCardDescriptor(
+        name: "MovementDirection",
+        subpath: "Modifier/Movement",
+        inputType: DCKMovementDirection.self,
+        inputDescription: "Movement direction (isClockwise)",
+        assetCatalog: CardAssetCatalog(description: "Movement direction (isClockwise)"))
+
 }
 
 extension DroneCardKit.Input {
