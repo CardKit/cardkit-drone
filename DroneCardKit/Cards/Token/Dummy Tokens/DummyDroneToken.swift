@@ -184,13 +184,19 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     }
 
     
-    public func flyBackHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncExecutionCompletionHandler?) {
-        self.registerFunctionCall(named: "flyBackHome")
-        print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")
+    public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, toLand land: Bool, completionHandler: AsyncExecutionCompletionHandler?) {
+        self.registerFunctionCall(named: "returnHome")
+        print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed), toLand: \(land))")
         Thread.sleep(forTimeInterval: delay)
         
         self.fly(to: self.homeLocation!) { error in
             completionHandler?(error)
+        }
+        
+        if (land) {
+            self.land() { error in
+                completionHandler?(error)
+            }
         }
     }
     

@@ -23,17 +23,11 @@ public class ReturnHome: ExecutableActionCard {
         do {
             
             
-            // fly back to the home location
+            // return back to the home location
             if !isCancelled {
-                try drone.flyBackHomeSync(atAltitude: altitude, atSpeed: speed)
+                try drone.returnHomeSync(atAltitude: altitude, atSpeed: speed, toLand: true)
             }
-
-            // land
-            if !isCancelled {
-                try drone.landSync()
-            }
-
-            
+ 
         } catch {
             self.error = error
             
