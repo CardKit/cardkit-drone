@@ -36,7 +36,7 @@ public class PointAtLocation: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try gimbal.rotateSync(yaw: yaw, pitch: pitch, relative: false)
+                try gimbal.rotate(yaw: yaw, pitch: pitch, relative: false)
             }
         } catch {
             self.error = error
