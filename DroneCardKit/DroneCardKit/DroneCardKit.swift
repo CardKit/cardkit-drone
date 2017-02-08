@@ -169,13 +169,13 @@ extension DroneCardKit.Action.Movement {
 
 extension DroneCardKit.Action.Movement.Orientation {
     /// MARK: Movement/Orientation/Rotate
-    public static let Rotate = ActionCardDescriptor(
-        name: "Rotate",
+    public static let SpinAround = ActionCardDescriptor(
+        name: "Sping Around",
         subpath: "Movement/Orientation",
         inputs: [
             InputSlot(name: "Angle", descriptor: DroneCardKit.Input.Location.Angle, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
+            InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -183,12 +183,12 @@ extension DroneCardKit.Action.Movement.Orientation {
         yields: nil,
         yieldDescription: nil,
         ends: true,
-        endsDescription: "Ends when the drone has rotated the specified angle",
-        assetCatalog: CardAssetCatalog(description: "Rotate a specified number of degrees"))
+        endsDescription: "Ends when the drone has spinned around the specified angle",
+        assetCatalog: CardAssetCatalog(description: "Spin Around a specified number of degrees"))
     
     // MARK: Movement/Orientation/SpinAround
-    public static let SpinAround = ActionCardDescriptor(
-        name: "Rotate",
+    public static let SpinAroundRepeatedly = ActionCardDescriptor(
+        name: "Sping Around Repeatedly",
         subpath: "Movement/Orientation",
         inputs: [
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
@@ -677,7 +677,7 @@ extension DroneCardKit.Input.Location {
     public static let Angle = InputCardDescriptor(
         name: "Angle",
         subpath: "Location",
-        inputType: Double.self,
+        inputType: DCKAngle.self,
         inputDescription: "Angle (in degrees)",
         assetCatalog: CardAssetCatalog(description: "Angle (in degrees)"))
     

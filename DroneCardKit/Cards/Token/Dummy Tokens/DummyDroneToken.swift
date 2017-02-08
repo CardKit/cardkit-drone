@@ -172,15 +172,12 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(error)
     }
     
-    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise:DCKMovementDirection?, toCircleRepeatedly toRepeat:Bool, completionHandler: AsyncExecutionCompletionHandler?) {
+    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise: DCKMovementDirection?, toCircleRepeatedly toRepeat: Bool, completionHandler: AsyncExecutionCompletionHandler?) {
         self.registerFunctionCall(named: "circle:around:atRadius:atAltitude:atAngularSpeed:atClockwise")
         print("\(prefix) DummyDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(angularSpeed), atClockwise: \(isClockwise), toCircleRepeatedly: \(toRepeat)")
         Thread.sleep(forTimeInterval: delay)
         
-        var error: Error? = nil
-        
-        
-        completionHandler?(error)
+        completionHandler?(nil)
     }
 
     
@@ -193,11 +190,19 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
             completionHandler?(error)
         }
         
-        if (land) {
-            self.land() { error in
+        if land {
+            self.land { error in
                 completionHandler?(error)
             }
         }
+    }
+    
+    public func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?, completionHandler: AsyncExecutionCompletionHandler?) {
+        self.registerFunctionCall(named: "spinAround")
+        print("\(prefix) DummyDroneToken > Spin Around (toYawAngle: \(yaw), atAngularSpeed: \(angularSpeed)")
+        Thread.sleep(forTimeInterval: delay)
+        
+        completionHandler?(nil)
     }
     
     public func landingGear(down: Bool, completionHandler: AsyncExecutionCompletionHandler?) {
