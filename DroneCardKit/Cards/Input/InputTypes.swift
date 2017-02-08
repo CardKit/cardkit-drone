@@ -214,6 +214,7 @@ extension FloatingPoint {
 }
 
 // MARK: DCKCoordinate2D
+
 public struct DCKCoordinate2D {
     public let latitude: Double
     public let longitude: Double
@@ -263,7 +264,6 @@ public struct DCKCoordinate2D {
         let lon2Rad = coordinate.longitude.degreesToRadians
         
         let y = sin(lon2Rad - lon1Rad) * cos(lat2Rad)
-       
         let x = cos(lat1Rad) * sin(lat2Rad) -
             sin(lat1Rad) * cos(lat2Rad) * cos(lon2Rad - lon1Rad)
         
@@ -663,6 +663,82 @@ extension DCKSpeed : JSONDecodable, JSONEncodable {
     }
 }
 
+// MARK: DCKDistance
+
+public struct DCKDistance {
+    public let meters: Double
+    
+    private static let fooToMeterConversionFactor: Double = 0.3048
+    
+    public init(meters: Double) {
+        self.meters = meters
+    }
+    
+    public init(feet: Double) {
+        self.meters = feet * DCKDistance.fooToMeterConversionFactor
+    }
+}
+
+extension DCKDistance {
+    public static func + (lhs: DCKDistance, rhs: DCKDistance) -> DCKDistance {
+        return DCKDistance(meters: lhs.meters + rhs.meters)
+    }
+    
+    public static func - (lhs: DCKDistance, rhs: DCKDistance) -> DCKDistance {
+        return DCKDistance(meters: lhs.meters - rhs.meters)
+    }
+}
+
+extension DCKDistance: Equatable {
+    public static func == (lhs: DCKDistance, rhs: DCKDistance) -> Bool {
+        return lhs.meters == rhs.meters
+    }
+}
+
+extension DCKDistance: Comparable {
+    public static func < (lhs: DCKDistance, rhs: DCKDistance) -> Bool {
+        return lhs.meters < rhs.meters
+    }
+}
+
+extension DCKDistance : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.meters = try json.getDouble(at: "meters")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["meters": meters.toJSON()])
+    }
+}
+
+
+// MARK: DCKMovementDirection
+
+public struct DCKMovementDirection {
+    public let isClockwise: Bool
+    
+    public init(isClockwise: Bool) {
+        self.isClockwise = isClockwise
+    }
+    
+}
+
+extension DCKMovementDirection: Equatable {
+    public static func == (lhs: DCKMovementDirection, rhs: DCKMovementDirection) -> Bool {
+        return lhs.isClockwise == rhs.isClockwise
+    }
+}
+
+extension DCKMovementDirection : JSONDecodable, JSONEncodable {
+    public init(json: JSON) throws {
+        self.isClockwise = try json.getBool(at: "isClockwise")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary(["isClockwise": isClockwise.toJSON()])
+    }
+}
+
 
 // MARK: DCKRotationDirection
 public enum DCKRotationDirection {
@@ -674,16 +750,16 @@ public enum DCKRotationDirection {
 public struct DCKAngularVelocity {
     public let degreesPerSecond: Double
     
+    public init(degreesPerSecond: Double) {
+        self.degreesPerSecond = degreesPerSecond
+    }
+
     public var radiansPerSecond: Double {
         return degreesPerSecond * .pi / 180
     }
     
     public var rotationDirection: DCKRotationDirection {
         return degreesPerSecond < 0 ? .counterClockwise : .clockwise
-    }
-    
-    public init(degreesPerSecond: Double) {
-        self.degreesPerSecond = degreesPerSecond
     }
 }
 

@@ -170,14 +170,37 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         completionHandler?(error)
     }
     
-    public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, completionHandler: AsyncExecutionCompletionHandler?) {
+    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise: DCKMovementDirection?, toCircleRepeatedly toRepeat: Bool, completionHandler: AsyncExecutionCompletionHandler?) {
+        self.registerFunctionCall(named: "circle:around:atRadius:atAltitude:atAngularSpeed:atClockwise")
+        print("\(prefix) DummyDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(angularSpeed), atClockwise: \(isClockwise), toCircleRepeatedly: \(toRepeat)")
+        Thread.sleep(forTimeInterval: delay)
+        
+        completionHandler?(nil)
+    }
+
+    
+    public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, toLand land: Bool, completionHandler: AsyncExecutionCompletionHandler?) {
         self.registerFunctionCall(named: "returnHome")
-        print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed))")
+        print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed), toLand: \(land))")
         Thread.sleep(forTimeInterval: delay)
         
         self.fly(to: self.homeLocation!) { error in
             completionHandler?(error)
         }
+        
+        if land {
+            self.land { error in
+                completionHandler?(error)
+            }
+        }
+    }
+    
+    public func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?, completionHandler: AsyncExecutionCompletionHandler?) {
+        self.registerFunctionCall(named: "spinAround")
+        print("\(prefix) DummyDroneToken > Spin Around (toYawAngle: \(yaw), atAngularSpeed: \(angularSpeed)")
+        Thread.sleep(forTimeInterval: delay)
+        
+        completionHandler?(nil)
     }
     
     public func landingGear(down: Bool, completionHandler: AsyncExecutionCompletionHandler?) {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44017E2E1E4A1F7C00B4D9C1 /* ReturnHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */; };
+		44017E321E4AD9EC00B4D9C1 /* SpinAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */; };
+		447F6B761E4997E100BAF604 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B741E4997E100BAF604 /* Circle.swift */; };
+		447F6B771E4997E100BAF604 /* CircleRepeatedly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */; };
 		6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
 		6809DF341DF4B7970077C6EE /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */; };
 		6809DF351DF4B7970077C6EE /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79431D7897BB003B6458 /* Freddy.framework */; };
@@ -134,6 +138,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnHome.swift; sourceTree = "<group>"; };
+		44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpinAround.swift; path = Orientation/SpinAround.swift; sourceTree = "<group>"; };
+		447F6B741E4997E100BAF604 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRepeatedly.swift; sourceTree = "<group>"; };
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
 		6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCoordinate2DTests.swift; sourceTree = "<group>"; };
 		68B6352F1DFB5B0E00A2AA07 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
@@ -247,6 +255,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44017E301E4AD94C00B4D9C1 /* Orientation */ = {
+			isa = PBXGroup;
+			children = (
+				44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */,
+			);
+			name = Orientation;
+			sourceTree = "<group>";
+		};
 		68657C2D1E3FBEB900612ECC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +316,7 @@
 		68DE99A51DF1C7670040D76A /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				44017E301E4AD94C00B4D9C1 /* Orientation */,
 				68DE99A61DF1C7670040D76A /* Area */,
 				F90FCFF01DF1FA0000C26E86 /* Location */,
 				686EE8A11DF8558B0024F3E5 /* Simple */,
@@ -504,7 +521,10 @@
 		F90FCFF01DF1FA0000C26E86 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				447F6B741E4997E100BAF604 /* Circle.swift */,
+				447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */,
 				F90FD0021DF1FAD200C26E86 /* FlyTo.swift */,
+				44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -904,6 +924,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44017E2E1E4A1F7C00B4D9C1 /* ReturnHome.swift in Sources */,
 				CC64EC7C1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
 				CC64EC971E3FE4F200F7010D /* PointAtGround.swift in Sources */,
 				CC64EC931E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
@@ -917,9 +938,12 @@
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F32C21E2FFBE8008423AC /* DummyCameraToken.swift in Sources */,
+				447F6B761E4997E100BAF604 /* Circle.swift in Sources */,
 				CCD6D6ED1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
+				447F6B771E4997E100BAF604 /* CircleRepeatedly.swift in Sources */,
 				CC64EC7F1E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6E31DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				44017E321E4AD9EC00B4D9C1 /* SpinAround.swift in Sources */,
 				CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
