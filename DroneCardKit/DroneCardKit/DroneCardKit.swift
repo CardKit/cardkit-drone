@@ -514,6 +514,96 @@ extension DroneCardKit.Action.Tech {
     }
 }
 
+extension DroneCardKit.Action.Tech.Gimbal {
+    public static let PanBetweenLocations = ActionCardDescriptor(
+        name: "Pan Between Locations",
+        subpath: "Tech/Gimbal",
+        inputs: [
+            InputSlot(name: "StartLocation", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
+            InputSlot(name: "EndLocation", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false),
+            InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
+        ],
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Pan Between Locations"))
+    
+    public static let PointAtFront = ActionCardDescriptor(
+        name: "Point at Front",
+        subpath: "Tech/Gimbal",
+        inputs: nil,
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Front"))
+    
+    public static let PointAtGround = ActionCardDescriptor(
+        name: "Point at Ground",
+        subpath: "Tech/Gimbal",
+        inputs: nil,
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Ground"))
+    
+    public static let PointAtLocation = ActionCardDescriptor(
+        name: "Point at Location",
+        subpath: "Tech/Gimbal",
+        inputs: [
+            InputSlot(name: "Location", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false)
+        ],
+        tokens: [
+            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Location"))
+    
+    public static let PointAtMovement = ActionCardDescriptor(
+        name: "Point at Movement",
+        subpath: "Tech/Gimbal",
+        inputs: nil,
+        tokens: [
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point at Movement"))
+    
+    public static let PointInDirection = ActionCardDescriptor(
+        name: "Point in Direction",
+        subpath: "Tech/Gimbal",
+        inputs: [
+            InputSlot(name: "CardinalDirection", descriptor: DroneCardKit.Input.Location.CardinalDirection, isOptional: false)
+        ],
+        tokens: [
+            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+        ],
+        yields: nil,
+        yieldDescription: nil,
+        ends: false,
+        endsDescription: nil,
+        assetCatalog: CardAssetCatalog(description: "Point in Direction"))
+}
+
 extension DroneCardKit.Action.Tech {
     /// Contains descriptors for Action/Tech/Sensor cards
     public struct Sensor {
@@ -704,7 +794,7 @@ extension DroneCardKit.Input.Location {
     public static let CardinalDirection = InputCardDescriptor(
         name: "Cardinal Direction",
         subpath: "Location",
-        inputType: DCKAngle.self,
+        inputType: DCKAngle.self, // 0º:North, 90º:East, 180º:South, 270º:West
         inputDescription: "Cardinal Direction",
         assetCatalog: CardAssetCatalog(description: "Cardinal Direction (N, S, E, W)"))
     
@@ -845,7 +935,13 @@ extension DroneCardKit.Token {
         subpath: nil,
         isConsumed: true,
         assetCatalog: CardAssetCatalog(description: "Drone token"))
- 
+    
+    public static let DroneTelemetry = TokenCardDescriptor(
+        name: "Drone Telemetry",
+        subpath: nil,
+        isConsumed: false,
+        assetCatalog: CardAssetCatalog(description: "Drone telemetry token"))
+    
     public static let Camera = TokenCardDescriptor(
         name: "Camera",
         subpath: nil,
