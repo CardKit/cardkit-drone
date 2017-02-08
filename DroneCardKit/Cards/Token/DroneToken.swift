@@ -26,7 +26,6 @@ public protocol DroneTelemetryToken {
 }
 
 public protocol DroneToken: DroneTelemetryToken {
-    //swiftlint:disable:next variable_name
     func spinMotors(on: Bool, completionHandler: AsyncExecutionCompletionHandler?)
     
     // MARK: Take off
@@ -83,12 +82,10 @@ public protocol DroneToken: DroneTelemetryToken {
 // MARK: - Convienience -- turn motors on/off
 
 public extension DroneToken {
-    //swiftlint:disable:next variable_name
     final func spinMotors(on: Bool, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         spinMotors(on: on, completionHandler: completionHandler)
     }
     
-    //swiftlint:disable:next variable_name
     final func spinMotorsSync(on: Bool) throws {
         try DispatchQueue.executeSynchronously { self.spinMotors(on: on, completionHandler: $0) }
     }
