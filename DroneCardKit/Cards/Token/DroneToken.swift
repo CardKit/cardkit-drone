@@ -11,16 +11,21 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-// swiftlint:disable variable_name
-
-public protocol DroneToken {
+/// Current drone state, read-only. Carries current location, altitude, attitude, and motor state.
+public protocol DroneTelemetryToken {
     // MARK: Location & attitude
     var currentLocation: DCKCoordinate2D? { get }
     var currentAltitude: DCKRelativeAltitude? { get }
+    
+    /// If the values of the pitch, roll, and yaw are 0, the aircraft will be hovering level with a True North heading.
+    /// Values range from 0 to 360. 0º represents North, 90º:East, 180º:South, 270º:West, 360º:North
     var currentAttitude: DCKAttitude? { get }
     
     // MARK: Motor state
     var areMotorsOn: Bool? { get }
+}
+
+public protocol DroneToken: DroneTelemetryToken {
     func spinMotors(on: Bool, completionHandler: AsyncExecutionCompletionHandler?)
     
     // MARK: Take off
@@ -75,6 +80,7 @@ public protocol DroneToken {
 }
 
 // MARK: - Convienience -- turn motors on/off
+
 public extension DroneToken {
     final func spinMotors(on: Bool, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         spinMotors(on: on, completionHandler: completionHandler)
@@ -86,6 +92,7 @@ public extension DroneToken {
 }
 
 // MARK: - Convienience -- take off
+
 public extension DroneToken {
     final func takeOff(at altitude: DCKRelativeAltitude? = nil, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         return takeOff(at: nil, completionHandler: completionHandler)
@@ -96,8 +103,8 @@ public extension DroneToken {
     }
 }
 
-
 // MARK: - Convienience -- hover
+
 public extension DroneToken {
     final func hover(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil, completionHandler: AsyncExecutionCompletionHandler?) {
         hover(at: altitude, withYaw: nil, completionHandler: completionHandler)
@@ -109,6 +116,7 @@ public extension DroneToken {
 }
 
 // MARK: - Convienience -- fly to coordinate
+
 public extension DroneToken {
     
     //fly to with DCKCoordinate2D
@@ -140,6 +148,7 @@ public extension DroneToken {
 }
 
 // MARK: - Convienience -- fly 2D path
+
 public extension DroneToken {
     final func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         fly(on: path, atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
@@ -151,6 +160,7 @@ public extension DroneToken {
 }
 
 // MARK: - Convienience -- fly 3D path
+
 public extension DroneToken {
     final func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed? = nil, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         fly(on: path, atSpeed: speed, completionHandler: completionHandler)
@@ -163,6 +173,7 @@ public extension DroneToken {
 
 
 // MARK: - Convienience -- return home
+
 public extension DroneToken {
     final func returnHome(atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         returnHome(atAltitude: altitude, atSpeed: speed, completionHandler: completionHandler)
@@ -174,6 +185,7 @@ public extension DroneToken {
 }
 
 // MARK: - Convienience -- landing gear
+
 public extension DroneToken {
     final func landingGear(down: Bool, completionHandler: AsyncExecutionCompletionHandler? = nil) {
         landingGear(down: down, completionHandler: completionHandler)
@@ -185,6 +197,7 @@ public extension DroneToken {
 }
 
 // MARK: - Convienience -- land
+
 public extension DroneToken {
     final func land(completionHandler: AsyncExecutionCompletionHandler? = nil) {
         land(completionHandler: completionHandler)

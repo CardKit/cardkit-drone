@@ -30,7 +30,7 @@ public struct DCKAngle {
     }
     
     public func normalized() -> DCKAngle {
-        let normalizedDegrees = degrees.truncatingRemainder(dividingBy: 360)
+        let normalizedDegrees = (degrees + 360).truncatingRemainder(dividingBy: 360)
         return DCKAngle(degrees: normalizedDegrees)
     }
 }
@@ -206,8 +206,14 @@ public enum DCKCardinalDirection: Int {
     }
 }
 
-// MARK: DCKCoordinate2D
+// MARK: DCKDegrees
 
+extension FloatingPoint {
+    var degreesToRadians: Self { return self * .pi / 180 }
+    var radiansToDegrees: Self { return self * 180 / .pi }
+}
+
+// MARK: DCKCoordinate2D
 public struct DCKCoordinate2D {
     public let latitude: Double
     public let longitude: Double
@@ -215,6 +221,55 @@ public struct DCKCoordinate2D {
     public init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
+    }
+    
+    
+    /// Finds the distance between two DCKCoordinate2Ds using the haversine formula.
+    /// See here for more info: http://www.movable-type.co.uk/scripts/latlong.html
+    ///
+    /// - Parameter secondCoordinate: second coordinate used for calculating distance
+    /// - Returns: returns  in meters
+    public func distance(to coordinate: DCKCoordinate2D) -> Double {
+        let earthsRadius = 6371e3; // in meters
+        
+        let lat1Rad = self.latitude.degreesToRadians
+        let lat2Rad = coordinate.latitude.degreesToRadians
+        
+        let latDelta = (coordinate.latitude - self.latitude).degreesToRadians
+        let lonDelta = (coordinate.longitude - self.longitude).degreesToRadians
+        
+        let a = sin(latDelta/2) * sin(latDelta/2) +
+            cos(lat1Rad) * cos(lat2Rad) *
+            sin(lonDelta/2) * sin(lonDelta/2)
+        
+        let angularDistanceInRadians = 2 * atan2(sqrt(a), sqrt(1-a))
+        
+        let distance = earthsRadius * angularDistanceInRadians
+        
+        return distance
+    }
+    
+    /// Calculates the bearing (angle measureed in clockwise from North) to the second coordinate.
+    /// See here for more info: http://www.movable-type.co.uk/scripts/latlong.html
+    /// Also see this for more info: http://www.igismap.com/formula-to-find-bearing-or-heading-angle-between-two-points-latitude-longitude/
+    ///
+    /// - Parameter secondCoordinate: second coordinate used for calculating bearing
+    /// - Returns: returns bearing (angle measured in clockwise from North)
+    public func bearing(to coordinate: DCKCoordinate2D) -> DCKAngle {
+        let lat1Rad = self.latitude.degreesToRadians
+        let lat2Rad = coordinate.latitude.degreesToRadians
+        
+        let lon1Rad = self.longitude.degreesToRadians
+        let lon2Rad = coordinate.longitude.degreesToRadians
+        
+        let y = sin(lon2Rad - lon1Rad) * cos(lat2Rad)
+       
+        let x = cos(lat1Rad) * sin(lat2Rad) -
+            sin(lat1Rad) * cos(lat2Rad) * cos(lon2Rad - lon1Rad)
+        
+        let bearing = atan2(y, x).radiansToDegrees
+        
+        return DCKAngle(degrees: bearing)
     }
 }
 
@@ -254,6 +309,19 @@ public struct DCKOrientedCoordinate2D {
     
     public func asNonOriented() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    /// Compute the relative bearing angle between this coordinate (oriented toward its yaw)
+    /// and the given coordinate.
+    public func bearing(to coordinate: DCKCoordinate2D) -> DCKAngle {
+        // calculate the absolute bearing
+        let bearing = self.bearing(to: coordinate)
+        
+        // calculate the relative bearing
+        let relativeBearing = bearing - self.yaw
+        
+        // return the normalized bearing (so negative angles become positive)
+        return relativeBearing.normalized()
     }
 }
 
@@ -303,6 +371,36 @@ public struct DCKCoordinate3D {
     public func as2D() -> DCKCoordinate2D {
         return DCKCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    
+    /// Compute the bearing angle between this coordinate and the given coordinate. The bearing angle
+    /// is the horizontal angle between the two coordinates.  The 3D bearing is the same as the 2D bearing.
+    public func bearing(to coordinate: DCKCoordinate3D) -> DCKAngle {
+        // calculate 2D bearing
+        return self.as2D().bearing(to: coordinate.as2D())
+    }
+    
+    /// Compute the pitch angle between this coordinate and the given coordinate. The pitch angle is
+    /// the vertical angle between the two coordinates.
+    public func pitch(to coordinate: DCKCoordinate3D) -> DCKAngle {
+        // using sohcahtoa to calculate the change in pitch
+        // we have the opposite value (change in altitude) and the hypotoneuse (distance to location)
+        // sin(theta) = opposite/hypotoneuse .. which is..  sin(theta) = altitude/distance
+        let altitudeDelta = coordinate.altitude.metersAboveGroundAtTakeoff - self.altitude.metersAboveGroundAtTakeoff
+        let distanceToLocation = self.as2D().distance(to: coordinate.as2D())
+        
+        let pitchAngle = asin(altitudeDelta/distanceToLocation)
+        let pitchAngleNormalized = DCKAngle(degrees: pitchAngle).normalized()
+        
+        return pitchAngleNormalized
+    }
+}
+
+extension DCKCoordinate3D: Equatable {
+    public static func == (lhs: DCKCoordinate3D, rhs: DCKCoordinate3D) -> Bool {
+        return lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude
+            && lhs.altitude == rhs.altitude
+    }
 }
 
 extension DCKCoordinate3D: CustomStringConvertible {
@@ -341,6 +439,27 @@ public struct DCKOrientedCoordinate3D {
     
     public func asNonOriented() -> DCKCoordinate3D {
         return DCKCoordinate3D(latitude: latitude, longitude: longitude, altitude: altitude)
+    }
+    
+    /// Compute the relative bearing angle between this coordinate (oriented toward its yaw)
+    /// and the given coordinate.
+    public func bearing(to coordinate: DCKCoordinate3D) -> DCKAngle {
+        // calculate the absolute bearing
+        let bearing = self.bearing(to: coordinate)
+        
+        // calculate the relative bearing
+        let relativeBearing = bearing - self.yaw
+        
+        // return the normalized bearing (so negative angles become positive)
+        return relativeBearing.normalized()
+    }
+}
+
+extension DCKOrientedCoordinate3D: Equatable {
+    public static func == (lhs: DCKOrientedCoordinate3D, rhs: DCKOrientedCoordinate3D) -> Bool {
+        return lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude
+            && lhs.yaw == rhs.yaw
     }
 }
 
@@ -475,6 +594,12 @@ public struct DCKRelativeAltitude {
     }
 }
 
+extension DCKRelativeAltitude: Equatable {
+    public static func == (lhs: DCKRelativeAltitude, rhs: DCKRelativeAltitude) -> Bool {
+        return lhs.metersAboveGroundAtTakeoff == rhs.metersAboveGroundAtTakeoff
+    }
+}
+
 extension DCKRelativeAltitude : JSONDecodable, JSONEncodable {
     public init(json: JSON) throws {
         self.metersAboveGroundAtTakeoff = try json.getDouble(at: "metersAboveGroundAtTakeoff")
@@ -555,6 +680,10 @@ public struct DCKAngularVelocity {
     
     public var rotationDirection: DCKRotationDirection {
         return degreesPerSecond < 0 ? .counterClockwise : .clockwise
+    }
+    
+    public init(degreesPerSecond: Double) {
+        self.degreesPerSecond = degreesPerSecond
     }
 }
 
