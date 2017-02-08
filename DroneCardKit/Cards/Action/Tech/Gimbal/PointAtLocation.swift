@@ -12,16 +12,10 @@ import CardKitRuntime
 
 public class PointAtLocation: ExecutableActionCard {
     override public func main() {
-        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken else {
-            return
-        }
-        
-        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
-            return
-        }
-        
-        guard let desiredLocation: DCKCoordinate3D = self.value(forInput: "Location") else {
-            return
+        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken,
+            let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
+            let desiredLocation: DCKCoordinate3D = self.value(forInput: "Location") else {
+                return
         }
         
         guard let currentLocation = droneTelemetry.currentLocation,

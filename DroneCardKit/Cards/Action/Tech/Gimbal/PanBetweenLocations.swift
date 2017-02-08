@@ -12,19 +12,10 @@ import CardKitRuntime
 
 public class PanBetweenLocations: ExecutableActionCard {
     override public func main() {
-        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken else {
-            return
-        }
-        
-        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
-            return
-        }
-        
-        guard let startLocation: DCKCoordinate3D = self.value(forInput: "StartLocation") else {
-            return
-        }
-        
-        guard let endLocation: DCKCoordinate3D = self.value(forInput: "EndLocation") else {
+        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken,
+            let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
+            let startLocation: DCKCoordinate3D = self.value(forInput: "StartLocation"),
+            let endLocation: DCKCoordinate3D = self.value(forInput: "EndLocation") else {
             return
         }
         

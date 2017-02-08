@@ -12,16 +12,10 @@ import CardKitRuntime
 
 public class PointInDirection: ExecutableActionCard {
     override public func main() {
-        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken else {
-            return
-        }
-        
-        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
-            return
-        }
-        
-        guard let desiredGimbalYaw: DCKAngle = self.value(forInput: "CardinalDirection") else {
-            return
+        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken,
+            let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
+            let desiredGimbalYaw: DCKAngle = self.value(forInput: "CardinalDirection") else {
+                return
         }
         
         guard let droneYaw = droneTelemetry.currentAttitude?.yaw else {
