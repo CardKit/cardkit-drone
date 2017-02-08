@@ -21,13 +21,10 @@ public class ReturnHome: ExecutableActionCard {
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
 
         do {
-            
-            
             // return back to the home location
             if !isCancelled {
                 try drone.returnHomeSync(atAltitude: altitude, atSpeed: speed, toLand: true)
             }
- 
         } catch {
             self.error = error
             
