@@ -31,9 +31,9 @@ public class TakePhoto: ExecutableActionCard {
         do {
             if !isCancelled {
                 if hdr {
-                    try camera.takeHDRPhotoSync(options: cameraOptions)
+                    try camera.takeHDRPhoto(options: cameraOptions)
                 } else {
-                    try camera.takePhotoSync(options: cameraOptions)
+                    try camera.takePhoto(options: cameraOptions)
                 }
             }
         } catch {

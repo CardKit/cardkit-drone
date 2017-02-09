@@ -19,111 +19,57 @@ public typealias CameraTokenCompletionHandler = (Error?) -> Void
 
 public protocol CameraToken {
     /// Take a single photo, with the given photo options specified.
-    func takePhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func takePhoto(options: Set<CameraPhotoOption>) throws
     
     /// Take an HDR photo
-    func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func takeHDRPhoto(options: Set<CameraPhotoOption>) throws
     
     /// Take a burst of photos, with the given photo options specified.
-    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws
     
     /// Start taking photos with a given time interval.
-    func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws
     
     /// Stop taking photos.
-    func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler?)
+    func stopTakingPhotos() throws
     
     /// Start taking a timelapse movie.
-    func startTimelapse(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func startTimelapse(options: Set<CameraPhotoOption>) throws
     
     /// Stop taking a timelapse movie.
-    func stopTimelapse(completionHandler: CameraTokenCompletionHandler?)
+    func stopTimelapse() throws
     
     /// Start taking a video.
-    func startVideo(options: Set<CameraVideoOption>, completionHandler: CameraTokenCompletionHandler?)
+    func startVideo(options: Set<CameraVideoOption>) throws
     
     /// Stop taking a video.
-    func stopVideo(completionHandler: CameraTokenCompletionHandler?)
+    func stopVideo() throws
 }
 
 // MARK: - Convienience methods with default parameters
 
 public extension CameraToken {
     /// Take a single photo (16x9, Normal quality).
-    final func takePhoto(options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)],
-                         completionHandler: CameraTokenCompletionHandler? = nil) {
-        self.takePhoto(options: options, completionHandler: completionHandler)
-    }
-    
-    final func takeHDRPhoto(options: Set<CameraPhotoOption>, completionHandler: CameraTokenCompletionHandler? = nil) {
-        takeHDRPhoto(options: options, completionHandler: completionHandler)
+    final func takePhoto(options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]) throws {
+        try self.takePhoto(options: options)
     }
     
     /// Take a burst of photos (16x9, Normal quality).
     final func takePhotoBurst(count: PhotoBurstCount,
-                              options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)],
-                              completionHandler: CameraTokenCompletionHandler?) {
-        self.takePhotoBurst(count: count, options: options, completionHandler: completionHandler)
+                              options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]) throws {
+        try self.takePhotoBurst(count: count, options: options)
     }
     
-    final func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption> = [], completionHandler: CameraTokenCompletionHandler? = nil) {
-        startTakingPhotos(at: interval, options: options, completionHandler: completionHandler)
+    final func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption> = []) throws {
+        try startTakingPhotos(at: interval, options: options)
     }
     
-    final func stopTakingPhotos(completionHandler: CameraTokenCompletionHandler? = nil) {
-        stopTakingPhotos(completionHandler: completionHandler)
+    final func startTimelapse(options: Set<CameraPhotoOption> = []) throws {
+        try startTimelapse(options: options)
     }
     
-    final func startTimelapse(options: Set<CameraPhotoOption> = [], completionHandler: CameraTokenCompletionHandler? = nil) {
-        startTimelapse(options: options, completionHandler: completionHandler)
-    }
-    
-    func startVideo(options: Set<CameraVideoOption> = [], completionHandler: CameraTokenCompletionHandler? = nil) {
-        startVideo(options: options, completionHandler: completionHandler)
-    }
-    
-    final func stopVideo(completionHandler: CameraTokenCompletionHandler? = nil) {
-        stopVideo(completionHandler: completionHandler)
-    }
-}
-
-// MARK: - Convenience -- synchronous methods
-
-public extension CameraToken {
-    final func takePhotoSync(options: Set<CameraPhotoOption>) throws {
-        try DispatchQueue.executeSynchronously { self.takePhoto(options: options, completionHandler: $0) }
-    }
-    
-    final func takeHDRPhotoSync(options: Set<CameraPhotoOption>) throws {
-        try DispatchQueue.executeSynchronously { self.takeHDRPhoto(options: options, completionHandler: $0) }
-    }
-    
-    final func takePhotoBurstSync(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws {
-        try DispatchQueue.executeSynchronously { self.takePhotoBurst(count: count, options: options, completionHandler: $0) }
-    }
-    
-    final func startTakingPhotosSync(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws {
-        try DispatchQueue.executeSynchronously { self.startTakingPhotos(at: interval, options: options, completionHandler: $0) }
-    }
-    
-    final func stopTakingPhotosSync() throws {
-        try DispatchQueue.executeSynchronously { self.stopTakingPhotos(completionHandler: $0) }
-    }
-    
-    final func startTimelapseSync(options: Set<CameraPhotoOption>) throws {
-        try DispatchQueue.executeSynchronously { self.startTimelapse(options: options, completionHandler: $0) }
-    }
-    
-    final func stopTimelapseSync() throws {
-        try DispatchQueue.executeSynchronously { self.stopTimelapse(completionHandler: $0) }
-    }
-    
-    final func startVideoSync(options: Set<CameraVideoOption>) throws {
-        try DispatchQueue.executeSynchronously { self.startVideo(options: options, completionHandler: $0) }
-    }
-    
-    final func stopVideoSync() throws {
-        try DispatchQueue.executeSynchronously { self.stopVideo(completionHandler: $0) }
+    func startVideo(options: Set<CameraVideoOption> = []) throws {
+        try startVideo(options: options)
     }
 }
 

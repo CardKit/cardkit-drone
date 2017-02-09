@@ -33,7 +33,7 @@ public class RecordVideo: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try camera.startVideoSync(options: cameraOptions)
+                try camera.startVideo(options: cameraOptions)
             }
         } catch {
             self.error = error
@@ -50,7 +50,7 @@ public class RecordVideo: ExecutableActionCard {
         }
         
         do {
-            try camera.stopVideoSync()
+            try camera.stopVideo()
         } catch let error {
             self.error = error
         }
