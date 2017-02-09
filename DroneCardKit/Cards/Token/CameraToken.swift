@@ -13,8 +13,6 @@ import Freddy
 import CardKit
 import CardKitRuntime
 
-public typealias CameraTokenCompletionHandler = (Error?) -> Void
-
 // MARK: CameraToken
 
 public protocol CameraToken {
