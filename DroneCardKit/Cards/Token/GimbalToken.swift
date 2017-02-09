@@ -52,3 +52,7 @@ public extension GimbalToken {
         try self.rotate(yaw: yaw, pitch: pitch, roll: roll, forTimeInSeconds: seconds)
     }
 }
+
+public enum GimbalTokenError: Error {
+    case failedToBeginCalibration
+}
