@@ -29,7 +29,7 @@ public class TakeTimelapse: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try camera.startTimelapseSync(options: cameraOptions)
+                try camera.startTimelapse(options: cameraOptions)
             }
         } catch {
             self.error = error
@@ -46,7 +46,7 @@ public class TakeTimelapse: ExecutableActionCard {
         }
         
         do {
-            try camera.stopTimelapseSync()
+            try camera.stopTimelapse()
         } catch let error {
             self.error = error
         }
