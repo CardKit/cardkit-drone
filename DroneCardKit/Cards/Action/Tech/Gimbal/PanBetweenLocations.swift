@@ -47,9 +47,9 @@ public class PanBetweenLocations: ExecutableActionCard {
             do {
                 if !self.isCancelled {
                     if let duration = duration {
-                        try gimbal.rotateSync(yaw: yaw, pitch: pitch, relative: false, withinTimeInSeconds: duration)
+                        try gimbal.rotate(yaw: yaw, pitch: pitch, relative: false, withinTimeInSeconds: duration)
                     } else {
-                        try gimbal.rotateSync(yaw: yaw, pitch: pitch, relative: false)
+                        try gimbal.rotate(yaw: yaw, pitch: pitch, relative: false)
                     }
                 }
             } catch {

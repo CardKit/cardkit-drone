@@ -18,7 +18,7 @@ public class PointAtFront: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try gimbal.orientSync(to: .facingForward)
+                try gimbal.orient(to: .facingForward)
             }
         } catch {
             self.error = error

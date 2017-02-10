@@ -18,7 +18,7 @@ public class PointAtGround: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try gimbal.orientSync(to: .facingDownward)
+                try gimbal.orient(to: .facingDownward)
             }
         } catch {
             self.error = error

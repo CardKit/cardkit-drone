@@ -25,7 +25,7 @@ public class PointInDirection: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try gimbal.rotateSync(yaw: droneYaw.normalized() - desiredGimbalYaw.normalized(), relative: false)
+                try gimbal.rotate(yaw: droneYaw.normalized() - desiredGimbalYaw.normalized(), relative: false)
             }
         } catch {
             self.error = error
