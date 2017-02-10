@@ -118,8 +118,8 @@ public extension DroneToken {
 // MARK: - DroneTokenError
 
 public enum DroneTokenError: Error {
-    case FailureInFlightTriggersLand
-    case FailureDuringLand
-    case FailureDuringHover
-    case FailureRetrievingDroneState
+    case failureInFlightTriggersLand
+    case failureDuringLand
+    case failureDuringHover
+    case failureRetrievingDroneState
 }

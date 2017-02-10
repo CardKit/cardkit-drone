@@ -84,7 +84,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         Thread.sleep(forTimeInterval: delay)
         
         guard let currentAttitude = self.currentAttitude else {
-            throw DroneTokenError.FailureRetrievingDroneState
+            throw DroneTokenError.failureRetrievingDroneState
         }
         
         let newYaw: DCKAngle
@@ -140,7 +140,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         
         
         guard let homeLocation = self.homeLocation else {
-            throw DroneTokenError.FailureRetrievingDroneState
+            throw DroneTokenError.failureRetrievingDroneState
         }
         
         try self.fly(to: homeLocation)

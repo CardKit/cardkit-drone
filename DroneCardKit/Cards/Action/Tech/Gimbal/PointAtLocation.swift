@@ -21,7 +21,7 @@ public class PointAtLocation: ExecutableActionCard {
         guard let currentLocation = droneTelemetry.currentLocation,
             let currentAltitude = droneTelemetry.currentAltitude,
             let currentAttitude = droneTelemetry.currentAttitude else {
-            self.error = DroneTokenError.FailureRetrievingDroneState
+            self.error = DroneTokenError.failureRetrievingDroneState
             return
         }
         

@@ -19,7 +19,7 @@ public class PointInDirection: ExecutableActionCard {
         }
         
         guard let droneYaw = droneTelemetry.currentAttitude?.yaw else {
-            self.error = DroneTokenError.FailureRetrievingDroneState
+            self.error = DroneTokenError.failureRetrievingDroneState
             return
         }
         
