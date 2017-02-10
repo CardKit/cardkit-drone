@@ -83,27 +83,27 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         print("\(prefix) DummyDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
-        if let currentAttitude = self.currentAttitude {
-            let newYaw: DCKAngle
-            
-            if let yaw = yaw {
-                newYaw = yaw
-            } else {
-               newYaw = currentAttitude.yaw
-            }
-            
-            let newCoord = DCKCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            self.currentLocation = newCoord
-            
-            if let altitude = altitude {
-                self.currentAltitude = altitude
-            }
-            
-            let newAttitude = DCKAttitude(yaw: newYaw, pitch: currentAttitude.pitch, roll: currentAttitude.roll)
-            self.currentAttitude = newAttitude
-        } else {
+        guard let currentAttitude = self.currentAttitude else {
             throw DroneTokenError.FailureRetrievingDroneState
         }
+        
+        let newYaw: DCKAngle
+        
+        if let yaw = yaw {
+            newYaw = yaw
+        } else {
+            newYaw = currentAttitude.yaw
+        }
+        
+        let newCoord = DCKCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        self.currentLocation = newCoord
+        
+        if let altitude = altitude {
+            self.currentAltitude = altitude
+        }
+        
+        let newAttitude = DCKAttitude(yaw: newYaw, pitch: currentAttitude.pitch, roll: currentAttitude.roll)
+        self.currentAttitude = newAttitude
     }
     
     public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
@@ -138,11 +138,12 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         print("\(prefix) DummyDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed), toLand: \(land))")
         Thread.sleep(forTimeInterval: delay)
         
-        if let homeLoc = self.homeLocation {
-            try self.fly(to: homeLoc)
-        } else {
+        
+        guard let homeLocation = self.homeLocation else {
             throw DroneTokenError.FailureRetrievingDroneState
         }
+        
+        try self.fly(to: homeLocation)
         
         if land { try self.land() }
     }

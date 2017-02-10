@@ -85,25 +85,19 @@ public protocol DroneToken: DroneTelemetryToken {
 }
 
 
-// MARK: - Convienience -- take off
+// MARK: - Convienience Functions for Default Parameters
 
 public extension DroneToken {
+    
+    // takeOff without altitude specified
     final func takeOff(at altitude: DCKRelativeAltitude? = nil) throws {
         try self.takeOff(at: nil)
     }
-}
-
-// MARK: - Convienience -- hover
-
-public extension DroneToken {
+    
+    // hover without Yaw angle specified
     final func hover(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
-        try self.hover(at: altitude, withYaw: nil) 
+        try self.hover(at: altitude, withYaw: nil)
     }
-}
-
-// MARK: - Convienience -- fly to coordinate
-
-public extension DroneToken {
     
     //fly to with DCKCoordinate2D
     final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
