@@ -33,7 +33,7 @@ public class TakePhotos: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try camera.startTakingPhotosSync(at: interval, options: cameraOptions)
+                try camera.startTakingPhotos(at: interval, options: cameraOptions)
             }
         } catch {
             self.error = error
@@ -50,7 +50,7 @@ public class TakePhotos: ExecutableActionCard {
         }
         
         do {
-            try camera.stopTakingPhotosSync()
+            try camera.stopTakingPhotos()
         } catch let error {
             self.error = error
         }
