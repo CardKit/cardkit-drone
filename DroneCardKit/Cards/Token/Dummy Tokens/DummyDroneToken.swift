@@ -83,24 +83,27 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         print("\(prefix) DummyDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
-        let newYaw: DCKAngle
-        
-        if let yaw = yaw {
-            newYaw = yaw
+        if let currentAttitude = self.currentAttitude {
+            let newYaw: DCKAngle
+            
+            if let yaw = yaw {
+                newYaw = yaw
+            } else {
+               newYaw = currentAttitude.yaw
+            }
+            
+            let newCoord = DCKCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            self.currentLocation = newCoord
+            
+            if let altitude = altitude {
+                self.currentAltitude = altitude
+            }
+            
+            let newAttitude = DCKAttitude(yaw: newYaw, pitch: currentAttitude.pitch, roll: currentAttitude.roll)
+            self.currentAttitude = newAttitude
         } else {
-            newYaw = self.currentAttitude!.yaw
+            throw DroneTokenError.FailureRetrievingDroneState
         }
-        
-        let newCoord = DCKCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        self.currentLocation = newCoord
-        
-        if let altitude = altitude {
-            self.currentAltitude = altitude
-        }
-        
-        let newAttitude = DCKAttitude(yaw: newYaw, pitch: self.currentAttitude!.pitch, roll: self.currentAttitude!.roll)
-        self.currentAttitude = newAttitude
-        
     }
     
     public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
