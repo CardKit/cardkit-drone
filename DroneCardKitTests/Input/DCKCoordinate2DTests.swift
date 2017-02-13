@@ -31,7 +31,7 @@ class DCKCoordinate2DTests: XCTestCase {
         let coordinate1 = DCKCoordinate2D(latitude: 50.066, longitude: -5.714)
         let coordinate2 = DCKCoordinate2D(latitude: 58.643, longitude: -3.070)
         
-        let distanceBetween = coordinate1.distanceTo(secondCoordinate: coordinate2)
+        let distanceBetween = coordinate1.distance(to: coordinate2)
         let expectedValue: Double = 968791.14
         XCTAssert(abs(distanceBetween - expectedValue) < 0.01, "incorrect distance. calculated value: \(distanceBetween)")
     }
@@ -41,7 +41,7 @@ class DCKCoordinate2DTests: XCTestCase {
         let coordinate1 = DCKCoordinate2D(latitude: 39.099912, longitude: -94.581213)
         let coordinate2 = DCKCoordinate2D(latitude: 38.627089, longitude: -90.200203)
         
-        let bearingTo = coordinate1.bearingTo(secondCoordinate: coordinate2).degrees
+        let bearingTo = coordinate1.bearing(to: coordinate2).degrees
         let expectedBearingValue: Double = 96.51
         
         XCTAssert(abs(bearingTo - expectedBearingValue) < 0.01, "incorrect bearing. calculated value: \(bearingTo)")
