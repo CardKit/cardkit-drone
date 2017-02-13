@@ -23,7 +23,7 @@ public class ReturnHome: ExecutableActionCard {
         do {
             // return back to the home location
             if !isCancelled {
-                try drone.returnHomeSync(atAltitude: altitude, atSpeed: speed, toLand: true)
+                try drone.returnHome(atAltitude: altitude, atSpeed: speed, toLand: true)
             }
         } catch {
             self.error = error
@@ -40,7 +40,7 @@ public class ReturnHome: ExecutableActionCard {
         }
         
         do {
-            try drone.landSync()
+            try drone.land()
         } catch {
             if self.error == nil {
                 self.error = error

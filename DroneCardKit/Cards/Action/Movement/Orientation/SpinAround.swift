@@ -25,12 +25,12 @@ public class SpinAround: ExecutableActionCard {
         do {
             // take of to the provided altitude
             if !isCancelled && altitude != nil {
-                try drone.takeOffSync(at: altitude)
+                try drone.takeOff(at: altitude)
             }
             
             // spin around (NOT WORKING YET)
             if !isCancelled {
-                try drone.spinAroundSync(toYawAngle: yaw, atAngularSpeed: angularSpeed)
+                try drone.spinAround(toYawAngle: yaw, atAngularSpeed: angularSpeed)
             }
         } catch {
             self.error = error
@@ -47,7 +47,7 @@ public class SpinAround: ExecutableActionCard {
         }
         
         do {
-            try drone.landSync()
+            try drone.land()
         } catch {
             if self.error == nil {
                 self.error = error

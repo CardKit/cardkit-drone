@@ -26,11 +26,11 @@ public class FlyTo: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try drone.takeOffSync()
+                try drone.takeOff()
             }
             
             if !isCancelled {
-                try drone.flySync(to: location, atAltitude: altitude, atSpeed: speed)
+                try drone.fly(to: location, atAltitude: altitude, atSpeed: speed)
             }
         } catch {
             self.error = error
@@ -47,7 +47,7 @@ public class FlyTo: ExecutableActionCard {
         }
         
         do {
-            try drone.landSync()
+            try drone.land()
         } catch {
             if self.error == nil {
                 self.error = error
