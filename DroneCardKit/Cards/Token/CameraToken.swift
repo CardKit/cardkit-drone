@@ -334,6 +334,22 @@ public enum VideoFramerate: String {
 
 extension VideoFramerate: JSONEncodable, JSONDecodable {}
 
+public enum VideoFileFormat: String {
+    case mov
+    case mp4
+    case unknown
+}
+
+extension VideoStandard: JSONEncodable, JSONDecodable {}
+
+public enum VideoStandard: String {
+    case pal
+    case ntsc
+    case unknown
+}
+
+extension VideoStandard: JSONEncodable, JSONDecodable {}
+
 // MARK: - CameraTokenError
 
 public enum CameraTokenError: Error {
