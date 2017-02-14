@@ -626,6 +626,28 @@ extension DroneCardKit.Action {
 }
 
 extension DroneCardKit.Action.Think {
+    public static let DetectObject = ActionCardDescriptor(
+        name: "Detect an Object",
+        subpath: "Think",
+        inputs: [
+            InputSlot(name: "Objects", descriptor: CardKit.Input.Text.TextString, isOptional: false),
+            InputSlot(name: "Confidence", descriptor: CardKit.Input.Numeric.Real, isOptional: true),
+            InputSlot(name: "Frequency", descriptor: CardKit.Input.Time.Periodicity, isOptional: false)
+        ],
+        tokens: [
+            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera),
+            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "WatsonVisualRecognition", descriptor: DroneCardKit.Token.Watson.VisualRecognition)
+        ],
+        yields: [
+            Yield(type: DCKDetectedObject.self)
+        ],
+        yieldDescription: "Yields the object that was detected",
+        ends: true,
+        endsDescription: "Ends when one of the given objects was detected",
+        assetCatalog: CardAssetCatalog(description: "Detects an object in the camera's field of view using Watson"))
+    
+    /*
     public static let DetectInAir = ActionCardDescriptor(
         name: "Detect In Air",
         subpath: "Think",
@@ -689,6 +711,7 @@ extension DroneCardKit.Action.Think {
         ends: false,
         endsDescription: nil,
         assetCatalog: CardAssetCatalog(description: "Track an object on the ground"))
+ */
 }
 
 // MARK: - Input Cards
@@ -954,6 +977,22 @@ extension DroneCardKit.Token {
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Gimbal token"))
 }
+
+extension DroneCardKit.Token {
+    /// Contains descriptors for Watson cards
+    public struct Watson {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Token.Watson {
+    public static let VisualRecognition = TokenCardDescriptor(
+        name: "Watson Visual Recognition",
+        subpath: "Watson",
+        isConsumed: false,
+        assetCatalog: CardAssetCatalog(description: "Watson Visual Recognition token"))
+}
+
 
 /*
         public struct Claw {

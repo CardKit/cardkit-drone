@@ -856,3 +856,29 @@ extension DCKFrequency: Comparable {
         return lhs.hertz < rhs.hertz
     }
 }
+
+// MARK: DCKDetectedObject
+
+public struct DCKDetectedObject {
+    public let objectName: String
+    public let confidence: Double
+}
+
+extension DCKDetectedObject: Equatable {
+    public static func == (lhs: DCKDetectedObject, rhs: DCKDetectedObject) -> Bool {
+        return lhs.objectName == rhs.objectName && lhs.confidence == rhs.confidence
+    }
+}
+
+extension DCKDetectedObject: JSONEncodable, JSONDecodable {
+    public init(json: JSON) throws {
+        self.objectName = try json.getString(at: "objectName")
+        self.confidence = try json.getDouble(at: "confidence")
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary([
+            "objectName": self.objectName.toJSON(),
+            "confidence": self.confidence.toJSON()])
+    }
+}

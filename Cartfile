@@ -1,5 +1,8 @@
 git "git@github.ibm.com:ETX-CardKit/card-kit-runtime.git" "master"
 
+# watson swift sdk
+github "watson-developer-cloud/swift-sdk"
+
 # for the pixhawk, which we aren't implementing (yet?)
 #github "mavlink/c_library_v1" "master"
 #github "mavlink/c_library_v2" "master"

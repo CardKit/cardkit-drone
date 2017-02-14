@@ -39,7 +39,6 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             throw CameraTokenError.cameraAlreadyInUse
-            return
         }
         
         self.isTakingPhotos = true

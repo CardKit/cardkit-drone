@@ -42,6 +42,14 @@
 		CC0F32C71E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
 		CC0F32C81E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
 		CC0F32C91E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
+		CC21971F1E539083002544B6 /* DetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21971E1E539083002544B6 /* DetectObject.swift */; };
+		CC2197201E539083002544B6 /* DetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21971E1E539083002544B6 /* DetectObject.swift */; };
+		CC2197211E539083002544B6 /* DetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21971E1E539083002544B6 /* DetectObject.swift */; };
+		CC2197241E53914D002544B6 /* WatsonVisualRecognitionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2197231E53914D002544B6 /* WatsonVisualRecognitionToken.swift */; };
+		CC2197251E53914D002544B6 /* WatsonVisualRecognitionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2197231E53914D002544B6 /* WatsonVisualRecognitionToken.swift */; };
+		CC2197261E53914D002544B6 /* WatsonVisualRecognitionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2197231E53914D002544B6 /* WatsonVisualRecognitionToken.swift */; };
+		CC2197291E5393D9002544B6 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2197271E5393D9002544B6 /* RestKit.framework */; };
+		CC21972A1E5393D9002544B6 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2197281E5393D9002544B6 /* VisualRecognitionV3.framework */; };
 		CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
@@ -151,6 +159,10 @@
 		CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDroneToken.swift; sourceTree = "<group>"; };
 		CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCameraToken.swift; sourceTree = "<group>"; };
 		CC0F32C61E316CB8008423AC /* InputTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTests.swift; sourceTree = "<group>"; };
+		CC21971E1E539083002544B6 /* DetectObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectObject.swift; sourceTree = "<group>"; };
+		CC2197231E53914D002544B6 /* WatsonVisualRecognitionToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatsonVisualRecognitionToken.swift; sourceTree = "<group>"; };
+		CC2197271E5393D9002544B6 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		CC2197281E5393D9002544B6 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		CC64EC711E3FCEA600F7010D /* RecordVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideo.swift; sourceTree = "<group>"; };
 		CC64EC721E3FCEA600F7010D /* TakePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhoto.swift; sourceTree = "<group>"; };
 		CC64EC731E3FCEA600F7010D /* TakePhotoBurst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoBurst.swift; sourceTree = "<group>"; };
@@ -200,6 +212,8 @@
 				6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */,
 				6809DF341DF4B7970077C6EE /* CardKitRuntime.framework in Frameworks */,
 				6809DF351DF4B7970077C6EE /* Freddy.framework in Frameworks */,
+				CC2197291E5393D9002544B6 /* RestKit.framework in Frameworks */,
+				CC21972A1E5393D9002544B6 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +323,7 @@
 			children = (
 				68DE99A51DF1C7670040D76A /* Movement */,
 				CC64EC6F1E3FCEA600F7010D /* Tech */,
+				CC21971D1E538FF2002544B6 /* Think */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -348,6 +363,22 @@
 				6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */,
 			);
 			path = Input;
+			sourceTree = "<group>";
+		};
+		CC21971D1E538FF2002544B6 /* Think */ = {
+			isa = PBXGroup;
+			children = (
+				CC21971E1E539083002544B6 /* DetectObject.swift */,
+			);
+			path = Think;
+			sourceTree = "<group>";
+		};
+		CC2197221E539138002544B6 /* Watson */ = {
+			isa = PBXGroup;
+			children = (
+				CC2197231E53914D002544B6 /* WatsonVisualRecognitionToken.swift */,
+			);
+			path = Watson;
 			sourceTree = "<group>";
 		};
 		CC64EC6F1E3FCEA600F7010D /* Tech */ = {
@@ -452,6 +483,8 @@
 		CCBB79481D7897C6003B6458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC2197271E5393D9002544B6 /* RestKit.framework */,
+				CC2197281E5393D9002544B6 /* VisualRecognitionV3.framework */,
 				CCBB79471D7897C1003B6458 /* iOS */,
 				CCBB794F1D7897E2003B6458 /* macOS */,
 				CCBB79561D7897FF003B6458 /* tvOS */,
@@ -514,6 +547,7 @@
 				CCD6D6E71DFF0EA9004CEB71 /* CameraToken.swift */,
 				CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */,
 				CC0F32BC1E2FFBC2008423AC /* Dummy Tokens */,
+				CC2197221E539138002544B6 /* Watson */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -934,6 +968,7 @@
 				CC0F32BE1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */,
 				68D3BD511E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
+				CC21971F1E539083002544B6 /* DetectObject.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */,
@@ -946,6 +981,7 @@
 				44017E321E4AD9EC00B4D9C1 /* SpinAround.swift in Sources */,
 				CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
+				CC2197241E53914D002544B6 /* WatsonVisualRecognitionToken.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC64EC8F1E3FE4E100F7010D /* PointAtLocation.swift in Sources */,
 				CC64EC791E3FCEA600F7010D /* TakePhoto.swift in Sources */,
@@ -971,6 +1007,7 @@
 				CC64EC7D1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
 				CC64EC981E3FE4F200F7010D /* PointAtGround.swift in Sources */,
 				CC64EC941E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
+				CC2197201E539083002544B6 /* DetectObject.swift in Sources */,
 				F9617B941E1D74E3003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EB1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
@@ -986,6 +1023,7 @@
 				CCD6D6EE1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				CC64EC881E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				CC2197251E53914D002544B6 /* WatsonVisualRecognitionToken.swift in Sources */,
 				F9FDA9501DFF07EE00256F2C /* Land.swift in Sources */,
 				CC64EC901E3FE4E100F7010D /* PointAtLocation.swift in Sources */,
 				CC64EC7A1E3FCEA600F7010D /* TakePhoto.swift in Sources */,
@@ -1012,6 +1050,7 @@
 				CC64EC7E1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
 				CC64EC991E3FE4F200F7010D /* PointAtGround.swift in Sources */,
 				CC64EC951E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
+				CC2197211E539083002544B6 /* DetectObject.swift in Sources */,
 				F9617B951E1D74E4003AAE7E /* Hover.swift in Sources */,
 				CCD6D6EC1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
@@ -1027,6 +1066,7 @@
 				CCD6D6EF1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				CC64EC891E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */,
+				CC2197261E53914D002544B6 /* WatsonVisualRecognitionToken.swift in Sources */,
 				F9FDA9521DFF07EF00256F2C /* Land.swift in Sources */,
 				CC64EC911E3FE4E100F7010D /* PointAtLocation.swift in Sources */,
 				CC64EC7B1E3FCEA600F7010D /* TakePhoto.swift in Sources */,
