@@ -20,7 +20,7 @@ public class Hover: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try drone.hoverSync(at: altitude)
+                try drone.hover(at: altitude)
             }
         } catch {
             self.error = error
@@ -37,7 +37,7 @@ public class Hover: ExecutableActionCard {
         }
         
         do {
-            try drone.landSync()
+            try drone.land()
         } catch {
             if self.error == nil {
                 self.error = error

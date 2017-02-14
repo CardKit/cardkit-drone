@@ -28,12 +28,12 @@ public class CircleRepeatedly: ExecutableActionCard {
         do {
             // take of to the provided altitude
             if !isCancelled {
-                try drone.takeOffSync(at: altitude)
+                try drone.takeOff(at: altitude)
             }
             
             // circle
             if !isCancelled {
-                try drone.circleSync(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, atClockwise: isClockwise, toCircleRepeatedly: true)
+                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, atClockwise: isClockwise, toCircleRepeatedly: true)
             }
         } catch {
             self.error = error
@@ -50,7 +50,7 @@ public class CircleRepeatedly: ExecutableActionCard {
         }
         
         do {
-            try drone.landSync()
+            try drone.land()
         } catch {
             if self.error == nil {
                 self.error = error

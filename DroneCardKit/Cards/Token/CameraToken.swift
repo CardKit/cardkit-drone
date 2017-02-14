@@ -73,12 +73,12 @@ public extension CameraToken {
 
 // MARK: - PhotoBurstCount
 
-public enum PhotoBurstCount: String {
-    case burst_3
-    case burst_5
-    case burst_7
-    case burst_10
-    case burst_14
+public enum PhotoBurstCount: Int {
+    case burst_3 = 3
+    case burst_5 = 5
+    case burst_7 = 7
+    case burst_10 = 10
+    case burst_14 = 14
 }
 
 extension PhotoBurstCount: JSONEncodable, JSONDecodable {}

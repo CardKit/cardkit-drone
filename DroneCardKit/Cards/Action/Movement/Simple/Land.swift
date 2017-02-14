@@ -27,12 +27,12 @@ public class Land: ExecutableActionCard {
             if let speed = dckSpeed, let currentLocation = drone.currentLocation {
                 if !isCancelled {
                     let altitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 1.0)
-                    try drone.flySync(to: currentLocation, atYaw: nil, atAltitude: altitude, atSpeed: speed)
+                    try drone.fly(to: currentLocation, atYaw: nil, atAltitude: altitude, atSpeed: speed)
                 }
             }
             
             if !isCancelled {
-                try drone.landSync()
+                try drone.land()
             }
            
         } catch {
