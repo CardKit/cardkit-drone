@@ -216,6 +216,7 @@ extension FloatingPoint {
 // MARK: DCKCoordinate2D
 
 public struct DCKCoordinate2D {
+    static let earthsRadiusInMeters = 6371e3 //in meters
     public let latitude: Double
     public let longitude: Double
     
@@ -231,8 +232,6 @@ public struct DCKCoordinate2D {
     /// - Parameter secondCoordinate: second coordinate used for calculating distance
     /// - Returns: returns  in meters
     public func distance(to coordinate: DCKCoordinate2D) -> Double {
-        let earthsRadius = 6371e3; // in meters
-        
         let lat1Rad = self.latitude.degreesToRadians
         let lat2Rad = coordinate.latitude.degreesToRadians
         
@@ -245,7 +244,7 @@ public struct DCKCoordinate2D {
         
         let angularDistanceInRadians = 2 * atan2(sqrt(a), sqrt(1-a))
         
-        let distance = earthsRadius * angularDistanceInRadians
+        let distance = DCKCoordinate2D.earthsRadiusInMeters * angularDistanceInRadians
         
         return distance
     }
@@ -271,6 +270,19 @@ public struct DCKCoordinate2D {
         
         return DCKAngle(degrees: bearing)
     }
+}
+
+extension DCKCoordinate2D {
+    public static func + (lhs: DCKCoordinate2D, rhs: (Double, Double)) -> DCKCoordinate2D {
+        let earthsRadiusInKM = DCKCoordinate2D.earthsRadiusInMeters/1000
+        
+        let newLatitude  = lhs.latitude  + (rhs.1 / earthsRadiusInKM) * (180 / .pi)
+        let newLongitude = lhs.longitude + (rhs.0 / earthsRadiusInKM) * (180 / .pi) / cos(lhs.latitude * .pi/180)
+        
+        return DCKCoordinate2D(latitude: newLatitude, longitude: newLongitude)
+        
+    }
+
 }
 
 extension DCKCoordinate2D: Equatable {
@@ -382,13 +394,15 @@ public struct DCKCoordinate3D {
     /// Compute the pitch angle between this coordinate and the given coordinate. The pitch angle is
     /// the vertical angle between the two coordinates.
     public func pitch(to coordinate: DCKCoordinate3D) -> DCKAngle {
-        // using sohcahtoa to calculate the change in pitch
         // we have the opposite value (change in altitude) and the hypotoneuse (distance to location)
         // sin(theta) = opposite/hypotoneuse .. which is..  sin(theta) = altitude/distance
         let altitudeDelta = coordinate.altitude.metersAboveGroundAtTakeoff - self.altitude.metersAboveGroundAtTakeoff
         let distanceToLocation = self.as2D().distance(to: coordinate.as2D())
         
-        let pitchAngle = asin(altitudeDelta/distanceToLocation)
+        // altitudeDelta must be multiplied by -1 to map it correctly to our normalized angles
+        // e.g. if altitudeDelta is -20, the end altitude is lower than the current altitude
+        // since we need to to rotate downards, the angle must be positive
+        let pitchAngle = asin(-1*altitudeDelta/distanceToLocation).radiansToDegrees
         let pitchAngleNormalized = DCKAngle(degrees: pitchAngle).normalized()
         
         return pitchAngleNormalized
@@ -431,6 +445,8 @@ public struct DCKOrientedCoordinate3D {
     public let latitude: Double
     public let longitude: Double
     public let altitude: DCKRelativeAltitude
+    
+    /// True North is 0º
     public let yaw: DCKAngle
     
     public func as2D() -> DCKOrientedCoordinate2D {
@@ -444,8 +460,8 @@ public struct DCKOrientedCoordinate3D {
     /// Compute the relative bearing angle between this coordinate (oriented toward its yaw)
     /// and the given coordinate.
     public func bearing(to coordinate: DCKCoordinate3D) -> DCKAngle {
-        // calculate the absolute bearing
-        let bearing = self.bearing(to: coordinate)
+        // calculate the absolute bearing (true north is 0º)
+        let bearing = self.asNonOriented().bearing(to: coordinate)
         
         // calculate the relative bearing
         let relativeBearing = bearing - self.yaw
