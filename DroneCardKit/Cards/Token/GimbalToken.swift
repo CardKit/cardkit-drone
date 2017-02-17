@@ -44,8 +44,8 @@ public enum GimbalOrientation {
 // MARK: - Convienience Functions for Default Parameters
 
 public extension GimbalToken {
-    func rotate(yaw: DCKAngle? = nil, pitch: DCKAngle? = nil, roll: DCKAngle? = nil, relative: Bool = false, withinTimeInSeconds: Double? = nil) throws {
-        try self.rotate(yaw: yaw, pitch: pitch, roll: roll, relativeToDrone: relative, withinTimeInSeconds: withinTimeInSeconds)
+    func rotate(yaw: DCKAngle? = nil, pitch: DCKAngle? = nil, roll: DCKAngle? = nil, relativeToDrone: Bool = false, withinTimeInSeconds: Double? = nil) throws {
+        try self.rotate(yaw: yaw, pitch: pitch, roll: roll, relativeToDrone: relativeToDrone, withinTimeInSeconds: withinTimeInSeconds)
     }
     
     func rotate(yaw: DCKAngularVelocity? = nil, pitch: DCKAngularVelocity? = nil, roll: DCKAngularVelocity? = nil, forTimeInSeconds seconds: Double) throws {
