@@ -565,7 +565,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Location", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
@@ -594,7 +594,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "CardinalDirection", descriptor: DroneCardKit.Input.Location.CardinalDirection, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
@@ -636,7 +636,7 @@ extension DroneCardKit.Action.Think {
         ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera),
-            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
             TokenSlot(name: "WatsonVisualRecognition", descriptor: DroneCardKit.Token.Watson.VisualRecognition)
         ],
         yields: [
@@ -953,29 +953,29 @@ extension DroneCardKit {
 }
 
 extension DroneCardKit.Token {
-    public static let Drone = TokenCardDescriptor(
-        name: "Drone",
-        subpath: nil,
-        isConsumed: true,
-        assetCatalog: CardAssetCatalog(description: "Drone token"))
-    
-    public static let DroneTelemetry = TokenCardDescriptor(
-        name: "Drone Telemetry",
-        subpath: nil,
-        isConsumed: false,
-        assetCatalog: CardAssetCatalog(description: "Drone telemetry token"))
-    
     public static let Camera = TokenCardDescriptor(
         name: "Camera",
         subpath: nil,
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Camera token"))
     
+    public static let Drone = TokenCardDescriptor(
+        name: "Drone",
+        subpath: nil,
+        isConsumed: true,
+        assetCatalog: CardAssetCatalog(description: "Drone token"))
+    
     public static let Gimbal = TokenCardDescriptor(
         name: "Gimbal",
         subpath: nil,
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Gimbal token"))
+    
+    public static let Telemetry = TokenCardDescriptor(
+        name: "Telemetry",
+        subpath: nil,
+        isConsumed: false,
+        assetCatalog: CardAssetCatalog(description: "Drone telemetry token"))
 }
 
 extension DroneCardKit.Token {

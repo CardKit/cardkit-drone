@@ -10,6 +10,13 @@ import Foundation
 
 import Freddy
 
+// MARK: FloatingPoint Extensions
+
+extension FloatingPoint {
+    var degreesToRadians: Self { return self * .pi / 180 }
+    var radiansToDegrees: Self { return self * 180 / .pi }
+}
+
 // MARK: DCKAngle
 
 public struct DCKAngle {
@@ -206,13 +213,6 @@ public enum DCKCardinalDirection: Int {
     }
 }
 
-// MARK: DCKDegrees
-
-extension FloatingPoint {
-    var degreesToRadians: Self { return self * .pi / 180 }
-    var radiansToDegrees: Self { return self * 180 / .pi }
-}
-
 // MARK: DCKCoordinate2D
 
 public struct DCKCoordinate2D {
@@ -365,6 +365,12 @@ public struct DCKCoordinate3D {
     public init(latitude: Double, longitude: Double, altitude: DCKRelativeAltitude) {
         self.latitude = latitude
         self.longitude = longitude
+        self.altitude = altitude
+    }
+    
+    public init(coordinate: DCKCoordinate2D, altitude: DCKRelativeAltitude) {
+        self.latitude = coordinate.latitude
+        self.longitude = coordinate.longitude
         self.altitude = altitude
     }
     
@@ -530,6 +536,12 @@ public struct DCKCoordinate3DPath {
     }
 }
 
+extension DCKCoordinate3DPath: Equatable {
+    public static func == (lhs: DCKCoordinate3DPath, rhs: DCKCoordinate3DPath) -> Bool {
+        return lhs.path == rhs.path
+    }
+}
+
 extension DCKCoordinate3DPath: CustomStringConvertible {
     public var description: String {
         let strs: [String] = self.path.map { $0.description }
@@ -549,10 +561,11 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
 
 // MARK: DCKAbsoluteAltitude
 
-
 public struct DCKAbsoluteAltitude {
     public let metersAboveSeaLevel: Double
-    
+}
+
+extension DCKAbsoluteAltitude {
     public static func + (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> DCKAbsoluteAltitude {
         return DCKAbsoluteAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel + rhs.metersAboveSeaLevel)
     }
@@ -580,7 +593,9 @@ extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
     }
     
     public func toJSON() -> JSON {
-        return .dictionary(["metersAboveSeaLevel": metersAboveSeaLevel.toJSON()])
+        return .dictionary([
+            "metersAboveSeaLevel": metersAboveSeaLevel.toJSON()
+            ])
     }
 }
 
@@ -594,9 +609,25 @@ public struct DCKRelativeAltitude {
     }
 }
 
+extension DCKRelativeAltitude {
+    public static func + (lhs: DCKRelativeAltitude, rhs: DCKRelativeAltitude) -> DCKRelativeAltitude {
+        return DCKRelativeAltitude(metersAboveGroundAtTakeoff: lhs.metersAboveGroundAtTakeoff + rhs.metersAboveGroundAtTakeoff)
+    }
+    
+    public static func - (lhs: DCKRelativeAltitude, rhs: DCKRelativeAltitude) -> DCKRelativeAltitude {
+        return DCKRelativeAltitude(metersAboveGroundAtTakeoff: lhs.metersAboveGroundAtTakeoff - rhs.metersAboveGroundAtTakeoff)
+    }
+}
+
 extension DCKRelativeAltitude: Equatable {
     public static func == (lhs: DCKRelativeAltitude, rhs: DCKRelativeAltitude) -> Bool {
         return lhs.metersAboveGroundAtTakeoff == rhs.metersAboveGroundAtTakeoff
+    }
+}
+
+extension DCKRelativeAltitude: Comparable {
+    public static func < (lhs: DCKRelativeAltitude, rhs: DCKRelativeAltitude) -> Bool {
+        return lhs.metersAboveGroundAtTakeoff < rhs.metersAboveGroundAtTakeoff
     }
 }
 
@@ -606,10 +637,11 @@ extension DCKRelativeAltitude : JSONDecodable, JSONEncodable {
     }
     
     public func toJSON() -> JSON {
-        return .dictionary(["metersAboveGroundAtTakeoff": metersAboveGroundAtTakeoff.toJSON()])
+        return .dictionary([
+            "metersAboveGroundAtTakeoff": metersAboveGroundAtTakeoff.toJSON()
+            ])
     }
 }
-
 
 // MARK: DCKSpeed
 
@@ -659,7 +691,9 @@ extension DCKSpeed : JSONDecodable, JSONEncodable {
     }
     
     public func toJSON() -> JSON {
-        return .dictionary(["metersPerSecond": metersPerSecond.toJSON()])
+        return .dictionary([
+            "metersPerSecond": metersPerSecond.toJSON()
+            ])
     }
 }
 
@@ -668,14 +702,14 @@ extension DCKSpeed : JSONDecodable, JSONEncodable {
 public struct DCKDistance {
     public let meters: Double
     
-    private static let fooToMeterConversionFactor: Double = 0.3048
+    private static let footToMeterConversionFactor: Double = 0.3048
     
     public init(meters: Double) {
         self.meters = meters
     }
     
     public init(feet: Double) {
-        self.meters = feet * DCKDistance.fooToMeterConversionFactor
+        self.meters = feet * DCKDistance.footToMeterConversionFactor
     }
 }
 
@@ -707,10 +741,11 @@ extension DCKDistance : JSONDecodable, JSONEncodable {
     }
     
     public func toJSON() -> JSON {
-        return .dictionary(["meters": meters.toJSON()])
+        return .dictionary([
+            "meters": meters.toJSON()
+            ])
     }
 }
-
 
 // MARK: DCKMovementDirection
 
@@ -735,18 +770,23 @@ extension DCKMovementDirection : JSONDecodable, JSONEncodable {
     }
     
     public func toJSON() -> JSON {
-        return .dictionary(["isClockwise": isClockwise.toJSON()])
+        return .dictionary([
+            "isClockwise": isClockwise.toJSON()
+            ])
     }
 }
 
-
 // MARK: DCKRotationDirection
-public enum DCKRotationDirection {
+
+public enum DCKRotationDirection: String {
     case clockwise
     case counterClockwise
 }
 
+extension DCKRotationDirection: JSONEncodable, JSONDecodable {}
+
 // MARK: DCKAngularVelocity
+
 public struct DCKAngularVelocity {
     public let degreesPerSecond: Double
     
@@ -857,6 +897,101 @@ extension DCKFrequency: Comparable {
     }
 }
 
+// MARK: DCKPhoto
+
+public struct DCKPhoto {
+    let fileName: String
+    let pathInDroneFileSystem: URL
+    var pathInLocalFileSystem: URL?
+    let sizeInBytes: UInt
+    let timeCreated: Date
+    let photoData: Data
+    var location: DCKCoordinate3D?
+}
+
+extension DCKPhoto {
+    mutating func saveToLocalFileSystem(at path: URL) {
+        let lfsPath = path.appendingPathComponent(fileName)
+        do {
+            try self.photoData.write(to: lfsPath)
+            self.pathInLocalFileSystem = lfsPath
+        } catch let error {
+            print("error writing DCKPhoto to local file system: \(error)")
+        }
+    }
+    
+    mutating func saveToCacheDirectory() {
+        do {
+            let cacheDir = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            self.saveToLocalFileSystem(at: cacheDir)
+        } catch let error {
+            print("error obtaining Caches directory: \(error)")
+        }
+    }
+}
+
+extension DCKPhoto: JSONEncodable, JSONDecodable {
+    public init(json: JSON) throws {
+        self.fileName = try json.getString(at: "fileName")
+        
+        let dfsPath = try json.getString(at: "pathInDroneFileSystem")
+        self.pathInDroneFileSystem = URL(fileURLWithPath: dfsPath)
+        
+        let lfsPath = try json.getString(at: "pathInLocalFileSystem")
+        if lfsPath == "nil" {
+            self.pathInLocalFileSystem = nil
+        } else {
+            self.pathInLocalFileSystem = URL(fileURLWithPath: lfsPath)
+        }
+        
+        let size = try json.getInt(at: "sizeInBytes")
+        self.sizeInBytes = UInt(size)
+        
+        self.timeCreated = try json.decode(at: "timeCreated", type: Date.self)
+        self.photoData = try json.decode(at: "photoData", type: Data.self)
+        
+        let locationStr = try json.getString(at: "location")
+        if locationStr == "nil" {
+            self.location = nil
+        } else {
+            self.location = try json.decode(at: "location", type: DCKCoordinate3D.self)
+        }
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary([
+            "fileName": self.fileName.toJSON(),
+            "pathInDroneFileSystem": self.pathInDroneFileSystem.absoluteString.toJSON(),
+            "pathInLocalFileSystem": self.pathInLocalFileSystem?.absoluteString.toJSON() ?? .string("nil"),
+            "sizeInBytes": Int(self.sizeInBytes).toJSON(),
+            "timeCrated": self.timeCreated.toJSON(),
+            "photoData": self.photoData.toJSON(),
+            "location": self.location?.toJSON() ?? .string("nil")
+            ])
+    }
+}
+
+// MARK: DCKPhotoBurst
+
+public struct DCKPhotoBurst {
+    // TODO fill in
+}
+
+// MARK: DCKVideo
+
+public struct DCKVideo {
+    let fileName: String
+    let pathInDroneFileSystem: URL
+    let pathInLocalFileSystem: URL?
+    let sizeInBytes: UInt
+    let timeCreated: Date
+    let durationInSeconds: Float
+    let videoData: Data
+}
+
+// TODO: add json methods
+
+
 // MARK: DCKDetectedObject
 
 public struct DCKDetectedObject {
@@ -866,7 +1001,9 @@ public struct DCKDetectedObject {
 
 extension DCKDetectedObject: Equatable {
     public static func == (lhs: DCKDetectedObject, rhs: DCKDetectedObject) -> Bool {
-        return lhs.objectName == rhs.objectName && lhs.confidence == rhs.confidence
+        // it's the same object if the name matches, independent of confidence
+        // e.g. ["cat", 0.7] === ["cat", 0.2] (because it's a cat!)
+        return lhs.objectName == rhs.objectName
     }
 }
 
@@ -879,6 +1016,7 @@ extension DCKDetectedObject: JSONEncodable, JSONDecodable {
     public func toJSON() -> JSON {
         return .dictionary([
             "objectName": self.objectName.toJSON(),
-            "confidence": self.confidence.toJSON()])
+            "confidence": self.confidence.toJSON()
+            ])
     }
 }

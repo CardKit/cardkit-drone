@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import CardKit    
+@testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
 

@@ -19,19 +19,45 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     var isTakingTimelapse = false
     var isTakingVideo = false
     
-    public func takePhoto(options: Set<CameraPhotoOption>) throws {
+    var photoCount = 0
+    
+    fileprivate func makePhoto() -> DCKPhoto {
+        let photoCounter = "".appendingFormat("%03d", self.photoCount)
+        let fileName = "DUMMY_\(photoCounter).JPG"
+        let dfsURL = URL(fileURLWithPath: "/media/\(fileName)")
+        
+        let photo = DCKPhoto(fileName: fileName, pathInDroneFileSystem: dfsURL, pathInLocalFileSystem: nil, sizeInBytes: 100, timeCreated: Date(), photoData: Data(), location: nil)
+        return photo
+    }
+    
+    fileprivate func makeVideo() -> DCKVideo {
+        let photoCounter = "".appendingFormat("%03d", self.photoCount)
+        let fileName = "DUMMY_\(photoCounter).M4V"
+        let dfsURL = URL(fileURLWithPath: "/media/\(fileName)")
+        
+        let video = DCKVideo(fileName: fileName, pathInDroneFileSystem: dfsURL, pathInLocalFileSystem: nil, sizeInBytes: 1000, timeCreated: Date(), durationInSeconds: 60, videoData: Data())
+        return video
+    }
+    
+    public func takePhoto(options: Set<CameraPhotoOption>) throws -> DCKPhoto {
         print("\(prefix) DummyCameraToken > takePhoto(options: \(options))")
         Thread.sleep(forTimeInterval: delay)
+        
+        return self.makePhoto()
     }
     
-    public func takeHDRPhoto(options: Set<CameraPhotoOption>) throws {
+    public func takeHDRPhoto(options: Set<CameraPhotoOption>) throws -> DCKPhoto {
         print("\(prefix) DummyCameraToken > takeHDRPhoto(options: \(options))")
         Thread.sleep(forTimeInterval: delay)
+        
+        return self.makePhoto()
     }
     
-    public func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws {
+    public func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws -> DCKPhotoBurst {
         print("\(prefix) DummyCameraToken > takePhotoBurst(count: \(count), options: \(options))")
         Thread.sleep(forTimeInterval: delay)
+        
+        return DCKPhotoBurst()
     }
     
     public func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws {
@@ -44,12 +70,13 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         self.isTakingPhotos = true
     }
     
-    public func stopTakingPhotos() throws {
+    public func stopTakingPhotos() throws -> [DCKPhoto] {
         print("\(prefix) DummyCameraToken > stopTakingPhotos()")
         self.isTakingPhotos = false
+        
+        return [self.makePhoto(), self.makePhoto(), self.makePhoto()]
     }
     
-    /// Start taking a timelapse movie.
     public func startTimelapse(options: Set<CameraPhotoOption>) throws {
         print("\(prefix) DummyCameraToken > startTimelapse(options: \(options))")
         
@@ -60,10 +87,11 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         self.isTakingTimelapse = true
     }
     
-    /// Stop taking a timelapse movie.
-    public func stopTimelapse() throws {
+    public func stopTimelapse() throws -> DCKVideo {
         print("\(prefix) DummyCameraToken > stopTimelapse()")
         self.isTakingTimelapse = false
+        
+        return self.makeVideo()
     }
     
     public func startVideo(options: Set<CameraVideoOption>) throws {
@@ -76,8 +104,10 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         self.isTakingVideo = true
     }
     
-    public func stopVideo() throws {
+    public func stopVideo() throws -> DCKVideo {
         print("\(prefix) DummyCameraToken > stopVideo()")
         self.isTakingVideo = false
+        
+        return self.makeVideo()
     }
 }

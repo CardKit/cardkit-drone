@@ -11,12 +11,13 @@ import Foundation
 import CardKitRuntime
 
 public class DetectObject: ExecutableActionCard {
+    //swiftlint:ignore:next cyclomatic_complexity
     override public func main() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
             return
         }
         
-        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken else {
+        guard let telemetry: TelemetryToken = self.token(named: "Telemetry") as? TelemetryToken else {
             return
         }
         
@@ -34,41 +35,78 @@ public class DetectObject: ExecutableActionCard {
         // assuming Objects is a comma-separated string, chop it up
         let objectList = objects.components(separatedBy: ",")
         
-        var detectedObjects: [DCKDetectedObject] = []
+        // we don't end until we've found the object we're looking for
+        var foundObject: Bool = false
         
-        // TODO loop with frequency
-        do {
-            // take a picture
-            if !isCancelled {
-                camera.takePhoto(options: <#T##Set<CameraPhotoOption>#>)
+        repeat {
+            // loop with the requested frequency -- if frequency is not set
+            // then we will loop as fast as we can
+            let loopStartDate: Date = Date()
+            var nextLoopStartDate: Date = loopStartDate
+            
+            if let frequency = frequency {
+                nextLoopStartDate.addTimeInterval(frequency)
             }
             
-            // send it to watson
-            if !isCancelled {
-                detectedObjects = watsonVisualRecognition.classify(imageFile: <#T##URL#>, threshold: confidence)
-            }
-            
-            // did we get what we were looking for?
-            if !isCancelled {
-                for object in objectList {
-                    for detectedObject in detectedObjects {
-                        if object == detectedObject.objectName {
-                            // yes!
+            do {
+                // take a picture & classify
+                let detectedObjects = try self.takePhotoAndClassify(camera: camera, telemetry: telemetry, watsonVisualRecognition: watsonVisualRecognition, confidence: confidence)
+                
+                // did we get what we were looking for?
+                if !isCancelled {
+                    for object in objectList {
+                        for detectedObject in detectedObjects {
+                            if object == detectedObject.objectName {
+                                // yes!
+                                foundObject = true
+                                break
+                            }
                         }
                     }
                 }
+                
+            } catch {
+                self.error = error
+                
+                if !isCancelled {
+                    cancel()
+                }
             }
             
-        } catch {
-            self.error = error
-            
-            if !isCancelled {
-                cancel()
-            }
-        }
+            // sleep until next loop start date
+            Thread.sleep(until: nextLoopStartDate)
+        } while !foundObject
     }
     
     override public func cancel() {
         
+    }
+    
+    fileprivate func takePhotoAndClassify(camera: CameraToken, telemetry: TelemetryToken, watsonVisualRecognition: WatsonVisualRecognitionToken, confidence: Double?) throws -> [DCKDetectedObject] {
+        var photo: DCKPhoto?
+        var detectedObjects: [DCKDetectedObject] = []
+        
+        // take a picture
+        if !isCancelled {
+            let options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]
+            photo = try camera.takePhoto(options: options)
+            
+            // add drone's current location
+            if let currentLocation = telemetry.currentLocation, let currentAltitude = telemetry.currentAltitude {
+                photo?.location = DCKCoordinate3D(coordinate: currentLocation, altitude: currentAltitude)
+            }
+        }
+        
+        // save it to the Caches directory
+        if !isCancelled {
+            photo?.saveToCacheDirectory()
+        }
+        
+        // send it to Watson
+        if let photo = photo, let lfsPath = photo.pathInLocalFileSystem, !isCancelled {
+            detectedObjects = try watsonVisualRecognition.classify(imageFile: lfsPath, threshold: confidence)
+        }
+        
+        return detectedObjects
     }
 }
