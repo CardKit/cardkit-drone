@@ -32,8 +32,8 @@ public class SpinAround: ExecutableActionCard {
             if !isCancelled {
                 try drone.spinAround(toYawAngle: yaw, atAngularSpeed: angularSpeed)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -48,10 +48,8 @@ public class SpinAround: ExecutableActionCard {
         
         do {
             try drone.land()
-        } catch {
-            if self.error == nil {
-                self.error = error
-            }
+        } catch let error {
+            self.error(error)
         }
     }
     

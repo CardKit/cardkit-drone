@@ -36,7 +36,7 @@ public class TakePhotoBurst: ExecutableActionCard {
                 try camera.takePhotoBurst(count: burstCount, options: cameraOptions)
             }
         } catch {
-            self.error = error
+            self.error(error)
             
             if !isCancelled {
                 cancel()

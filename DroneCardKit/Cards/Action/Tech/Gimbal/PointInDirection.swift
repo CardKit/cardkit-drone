@@ -19,7 +19,7 @@ public class PointInDirection: ExecutableActionCard {
         }
         
         guard let droneYaw = telemetry.currentAttitude?.yaw else {
-            self.error = DroneTokenError.failureRetrievingDroneState
+            self.error(DroneTokenError.failureRetrievingDroneState)
             return
         }
         
@@ -27,8 +27,8 @@ public class PointInDirection: ExecutableActionCard {
             if !isCancelled {
                 try gimbal.rotate(yaw: droneYaw.normalized() - desiredGimbalYaw.normalized(), relative: false)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()

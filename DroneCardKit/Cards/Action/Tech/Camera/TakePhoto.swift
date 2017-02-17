@@ -36,8 +36,8 @@ public class TakePhoto: ExecutableActionCard {
                     try camera.takePhoto(options: cameraOptions)
                 }
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()

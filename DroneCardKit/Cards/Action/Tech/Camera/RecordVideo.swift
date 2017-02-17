@@ -35,8 +35,8 @@ public class RecordVideo: ExecutableActionCard {
             if !isCancelled {
                 try camera.startVideo(options: cameraOptions)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -52,7 +52,7 @@ public class RecordVideo: ExecutableActionCard {
         do {
             try camera.stopVideo()
         } catch let error {
-            self.error = error
+            self.error(error)
         }
     }
 }

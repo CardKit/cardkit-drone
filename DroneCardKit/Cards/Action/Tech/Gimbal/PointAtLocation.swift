@@ -21,7 +21,7 @@ public class PointAtLocation: ExecutableActionCard {
         guard let currentLocation = telemetry.currentLocation,
             let currentAltitude = telemetry.currentAltitude,
             let currentAttitude = telemetry.currentAttitude else {
-            self.error = DroneTokenError.failureRetrievingDroneState
+            self.error(DroneTokenError.failureRetrievingDroneState)
             return
         }
         
@@ -38,8 +38,8 @@ public class PointAtLocation: ExecutableActionCard {
             if !isCancelled {
                 try gimbal.rotate(yaw: yaw, pitch: pitch, relative: false)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()

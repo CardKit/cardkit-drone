@@ -22,8 +22,8 @@ public class Hover: ExecutableActionCard {
             if !isCancelled {
                 try drone.hover(at: altitude)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -38,10 +38,8 @@ public class Hover: ExecutableActionCard {
         
         do {
             try drone.land()
-        } catch {
-            if self.error == nil {
-                self.error = error
-            }
+        } catch let error {
+            self.error(error)
         }
     }
 }

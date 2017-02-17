@@ -20,8 +20,8 @@ public class PointAtFront: ExecutableActionCard {
             if !isCancelled {
                 try gimbal.orient(to: .facingForward)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()

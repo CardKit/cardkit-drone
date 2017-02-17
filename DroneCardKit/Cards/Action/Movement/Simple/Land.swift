@@ -36,7 +36,7 @@ public class Land: ExecutableActionCard {
             }
            
         } catch {
-            self.error = error
+            self.error(error)
             
             if !isCancelled {
                 cancel()

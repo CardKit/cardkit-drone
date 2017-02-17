@@ -32,12 +32,6 @@ public class DetectObject: ExecutableActionCard {
         let confidence: Double? = self.optionalValue(forInput: "Confidence")
         let frequency: Double? = self.optionalValue(forInput: "Frequency")
         
-        // TODO this is hacky and will be removed
-        guard let yield = self.yields.first else {
-            self.error = ActionExecutionError.expectedYieldNotFound(self)
-            return
-        }
-        
         // assuming Objects is a comma-separated string, chop it up
         let objectList = objects.components(separatedBy: ",")
         
@@ -67,8 +61,7 @@ public class DetectObject: ExecutableActionCard {
                                 foundObject = true
                                 
                                 // capture the detected object in our yields
-                                // TODO this is hacky and will be fixed
-                                self.yields[yield.key] = .bound(detectedObject.toJSON())
+                                self.store(data: detectedObject, forYieldIndex: 0)
                                 break
                             }
                         }
@@ -76,7 +69,7 @@ public class DetectObject: ExecutableActionCard {
                 }
                 
             } catch {
-                self.error = error
+                self.error(error)
                 
                 if !isCancelled {
                     cancel()

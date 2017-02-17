@@ -36,7 +36,7 @@ public class CircleRepeatedly: ExecutableActionCard {
                 try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, atClockwise: isClockwise, toCircleRepeatedly: true)
             }
         } catch {
-            self.error = error
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -52,9 +52,7 @@ public class CircleRepeatedly: ExecutableActionCard {
         do {
             try drone.land()
         } catch {
-            if self.error == nil {
-                self.error = error
-            }
+            self.error(error)
         }
     }
     
