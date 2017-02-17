@@ -50,7 +50,12 @@ public class RecordVideo: ExecutableActionCard {
         }
         
         do {
-            try camera.stopVideo()
+            // stop recording the video
+            let video = try camera.stopVideo()
+            
+            // save it as a yield
+            self.store(data: video, forYieldIndex: 0)
+            
         } catch let error {
             self.error(error)
         }

@@ -900,13 +900,13 @@ extension DCKFrequency: Comparable {
 // MARK: DCKPhoto
 
 public struct DCKPhoto {
-    let fileName: String
-    let pathInDroneFileSystem: URL
-    var pathInLocalFileSystem: URL?
-    let sizeInBytes: UInt
-    let timeCreated: Date
-    let photoData: Data
-    var location: DCKCoordinate3D?
+    public let fileName: String
+    public let pathInDroneFileSystem: URL
+    public internal (set) var pathInLocalFileSystem: URL?
+    public let sizeInBytes: UInt
+    public let timeCreated: Date
+    public let photoData: Data
+    public internal (set) var location: DCKCoordinate3D?
 }
 
 extension DCKPhoto {
@@ -964,7 +964,7 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
             "pathInDroneFileSystem": self.pathInDroneFileSystem.absoluteString.toJSON(),
             "pathInLocalFileSystem": self.pathInLocalFileSystem?.absoluteString.toJSON() ?? .string("nil"),
             "sizeInBytes": Int(self.sizeInBytes).toJSON(),
-            "timeCrated": self.timeCreated.toJSON(),
+            "timeCreated": self.timeCreated.toJSON(),
             "photoData": self.photoData.toJSON(),
             "location": self.location?.toJSON() ?? .string("nil")
             ])
@@ -974,23 +974,75 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
 // MARK: DCKPhotoBurst
 
 public struct DCKPhotoBurst {
-    // TODO fill in
+    public internal (set) var photos: [DCKPhoto] = []
+    
+    mutating func add(photo: DCKPhoto) {
+        self.photos.append(photo)
+    }
+    
+    mutating func add(photos: [DCKPhoto]) {
+        self.photos.append(contentsOf: photos)
+    }
+}
+
+extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
+    public init(json: JSON) throws {
+        self.photos = try json.decodedArray(at: "photos", type: DCKPhoto.self)
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary([
+            "photos": self.photos.toJSON()
+            ])
+    }
 }
 
 // MARK: DCKVideo
 
 public struct DCKVideo {
-    let fileName: String
-    let pathInDroneFileSystem: URL
-    let pathInLocalFileSystem: URL?
-    let sizeInBytes: UInt
-    let timeCreated: Date
-    let durationInSeconds: Float
-    let videoData: Data
+    public let fileName: String
+    public let pathInDroneFileSystem: URL
+    public internal (set) var pathInLocalFileSystem: URL?
+    public let sizeInBytes: UInt
+    public let timeCreated: Date
+    public let durationInSeconds: Double
+    public let videoData: Data
 }
 
-// TODO: add json methods
-
+extension DCKVideo: JSONEncodable, JSONDecodable {
+    public init(json: JSON) throws {
+        self.fileName = try json.getString(at: "fileName")
+        
+        let dfsPath = try json.getString(at: "pathInDroneFileSystem")
+        self.pathInDroneFileSystem = URL(fileURLWithPath: dfsPath)
+        
+        let lfsPath = try json.getString(at: "pathInLocalFileSystem")
+        if lfsPath == "nil" {
+            self.pathInLocalFileSystem = nil
+        } else {
+            self.pathInLocalFileSystem = URL(fileURLWithPath: lfsPath)
+        }
+        
+        let size = try json.getInt(at: "sizeInBytes")
+        self.sizeInBytes = UInt(size)
+        
+        self.timeCreated = try json.decode(at: "timeCreated", type: Date.self)
+        self.durationInSeconds = try json.getDouble(at: "durationInSeconds")
+        self.videoData = try json.decode(at: "videoData", type: Data.self)
+    }
+    
+    public func toJSON() -> JSON {
+        return .dictionary([
+            "fileName": self.fileName.toJSON(),
+            "pathInDroneFileSystem": self.pathInDroneFileSystem.absoluteString.toJSON(),
+            "pathInLocalFileSystem": self.pathInLocalFileSystem?.absoluteString.toJSON() ?? .string("nil"),
+            "sizeInBytes": Int(self.sizeInBytes).toJSON(),
+            "timeCreated": self.timeCreated.toJSON(),
+            "durationInSeconds": self.durationInSeconds.toJSON(),
+            "videoData": self.videoData.toJSON()
+            ])
+    }
+}
 
 // MARK: DCKDetectedObject
 

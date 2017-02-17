@@ -31,9 +31,11 @@ public class TakePhoto: ExecutableActionCard {
         do {
             if !isCancelled {
                 if hdr {
-                    try camera.takeHDRPhoto(options: cameraOptions)
+                    let photo = try camera.takeHDRPhoto(options: cameraOptions)
+                    self.store(data: photo, forYieldIndex: 0)
                 } else {
-                    try camera.takePhoto(options: cameraOptions)
+                    let photo = try camera.takePhoto(options: cameraOptions)
+                    self.store(data: photo, forYieldIndex: 0)
                 }
             }
         } catch let error {
