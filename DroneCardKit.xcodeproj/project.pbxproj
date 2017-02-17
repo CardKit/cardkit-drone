@@ -145,11 +145,11 @@
 
 /* Begin PBXFileReference section */
 		44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnHome.swift; sourceTree = "<group>"; };
-		44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpinAround.swift; path = Orientation/SpinAround.swift; sourceTree = "<group>"; };
+		44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpinAround.swift; path = SpinAround.swift; sourceTree = "<group>"; };
 		447F6B741E4997E100BAF604 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRepeatedly.swift; sourceTree = "<group>"; };
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
-		687DC9D11E5756F0000F7EBE /* FlyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlyPath.swift; path = Sequence/FlyPath.swift; sourceTree = "<group>"; };
+		687DC9D11E5756F0000F7EBE /* FlyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlyPath.swift; path = FlyPath.swift; sourceTree = "<group>"; };
 		687DC9E11E579276000F7EBE /* Pace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pace.swift; sourceTree = "<group>"; };
 		6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCoordinate2DTests.swift; sourceTree = "<group>"; };
 		68B6352F1DFB5B0E00A2AA07 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
@@ -269,6 +269,7 @@
 				44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */,
 			);
 			name = Orientation;
+			path = Orientation;
 			sourceTree = "<group>";
 		};
 		68657C2D1E3FBEB900612ECC /* Extensions */ = {
@@ -295,6 +296,7 @@
 				687DC9E11E579276000F7EBE /* Pace.swift */,
 			);
 			name = Sequence;
+			path = Sequence;
 			sourceTree = "<group>";
 		};
 		68D432A01DFAFBFF0080389E /* Action */ = {
