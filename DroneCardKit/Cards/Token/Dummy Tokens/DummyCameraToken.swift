@@ -57,7 +57,7 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         print("\(prefix) DummyCameraToken > takePhotoBurst(count: \(count), options: \(options))")
         Thread.sleep(forTimeInterval: delay)
         
-        return DCKPhotoBurst()
+        return DCKPhotoBurst(photos: [self.makePhoto(), self.makePhoto(), self.makePhoto()])
     }
     
     public func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws {
@@ -70,11 +70,11 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
         self.isTakingPhotos = true
     }
     
-    public func stopTakingPhotos() throws -> [DCKPhoto] {
+    public func stopTakingPhotos() throws -> DCKPhotoBurst {
         print("\(prefix) DummyCameraToken > stopTakingPhotos()")
         self.isTakingPhotos = false
         
-        return [self.makePhoto(), self.makePhoto(), self.makePhoto()]
+        return DCKPhotoBurst(photos: [self.makePhoto(), self.makePhoto(), self.makePhoto()])
     }
     
     public func startTimelapse(options: Set<CameraPhotoOption>) throws {

@@ -31,7 +31,7 @@ public protocol CameraToken {
     
     /// Stop taking photos. Returns the photos that have been taken since `startTakingPhotos()` was
     /// called.
-    func stopTakingPhotos() throws -> [DCKPhoto]
+    func stopTakingPhotos() throws -> DCKPhotoBurst
     
     /// Start taking a timelapse movie.
     func startTimelapse(options: Set<CameraPhotoOption>) throws

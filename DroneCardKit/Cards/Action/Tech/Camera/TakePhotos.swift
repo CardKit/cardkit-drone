@@ -53,11 +53,8 @@ public class TakePhotos: ExecutableActionCard {
             // stop taking photos
             let photos = try camera.stopTakingPhotos()
             
-            // store this as a DCKPhotoBurst
-            let burst = DCKPhotoBurst(photos: photos)
-            
             // store the photos as a yield
-            self.store(data: burst, forYieldIndex: 0)
+            self.store(data: photos, forYieldIndex: 0)
             
         } catch let error {
             self.error(error)
