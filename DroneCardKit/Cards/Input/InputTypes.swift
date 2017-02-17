@@ -272,19 +272,6 @@ public struct DCKCoordinate2D {
     }
 }
 
-extension DCKCoordinate2D {
-    public static func + (lhs: DCKCoordinate2D, rhs: (Double, Double)) -> DCKCoordinate2D {
-        let earthsRadiusInKM = DCKCoordinate2D.earthsRadiusInMeters/1000
-        
-        let newLatitude  = lhs.latitude  + (rhs.1 / earthsRadiusInKM) * (180 / .pi)
-        let newLongitude = lhs.longitude + (rhs.0 / earthsRadiusInKM) * (180 / .pi) / cos(lhs.latitude * .pi/180)
-        
-        return DCKCoordinate2D(latitude: newLatitude, longitude: newLongitude)
-        
-    }
-
-}
-
 extension DCKCoordinate2D: Equatable {
     public static func == (lhs: DCKCoordinate2D, rhs: DCKCoordinate2D) -> Bool {
         return lhs.latitude == rhs.latitude
