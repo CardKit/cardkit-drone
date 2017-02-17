@@ -1,5 +1,5 @@
 //
-//  FlyPath.swift
+//  Pace.swift
 //  DroneCardKit
 //
 //  Created by ismails on 2/17/17.
@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class FlyPath: ExecutableActionCard {
+public class Pace: ExecutableActionCard {
     
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,
@@ -30,17 +30,19 @@ public class FlyPath: ExecutableActionCard {
             }
             
             // fly path
-            for (index, location) in path.path.enumerated() {
-                if !isCancelled {
-                    try drone.fly(to: location, atSpeed: speed)
-                } else {
-                    break
-                }
-                
-                if !isCancelled && index < path.path.count-1 {
-                    Thread.sleep(forTimeInterval: duration ?? 1.0)
-                } else if isCancelled {
-                    break
+            while(!isCancelled) {
+                for (index, location) in path.path.enumerated() {
+                    if !isCancelled {
+                        try drone.fly(to: location, atSpeed: speed)
+                    } else {
+                        break
+                    }
+                    
+                    if !isCancelled {
+                        Thread.sleep(forTimeInterval: duration ?? 1.0)
+                    } else {
+                        break
+                    }
                 }
             }
         } catch {

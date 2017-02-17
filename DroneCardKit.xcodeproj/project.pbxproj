@@ -21,6 +21,9 @@
 		687DC9D21E5756F0000F7EBE /* FlyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DC9D11E5756F0000F7EBE /* FlyPath.swift */; };
 		687DC9D31E5756F0000F7EBE /* FlyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DC9D11E5756F0000F7EBE /* FlyPath.swift */; };
 		687DC9D41E5756F0000F7EBE /* FlyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DC9D11E5756F0000F7EBE /* FlyPath.swift */; };
+		687DC9E21E579276000F7EBE /* Pace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DC9E11E579276000F7EBE /* Pace.swift */; };
+		687DC9E51E5793E3000F7EBE /* Pace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DC9E11E579276000F7EBE /* Pace.swift */; };
+		687DC9E61E5793E5000F7EBE /* Pace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DC9E11E579276000F7EBE /* Pace.swift */; };
 		6896BFFC1E43919F00256601 /* DCKCoordinate2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */; };
 		6896BFFD1E4391A100256601 /* DCKCoordinate2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */; };
 		6896BFFE1E4391A100256601 /* DCKCoordinate2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */; };
@@ -147,6 +150,7 @@
 		447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRepeatedly.swift; sourceTree = "<group>"; };
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
 		687DC9D11E5756F0000F7EBE /* FlyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlyPath.swift; path = Sequence/FlyPath.swift; sourceTree = "<group>"; };
+		687DC9E11E579276000F7EBE /* Pace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pace.swift; sourceTree = "<group>"; };
 		6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCoordinate2DTests.swift; sourceTree = "<group>"; };
 		68B6352F1DFB5B0E00A2AA07 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
 		68D3BD501E40025200F83B36 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				687DC9D11E5756F0000F7EBE /* FlyPath.swift */,
+				687DC9E11E579276000F7EBE /* Pace.swift */,
 			);
 			name = Sequence;
 			sourceTree = "<group>";
@@ -959,6 +964,7 @@
 				CCD6D6E31DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
 				44017E321E4AD9EC00B4D9C1 /* SpinAround.swift in Sources */,
 				CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */,
+				687DC9E21E579276000F7EBE /* Pace.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
 				F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */,
 				CC64EC8F1E3FE4E100F7010D /* PointAtLocation.swift in Sources */,
@@ -996,6 +1002,7 @@
 				CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F32C31E2FFBE8008423AC /* DummyCameraToken.swift in Sources */,
 				68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */,
+				687DC9E51E5793E3000F7EBE /* Pace.swift in Sources */,
 				CC64EC801E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6EE1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				CC64EC881E3FD1D700F7010D /* PointAtFront.swift in Sources */,
@@ -1038,6 +1045,7 @@
 				CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F32C41E2FFBE8008423AC /* DummyCameraToken.swift in Sources */,
 				68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */,
+				687DC9E61E5793E5000F7EBE /* Pace.swift in Sources */,
 				CC64EC811E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6EF1DFF0EA9004CEB71 /* DroneToken.swift in Sources */,
 				CC64EC891E3FD1D700F7010D /* PointAtFront.swift in Sources */,
