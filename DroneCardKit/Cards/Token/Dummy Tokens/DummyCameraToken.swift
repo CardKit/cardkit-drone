@@ -24,18 +24,16 @@ public class DummyCameraToken: ExecutableTokenCard, CameraToken {
     fileprivate func makePhoto() -> DCKPhoto {
         let photoCounter = "".appendingFormat("%03d", self.photoCount)
         let fileName = "DUMMY_\(photoCounter).JPG"
-        let dfsURL = URL(fileURLWithPath: "/media/\(fileName)")
         
-        let photo = DCKPhoto(fileName: fileName, pathInDroneFileSystem: dfsURL, pathInLocalFileSystem: nil, sizeInBytes: 100, timeCreated: Date(), photoData: Data(), location: nil)
+        let photo = DCKPhoto(fileName: fileName, sizeInBytes: 100, timeCreated: Date(), data: Data(), location: nil)
         return photo
     }
     
     fileprivate func makeVideo() -> DCKVideo {
         let photoCounter = "".appendingFormat("%03d", self.photoCount)
         let fileName = "DUMMY_\(photoCounter).M4V"
-        let dfsURL = URL(fileURLWithPath: "/media/\(fileName)")
         
-        let video = DCKVideo(fileName: fileName, pathInDroneFileSystem: dfsURL, pathInLocalFileSystem: nil, sizeInBytes: 1000, timeCreated: Date(), durationInSeconds: 60, videoData: Data())
+        let video = DCKVideo(fileName: fileName, sizeInBytes: 1000, timeCreated: Date(), durationInSeconds: 60, data: Data())
         return video
     }
     

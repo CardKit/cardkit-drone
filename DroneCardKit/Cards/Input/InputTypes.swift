@@ -901,29 +901,46 @@ extension DCKFrequency: Comparable {
 
 public struct DCKPhoto {
     public let fileName: String
-    public let pathInDroneFileSystem: URL
     public internal (set) var pathInLocalFileSystem: URL?
     public let sizeInBytes: UInt
     public let timeCreated: Date
-    public let photoData: Data
+    public lazy var photoData: Data? = {
+        // read from pathInLocalFileSystem
+        guard let path = self.pathInLocalFileSystem else { return nil }
+        do {
+            return try Data(contentsOf: path)
+        } catch {
+            return nil
+        }
+    }()
     public internal (set) var location: DCKCoordinate3D?
+    
+    public init(fileName: String, sizeInBytes: UInt, timeCreated: Date, data: Data, location: DCKCoordinate3D?) {
+        self.fileName = fileName
+        self.sizeInBytes = sizeInBytes
+        self.timeCreated = timeCreated
+        self.location = location
+        
+        // save to Cache directory
+        self.saveToCacheDirectory(data: data)
+    }
 }
 
 extension DCKPhoto {
-    mutating func saveToLocalFileSystem(at path: URL) {
+    mutating func saveToLocalFileSystem(at path: URL, data: Data) {
         let lfsPath = path.appendingPathComponent(fileName)
         do {
-            try self.photoData.write(to: lfsPath)
+            try data.write(to: lfsPath)
             self.pathInLocalFileSystem = lfsPath
         } catch let error {
             print("error writing DCKPhoto to local file system: \(error)")
         }
     }
     
-    mutating func saveToCacheDirectory() {
+    mutating func saveToCacheDirectory(data: Data) {
         do {
             let cacheDir = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            self.saveToLocalFileSystem(at: cacheDir)
+            self.saveToLocalFileSystem(at: cacheDir, data: data)
         } catch let error {
             print("error obtaining Caches directory: \(error)")
         }
@@ -933,9 +950,6 @@ extension DCKPhoto {
 extension DCKPhoto: JSONEncodable, JSONDecodable {
     public init(json: JSON) throws {
         self.fileName = try json.getString(at: "fileName")
-        
-        let dfsPath = try json.getString(at: "pathInDroneFileSystem")
-        self.pathInDroneFileSystem = URL(fileURLWithPath: dfsPath)
         
         let lfsPath = try json.getString(at: "pathInLocalFileSystem")
         if lfsPath == "nil" {
@@ -948,7 +962,6 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
         self.sizeInBytes = UInt(size)
         
         self.timeCreated = try json.decode(at: "timeCreated", type: Date.self)
-        self.photoData = try json.decode(at: "photoData", type: Data.self)
         
         let locationStr = try json.getString(at: "location")
         if locationStr == "nil" {
@@ -959,13 +972,13 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
     }
     
     public func toJSON() -> JSON {
+        // NOTE: we do not serialize photoData since it would already be in
+        // the local file system (assuming pathInLocalFileSystem is not nil)
         return .dictionary([
             "fileName": self.fileName.toJSON(),
-            "pathInDroneFileSystem": self.pathInDroneFileSystem.absoluteString.toJSON(),
             "pathInLocalFileSystem": self.pathInLocalFileSystem?.absoluteString.toJSON() ?? .string("nil"),
             "sizeInBytes": Int(self.sizeInBytes).toJSON(),
             "timeCreated": self.timeCreated.toJSON(),
-            "photoData": self.photoData.toJSON(),
             "location": self.location?.toJSON() ?? .string("nil")
             ])
     }
@@ -975,6 +988,10 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
 
 public struct DCKPhotoBurst {
     public internal (set) var photos: [DCKPhoto] = []
+    
+    public init(photos: [DCKPhoto]) {
+        self.photos = photos
+    }
     
     mutating func add(photo: DCKPhoto) {
         self.photos.append(photo)
@@ -1001,20 +1018,56 @@ extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
 
 public struct DCKVideo {
     public let fileName: String
-    public let pathInDroneFileSystem: URL
     public internal (set) var pathInLocalFileSystem: URL?
     public let sizeInBytes: UInt
     public let timeCreated: Date
     public let durationInSeconds: Double
-    public let videoData: Data
+    public lazy var videoData: Data? = {
+        // read from pathInLocalFileSystem
+        guard let path = self.pathInLocalFileSystem else { return nil }
+        do {
+            return try Data(contentsOf: path)
+        } catch {
+            return nil
+        }
+    }()
+    
+    public init(fileName: String, sizeInBytes: UInt, timeCreated: Date, durationInSeconds: Double, data: Data) {
+        self.fileName = fileName
+        self.pathInLocalFileSystem = nil
+        self.sizeInBytes = sizeInBytes
+        self.timeCreated = timeCreated
+        self.durationInSeconds = durationInSeconds
+        
+        // save to Cache directory
+        self.saveToCacheDirectory(data: data)
+    }
+}
+
+extension DCKVideo {
+    mutating func saveToLocalFileSystem(at path: URL, data: Data) {
+        let lfsPath = path.appendingPathComponent(fileName)
+        do {
+            try data.write(to: lfsPath)
+            self.pathInLocalFileSystem = lfsPath
+        } catch let error {
+            print("error writing DCKVideo to local file system: \(error)")
+        }
+    }
+    
+    mutating func saveToCacheDirectory(data: Data) {
+        do {
+            let cacheDir = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            self.saveToLocalFileSystem(at: cacheDir, data: data)
+        } catch let error {
+            print("error obtaining Caches directory: \(error)")
+        }
+    }
 }
 
 extension DCKVideo: JSONEncodable, JSONDecodable {
     public init(json: JSON) throws {
         self.fileName = try json.getString(at: "fileName")
-        
-        let dfsPath = try json.getString(at: "pathInDroneFileSystem")
-        self.pathInDroneFileSystem = URL(fileURLWithPath: dfsPath)
         
         let lfsPath = try json.getString(at: "pathInLocalFileSystem")
         if lfsPath == "nil" {
@@ -1028,18 +1081,17 @@ extension DCKVideo: JSONEncodable, JSONDecodable {
         
         self.timeCreated = try json.decode(at: "timeCreated", type: Date.self)
         self.durationInSeconds = try json.getDouble(at: "durationInSeconds")
-        self.videoData = try json.decode(at: "videoData", type: Data.self)
     }
     
     public func toJSON() -> JSON {
+        // NOTE: we do not serialize videoData since it would already be in
+        // the local file system (assuming pathInLocalFileSystem is not nil)
         return .dictionary([
             "fileName": self.fileName.toJSON(),
-            "pathInDroneFileSystem": self.pathInDroneFileSystem.absoluteString.toJSON(),
             "pathInLocalFileSystem": self.pathInLocalFileSystem?.absoluteString.toJSON() ?? .string("nil"),
             "sizeInBytes": Int(self.sizeInBytes).toJSON(),
             "timeCreated": self.timeCreated.toJSON(),
-            "durationInSeconds": self.durationInSeconds.toJSON(),
-            "videoData": self.videoData.toJSON()
+            "durationInSeconds": self.durationInSeconds.toJSON()
             ])
     }
 }

@@ -16,7 +16,7 @@ import CardKitRuntime
 // MARK: CameraToken
 
 public protocol CameraToken {
-    /// Take a single photo, with the given photo options specified. Returns the image data.
+    /// Take a single photo, with the given photo options specified.
     func takePhoto(options: Set<CameraPhotoOption>) throws -> DCKPhoto
     
     /// Take an HDR photo. Returns the image data.

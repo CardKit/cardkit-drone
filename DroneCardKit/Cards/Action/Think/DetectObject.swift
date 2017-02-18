@@ -100,11 +100,6 @@ public class DetectObject: ExecutableActionCard {
             }
         }
         
-        // save it to the Caches directory
-        if !isCancelled {
-            photo?.saveToCacheDirectory()
-        }
-        
         // send it to Watson
         if let photo = photo, let lfsPath = photo.pathInLocalFileSystem, !isCancelled {
             detectedObjects = try watsonVisualRecognition.classify(imageFile: lfsPath, threshold: confidence)
