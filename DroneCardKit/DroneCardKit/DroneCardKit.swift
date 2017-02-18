@@ -524,7 +524,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
