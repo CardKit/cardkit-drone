@@ -80,9 +80,9 @@ class DetectObjectTests: XCTestCase {
         engine.setTokenInstance(watson, for: watsonCard)
         
         // execute
-        engine.execute({ (yields: YieldBindings, error: ExecutionError?) in
+        engine.execute({ (yields: [YieldData], error: ExecutionError?) in
             for yield in yields {
-                print("yield: \(yield.value.toJSON())")
+                print("yield: \(yield.data)")
             }
             XCTAssertNil(error)
         })
