@@ -270,6 +270,24 @@ public struct DCKCoordinate2D {
         
         return DCKAngle(degrees: bearing)
     }
+    
+    
+    /// Add x,y distance in meters to a lat/lon coordinate.
+    /// Method: http://stackoverflow.com/questions/7477003/calculating-new-longtitude-latitude-from-old-n-meters
+    /// An approximate method which we are not using: http://gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
+    ///
+    /// - Parameters:
+    ///   - x: x distance in meters
+    ///   - y: y distance in meters
+    /// - Returns: a new coordinate with the added/subtracted distance in x/y
+    func add(x: Double, y: Double) -> DCKCoordinate2D {
+        let earthsRadiusInKM = DCKCoordinate2D.earthsRadiusInMeters/1000
+        
+        let newLatitude  = self.latitude  + ((y/1000) / earthsRadiusInKM) * (180 / .pi)
+        let newLongitude = self.longitude + ((x/1000) / earthsRadiusInKM) * (180 / .pi) / cos(self.latitude * .pi/180)
+        
+        return DCKCoordinate2D(latitude: newLatitude, longitude: newLongitude)
+    }
 }
 
 extension DCKCoordinate2D: Equatable {

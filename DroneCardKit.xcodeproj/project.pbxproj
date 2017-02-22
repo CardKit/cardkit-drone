@@ -33,6 +33,7 @@
 		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
+		68FB026A1E5CEAEB003BB6E0 /* FlyForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */; };
 		CC0F32BE1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */; };
 		CC0F32BF1E2FFBC2008423AC /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */; };
 		CC0F32C01E2FFBC2008423AC /* DummyDroneToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */; };
@@ -148,6 +149,7 @@
 		68D3BD501E40025200F83B36 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
 		68D4329C1DFAFBFB0080389E /* LandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandTests.swift; sourceTree = "<group>"; };
 		68DE99A71DF1C7670040D76A /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
+		68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyForward.swift; sourceTree = "<group>"; };
 		CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDroneToken.swift; sourceTree = "<group>"; };
 		CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCameraToken.swift; sourceTree = "<group>"; };
 		CC0F32C61E316CB8008423AC /* InputTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTests.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			children = (
 				68B6352F1DFB5B0E00A2AA07 /* Hover.swift */,
 				686EE8A21DF855A40024F3E5 /* Land.swift */,
+				68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */,
 			);
 			path = Simple;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				68D3BD511E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
+				68FB026A1E5CEAEB003BB6E0 /* FlyForward.swift in Sources */,
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F32C21E2FFBE8008423AC /* DummyCameraToken.swift in Sources */,
