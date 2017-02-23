@@ -113,6 +113,10 @@ public extension DroneToken {
     final func fly(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try self.fly(to: coordinate.as2D(), atYaw: yaw, atAltitude: coordinate.altitude, atSpeed: speed)
     }
+    
+    final func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+        try self.fly(on: path, atAltitude: altitude, atSpeed: speed)
+    }
 }
 
 // MARK: - DroneTokenError
