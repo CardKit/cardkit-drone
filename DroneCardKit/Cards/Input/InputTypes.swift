@@ -454,6 +454,20 @@ public struct DCKOrientedCoordinate3D {
     /// True North is 0º
     public let yaw: DCKAngle
     
+    public init(latitude: Double, longitude: Double, altitude: DCKRelativeAltitude, yaw: DCKAngle) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = altitude
+        self.yaw = yaw
+    }
+    
+    public init(coordinate2D: DCKCoordinate2D, altitude: DCKRelativeAltitude, yaw: DCKAngle) {
+        self.latitude = coordinate2D.latitude
+        self.longitude = coordinate2D.longitude
+        self.altitude = altitude
+        self.yaw = yaw
+    }
+    
     public func as2D() -> DCKOrientedCoordinate2D {
         return DCKOrientedCoordinate2D(latitude: latitude, longitude: longitude, yaw: yaw)
     }
@@ -473,6 +487,63 @@ public struct DCKOrientedCoordinate3D {
         
         // return the normalized bearing (so negative angles become positive)
         return relativeBearing.normalized()
+    }
+    
+    public func add(distance: DCKDistance) -> DCKCoordinate2D {
+        let currentLocation = as2D().asNonOriented()
+        
+        let yawInDegrees = yaw.degrees
+        let distanceInMeters = distance.meters
+        
+        var xOffset: Double = 0
+        var yOffset: Double = 0
+        
+        // handle 0, 90, 180, 270
+        if yawInDegrees == 0 || yawInDegrees == 360 {
+            yOffset = distanceInMeters
+        } else if yawInDegrees == 90 {
+            xOffset = distanceInMeters
+        } else if yawInDegrees == 180 {
+            yOffset = -1*distanceInMeters
+        } else if yawInDegrees == 270 {
+            xOffset = -1*distanceInMeters
+        } else {
+            // we would like to get the yaw relative to (0, 90, 180, 270) angles in a quadrant (in a unit circle)
+            // for example, quadrant 3 (180 to 270) starts at 180, if yawInDegrees is 190, the relative angle is 10
+            var relativeYaw = yawInDegrees.truncatingRemainder(dividingBy: 90)
+            
+            // now we are make sure the angle is with respect to the x axis of the unit circle (so.. 90 and 270 degrees)
+            // using the example above, if we are in quadrant 3, and yawInDegrees is 190, the relative angle should now be 80 (270-190 = 80)
+            if (yawInDegrees > 0 && yawInDegrees < 90) || (yawInDegrees > 180 && yawInDegrees < 270) {
+                relativeYaw = 90 - relativeYaw
+            }
+            
+            // with the new relative angles, we can safely say that the opposite side of the triangle is y,
+            // the adjacent is x, and the hypotenuse is distanceInMeters
+            
+            // calculate opposite
+            yOffset = sin(relativeYaw.degreesToRadians) * distanceInMeters
+            
+            // calculate adjacent
+            xOffset = cos(relativeYaw.degreesToRadians) * distanceInMeters
+            
+            // set signs
+            if yawInDegrees > 0 && yawInDegrees < 90 {
+                xOffset = abs(xOffset)
+                yOffset = abs(yOffset)
+            } else if yawInDegrees > 90 && yawInDegrees < 180 {
+                xOffset = abs(xOffset)
+                yOffset = -1*yOffset
+            } else if yawInDegrees > 180 && yawInDegrees < 270 {
+                xOffset = -1*xOffset
+                yOffset = -1*yOffset
+            } else if yawInDegrees > 270 && yawInDegrees < 360 {
+                xOffset = -1*xOffset
+                yOffset = abs(yOffset)
+            }
+        }
+        
+        return currentLocation.add(xVal: xOffset, yVal: yOffset)
     }
 }
 
@@ -615,6 +686,16 @@ public struct DCKRelativeAltitude {
     }
 }
 
+extension DCKRelativeAltitude: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+    public init(floatLiteral value: FloatLiteralType) {
+        self.metersAboveGroundAtTakeoff = value
+    }
+    
+    public init(integerLiteral value: IntegerLiteralType) {
+        self.metersAboveGroundAtTakeoff = Double(value)
+    }
+}
+
 extension DCKRelativeAltitude: Equatable {
     public static func == (lhs: DCKRelativeAltitude, rhs: DCKRelativeAltitude) -> Bool {
         return lhs.metersAboveGroundAtTakeoff == rhs.metersAboveGroundAtTakeoff
@@ -697,6 +778,16 @@ public struct DCKDistance {
     
     public init(feet: Double) {
         self.meters = feet * DCKDistance.fooToMeterConversionFactor
+    }
+}
+
+extension DCKDistance: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+    public init(floatLiteral value: FloatLiteralType) {
+        self.meters = value
+    }
+    
+    public init(integerLiteral value: IntegerLiteralType) {
+        self.meters = Double(value)
     }
 }
 
