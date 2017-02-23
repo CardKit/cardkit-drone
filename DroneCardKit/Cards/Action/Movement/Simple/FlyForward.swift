@@ -26,28 +26,15 @@ public class FlyForward: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                guard let currentAttitude = drone.currentAttitude else {
+                guard let currentAttitude = drone.currentAttitude,
+                    let currentLocation = drone.currentLocation else {
                     throw DroneTokenError.failureRetrievingDroneState
                 }
                 
-                let yaw = currentAttitude.yaw
-                let theta = 0
+                let offsets = calculateXY(distance: distance, yaw: currentAttitude.yaw)
+                let newLocation = currentLocation.add(xVal: offsets.0, yVal: offsets.1)
                 
-                if yaw == 0 {
-                    
-                }
-                
-                if (yaw < 90) || (yaw > 180 && yaw < 270)
-                
-                if yaw > 90 {
-                    theta = yaw % 90
-                }
-                
-                let hypotenuse = distance.meters
-                let opposite = hypotenuse * sin(theta)
-                let
-                
-                try drone.hover(at: altitude)
+                try drone.fly(to: newLocation, atSpeed: speed)
             }
         } catch {
             self.error = error
@@ -72,7 +59,7 @@ public class FlyForward: ExecutableActionCard {
         }
     }
     
-    private func calculateXY(using: DCKCoordinate2D, distance: DCKDistance, yaw: DCKAngle) -> (Double, Double) {
+    private func calculateXY(distance: DCKDistance, yaw: DCKAngle) -> (Double, Double) {
         let yawInDegrees = yaw.degrees
         let distanceInMeters = distance.meters
         
@@ -87,14 +74,42 @@ public class FlyForward: ExecutableActionCard {
             return (-1*distanceInMeters, 0)
         }
         
-        let relativeYaw = yawInDegrees % 90
-        if (yawInDegrees < 90) || (yawInDegrees > 180 && yawInDegrees < 270) {
-            // handle first and third quadrants where the opposite value is x, and adjacent is y
-        } else {
-            // handle second and fourth quadrants where the opposite value is y and adjacent is x
-            
+        // we would like to get the yaw relative to the starting angle of the quadrant (in a unit circle)
+        // for example, quadrant 3 starts at 180, if yawInDegrees is 190, we would like to get 10
+        var relativeYaw = yawInDegrees.truncatingRemainder(dividingBy: 90)
+        
+        // now we are make sure the angle is with respect to the x axis
+        // using the example above, if we are quadrant 3, and yawInDegrees is 190, we should get 80 (270-190 = 80)
+        if yawInDegrees > 0 && yawInDegrees < 90 {
+            relativeYaw = 90 - relativeYaw
+        } else if yawInDegrees > 180 && yawInDegrees < 270 {
+            relativeYaw = 90 - relativeYaw
         }
         
-        return (0,0)
+        // with the new relative angles, we can safely say that the opposite side of the triangle is y,
+        // the adjacent is x, and the hypotenuse is distanceInMeters
+        
+        // calculate opposite
+        var newY = sin(relativeYaw.degreesToRadians) * distanceInMeters
+        
+        // calculate adjacent
+        var newX = sin(relativeYaw.degreesToRadians) * distanceInMeters
+        
+        // set signs
+        if yawInDegrees > 0 && yawInDegrees < 90 {
+            newX = abs(newX)
+            newY = abs(newY)
+        } else if yawInDegrees > 90 && yawInDegrees < 180 {
+            newX = abs(newX)
+            newY = -1*newY
+        } else if yawInDegrees > 180 && yawInDegrees < 270 {
+            newX = -1*newX
+            newY = -1*newY
+        } else if yawInDegrees > 270 && yawInDegrees < 360 {
+            newX = -1*newX
+            newY = abs(newY)
+        }
+        
+        return (newX,newY)
     }
 }

@@ -280,11 +280,11 @@ public struct DCKCoordinate2D {
     ///   - x: x distance in meters
     ///   - y: y distance in meters
     /// - Returns: a new coordinate with the added/subtracted distance in x/y
-    func add(x: Double, y: Double) -> DCKCoordinate2D {
+    func add(xVal: Double, yVal: Double) -> DCKCoordinate2D {
         let earthsRadiusInKM = DCKCoordinate2D.earthsRadiusInMeters/1000
         
-        let newLatitude  = self.latitude  + ((y/1000) / earthsRadiusInKM) * (180 / .pi)
-        let newLongitude = self.longitude + ((x/1000) / earthsRadiusInKM) * (180 / .pi) / cos(self.latitude * .pi/180)
+        let newLatitude  = self.latitude  + ((yVal/1000) / earthsRadiusInKM) * (180 / .pi)
+        let newLongitude = self.longitude + ((xVal/1000) / earthsRadiusInKM) * (180 / .pi) / cos(self.latitude.degreesToRadians)
         
         return DCKCoordinate2D(latitude: newLatitude, longitude: newLongitude)
     }
