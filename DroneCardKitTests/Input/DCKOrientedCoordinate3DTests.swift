@@ -15,6 +15,9 @@ import Foundation
 
 class DCKOrientedCoordinate3DTests: XCTestCase {
     
+    // I group by unit tests by the function that I'm testing. To keep this grouping, I need to disable
+    // this swift lint error that complains about body length.
+    // swiftlint:disable function_body_length
     func testAddDistance() {
         let errorMsg = "new distance does not equal expected amount"
         let coordinate = DCKCoordinate2D(latitude: 50.066, longitude:  -5.714)

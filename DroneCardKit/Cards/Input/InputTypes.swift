@@ -781,16 +781,6 @@ public struct DCKDistance {
     }
 }
 
-extension DCKDistance: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
-    public init(floatLiteral value: FloatLiteralType) {
-        self.meters = value
-    }
-    
-    public init(integerLiteral value: IntegerLiteralType) {
-        self.meters = Double(value)
-    }
-}
-
 extension DCKDistance {
     public static func + (lhs: DCKDistance, rhs: DCKDistance) -> DCKDistance {
         return DCKDistance(meters: lhs.meters + rhs.meters)
