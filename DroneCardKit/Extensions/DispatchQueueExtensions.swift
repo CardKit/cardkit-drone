@@ -14,7 +14,7 @@ extension DispatchQueue {
     public static func executeSynchronously(asyncMethod method: (AsyncExecutionCompletionHandler?) -> Void) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var methodError: Error? = nil
-        
+
         method({ error in
             methodError = error
             semaphore.signal()
