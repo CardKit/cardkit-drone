@@ -116,6 +116,9 @@
 		CCFAFB6A1E60C02F000DBEF4 /* TelemetryToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */; };
 		CCFAFB6B1E60C02F000DBEF4 /* TelemetryToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */; };
 		CCFAFB6C1E60C02F000DBEF4 /* TelemetryToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */; };
+		CCFAFB6F1E60C8C9000DBEF4 /* DetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB6E1E60C8C9000DBEF4 /* DetectObject.swift */; };
+		CCFAFB701E60C8C9000DBEF4 /* DetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB6E1E60C8C9000DBEF4 /* DetectObject.swift */; };
+		CCFAFB711E60C8C9000DBEF4 /* DetectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB6E1E60C8C9000DBEF4 /* DetectObject.swift */; };
 		F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
 		F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
 		F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
@@ -205,6 +208,7 @@
 		CCD6D6FA1DFF1855004CEB71 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/tvOS/PromiseKit.framework; sourceTree = "<group>"; };
 		CCFAFB651E60C007000DBEF4 /* WatsonVisualRecognitionToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatsonVisualRecognitionToken.swift; sourceTree = "<group>"; };
 		CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryToken.swift; sourceTree = "<group>"; };
+		CCFAFB6E1E60C8C9000DBEF4 /* DetectObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectObject.swift; sourceTree = "<group>"; };
 		F90FD0021DF1FAD200C26E86 /* FlyTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -334,6 +338,7 @@
 			children = (
 				68DE99A51DF1C7670040D76A /* Movement */,
 				CC64EC6F1E3FCEA600F7010D /* Tech */,
+				CCFAFB6D1E60C8C9000DBEF4 /* Think */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -552,6 +557,14 @@
 				CCFAFB651E60C007000DBEF4 /* WatsonVisualRecognitionToken.swift */,
 			);
 			path = Watson;
+			sourceTree = "<group>";
+		};
+		CCFAFB6D1E60C8C9000DBEF4 /* Think */ = {
+			isa = PBXGroup;
+			children = (
+				CCFAFB6E1E60C8C9000DBEF4 /* DetectObject.swift */,
+			);
+			path = Think;
 			sourceTree = "<group>";
 		};
 		F90FCFF01DF1FA0000C26E86 /* Location */ = {
@@ -981,6 +994,7 @@
 				447F6B771E4997E100BAF604 /* CircleRepeatedly.swift in Sources */,
 				CC64EC7F1E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6E31DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				CCFAFB6F1E60C8C9000DBEF4 /* DetectObject.swift in Sources */,
 				44017E321E4AD9EC00B4D9C1 /* SpinAround.swift in Sources */,
 				CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				687DC9E21E579276000F7EBE /* Pace.swift in Sources */,
@@ -1018,6 +1032,7 @@
 				68D3BD521E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCFAFB671E60C007000DBEF4 /* WatsonVisualRecognitionToken.swift in Sources */,
 				CCD6D6E41DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				CCFAFB701E60C8C9000DBEF4 /* DetectObject.swift in Sources */,
 				CCBE8C6E1DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CC64EC831E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */,
@@ -1063,6 +1078,7 @@
 				68D3BD531E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCFAFB681E60C007000DBEF4 /* WatsonVisualRecognitionToken.swift in Sources */,
 				CCD6D6E51DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
+				CCFAFB711E60C8C9000DBEF4 /* DetectObject.swift in Sources */,
 				CCBE8C701DA69F5900BD7638 /* InputTypes.swift in Sources */,
 				CC64EC841E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */,
