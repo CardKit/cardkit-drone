@@ -274,7 +274,7 @@ public struct DCKCoordinate2D {
     
     /// Add x,y distance in meters to a lat/lon coordinate.
     /// Method: http://stackoverflow.com/questions/7477003/calculating-new-longtitude-latitude-from-old-n-meters
-    /// An approximate method which we are not using: http://gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
+    /// An another approximate method: http://gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
     ///
     /// - Parameters:
     ///   - x: x distance in meters
