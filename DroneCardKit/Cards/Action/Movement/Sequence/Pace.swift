@@ -46,7 +46,7 @@ public class Pace: ExecutableActionCard {
                 }
             }
         } catch {
-            self.error = error
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -61,11 +61,8 @@ public class Pace: ExecutableActionCard {
         
         do {
             try drone.land()
-        } catch {
-            if self.error == nil {
-                self.error = error
-            }
+        } catch let error {
+            self.error(error)
         }
     }
-    
 }
