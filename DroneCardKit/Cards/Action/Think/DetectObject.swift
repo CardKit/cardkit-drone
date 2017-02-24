@@ -56,7 +56,7 @@ public class DetectObject: ExecutableActionCard {
                 if !isCancelled {
                     for object in objectList {
                         for detectedObject in detectedObjects {
-                            if object == detectedObject.objectName {
+                            if object.lowercased() == detectedObject.objectName.lowercased() {
                                 // yes!
                                 foundObject = true
                                 
@@ -106,5 +106,38 @@ public class DetectObject: ExecutableActionCard {
         }
         
         return detectedObjects
+    }
+}
+
+// MARK: - TimeoutQueue
+
+fileprivate class LimitedLifetimeQueue<T> {
+    private var array: [T] = []
+    private let accessQueue = DispatchQueue(label: "LimitedLifetimeQueueAccess", attributes: .concurrent)
+    
+    public var count: Int {
+        var count = 0
+        
+        self.accessQueue.sync {
+            count = self.array.count
+        }
+        
+        return count
+    }
+    
+    public func enqueue(newElement: T, withLifetime lifetime: TimeInterval) {
+        self.accessQueue.async(flags: .barrier) {
+            self.array.append(newElement)
+        }
+    }
+    
+    public func dequeue() -> T? {
+        var element: T?
+        
+        self.accessQueue.async(flags: .barrier) {
+            element = self.array.remove(at: 0)
+        }
+        
+        return element
     }
 }
