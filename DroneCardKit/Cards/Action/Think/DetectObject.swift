@@ -82,7 +82,7 @@ public class DetectObject: ExecutableActionCard {
     }
     
     override public func cancel() {
-        
+        // nothing to cancel
     }
     
     fileprivate func takePhotoAndClassify(camera: CameraToken, telemetry: TelemetryToken, watsonVisualRecognition: WatsonVisualRecognitionToken, confidence: Double?) throws -> [DCKDetectedObject] {
