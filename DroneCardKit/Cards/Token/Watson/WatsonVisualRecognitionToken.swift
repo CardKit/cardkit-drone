@@ -21,7 +21,6 @@ public class WatsonVisualRecognitionToken: ExecutableTokenCard {
     private let visualRecognition: VisualRecognition
     
     init(with card: TokenCard, usingApiKey apiKey: String, version: String? = nil) {
-        
         // latest version specified here:
         // https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/#classify_an_image
         var requestedVersion = "2016-05-20"
