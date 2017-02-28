@@ -28,5 +28,6 @@ class DroneCardKitTests: XCTestCase {
         let cards = DroneCardKit.allCardsGrouped()
         print("cards grouped: \(cards) \n\n\n")
         print("Movement Simple Cards : \(cards["Action/Movement/Simple"])")
+        XCTAssertNotNil(cards)
     }
 }
