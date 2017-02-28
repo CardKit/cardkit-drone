@@ -110,6 +110,7 @@
 		CCD6D6F01DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
 		CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
 		CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
+		D530A2FE1E65C989003974CB /* AllCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = D530A2FD1E65C989003974CB /* AllCards.swift */; };
 		F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
 		F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
 		F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
@@ -145,11 +146,11 @@
 
 /* Begin PBXFileReference section */
 		44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnHome.swift; sourceTree = "<group>"; };
-		44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpinAround.swift; path = SpinAround.swift; sourceTree = "<group>"; };
+		44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinAround.swift; sourceTree = "<group>"; };
 		447F6B741E4997E100BAF604 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRepeatedly.swift; sourceTree = "<group>"; };
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
-		687DC9D11E5756F0000F7EBE /* FlyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlyPath.swift; path = FlyPath.swift; sourceTree = "<group>"; };
+		687DC9D11E5756F0000F7EBE /* FlyPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyPath.swift; sourceTree = "<group>"; };
 		687DC9E11E579276000F7EBE /* Pace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pace.swift; sourceTree = "<group>"; };
 		6896BFFA1E43919600256601 /* DCKCoordinate2DTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCoordinate2DTests.swift; sourceTree = "<group>"; };
 		68B6352F1DFB5B0E00A2AA07 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 		CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalToken.swift; sourceTree = "<group>"; };
 		CCD6D6F81DFF1840004CEB71 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = "<group>"; };
 		CCD6D6FA1DFF1855004CEB71 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/tvOS/PromiseKit.framework; sourceTree = "<group>"; };
+		D530A2FD1E65C989003974CB /* AllCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCards.swift; sourceTree = "<group>"; };
 		F90FD0021DF1FAD200C26E86 /* FlyTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,7 +270,6 @@
 			children = (
 				44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */,
 			);
-			name = Orientation;
 			path = Orientation;
 			sourceTree = "<group>";
 		};
@@ -276,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				68D3BD501E40025200F83B36 /* DispatchQueueExtensions.swift */,
+				D530A2FD1E65C989003974CB /* AllCards.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,7 +297,6 @@
 				687DC9D11E5756F0000F7EBE /* FlyPath.swift */,
 				687DC9E11E579276000F7EBE /* Pace.swift */,
 			);
-			name = Sequence;
 			path = Sequence;
 			sourceTree = "<group>";
 		};
@@ -956,6 +957,7 @@
 				68D3BD511E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
+				D530A2FE1E65C989003974CB /* AllCards.swift in Sources */,
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F32C21E2FFBE8008423AC /* DummyCameraToken.swift in Sources */,
