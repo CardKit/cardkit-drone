@@ -110,7 +110,6 @@
 		CCD6D6F01DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
 		CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
 		CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
-		D530A2FE1E65C989003974CB /* AllCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = D530A2FD1E65C989003974CB /* AllCards.swift */; };
 		F90FD0031DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
 		F90FD0051DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
 		F90FD0071DF1FAD200C26E86 /* FlyTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FD0021DF1FAD200C26E86 /* FlyTo.swift */; };
@@ -198,7 +197,6 @@
 		CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalToken.swift; sourceTree = "<group>"; };
 		CCD6D6F81DFF1840004CEB71 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = "<group>"; };
 		CCD6D6FA1DFF1855004CEB71 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/tvOS/PromiseKit.framework; sourceTree = "<group>"; };
-		D530A2FD1E65C989003974CB /* AllCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCards.swift; sourceTree = "<group>"; };
 		F90FD0021DF1FAD200C26E86 /* FlyTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -277,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				68D3BD501E40025200F83B36 /* DispatchQueueExtensions.swift */,
-				D530A2FD1E65C989003974CB /* AllCards.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -957,7 +954,6 @@
 				68D3BD511E40025200F83B36 /* DispatchQueueExtensions.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
-				D530A2FE1E65C989003974CB /* AllCards.swift in Sources */,
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F32C21E2FFBE8008423AC /* DummyCameraToken.swift in Sources */,
