@@ -11,7 +11,7 @@ import CardKit
 
 extension DroneCardKit {
     
-    public func allCards() -> [ActionCardDescriptor] {
+    public static func allCards() -> [ActionCardDescriptor] {
         return [
             DroneCardKit.Action.Movement.Simple.FlyForward,
             DroneCardKit.Action.Movement.Simple.Hover,
