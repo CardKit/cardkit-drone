@@ -28,6 +28,56 @@ class DetectObjectTests: XCTestCase {
     }
     
     func testDetectObject() {
+        // executable card
+        let detectObject = DetectObject(with: DroneCardKit.Action.Think.DetectObject.makeCard())
+        
+        // bind inputs & tokens
+        let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
+        let telemetryToken = DummyTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
+        let watsonToken = WatsonVisualRecognitionToken(with: DroneCardKit.Token.Watson.VisualRecognition.makeCard(), usingApiKey: ApiKeys.justinsVisualRecoAPIKey)
+        
+        let inputBindings: [String : DataBinding] = ["Objects": .bound("workroom".toJSON()), "Confidence": .bound(0.7.toJSON()), "Frequency": .bound(5.0.toJSON())]
+        let tokenBindings = ["Camera": cameraToken, "Telemetry": telemetryToken, "WatsonVisualRecognition": watsonToken]
+        
+        detectObject.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        
+        // execute
+        let myExpectation = expectation(description: "testDetectObject expectation")
+        
+        DispatchQueue.global(qos: .default).async {
+            detectObject.main()
+            myExpectation.fulfill()
+        }
+        
+        // wait for execution to finish
+        waitForExpectations(timeout: 5000) { error in
+            if let error = error {
+                XCTFail("testDetectObject error: \(error)")
+            }
+            
+            // assert!
+            XCTAssertTrue(detectObject.errors.count == 0)
+            detectObject.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(detectObject.yieldData.count > 0)
+            
+            guard let first = detectObject.yieldData.first else {
+                XCTFail("expected a yield to be produced")
+                return
+            }
+            
+            do {
+                let foundObject: DCKDetectedObject = try first.data.decode(type: DCKDetectedObject.self)
+                XCTAssertEqual(foundObject.objectName, "workroom")
+                XCTAssertTrue(foundObject.confidence > 0.7)
+                
+            } catch let error {
+                XCTFail("expected a yield of type DCKDetectedObject, error: \(error.localizedDescription)")
+                return
+            }
+        }
+    }
+    
+    func testDetectObjectInDeck() {
         // token cards
         let cameraCard = DroneCardKit.Token.Camera.makeCard()
         let telemetryCard = DroneCardKit.Token.Telemetry.makeCard()
@@ -49,7 +99,7 @@ class DetectObjectTests: XCTestCase {
         do {
             let objects = try CardKit.Input.Text.TextString <- "person"
             let confidence = try CardKit.Input.Numeric.Real <- 0.7
-            let frequency = try CardKit.Input.Numeric.Real <- 2.0
+            let frequency = try CardKit.Input.Time.Periodicity <- 2.0
             
             detectObjects = try detectObjects <- ("Objects", objects)
             detectObjects = try detectObjects <- ("Confidence", confidence)
@@ -58,8 +108,19 @@ class DetectObjectTests: XCTestCase {
             XCTFail("error binding inputs: \(error)")
         }
         
-        // set up the deck -- one hand with detectObjects
-        let deck = ( ( detectObjects )% )%
+        // timer card
+        var timer = CardKit.Action.Trigger.Time.Timer.makeCard()
+        
+        // bind inputs
+        do {
+            let duration = try CardKit.Input.Time.Duration <- 5.0
+            timer = try timer <- ("Duration", duration)
+        } catch let error {
+            XCTFail("error binding inputs: \(error)")
+        }
+        
+        // set up the deck -- one hand with detectObjects and a 5 second timer
+        let deck = ( detectObjects || timer )%
         
         // add tokens to the deck
         deck.add(cameraCard)
@@ -81,10 +142,30 @@ class DetectObjectTests: XCTestCase {
         
         // execute
         engine.execute({ (yields: [YieldData], error: ExecutionError?) in
-            for yield in yields {
-                print("yield: \(yield.data)")
-            }
             XCTAssertNil(error)
+            
+            XCTAssertTrue(yields.count == 4)
+            
+            var detectedObjects: [String : DCKDetectedObject] = [:]
+            for yield in yields {
+                do {
+                    let object = try yield.data.decode(type: DCKDetectedObject.self)
+                    detectedObjects[object.objectName] = object
+                } catch let error {
+                    XCTFail("expected a yield of type DCKDetectedObject, error: \(error.localizedDescription)")
+                }
+            }
+            
+            XCTAssertNotNil(detectedObjects["workroom"], "expected to find a workroom")
+            XCTAssertNotNil(detectedObjects["room"], "expected to find a room")
+            XCTAssertNotNil(detectedObjects["ultramarine color"], "expected to find ultramarine color")
+            XCTAssertNotNil(detectedObjects["blue color"], "expected to find blue color")
+            
+            XCTAssertTrue(detectedObjects["workroom"]!.confidence > 0.7)
+            XCTAssertTrue(detectedObjects["room"]!.confidence > 0.7)
+            XCTAssertTrue(detectedObjects["ultramarine color"]!.confidence > 0.7)
+            XCTAssertTrue(detectedObjects["blue color"]!.confidence > 0.7)
+            
         })
         
         // TODO waitForExpectations

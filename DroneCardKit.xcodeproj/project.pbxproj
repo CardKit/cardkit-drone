@@ -54,6 +54,10 @@
 		CC524AE91E661CFE00773BFB /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */; };
 		CC524AED1E66561100773BFB /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC524AEB1E66561100773BFB /* dolomites.jpg */; };
 		CC524AEE1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AEC1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift */; };
+		CC524AF01E66595A00773BFB /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AEF1E66595A00773BFB /* ApiKeys.swift */; };
+		CC524AF11E665ED500773BFB /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC524AEB1E66561100773BFB /* dolomites.jpg */; };
+		CC524AF31E6713BB00773BFB /* lab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC524AF21E6713BB00773BFB /* lab.jpg */; };
+		CC524AF41E6713C000773BFB /* lab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC524AF21E6713BB00773BFB /* lab.jpg */; };
 		CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
@@ -184,6 +188,8 @@
 		CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		CC524AEB1E66561100773BFB /* dolomites.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dolomites.jpg; sourceTree = "<group>"; };
 		CC524AEC1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatsonVisualRecognitionTokenTests.swift; sourceTree = "<group>"; };
+		CC524AEF1E66595A00773BFB /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
+		CC524AF21E6713BB00773BFB /* lab.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lab.jpg; sourceTree = "<group>"; };
 		CC64EC711E3FCEA600F7010D /* RecordVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideo.swift; sourceTree = "<group>"; };
 		CC64EC721E3FCEA600F7010D /* TakePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhoto.swift; sourceTree = "<group>"; };
 		CC64EC731E3FCEA600F7010D /* TakePhotoBurst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoBurst.swift; sourceTree = "<group>"; };
@@ -418,6 +424,7 @@
 			children = (
 				CC524AEC1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift */,
 				CC524AEB1E66561100773BFB /* dolomites.jpg */,
+				CC524AF21E6713BB00773BFB /* lab.jpg */,
 			);
 			path = Watson;
 			sourceTree = "<group>";
@@ -495,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */,
+				CC524AEF1E66595A00773BFB /* ApiKeys.swift */,
 				CC93188C1D4796DB001B71B1 /* Info.plist */,
 				68D432A01DFAFBFF0080389E /* Action */,
 				CC0F32C51E316C9E008423AC /* Input */,
@@ -842,6 +850,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC524AF11E665ED500773BFB /* dolomites.jpg in Resources */,
+				CC524AF41E6713C000773BFB /* lab.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC524AED1E66561100773BFB /* dolomites.jpg in Resources */,
+				CC524AF31E6713BB00773BFB /* lab.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1067,6 +1078,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC524AF01E66595A00773BFB /* ApiKeys.swift in Sources */,
 				CC524AEE1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */,
 				6896BFFC1E43919F00256601 /* DCKCoordinate2DTests.swift in Sources */,
 				CC0F32C71E316CB8008423AC /* InputTests.swift in Sources */,

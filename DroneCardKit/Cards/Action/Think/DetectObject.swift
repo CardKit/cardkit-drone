@@ -76,7 +76,13 @@ public class DetectObject: ExecutableActionCard {
                 }
             }
             
-            // sleep until next loop start date
+            // was there an error? if so, cancel execution and stop looping immediately
+            if self.errors.count > 0 {
+                cancel()
+                break
+            }
+            
+            // otherwise sleep until next loop start date
             Thread.sleep(until: nextLoopStartDate)
         } while !foundObject
     }
