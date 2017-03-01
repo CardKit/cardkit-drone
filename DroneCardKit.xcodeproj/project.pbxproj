@@ -48,12 +48,12 @@
 		CC0F32C71E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
 		CC0F32C81E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
 		CC0F32C91E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
-		CC524AE11E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AE01E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift */; };
-		CC524AE31E66153E00773BFB /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC524AE21E66153E00773BFB /* dolomites.jpg */; };
 		CC524AE61E66159400773BFB /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE41E66159400773BFB /* RestKit.framework */; };
 		CC524AE71E66159400773BFB /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */; };
 		CC524AE81E661CF000773BFB /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE41E66159400773BFB /* RestKit.framework */; };
 		CC524AE91E661CFE00773BFB /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */; };
+		CC524AED1E66561100773BFB /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC524AEB1E66561100773BFB /* dolomites.jpg */; };
+		CC524AEE1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AEC1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift */; };
 		CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
@@ -180,10 +180,10 @@
 		CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDroneToken.swift; sourceTree = "<group>"; };
 		CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCameraToken.swift; sourceTree = "<group>"; };
 		CC0F32C61E316CB8008423AC /* InputTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTests.swift; sourceTree = "<group>"; };
-		CC524AE01E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatsonVisualRecognitionTokenTests.swift; sourceTree = "<group>"; };
-		CC524AE21E66153E00773BFB /* dolomites.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dolomites.jpg; path = ../../../../../../Desktop/dolomites.jpg; sourceTree = "<group>"; };
 		CC524AE41E66159400773BFB /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
 		CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
+		CC524AEB1E66561100773BFB /* dolomites.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dolomites.jpg; sourceTree = "<group>"; };
+		CC524AEC1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatsonVisualRecognitionTokenTests.swift; sourceTree = "<group>"; };
 		CC64EC711E3FCEA600F7010D /* RecordVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideo.swift; sourceTree = "<group>"; };
 		CC64EC721E3FCEA600F7010D /* TakePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhoto.swift; sourceTree = "<group>"; };
 		CC64EC731E3FCEA600F7010D /* TakePhotoBurst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoBurst.swift; sourceTree = "<group>"; };
@@ -408,10 +408,18 @@
 		CC524ADF1E660F7400773BFB /* Token */ = {
 			isa = PBXGroup;
 			children = (
-				CC524AE01E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift */,
-				CC524AE21E66153E00773BFB /* dolomites.jpg */,
+				CC524AEA1E66561100773BFB /* Watson */,
 			);
 			path = Token;
+			sourceTree = "<group>";
+		};
+		CC524AEA1E66561100773BFB /* Watson */ = {
+			isa = PBXGroup;
+			children = (
+				CC524AEC1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift */,
+				CC524AEB1E66561100773BFB /* dolomites.jpg */,
+			);
+			path = Watson;
 			sourceTree = "<group>";
 		};
 		CC64EC6F1E3FCEA600F7010D /* Tech */ = {
@@ -841,7 +849,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC524AE31E66153E00773BFB /* dolomites.jpg in Resources */,
+				CC524AED1E66561100773BFB /* dolomites.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1059,8 +1067,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC524AEE1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */,
 				6896BFFC1E43919F00256601 /* DCKCoordinate2DTests.swift in Sources */,
-				CC524AE11E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */,
 				CC0F32C71E316CB8008423AC /* InputTests.swift in Sources */,
 				CCFAFB741E64CCEB000DBEF4 /* DetectObjectTests.swift in Sources */,
 				68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */,

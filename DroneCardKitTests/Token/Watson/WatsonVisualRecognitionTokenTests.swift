@@ -13,6 +13,7 @@ import XCTest
 @testable import DroneCardKit
 
 class WatsonVisualRecognitionTokenTests: XCTestCase {
+    let justinsVisualRecoAPIKey = "f9551503df1b354ffd6e8543b2470c377d3c29a9"
     
     override func setUp() {
         super.setUp()
@@ -25,7 +26,6 @@ class WatsonVisualRecognitionTokenTests: XCTestCase {
     }
     
     func testWatsonVisualRecognition() {
-        let justinsVisualRecoAPIKey = "f9551503df1b354ffd6e8543b2470c377d3c29a9"
         let watsonCard = DroneCardKit.Token.Watson.VisualRecognition.makeCard()
         let watsonToken = WatsonVisualRecognitionToken(with: watsonCard, usingApiKey: justinsVisualRecoAPIKey)
         
@@ -73,6 +73,25 @@ class WatsonVisualRecognitionTokenTests: XCTestCase {
             
         } catch let error {
             XCTFail("error: \(error.localizedDescription)")
+        }
+    }
+    
+    func testWatsonVisualRecognitionSpeed() {
+        let watsonCard = DroneCardKit.Token.Watson.VisualRecognition.makeCard()
+        let watsonToken = WatsonVisualRecognitionToken(with: watsonCard, usingApiKey: justinsVisualRecoAPIKey)
+        
+        let myBundle = Bundle(for: type(of: self))
+        guard let image: UIImage = UIImage(named: "dolomites.jpg", in: myBundle, compatibleWith: nil) else {
+            XCTFail("could not find path of dolomites.jpg in testbundle")
+            return
+        }
+        
+        measure {
+            do {
+                let _ = try watsonToken.classify(image: image, threshold: 0.3)
+            } catch let error {
+                XCTFail("error: \(error.localizedDescription)")
+            }
         }
     }
 }
