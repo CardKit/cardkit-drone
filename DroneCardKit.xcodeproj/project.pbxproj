@@ -48,6 +48,12 @@
 		CC0F32C71E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
 		CC0F32C81E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
 		CC0F32C91E316CB8008423AC /* InputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C61E316CB8008423AC /* InputTests.swift */; };
+		CC524AE11E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AE01E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift */; };
+		CC524AE31E66153E00773BFB /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC524AE21E66153E00773BFB /* dolomites.jpg */; };
+		CC524AE61E66159400773BFB /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE41E66159400773BFB /* RestKit.framework */; };
+		CC524AE71E66159400773BFB /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */; };
+		CC524AE81E661CF000773BFB /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE41E66159400773BFB /* RestKit.framework */; };
+		CC524AE91E661CFE00773BFB /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */; };
 		CC64EC761E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
 		CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64EC711E3FCEA600F7010D /* RecordVideo.swift */; };
@@ -174,6 +180,10 @@
 		CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDroneToken.swift; sourceTree = "<group>"; };
 		CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCameraToken.swift; sourceTree = "<group>"; };
 		CC0F32C61E316CB8008423AC /* InputTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTests.swift; sourceTree = "<group>"; };
+		CC524AE01E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatsonVisualRecognitionTokenTests.swift; sourceTree = "<group>"; };
+		CC524AE21E66153E00773BFB /* dolomites.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dolomites.jpg; path = ../../../../../../Desktop/dolomites.jpg; sourceTree = "<group>"; };
+		CC524AE41E66159400773BFB /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		CC64EC711E3FCEA600F7010D /* RecordVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideo.swift; sourceTree = "<group>"; };
 		CC64EC721E3FCEA600F7010D /* TakePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhoto.swift; sourceTree = "<group>"; };
 		CC64EC731E3FCEA600F7010D /* TakePhotoBurst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoBurst.swift; sourceTree = "<group>"; };
@@ -228,6 +238,8 @@
 				6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */,
 				6809DF341DF4B7970077C6EE /* CardKitRuntime.framework in Frameworks */,
 				6809DF351DF4B7970077C6EE /* Freddy.framework in Frameworks */,
+				CC524AE61E66159400773BFB /* RestKit.framework in Frameworks */,
+				CC524AE71E66159400773BFB /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +251,8 @@
 				6809DF371DF4B7B80077C6EE /* CardKit.framework in Frameworks */,
 				6809DF381DF4B7B80077C6EE /* CardKitRuntime.framework in Frameworks */,
 				6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */,
+				CC524AE81E661CF000773BFB /* RestKit.framework in Frameworks */,
+				CC524AE91E661CFE00773BFB /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +405,15 @@
 			path = Input;
 			sourceTree = "<group>";
 		};
+		CC524ADF1E660F7400773BFB /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				CC524AE01E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift */,
+				CC524AE21E66153E00773BFB /* dolomites.jpg */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
 		CC64EC6F1E3FCEA600F7010D /* Tech */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +490,7 @@
 				CC93188C1D4796DB001B71B1 /* Info.plist */,
 				68D432A01DFAFBFF0080389E /* Action */,
 				CC0F32C51E316C9E008423AC /* Input */,
+				CC524ADF1E660F7400773BFB /* Token */,
 			);
 			path = DroneCardKitTests;
 			sourceTree = "<group>";
@@ -493,6 +517,8 @@
 		CCBB79481D7897C6003B6458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC524AE41E66159400773BFB /* RestKit.framework */,
+				CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */,
 				CCBB79471D7897C1003B6458 /* iOS */,
 				CCBB794F1D7897E2003B6458 /* macOS */,
 				CCBB79561D7897FF003B6458 /* tvOS */,
@@ -815,6 +841,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC524AE31E66153E00773BFB /* dolomites.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +924,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RestKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/VisualRecognitionV3.framework",
 			);
 			outputPaths = (
 			);
@@ -1031,6 +1060,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6896BFFC1E43919F00256601 /* DCKCoordinate2DTests.swift in Sources */,
+				CC524AE11E660F8B00773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */,
 				CC0F32C71E316CB8008423AC /* InputTests.swift in Sources */,
 				CCFAFB741E64CCEB000DBEF4 /* DetectObjectTests.swift in Sources */,
 				68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */,

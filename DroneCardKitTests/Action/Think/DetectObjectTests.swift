@@ -86,5 +86,7 @@ class DetectObjectTests: XCTestCase {
             }
             XCTAssertNil(error)
         })
+        
+        // TODO waitForExpectations
     }
 }

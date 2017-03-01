@@ -102,7 +102,7 @@ public class DetectObject: ExecutableActionCard {
         
         // send it to Watson
         if let photo = photo, let lfsPath = photo.pathInLocalFileSystem, !isCancelled {
-            detectedObjects = try watsonVisualRecognition.classify(imageFile: lfsPath, threshold: confidence)
+            detectedObjects = try watsonVisualRecognition.classify(imagePath: lfsPath, threshold: confidence)
         }
         
         return detectedObjects
