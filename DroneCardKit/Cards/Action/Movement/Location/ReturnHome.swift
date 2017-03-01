@@ -26,7 +26,7 @@ public class ReturnHome: ExecutableActionCard {
                 try drone.returnHome(atAltitude: altitude, atSpeed: speed, toLand: true)
             }
         } catch {
-            self.error = error
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -41,11 +41,8 @@ public class ReturnHome: ExecutableActionCard {
         
         do {
             try drone.land()
-        } catch {
-            if self.error == nil {
-                self.error = error
-            }
+        } catch let error {
+            self.error(error)
         }
     }
-    
 }

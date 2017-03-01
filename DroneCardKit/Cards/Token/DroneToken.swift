@@ -11,21 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-/// Current drone state, read-only. Carries current location, altitude, attitude, and motor state.
-public protocol DroneTelemetryToken {
-    // MARK: Location & attitude
-    var currentLocation: DCKCoordinate2D? { get }
-    var currentAltitude: DCKRelativeAltitude? { get }
-    
-    /// If the values of the pitch, roll, and yaw are 0, the aircraft will be hovering level with a True North heading.
-    /// Values range from 0 to 360. 0º represents North, 90º:East, 180º:South, 270º:West, 360º:North
-    var currentAttitude: DCKAttitude? { get }
-    
-    // MARK: Motor state
-    var areMotorsOn: Bool? { get }
-}
-
-public protocol DroneToken: DroneTelemetryToken {
+public protocol DroneToken: TelemetryToken {
     func spinMotors(on: Bool) throws
     
     // MARK: Take off

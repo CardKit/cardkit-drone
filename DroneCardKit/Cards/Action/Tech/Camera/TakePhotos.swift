@@ -35,8 +35,8 @@ public class TakePhotos: ExecutableActionCard {
             if !isCancelled {
                 try camera.startTakingPhotos(at: interval, options: cameraOptions)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -50,9 +50,14 @@ public class TakePhotos: ExecutableActionCard {
         }
         
         do {
-            try camera.stopTakingPhotos()
+            // stop taking photos
+            let photos = try camera.stopTakingPhotos()
+            
+            // store the photos as a yield
+            self.store(data: photos, forYieldIndex: 0)
+            
         } catch let error {
-            self.error = error
+            self.error(error)
         }
     }
 }

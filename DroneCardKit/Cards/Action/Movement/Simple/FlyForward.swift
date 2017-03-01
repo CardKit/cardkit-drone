@@ -39,7 +39,7 @@ public class FlyForward: ExecutableActionCard {
                 try drone.fly(to: newLocation, atSpeed: speed)
             }
         } catch {
-            self.error = error
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -55,9 +55,7 @@ public class FlyForward: ExecutableActionCard {
         do {
             try drone.land()
         } catch {
-            if self.error == nil {
-                self.error = error
-            }
+            self.error(error)
         }
     }
 }

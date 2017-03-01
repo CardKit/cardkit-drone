@@ -43,8 +43,8 @@ public class FlyPath: ExecutableActionCard {
                     break
                 }
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -59,11 +59,8 @@ public class FlyPath: ExecutableActionCard {
         
         do {
             try drone.land()
-        } catch {
-            if self.error == nil {
-                self.error = error
-            }
+        } catch let error {
+            self.error(error)
         }
     }
-    
 }

@@ -410,8 +410,8 @@ extension DroneCardKit.Action.Tech.Camera {
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
-        yields: nil,
-        yieldDescription: nil,
+        yields: [Yield(type: DCKVideo.self)],
+        yieldDescription: "Yields a video",
         ends: false,
         endsDescription: nil,
         assetCatalog: CardAssetCatalog(description: "Record a video"))
@@ -427,7 +427,7 @@ extension DroneCardKit.Action.Tech.Camera {
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
-        yields: [Yield(type: Data.self)],
+        yields: [Yield(type: DCKPhoto.self)],
         yieldDescription: "Yields a photo",
         ends: true,
         endsDescription: "Ends when the photo has been taken",
@@ -443,7 +443,7 @@ extension DroneCardKit.Action.Tech.Camera {
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
-        yields: [Yield(type: Data.self)],
+        yields: [Yield(type: DCKPhoto.self)],
         yieldDescription: "Yields an HDR photo",
         ends: true,
         endsDescription: "Ends when the photo has been taken",
@@ -460,7 +460,7 @@ extension DroneCardKit.Action.Tech.Camera {
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
-        yields: [Yield(type: Data.self)],
+        yields: [Yield(type: DCKPhotoBurst.self)],
         yieldDescription: "Yields a photo burst",
         ends: true,
         endsDescription: "Ends when the photo burst has been taken",
@@ -477,7 +477,7 @@ extension DroneCardKit.Action.Tech.Camera {
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
-        yields: [Yield(type: Data.self)],
+        yields: [Yield(type: DCKPhotoBurst.self)],
         yieldDescription: "Yields a sequence of photos",
         ends: false,
         endsDescription: nil,
@@ -493,7 +493,7 @@ extension DroneCardKit.Action.Tech.Camera {
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
         ],
-        yields: [Yield(type: Data.self)],
+        yields: [Yield(type: DCKVideo.self)],
         yieldDescription: "Yields a timelapse video",
         ends: false,
         endsDescription: nil,
@@ -526,7 +526,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
@@ -568,7 +568,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Location", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
@@ -597,7 +597,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "CardinalDirection", descriptor: DroneCardKit.Input.Location.CardinalDirection, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "DroneTelemetry", descriptor: DroneCardKit.Token.DroneTelemetry),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
             TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
@@ -629,6 +629,28 @@ extension DroneCardKit.Action {
 }
 
 extension DroneCardKit.Action.Think {
+    public static let DetectObject = ActionCardDescriptor(
+        name: "Detect an Object",
+        subpath: "Think",
+        inputs: [
+            InputSlot(name: "Objects", descriptor: CardKit.Input.Text.TextString, isOptional: false),
+            InputSlot(name: "Confidence", descriptor: CardKit.Input.Numeric.Real, isOptional: true),
+            InputSlot(name: "Frequency", descriptor: CardKit.Input.Time.Periodicity, isOptional: false)
+        ],
+        tokens: [
+            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
+            TokenSlot(name: "WatsonVisualRecognition", descriptor: DroneCardKit.Token.Watson.VisualRecognition)
+        ],
+        yields: [
+            Yield(type: DCKDetectedObject.self)
+        ],
+        yieldDescription: "Yields the object that was detected",
+        ends: true,
+        endsDescription: "Ends when one of the given objects was detected",
+        assetCatalog: CardAssetCatalog(description: "Detects an object in the camera's field of view using Watson"))
+    
+    /*
     public static let DetectInAir = ActionCardDescriptor(
         name: "Detect In Air",
         subpath: "Think",
@@ -692,6 +714,7 @@ extension DroneCardKit.Action.Think {
         ends: false,
         endsDescription: nil,
         assetCatalog: CardAssetCatalog(description: "Track an object on the ground"))
+ */
 }
 
 // MARK: - Input Cards
@@ -933,30 +956,46 @@ extension DroneCardKit {
 }
 
 extension DroneCardKit.Token {
-    public static let Drone = TokenCardDescriptor(
-        name: "Drone",
-        subpath: nil,
-        isConsumed: true,
-        assetCatalog: CardAssetCatalog(description: "Drone token"))
-    
-    public static let DroneTelemetry = TokenCardDescriptor(
-        name: "Drone Telemetry",
-        subpath: nil,
-        isConsumed: false,
-        assetCatalog: CardAssetCatalog(description: "Drone telemetry token"))
-    
     public static let Camera = TokenCardDescriptor(
         name: "Camera",
         subpath: nil,
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Camera token"))
     
+    public static let Drone = TokenCardDescriptor(
+        name: "Drone",
+        subpath: nil,
+        isConsumed: true,
+        assetCatalog: CardAssetCatalog(description: "Drone token"))
+    
     public static let Gimbal = TokenCardDescriptor(
         name: "Gimbal",
         subpath: nil,
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Gimbal token"))
+    
+    public static let Telemetry = TokenCardDescriptor(
+        name: "Telemetry",
+        subpath: nil,
+        isConsumed: false,
+        assetCatalog: CardAssetCatalog(description: "Drone telemetry token"))
 }
+
+extension DroneCardKit.Token {
+    /// Contains descriptors for Watson cards
+    public struct Watson {
+        fileprivate init() {}
+    }
+}
+
+extension DroneCardKit.Token.Watson {
+    public static let VisualRecognition = TokenCardDescriptor(
+        name: "Watson Visual Recognition",
+        subpath: "Watson",
+        isConsumed: false,
+        assetCatalog: CardAssetCatalog(description: "Watson Visual Recognition token"))
+}
+
 
 /*
         public struct Claw {
@@ -973,44 +1012,6 @@ extension DroneCardKit.Token {
                 name: "Close Claw",
                 ends: true,
                 tokens: ["claw" : Token.Claw])
-        }
-        
-        public struct Gimbal {
-            fileprivate init() {}
-            fileprivate static let _subclass = CardPath(parent: _class, label : "Gimbal")
-            
-            public static let PanBetween : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Pan Between",
-                ends: false,
-                tokens: ["gimbal" : Token.Gimbal])
-            public static let PointAtFront : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Point at Front",
-                ends: false,
-                tokens: ["gimbal" : Token.Gimbal])
-            public static let PointAtGround : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Point at Ground",
-                ends: false,
-                tokens: ["gimbal" : Token.Gimbal])
-            public static let PointAtLocation : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Point at Location",
-                ends: false,
-                mandatoryInputs: ["location" : BaseCardDescs.Input.Location.Location],
-                tokens: ["gimbal" : Token.Gimbal])
-            public static let PointInDirectionOfMovement : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Point in Direction of Movement",
-                ends: false,
-                tokens: ["gimbal" : Token.Gimbal])
-            public static let PointInCardinalDirection : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Point in Cardinal Direction",
-                ends: false,
-                mandatoryInputs: ["direction" : BaseCardDescs.Input.Location.CardinalDirection],
-                tokens: ["gimbal" : Token.Gimbal])
         }
         
         public struct Sensor {
@@ -1050,41 +1051,6 @@ extension DroneCardKit.Token {
         }
     }
  
-    public struct Think {
-        fileprivate init() {}
-        fileprivate static let _class = CardPath(parent: _root, label : "Think")
-        
-        public struct Find {
-            fileprivate init() {}
-            fileprivate static let _subclass = CardPath(parent: _class, label : "Find")
-            
-            public static let DetectInAir : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Detect in Air",
-                ends: true,
-                mandatoryInputs: ["image" : BaseCardDescs.Input.Media.Image],
-                tokens: ["gimbal" : Token.Gimbal, "camera" : Token.Camera])
-            public static let DetectOnGround : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Detect on Ground",
-                ends: true,
-                mandatoryInputs: ["image" : BaseCardDescs.Input.Media.Image],
-                tokens: ["gimbal" : Token.Gimbal, "camera" : Token.Camera])
-            public static let TrackInAir : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Track in Air",
-                ends: false,
-                mandatoryInputs: ["image" : BaseCardDescs.Input.Media.Image],
-                tokens: ["gimbal" : Token.Gimbal, "camera" : Token.Camera])
-            public static let TrackOnGround : ActionCardDesc = ActionCardDesc(
-                path: _subclass,
-                name: "Track on Ground",
-                ends: false,
-                mandatoryInputs: ["image" : BaseCardDescs.Input.Media.Image],
-                tokens: ["gimbal" : Token.Gimbal, "camera" : Token.Camera])
-        }
-    }
-    
     public struct Trigger {
         fileprivate init() {}
         fileprivate static let _class = CardPath(parent: _root, label : "Trigger")

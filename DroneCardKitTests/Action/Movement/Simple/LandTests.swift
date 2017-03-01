@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import CardKit    
+@testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
@@ -40,7 +40,7 @@ class LandTests: XCTestCase {
         let dummyDrone = DummyDroneToken(with: droneCard)
         
         // bind
-        land.setup([:], tokens: [droneTokenSlot: dummyDrone])
+        land.setup(inputBindings: [:], tokenBindings: [droneTokenSlot: dummyDrone])
         
         // execute
         land.main()

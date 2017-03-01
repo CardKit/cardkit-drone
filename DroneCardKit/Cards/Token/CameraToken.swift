@@ -17,58 +17,33 @@ import CardKitRuntime
 
 public protocol CameraToken {
     /// Take a single photo, with the given photo options specified.
-    func takePhoto(options: Set<CameraPhotoOption>) throws
+    func takePhoto(options: Set<CameraPhotoOption>) throws -> DCKPhoto
     
-    /// Take an HDR photo
-    func takeHDRPhoto(options: Set<CameraPhotoOption>) throws
+    /// Take an HDR photo. Returns the image data.
+    func takeHDRPhoto(options: Set<CameraPhotoOption>) throws -> DCKPhoto
     
-    /// Take a burst of photos, with the given photo options specified.
-    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws
+    /// Take a burst of photos, with the given photo options specified. Returns the images
+    /// produced in the photo burst.
+    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws -> DCKPhotoBurst
     
     /// Start taking photos with a given time interval.
     func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws
     
-    /// Stop taking photos.
-    func stopTakingPhotos() throws
+    /// Stop taking photos. Returns the photos that have been taken since `startTakingPhotos()` was
+    /// called.
+    func stopTakingPhotos() throws -> DCKPhotoBurst
     
     /// Start taking a timelapse movie.
     func startTimelapse(options: Set<CameraPhotoOption>) throws
     
     /// Stop taking a timelapse movie.
-    func stopTimelapse() throws
+    func stopTimelapse() throws -> DCKVideo
     
     /// Start taking a video.
     func startVideo(options: Set<CameraVideoOption>) throws
     
     /// Stop taking a video.
-    func stopVideo() throws
-}
-
-// MARK: - Convienience methods with default parameters
-
-public extension CameraToken {
-    /// Take a single photo (16x9, Normal quality).
-    final func takePhoto(options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]) throws {
-        try self.takePhoto(options: options)
-    }
-    
-    /// Take a burst of photos (16x9, Normal quality).
-    final func takePhotoBurst(count: PhotoBurstCount,
-                              options: Set<CameraPhotoOption> = [.aspectRatio(.aspect_16x9), .quality(.normal)]) throws {
-        try self.takePhotoBurst(count: count, options: options)
-    }
-    
-    final func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption> = []) throws {
-        try startTakingPhotos(at: interval, options: options)
-    }
-    
-    final func startTimelapse(options: Set<CameraPhotoOption> = []) throws {
-        try startTimelapse(options: options)
-    }
-    
-    func startVideo(options: Set<CameraVideoOption> = []) throws {
-        try startVideo(options: options)
-    }
+    func stopVideo() throws -> DCKVideo
 }
 
 // MARK: - PhotoBurstCount
