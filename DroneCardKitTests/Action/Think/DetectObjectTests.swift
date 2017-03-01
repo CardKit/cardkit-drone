@@ -51,8 +51,8 @@ class DetectObjectTests: XCTestCase {
             myExpectation.fulfill()
         }
         
-        // wait for execution to finish
-        waitForExpectations(timeout: 5000) { error in
+        // wait for execution to finish in 5 seconds
+        waitForExpectations(timeout: 5) { error in
             if let error = error {
                 XCTFail("testDetectObject error: \(error)")
             }
