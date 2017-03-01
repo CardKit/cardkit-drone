@@ -8,6 +8,8 @@
 
 import XCTest
 
+import Freddy
+
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -36,7 +38,7 @@ class DetectObjectTests: XCTestCase {
         let telemetryToken = DummyTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
         let watsonToken = WatsonVisualRecognitionToken(with: DroneCardKit.Token.Watson.VisualRecognition.makeCard(), usingApiKey: ApiKeys.justinsVisualRecoAPIKey)
         
-        let inputBindings: [String : DataBinding] = ["Objects": .bound("workroom".toJSON()), "Confidence": .bound(0.7.toJSON()), "Frequency": .bound(5.0.toJSON())]
+        let inputBindings: [String : JSONEncodable] = ["Objects": "workroom", "Confidence": 0.7, "Frequency": 5.0]
         let tokenBindings = ["Camera": cameraToken, "Telemetry": telemetryToken, "WatsonVisualRecognition": watsonToken]
         
         detectObject.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
