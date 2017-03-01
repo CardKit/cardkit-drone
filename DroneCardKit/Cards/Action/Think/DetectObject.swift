@@ -53,17 +53,15 @@ public class DetectObject: ExecutableActionCard {
                 let detectedObjects = try self.takePhotoAndClassify(camera: camera, telemetry: telemetry, watsonVisualRecognition: watsonVisualRecognition, confidence: confidence)
                 
                 // did we get what we were looking for?
-                if !isCancelled {
-                    for object in objectList {
-                        for detectedObject in detectedObjects {
-                            if object.lowercased() == detectedObject.objectName.lowercased() {
-                                // yes!
-                                foundObject = true
-                                
-                                // capture the detected object in our yields
-                                self.store(data: detectedObject, forYieldIndex: 0)
-                                break
-                            }
+                for object in objectList {
+                    for detectedObject in detectedObjects {
+                        if object.lowercased() == detectedObject.objectName.lowercased() {
+                            // yes!
+                            foundObject = true
+                            
+                            // capture the detected object in our yields
+                            self.store(data: detectedObject, forYieldIndex: 0)
+                            break
                         }
                     }
                 }

@@ -99,9 +99,9 @@ class DetectObjectTests: XCTestCase {
         
         // bind inputs
         do {
-            let objects = try CardKit.Input.Text.TextString <- "person"
+            let objects = try CardKit.Input.Text.TextString <- "workroom"
             let confidence = try CardKit.Input.Numeric.Real <- 0.7
-            let frequency = try CardKit.Input.Time.Periodicity <- 2.0
+            let frequency = try CardKit.Input.Time.Periodicity <- 5.0
             
             detectObjects = try detectObjects <- ("Objects", objects)
             detectObjects = try detectObjects <- ("Confidence", confidence)
@@ -115,14 +115,15 @@ class DetectObjectTests: XCTestCase {
         
         // bind inputs
         do {
-            let duration = try CardKit.Input.Time.Duration <- 5.0
+            let duration = try CardKit.Input.Time.Duration <- 20.0
             timer = try timer <- ("Duration", duration)
         } catch let error {
             XCTFail("error binding inputs: \(error)")
         }
         
-        // set up the deck -- one hand with detectObjects and a 5 second timer
+        // set up the deck -- one hand with detectObjects and a 20 second timer
         let deck = ( detectObjects || timer )%
+//        let deck = ( ( detectObjects )% )%
         
         // add tokens to the deck
         deck.add(cameraCard)
@@ -146,7 +147,7 @@ class DetectObjectTests: XCTestCase {
         engine.execute({ (yields: [YieldData], error: ExecutionError?) in
             XCTAssertNil(error)
             
-            XCTAssertTrue(yields.count == 4)
+            XCTAssertTrue(yields.count == 1)
             
             var detectedObjects: [String : DCKDetectedObject] = [:]
             for yield in yields {
@@ -159,17 +160,7 @@ class DetectObjectTests: XCTestCase {
             }
             
             XCTAssertNotNil(detectedObjects["workroom"], "expected to find a workroom")
-            XCTAssertNotNil(detectedObjects["room"], "expected to find a room")
-            XCTAssertNotNil(detectedObjects["ultramarine color"], "expected to find ultramarine color")
-            XCTAssertNotNil(detectedObjects["blue color"], "expected to find blue color")
-            
             XCTAssertTrue(detectedObjects["workroom"]!.confidence > 0.7)
-            XCTAssertTrue(detectedObjects["room"]!.confidence > 0.7)
-            XCTAssertTrue(detectedObjects["ultramarine color"]!.confidence > 0.7)
-            XCTAssertTrue(detectedObjects["blue color"]!.confidence > 0.7)
-            
         })
-        
-        // TODO waitForExpectations
     }
 }
