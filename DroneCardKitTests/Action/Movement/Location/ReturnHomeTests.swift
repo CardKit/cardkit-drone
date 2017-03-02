@@ -1,5 +1,5 @@
 //
-//  ReturnHome.swift
+//  ReturnHomeTests.swift
 //  DroneCardKit
 //
 //  Created by Justin Weisz on 3/1/17.
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class ReturnHome: XCTestCase {
+class ReturnHomeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,7 +26,7 @@ class ReturnHome: XCTestCase {
         super.tearDown()
     }
     
-    func testFlyTo() {
+    func testReturnHome() {
         // executable card
         let returnHome = ReturnHome(with: DroneCardKit.Action.Movement.Location.ReturnHome.makeCard())
         
