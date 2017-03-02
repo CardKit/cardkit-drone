@@ -36,8 +36,8 @@ public class DummyDroneToken: BaseMockToken, DroneToken {
     
     public func spinMotors(on: Bool) throws {
         self.registerFunctionCall(named: "spinMotors")
-        print("\(prefix) DummyDroneToken > turnMotorsOn()")
-    
+        print("\(prefix) DummyDroneToken > spinMotors(on: \(on))")
+        
         Thread.sleep(forTimeInterval: delay)
         
         areMotorsOn = on
@@ -146,7 +146,7 @@ public class DummyDroneToken: BaseMockToken, DroneToken {
     
     public func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?) throws {
         self.registerFunctionCall(named: "spinAround")
-        print("\(prefix) DummyDroneToken > Spin Around (toYawAngle: \(yaw), atAngularSpeed: \(angularSpeed)")
+        print("\(prefix) DummyDroneToken > spinAround(toYawAngle: \(yaw), atAngularSpeed: \(angularSpeed)")
         
         Thread.sleep(forTimeInterval: delay)
     }

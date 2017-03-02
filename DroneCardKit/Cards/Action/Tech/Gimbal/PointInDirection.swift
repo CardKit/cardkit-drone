@@ -14,7 +14,7 @@ public class PointInDirection: ExecutableActionCard {
     override public func main() {
         guard let telemetry: TelemetryToken = self.token(named: "Telemetry") as? TelemetryToken,
             let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
-            let desiredGimbalYaw: DCKAngle = self.value(forInput: "CardinalDirection") else {
+            let cardinalDirection: DCKCardinalDirection = self.value(forInput: "CardinalDirection") else {
                 return
         }
         
@@ -25,7 +25,7 @@ public class PointInDirection: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try gimbal.rotate(yaw: droneYaw.normalized() - desiredGimbalYaw.normalized(), relativeToDrone: false)
+                try gimbal.rotate(yaw: droneYaw.normalized() - cardinalDirection.azimuth.normalized(), relativeToDrone: false)
             }
         } catch let error {
             self.error(error)

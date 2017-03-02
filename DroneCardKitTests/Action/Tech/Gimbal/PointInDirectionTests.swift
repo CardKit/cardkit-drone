@@ -55,10 +55,9 @@ class PointInDirectionTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(pointInDirection.errors.count == 0)
-            pointInDirection.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            pointInDirection.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(gimbalToken.calledFunctions.contains("rotate"), "rotate should have been called")
-            XCTAssertTrue(gimbalToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }

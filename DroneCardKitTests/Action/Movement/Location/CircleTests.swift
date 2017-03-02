@@ -53,13 +53,12 @@ class CircleTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(circle.errors.count == 0)
-            circle.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            circle.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("takeOff"), "takeOff should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("spinMotors"), "spinMotors should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("landingGear"), "landingGear should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("circle"), "circle should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 4)
         }
     }
 }

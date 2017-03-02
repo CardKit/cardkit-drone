@@ -59,7 +59,7 @@ class DetectObjectTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(detectObject.errors.count == 0)
-            detectObject.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            detectObject.errors.forEach { XCTFail("\($0)") }
             XCTAssertTrue(detectObject.yieldData.count > 0)
             
             guard let first = detectObject.yieldData.first else {

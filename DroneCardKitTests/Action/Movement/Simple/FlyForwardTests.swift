@@ -32,7 +32,9 @@ class FlyForwardTests: XCTestCase {
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = ["Distance": DCKDistance(meters: 10.0)]
+        let distance = DCKDistance(meters: 10.0)
+        let speed = DCKSpeed(metersPerSecond: 2)
+        let inputBindings: [String : JSONEncodable] = ["Distance": distance, "Speed": speed]
         let tokenBindings = ["Drone": droneToken]
         
         flyForward.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -53,10 +55,13 @@ class FlyForwardTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(flyForward.errors.count == 0)
-            flyForward.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            flyForward.errors.forEach { XCTFail("\($0)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("flyForward"), "flyForward should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
+            /*XCTAssertTrue(droneToken.calledFunctions.contains("takeOff"), "takeOff should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("spinMotors"), "spinMotors should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("landingGear"), "landingGear should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("circle"), "circle should have been called")*/
+            XCTAssertTrue(droneToken.calledFunctions.contains("fly"), "fly should have been called")
         }
     }
 }

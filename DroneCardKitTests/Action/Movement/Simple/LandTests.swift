@@ -28,7 +28,7 @@ class LandTests: XCTestCase {
     
     func testLand() {
         // executable card
-        let land = Hover(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
+        let land = Land(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
@@ -53,10 +53,9 @@ class LandTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(land.errors.count == 0)
-            land.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            land.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }

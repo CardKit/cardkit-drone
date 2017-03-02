@@ -64,7 +64,7 @@ class PanBetweenLocationsTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(panBetweenLocations.errors.count == 0)
-            panBetweenLocations.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            panBetweenLocations.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(gimbalToken.calledFunctions.contains("rotate"), "rotate should have been called")
         }

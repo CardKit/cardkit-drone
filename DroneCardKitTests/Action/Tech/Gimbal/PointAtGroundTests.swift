@@ -53,10 +53,9 @@ class PointAtGroundTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(pointAtGround.errors.count == 0)
-            pointAtGround.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            pointAtGround.errors.forEach { XCTFail("\($0)") }
             
-            XCTAssertTrue(gimbalToken.calledFunctions.contains("rotate"), "rotate should have been called")
-            XCTAssertTrue(gimbalToken.calledFunctions.count == 1, "only one method should have been called")
+            XCTAssertTrue(gimbalToken.calledFunctions.contains("orient"), "orient should have been called")
         }
     }
 }

@@ -56,10 +56,9 @@ class TakePhotoBurstTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(takePhotoBurst.errors.count == 0)
-            takePhotoBurst.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            takePhotoBurst.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(cameraToken.calledFunctions.contains("takePhotoBurst"), "takePhotoBurst should have been called")
-            XCTAssertTrue(cameraToken.calledFunctions.count == 1, "only one method should have been called")
             
             XCTAssertTrue(takePhotoBurst.yieldData.count == 1, "takePhotoBurst should yield a photo burst")
             

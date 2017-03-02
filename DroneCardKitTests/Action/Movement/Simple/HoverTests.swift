@@ -60,10 +60,9 @@ class HoverTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(hover.errors.count == 0)
-            hover.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            hover.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("hover"), "hover should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }

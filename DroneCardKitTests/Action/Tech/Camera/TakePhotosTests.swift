@@ -63,11 +63,10 @@ class TakePhotosTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(takePhotos.errors.count == 0)
-            takePhotos.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            takePhotos.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(cameraToken.calledFunctions.contains("startTakingPhotos"), "startTakingPhotos should have been called")
             XCTAssertTrue(cameraToken.calledFunctions.contains("stopTakingPhotos"), "stopTakingPhotos should have been called")
-            XCTAssertTrue(cameraToken.calledFunctions.count == 2, "only two methods should have been called (start and stop)")
             
             XCTAssertTrue(takePhotos.yieldData.count == 1, "takePhotos should yield a photo burst")
             

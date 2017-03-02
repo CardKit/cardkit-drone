@@ -62,7 +62,7 @@ class TakeTimelapseTests: XCTestCase {
         
             // assert!
             XCTAssertTrue(takeTimelapse.errors.count == 0)
-            takeTimelapse.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            takeTimelapse.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(cameraToken.calledFunctions.contains("startTimelapse"), "startTimelapse should have been called")
             XCTAssertTrue(cameraToken.calledFunctions.contains("stopTimelapse"), "stopTimelapse should have been called")

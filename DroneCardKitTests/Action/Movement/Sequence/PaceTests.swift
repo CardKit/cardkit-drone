@@ -63,10 +63,12 @@ class PaceTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(pace.errors.count == 0)
-            pace.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            pace.errors.forEach { XCTFail("\($0)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("pace"), "pace should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("takeOff"), "takeOff should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("spinMotors"), "spinMotors should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("landingGear"), "landingGear should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("fly"), "circle should have been called")
         }
     }
 }

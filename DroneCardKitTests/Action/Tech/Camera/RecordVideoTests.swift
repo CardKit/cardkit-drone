@@ -62,11 +62,10 @@ class RecordVideoTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(recordVideo.errors.count == 0)
-            recordVideo.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            recordVideo.errors.forEach { XCTFail("\($0)") }
             
-            XCTAssertTrue(cameraToken.calledFunctions.contains("startRecordVideo"), "startRecordVideo should have been called")
-            XCTAssertTrue(cameraToken.calledFunctions.contains("stopRecordVideo"), "stopRecordVideo should have been called")
-            XCTAssertTrue(cameraToken.calledFunctions.count == 2, "only two methods should have been called (start and stop)")
+            XCTAssertTrue(cameraToken.calledFunctions.contains("startVideo"), "startRecordVideo should have been called")
+            XCTAssertTrue(cameraToken.calledFunctions.contains("stopVideo"), "stopRecordVideo should have been called")
             
             XCTAssertTrue(recordVideo.yieldData.count == 1, "recordVideo should yield a video")
             

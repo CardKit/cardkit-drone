@@ -13,7 +13,7 @@ import CardKitRuntime
 
 public class BaseMockToken: ExecutableTokenCard {
     let prefix = ">> "
-    let delay: TimeInterval = 2.0
+    let delay: TimeInterval = 1.0
     
     var calledFunctions: [String] = []
     

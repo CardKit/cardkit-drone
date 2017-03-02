@@ -53,10 +53,11 @@ class ReturnHomeTests: XCTestCase {
             
             // assert!
             XCTAssertTrue(returnHome.errors.count == 0)
-            returnHome.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            returnHome.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("returnHome"), "returnHome should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("fly"), "fly should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
         }
     }
 }
