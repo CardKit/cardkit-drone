@@ -46,7 +46,7 @@ class CircleTests: XCTestCase {
         }
         
         // wait for card to finish
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: DroneCardKitTests.expectationTimeout) { error in
             if let error = error {
                 XCTFail("error: \(error)")
             }
@@ -55,8 +55,11 @@ class CircleTests: XCTestCase {
             XCTAssertTrue(circle.errors.count == 0)
             circle.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
+            XCTAssertTrue(droneToken.calledFunctions.contains("takeOff"), "takeOff should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("spinMotors"), "spinMotors should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("landingGear"), "landingGear should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("circle"), "circle should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.count == 4)
         }
     }
 }

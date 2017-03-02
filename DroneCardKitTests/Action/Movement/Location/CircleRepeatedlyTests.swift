@@ -43,17 +43,17 @@ class CircleRepeatedlyTests: XCTestCase {
         }
         
         // give the card some time to process
-        Thread.sleep(forTimeInterval: 5)
+        Thread.sleep(forTimeInterval: DroneCardKitTests.nonEndingCardProcessTime)
         
         // stop the card
-        let myExpectation = expectation(description: "cancel() should finish within 5 seconds")
+        let myExpectation = expectation(description: "cancel() should finish within \(DroneCardKitTests.nonEndingCardProcessTime) seconds")
         DispatchQueue.global(qos: .default).async {
             circleRepeatedly.cancel()
             myExpectation.fulfill()
         }
         
         // wait for card to finish
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: DroneCardKitTests.expectationTimeout) { error in
             if let error = error {
                 XCTFail("error: \(error)")
             }
@@ -62,8 +62,12 @@ class CircleRepeatedlyTests: XCTestCase {
             XCTAssertTrue(circleRepeatedly.errors.count == 0)
             circleRepeatedly.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
+            XCTAssertTrue(droneToken.calledFunctions.contains("takeOff"), "takeOff should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("spinMotors"), "spinMotors should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("landingGear"), "landingGear should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("circle"), "circle should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.count == 5)
         }
     }
 }

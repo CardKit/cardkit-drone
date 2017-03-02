@@ -52,7 +52,7 @@ class DetectObjectTests: XCTestCase {
         }
         
         // wait for execution to finish in 5 seconds
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: DroneCardKitTests.expectationTimeout) { error in
             if let error = error {
                 XCTFail("testDetectObject error: \(error)")
             }

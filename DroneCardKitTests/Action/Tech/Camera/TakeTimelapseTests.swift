@@ -45,17 +45,17 @@ class TakeTimelapseTests: XCTestCase {
         }
         
         // give the card some time to process
-        Thread.sleep(forTimeInterval: 5)
+        Thread.sleep(forTimeInterval: DroneCardKitTests.nonEndingCardProcessTime)
         
         // stop the card
-        let myExpectation = expectation(description: "cancel() should finish within 5 seconds")
+        let myExpectation = expectation(description: "cancel() should finish within \(DroneCardKitTests.nonEndingCardProcessTime) seconds")
         DispatchQueue.global(qos: .default).async {
             takeTimelapse.cancel()
             myExpectation.fulfill()
         }
         
         // wait for card to finish
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: DroneCardKitTests.expectationTimeout) { error in
             if let error = error {
                 XCTFail("error: \(error)")
             }

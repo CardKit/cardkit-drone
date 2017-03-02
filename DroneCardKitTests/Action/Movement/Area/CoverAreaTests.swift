@@ -65,7 +65,9 @@ class CoverAreaTests: XCTestCase {
             DCKCoordinate2D(latitude: 41.45819691342534, longitude: -73.28674018805917),
             DCKCoordinate2D(latitude: 41.45831951063382, longitude: -73.2879074021711),
             DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784)])
-        let inputBindings: [String : JSONEncodable] = ["Area": area]
+        let altitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10)
+        let speed = DCKSpeed(metersPerSecond: 2)
+        let inputBindings: [String : JSONEncodable] = ["Area": area, "Altitude": altitude, "Speed": speed]
         let tokenBindings = ["Drone": droneToken]
         
         coverArea.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -79,7 +81,7 @@ class CoverAreaTests: XCTestCase {
         }
         
         // wait for card to finish
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: DroneCardKitTests.expectationTimeout) { error in
             if let error = error {
                 XCTFail("error: \(error)")
             }

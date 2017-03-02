@@ -41,7 +41,7 @@ class TakePhotoBurstTests: XCTestCase {
         takePhotoBurst.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
-        let myExpectation = expectation(description: "card should finish within 5 seconds")
+        let myExpectation = expectation(description: "card should finish within \(DroneCardKitTests.nonEndingCardProcessTime) seconds")
         
         DispatchQueue.global(qos: .default).async {
             takePhotoBurst.main()
@@ -49,7 +49,7 @@ class TakePhotoBurstTests: XCTestCase {
         }
         
         // wait for card to finish
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: DroneCardKitTests.expectationTimeout) { error in
             if let error = error {
                 XCTFail("error: \(error)")
             }
