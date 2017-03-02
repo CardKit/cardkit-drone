@@ -33,10 +33,11 @@ public class TakePhotoBurst: ExecutableActionCard {
         
         do {
             if !isCancelled {
-                try camera.takePhotoBurst(count: burstCount, options: cameraOptions)
+                let burst = try camera.takePhotoBurst(count: burstCount, options: cameraOptions)
+                self.store(data: burst, forYieldIndex: 0)
             }
         } catch {
-            self.error = error
+            self.error(error)
             
             if !isCancelled {
                 cancel()

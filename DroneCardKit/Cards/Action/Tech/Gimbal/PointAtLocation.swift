@@ -12,16 +12,16 @@ import CardKitRuntime
 
 public class PointAtLocation: ExecutableActionCard {
     override public func main() {
-        guard let droneTelemetry: DroneTelemetryToken = self.token(named: "DroneTelemetry") as? DroneTelemetryToken,
+        guard let telemetry: TelemetryToken = self.token(named: "Telemetry") as? TelemetryToken,
             let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
             let desiredLocation: DCKCoordinate3D = self.value(forInput: "Location") else {
                 return
         }
         
-        guard let currentLocation = droneTelemetry.currentLocation,
-            let currentAltitude = droneTelemetry.currentAltitude,
-            let currentAttitude = droneTelemetry.currentAttitude else {
-            self.error = DroneTokenError.failureRetrievingDroneState
+        guard let currentLocation = telemetry.currentLocation,
+            let currentAltitude = telemetry.currentAltitude,
+            let currentAttitude = telemetry.currentAttitude else {
+            self.error(DroneTokenError.failureRetrievingDroneState)
             return
         }
         
@@ -38,8 +38,8 @@ public class PointAtLocation: ExecutableActionCard {
             if !isCancelled {
                 try gimbal.rotate(yaw: yaw, pitch: pitch, relativeToDrone: false)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()

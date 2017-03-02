@@ -12,7 +12,7 @@ import XCTest
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class InputTests: XCTestCase {
+class DCKCardinalDirectionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -24,7 +24,7 @@ class InputTests: XCTestCase {
         super.tearDown()
     }
     
-    func testCardinalDirectionAzimuth() {
+    func testAzimuth() {
         let directionRangeDegrees: Double = 360 / 32.0
         
         for angleDegrees in stride(from: 0, to: 720, by: 7.12345) {

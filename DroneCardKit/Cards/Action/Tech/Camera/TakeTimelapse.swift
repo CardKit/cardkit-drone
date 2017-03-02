@@ -31,8 +31,8 @@ public class TakeTimelapse: ExecutableActionCard {
             if !isCancelled {
                 try camera.startTimelapse(options: cameraOptions)
             }
-        } catch {
-            self.error = error
+        } catch let error {
+            self.error(error)
             
             if !isCancelled {
                 cancel()
@@ -46,9 +46,14 @@ public class TakeTimelapse: ExecutableActionCard {
         }
         
         do {
-            try camera.stopTimelapse()
+            // stop the timelapse
+            let video = try camera.stopTimelapse()
+            
+            // store the video as a yield
+            self.store(data: video, forYieldIndex: 0)
+            
         } catch let error {
-            self.error = error
+            self.error(error)
         }
     }
 }
