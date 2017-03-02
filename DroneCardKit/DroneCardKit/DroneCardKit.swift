@@ -433,22 +433,6 @@ extension DroneCardKit.Action.Tech.Camera {
         endsDescription: "Ends when the photo has been taken",
         assetCatalog: CardAssetCatalog(description: "Take a photo"))
     
-    public static let TakeHDRPhoto = ActionCardDescriptor(
-        name: "Take an HDR Photo",
-        subpath: "Tech/Camera",
-        inputs: [
-            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
-        ],
-        tokens: [
-            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
-        ],
-        yields: [Yield(type: DCKPhoto.self)],
-        yieldDescription: "Yields an HDR photo",
-        ends: true,
-        endsDescription: "Ends when the photo has been taken",
-        assetCatalog: CardAssetCatalog(description: "Take an HDR photo"))
-    
     public static let TakePhotoBurst = ActionCardDescriptor(
         name: "Take a Photo Burst",
         subpath: "Tech/Camera",
