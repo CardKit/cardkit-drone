@@ -25,7 +25,6 @@ extension DroneCardKit {
             DroneCardKit.Action.Movement.Sequence.FlyPath,
             DroneCardKit.Action.Movement.Sequence.Pace,
             DroneCardKit.Action.Tech.Camera.RecordVideo,
-            DroneCardKit.Action.Tech.Camera.TakeHDRPhoto,
             DroneCardKit.Action.Tech.Camera.TakePhoto,
             DroneCardKit.Action.Tech.Camera.TakePhotoBurst,
             DroneCardKit.Action.Tech.Camera.TakePhotos,
