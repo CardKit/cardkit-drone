@@ -1,8 +1,8 @@
 //
-//  RecordVideoTests.swift
+//  TakeTimelapseTests.swift
 //  DroneCardKit
 //
-//  Created by Justin Weisz on 3/1/17.
+//  Created by Justin Weisz on 3/2/17.
 //  Copyright © 2017 IBM. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class RecordVideoTests: XCTestCase {
+class TakeTimelapseTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,22 @@ class RecordVideoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRecordVideo() {
+    func testTakeTimelapse() {
         // executable card
-        let recordVideo = RecordVideo(with: DroneCardKit.Action.Tech.Camera.RecordVideo.makeCard())
+        let takeTimelapse = TakeTimelapse(with: DroneCardKit.Action.Tech.Camera.TakeTimelapse.makeCard())
         
         // bind inputs and tokens
         let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
-        let framerate = VideoFramerate.framerate_30fps
-        let resolution = VideoResolution.resolution_1080p
-        let inputBindings: [String : JSONEncodable] = ["Framerate": framerate, "Resolution": resolution, "SlowMotionEnabled": false]
+        let aspectRatio = PhotoAspectRatio.aspect_16x9
+        let quality = PhotoQuality.excellent
+        let inputBindings: [String : JSONEncodable] = ["AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
-        recordVideo.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        takeTimelapse.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         DispatchQueue.global(qos: .default).async {
-            recordVideo.main()
+            takeTimelapse.main()
         }
         
         // give the card some time to process
@@ -50,7 +50,7 @@ class RecordVideoTests: XCTestCase {
         // stop the card
         let myExpectation = expectation(description: "cancel() should finish within 5 seconds")
         DispatchQueue.global(qos: .default).async {
-            recordVideo.cancel()
+            takeTimelapse.cancel()
             myExpectation.fulfill()
         }
         
@@ -59,19 +59,19 @@ class RecordVideoTests: XCTestCase {
             if let error = error {
                 XCTFail("error: \(error)")
             }
-            
+        
             // assert!
-            XCTAssertTrue(recordVideo.errors.count == 0)
-            recordVideo.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(takeTimelapse.errors.count == 0)
+            takeTimelapse.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
-            XCTAssertTrue(cameraToken.calledFunctions.contains("startRecordVideo"), "startRecordVideo should have been called")
-            XCTAssertTrue(cameraToken.calledFunctions.contains("stopRecordVideo"), "stopRecordVideo should have been called")
+            XCTAssertTrue(cameraToken.calledFunctions.contains("startTimelapse"), "startTimelapse should have been called")
+            XCTAssertTrue(cameraToken.calledFunctions.contains("stopTimelapse"), "stopTimelapse should have been called")
             XCTAssertTrue(cameraToken.calledFunctions.count == 2, "only two methods should have been called (start and stop)")
             
-            XCTAssertTrue(recordVideo.yieldData.count == 1, "recordVideo should yield a video")
+            XCTAssertTrue(takeTimelapse.yieldData.count == 1, "takeTimelapse should yield a video")
             
-            guard let yieldData = recordVideo.yieldData.first?.data else {
-                XCTFail("recordVideo yield has no data")
+            guard let yieldData = takeTimelapse.yieldData.first?.data else {
+                XCTFail("takeTimelapse yield has no data")
                 return
             }
             

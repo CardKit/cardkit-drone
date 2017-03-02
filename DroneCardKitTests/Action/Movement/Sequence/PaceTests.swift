@@ -41,10 +41,17 @@ class PaceTests: XCTestCase {
         pace.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
-        let myExpectation = expectation(description: "test completion")
-        
         DispatchQueue.global(qos: .default).async {
             pace.main()
+        }
+        
+        // give the card some time to process
+        Thread.sleep(forTimeInterval: 5)
+        
+        // stop the card
+        let myExpectation = expectation(description: "cancel() should finish within 5 seconds")
+        DispatchQueue.global(qos: .default).async {
+            pace.cancel()
             myExpectation.fulfill()
         }
         
@@ -59,7 +66,7 @@ class PaceTests: XCTestCase {
             pace.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("pace"), "pace should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one card should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }

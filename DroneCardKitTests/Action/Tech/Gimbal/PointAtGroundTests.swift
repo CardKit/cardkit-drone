@@ -1,8 +1,8 @@
 //
-//  SpinAroundTests.swift
+//  PointAtGroundTests.swift
 //  DroneCardKit
 //
-//  Created by Justin Weisz on 3/1/17.
+//  Created by Justin Weisz on 3/2/17.
 //  Copyright © 2017 IBM. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class SpinAroundTests: XCTestCase {
+class PointAtGroundTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,22 @@ class SpinAroundTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSpinAround() {
+    func testPointAtGround() {
         // executable card
-        let spinAround = SpinAround(with: DroneCardKit.Action.Movement.Orientation.SpinAround.makeCard())
+        let pointAtGround = PointAtGround(with: DroneCardKit.Action.Tech.Gimbal.PointAtGround.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = ["Angle": DCKAngle(degrees: 180), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "AngularSpeed": DCKAngularVelocity(degreesPerSecond: 12)]
-        let tokenBindings = ["Drone": droneToken]
+        let gimbalToken = DummyGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
+        let inputBindings: [String : JSONEncodable] = [:]
+        let tokenBindings = ["Gimbal": gimbalToken]
         
-        spinAround.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        pointAtGround.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         let myExpectation = expectation(description: "test completion")
         
         DispatchQueue.global(qos: .default).async {
-            spinAround.main()
+            pointAtGround.main()
             myExpectation.fulfill()
         }
         
@@ -52,11 +52,11 @@ class SpinAroundTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(spinAround.errors.count == 0)
-            spinAround.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(pointAtGround.errors.count == 0)
+            pointAtGround.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("spinAround"), "spinAround should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
+            XCTAssertTrue(gimbalToken.calledFunctions.contains("rotate"), "rotate should have been called")
+            XCTAssertTrue(gimbalToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }

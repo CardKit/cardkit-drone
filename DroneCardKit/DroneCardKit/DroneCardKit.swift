@@ -510,8 +510,8 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -552,8 +552,8 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Location", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -581,8 +581,8 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "CardinalDirection", descriptor: DroneCardKit.Input.Location.CardinalDirection, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry),
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
+            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry)
         ],
         yields: nil,
         yieldDescription: nil,

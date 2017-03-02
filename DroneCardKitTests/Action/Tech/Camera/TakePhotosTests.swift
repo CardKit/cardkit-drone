@@ -1,8 +1,8 @@
 //
-//  RecordVideoTests.swift
+//  TakePhotosTests.swift
 //  DroneCardKit
 //
-//  Created by Justin Weisz on 3/1/17.
+//  Created by Justin Weisz on 3/2/17.
 //  Copyright © 2017 IBM. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class RecordVideoTests: XCTestCase {
+class TakePhotosTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,23 @@ class RecordVideoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testRecordVideo() {
+    func testTakePhoto() {
         // executable card
-        let recordVideo = RecordVideo(with: DroneCardKit.Action.Tech.Camera.RecordVideo.makeCard())
+        let takePhotos = TakePhotos(with: DroneCardKit.Action.Tech.Camera.TakePhotos.makeCard())
         
         // bind inputs and tokens
         let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
-        let framerate = VideoFramerate.framerate_30fps
-        let resolution = VideoResolution.resolution_1080p
-        let inputBindings: [String : JSONEncodable] = ["Framerate": framerate, "Resolution": resolution, "SlowMotionEnabled": false]
+        let interval: Double = 1.0
+        let aspectRatio = PhotoAspectRatio.aspect_16x9
+        let quality = PhotoQuality.excellent
+        let inputBindings: [String : JSONEncodable] = ["Interval": interval, "AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
-        recordVideo.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        takePhotos.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         DispatchQueue.global(qos: .default).async {
-            recordVideo.main()
+            takePhotos.main()
         }
         
         // give the card some time to process
@@ -50,7 +51,7 @@ class RecordVideoTests: XCTestCase {
         // stop the card
         let myExpectation = expectation(description: "cancel() should finish within 5 seconds")
         DispatchQueue.global(qos: .default).async {
-            recordVideo.cancel()
+            takePhotos.cancel()
             myExpectation.fulfill()
         }
         
@@ -61,24 +62,26 @@ class RecordVideoTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(recordVideo.errors.count == 0)
-            recordVideo.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(takePhotos.errors.count == 0)
+            takePhotos.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
-            XCTAssertTrue(cameraToken.calledFunctions.contains("startRecordVideo"), "startRecordVideo should have been called")
-            XCTAssertTrue(cameraToken.calledFunctions.contains("stopRecordVideo"), "stopRecordVideo should have been called")
+            XCTAssertTrue(cameraToken.calledFunctions.contains("startTakingPhotos"), "startTakingPhotos should have been called")
+            XCTAssertTrue(cameraToken.calledFunctions.contains("stopTakingPhotos"), "stopTakingPhotos should have been called")
             XCTAssertTrue(cameraToken.calledFunctions.count == 2, "only two methods should have been called (start and stop)")
             
-            XCTAssertTrue(recordVideo.yieldData.count == 1, "recordVideo should yield a video")
+            XCTAssertTrue(takePhotos.yieldData.count == 1, "takePhotos should yield a photo burst")
             
-            guard let yieldData = recordVideo.yieldData.first?.data else {
-                XCTFail("recordVideo yield has no data")
+            guard let yieldData = takePhotos.yieldData.first?.data else {
+                XCTFail("takePhotos yield has no data")
                 return
             }
             
             do {
-                let _ = try yieldData.decode(type: DCKVideo.self)
+                let burst = try yieldData.decode(type: DCKPhotoBurst.self)
+                XCTAssertTrue(burst.photos.count > 0, "should have taken at least one photo")
+                XCTAssertTrue(burst.photos.count <= 5, "should not have taken more than 5 photos within 5 seconds at a 1 second interval")
             } catch let error {
-                XCTFail("failed to decode DCKVideo from yield: \(error)")
+                XCTFail("failed to decode DCKPhotoBurst from yield: \(error)")
             }
         }
     }

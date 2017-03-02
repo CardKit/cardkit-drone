@@ -28,20 +28,27 @@ class CircleRepeatedlyTests: XCTestCase {
     
     func testCircleRepeatedly() {
         // executable card
-        let circle = CircleRepeatedly(with: DroneCardKit.Action.Movement.Location.CircleRepeatedly.makeCard())
+        let circleRepeatedly = CircleRepeatedly(with: DroneCardKit.Action.Movement.Location.CircleRepeatedly.makeCard())
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let inputBindings: [String : JSONEncodable] = ["Center": DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784), "Radius": DCKDistance(meters: 10), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "AngularSpeed": DCKAngularVelocity(degreesPerSecond: 5), "Direction": DCKRotationDirection.clockwise]
         let tokenBindings = ["Drone": droneToken]
         
-        circle.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        circleRepeatedly.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
-        let myExpectation = expectation(description: "test completion")
-        
         DispatchQueue.global(qos: .default).async {
-            circle.main()
+            circleRepeatedly.main()
+        }
+        
+        // give the card some time to process
+        Thread.sleep(forTimeInterval: 5)
+        
+        // stop the card
+        let myExpectation = expectation(description: "cancel() should finish within 5 seconds")
+        DispatchQueue.global(qos: .default).async {
+            circleRepeatedly.cancel()
             myExpectation.fulfill()
         }
         
@@ -52,11 +59,11 @@ class CircleRepeatedlyTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(circle.errors.count == 0)
-            circle.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(circleRepeatedly.errors.count == 0)
+            circleRepeatedly.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("circle"), "circle should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one card should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }

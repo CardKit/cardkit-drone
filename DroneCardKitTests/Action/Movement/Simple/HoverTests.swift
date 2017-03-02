@@ -38,10 +38,17 @@ class HoverTests: XCTestCase {
         hover.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
-        let myExpectation = expectation(description: "test completion")
-        
         DispatchQueue.global(qos: .default).async {
             hover.main()
+        }
+        
+        // give the card some time to process
+        Thread.sleep(forTimeInterval: 5)
+        
+        // stop the card
+        let myExpectation = expectation(description: "cancel() should finish within 5 seconds")
+        DispatchQueue.global(qos: .default).async {
+            hover.cancel()
             myExpectation.fulfill()
         }
         
@@ -56,7 +63,7 @@ class HoverTests: XCTestCase {
             hover.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("hover"), "hover should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one card should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }

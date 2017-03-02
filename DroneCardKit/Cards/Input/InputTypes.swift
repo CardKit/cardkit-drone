@@ -213,6 +213,8 @@ public enum DCKCardinalDirection: Int {
     }
 }
 
+extension DCKCardinalDirection: JSONEncodable, JSONDecodable {}
+
 // MARK: DCKCoordinate2D
 
 public struct DCKCoordinate2D {

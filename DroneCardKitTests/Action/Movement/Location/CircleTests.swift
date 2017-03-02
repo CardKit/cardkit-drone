@@ -56,7 +56,7 @@ class CircleTests: XCTestCase {
             circle.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("circle"), "circle should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one card should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one method should have been called")
         }
     }
 }
