@@ -61,7 +61,7 @@ class FlyForwardTests: XCTestCase {
             XCTAssertTrue(droneToken.calledFunctions.contains("spinMotors"), "spinMotors should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("landingGear"), "landingGear should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("circle"), "circle should have been called")*/
-            XCTAssertTrue(droneToken.calledFunctions.contains("fly"), "fly should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("flyTo"), "flyTo should have been called")
         }
     }
 }

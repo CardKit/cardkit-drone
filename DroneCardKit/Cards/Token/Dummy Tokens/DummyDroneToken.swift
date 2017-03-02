@@ -73,7 +73,7 @@ public class DummyDroneToken: BaseMockToken, DroneToken {
     }
     
     public func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
-        self.registerFunctionCall(named: "fly")
+        self.registerFunctionCall(named: "flyTo")
         print("\(prefix) DummyDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
         
         Thread.sleep(forTimeInterval: delay)
@@ -102,7 +102,7 @@ public class DummyDroneToken: BaseMockToken, DroneToken {
     }
     
     public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
-        self.registerFunctionCall(named: "fly")
+        self.registerFunctionCall(named: "flyOn2DPath")
         print("\(prefix) DummyDroneToken > fly(on: \(path), atAltitude: \(altitude), atSpeed: \(speed))")
         
         Thread.sleep(forTimeInterval: delay)
@@ -113,7 +113,7 @@ public class DummyDroneToken: BaseMockToken, DroneToken {
     }
     
     public func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws {
-        self.registerFunctionCall(named: "fly")
+        self.registerFunctionCall(named: "flyOn3DPath")
         print("\(prefix) DummyDroneToken > fly(on: \(path), atSpeed: \(speed))")
         
         Thread.sleep(forTimeInterval: delay)

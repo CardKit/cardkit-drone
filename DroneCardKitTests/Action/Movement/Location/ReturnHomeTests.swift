@@ -56,7 +56,7 @@ class ReturnHomeTests: XCTestCase {
             returnHome.errors.forEach { XCTFail("\($0)") }
             
             XCTAssertTrue(droneToken.calledFunctions.contains("returnHome"), "returnHome should have been called")
-            XCTAssertTrue(droneToken.calledFunctions.contains("fly"), "fly should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("flyTo"), "flyTo should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
         }
     }
