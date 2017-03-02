@@ -93,7 +93,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
             InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true),
-            InputSlot(name: "isClockWise", descriptor: DroneCardKit.Input.Modifier.Movement.MovementDirection, isOptional: true)
+            InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -113,7 +113,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
             InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true),
-            InputSlot(name: "isClockWise", descriptor: DroneCardKit.Input.Modifier.Movement.MovementDirection, isOptional: true)
+            InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -184,7 +184,7 @@ extension DroneCardKit.Action.Movement.Orientation {
         yieldDescription: nil,
         ends: true,
         endsDescription: "Ends when the drone has spinned around the specified angle",
-        assetCatalog: CardAssetCatalog(description: "Spin Around a specified number of degrees"))
+        assetCatalog: CardAssetCatalog(description: "Spin around a specified number of degrees"))
     
     // MARK: Movement/Orientation/SpinAround
     public static let SpinAroundRepeatedly = ActionCardDescriptor(
@@ -353,7 +353,7 @@ extension DroneCardKit.Action.Movement.Sequence {
             InputSlot(name: "Path", descriptor: DroneCardKit.Input.Location.Path, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true),
-            InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
+            InputSlot(name: "PauseDuration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -372,7 +372,7 @@ extension DroneCardKit.Action.Movement.Sequence {
             InputSlot(name: "Path", descriptor: DroneCardKit.Input.Location.Path, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true),
-            InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
+            InputSlot(name: "PauseDuration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -909,13 +909,13 @@ extension DroneCardKit.Input.Modifier.Movement {
         inputDescription: "Speed (in meters/sec)",
         assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"))
     
-    // MARK: Modifier/Movement/MovementDirection
-    public static let MovementDirection = InputCardDescriptor(
-        name: "MovementDirection",
+    // MARK: Modifier/Movement/RotationDirection
+    public static let RotationDirection = InputCardDescriptor(
+        name: "RotationDirection",
         subpath: "Modifier/Movement",
-        inputType: DCKMovementDirection.self,
-        inputDescription: "Movement direction (isClockwise)",
-        assetCatalog: CardAssetCatalog(description: "Movement direction (isClockwise)"))
+        inputType: DCKRotationDirection.self,
+        inputDescription: "Direction of rotation (clockwise or counterclockwise)",
+        assetCatalog: CardAssetCatalog(description: "Rotation direction"))
 
 }
 

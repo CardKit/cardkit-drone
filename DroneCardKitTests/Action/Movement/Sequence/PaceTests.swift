@@ -1,9 +1,9 @@
 //
-//  LandTests.swift
+//  PaceTests.swift
 //  DroneCardKit
 //
-//  Created by ismails on 12/9/16.
-//  Copyright © 2016 IBM. All rights reserved.
+//  Created by Justin Weisz on 3/1/17.
+//  Copyright © 2017 IBM. All rights reserved.
 //
 
 import XCTest
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class LandTests: XCTestCase {
+class PaceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,25 @@ class LandTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLand() {
+    func testPace() {
         // executable card
-        let land = Hover(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
+        let pace = Pace(with: DroneCardKit.Action.Movement.Sequence.Pace.makeCard())
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = [:]
+        let path = DCKCoordinate2DPath(path: [
+            DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784),
+            DCKCoordinate2D(latitude: 41.45671972574724, longitude: -73.29207348324675)])
+        let inputBindings: [String : JSONEncodable] = ["Path": path, "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1), "PauseDuration": 2.0]
         let tokenBindings = ["Drone": droneToken]
         
-        land.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        pace.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         let myExpectation = expectation(description: "test completion")
         
         DispatchQueue.global(qos: .default).async {
-            land.main()
+            pace.main()
             myExpectation.fulfill()
         }
         
@@ -52,10 +55,10 @@ class LandTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(land.errors.count == 0)
-            land.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(pace.errors.count == 0)
+            pace.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("pace"), "pace should have been called")
             XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one card should have been called")
         }
     }

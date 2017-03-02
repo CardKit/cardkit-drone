@@ -13,17 +13,14 @@ import CardKitRuntime
 public class CircleRepeatedly: ExecutableActionCard {
     
     override public func main() {
-        
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,
             let center: DCKCoordinate2D = self.value(forInput: "Center"),
             let radius: DCKDistance = self.value(forInput: "Radius"),
             let altitude: DCKRelativeAltitude = self.value(forInput: "Altitude")
-            else {
-                return
-        }
+            else { return }
         
         let angularSpeed: DCKAngularVelocity? = self.optionalValue(forInput: "AngularSpeed")
-        let isClockwise: DCKMovementDirection? = self.optionalValue(forInput: "isClockWise")
+        let direction: DCKRotationDirection? = self.optionalValue(forInput: "Direction")
         
         do {
             // take of to the provided altitude
@@ -33,7 +30,7 @@ public class CircleRepeatedly: ExecutableActionCard {
             
             // circle
             if !isCancelled {
-                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, atClockwise: isClockwise, toCircleRepeatedly: true)
+                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, direction: direction, repeatedly: true)
             }
         } catch {
             self.error(error)

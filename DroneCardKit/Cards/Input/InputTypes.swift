@@ -849,35 +849,6 @@ extension DCKDistance : JSONDecodable, JSONEncodable {
     }
 }
 
-// MARK: DCKMovementDirection
-
-public struct DCKMovementDirection {
-    public let isClockwise: Bool
-    
-    public init(isClockwise: Bool) {
-        self.isClockwise = isClockwise
-    }
-    
-}
-
-extension DCKMovementDirection: Equatable {
-    public static func == (lhs: DCKMovementDirection, rhs: DCKMovementDirection) -> Bool {
-        return lhs.isClockwise == rhs.isClockwise
-    }
-}
-
-extension DCKMovementDirection : JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.isClockwise = try json.getBool(at: "isClockwise")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "isClockwise": isClockwise.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKRotationDirection
 
 public enum DCKRotationDirection: String {

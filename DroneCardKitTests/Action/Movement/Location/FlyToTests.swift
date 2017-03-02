@@ -1,9 +1,9 @@
 //
-//  LandTests.swift
+//  FlyToTests.swift
 //  DroneCardKit
 //
-//  Created by ismails on 12/9/16.
-//  Copyright © 2016 IBM. All rights reserved.
+//  Created by Justin Weisz on 3/1/17.
+//  Copyright © 2017 IBM. All rights reserved.
 //
 
 import XCTest
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class LandTests: XCTestCase {
+class FlyToTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,22 @@ class LandTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLand() {
+    func testFlyTo() {
         // executable card
-        let land = Hover(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
+        let flyTo = FlyTo(with: DroneCardKit.Action.Movement.Location.FlyTo.makeCard())
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = [:]
+        let inputBindings: [String : JSONEncodable] = ["Destination": DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1)]
         let tokenBindings = ["Drone": droneToken]
         
-        land.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        flyTo.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         let myExpectation = expectation(description: "test completion")
         
         DispatchQueue.global(qos: .default).async {
-            land.main()
+            flyTo.main()
             myExpectation.fulfill()
         }
         
@@ -52,10 +52,10 @@ class LandTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(land.errors.count == 0)
-            land.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(flyTo.errors.count == 0)
+            flyTo.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("flyTo"), "flyTo should have been called")
             XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one card should have been called")
         }
     }

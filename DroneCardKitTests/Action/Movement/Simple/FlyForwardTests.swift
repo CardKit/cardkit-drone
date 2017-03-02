@@ -1,9 +1,9 @@
 //
-//  LandTests.swift
+//  FlyForwardTests.swift
 //  DroneCardKit
 //
-//  Created by ismails on 12/9/16.
-//  Copyright © 2016 IBM. All rights reserved.
+//  Created by Justin Weisz on 3/1/17.
+//  Copyright © 2017 IBM. All rights reserved.
 //
 
 import XCTest
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class LandTests: XCTestCase {
+class FlyForwardTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,22 @@ class LandTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLand() {
+    func testFlyForward() {
         // executable card
-        let land = Hover(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
+        let flyForward = FlyForward(with: DroneCardKit.Action.Movement.Simple.FlyForward.makeCard())
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = [:]
+        let inputBindings: [String : JSONEncodable] = ["Distance": DCKDistance(meters: 10.0)]
         let tokenBindings = ["Drone": droneToken]
         
-        land.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        flyForward.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         let myExpectation = expectation(description: "test completion")
         
         DispatchQueue.global(qos: .default).async {
-            land.main()
+            flyForward.main()
             myExpectation.fulfill()
         }
         
@@ -52,10 +52,10 @@ class LandTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(land.errors.count == 0)
-            land.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            XCTAssertTrue(flyForward.errors.count == 0)
+            flyForward.errors.forEach { XCTFail("\($0.localizedDescription)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("flyForward"), "flyForward should have been called")
             XCTAssertTrue(droneToken.calledFunctions.count == 1, "only one card should have been called")
         }
     }

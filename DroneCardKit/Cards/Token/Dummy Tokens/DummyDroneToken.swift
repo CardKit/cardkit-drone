@@ -79,7 +79,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     }
     
     public func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
-        self.registerFunctionCall(named: "fly:to:atYaw:atAltitude:atSpeed:completionHandler")
+        self.registerFunctionCall(named: "fly")
         print("\(prefix) DummyDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
@@ -107,7 +107,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     }
     
     public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
-        self.registerFunctionCall(named: "fly:on:atAltitude:atSpeed:completionHandler")
+        self.registerFunctionCall(named: "fly")
         print("\(prefix) DummyDroneToken > fly(on: \(path), atAltitude: \(altitude), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
@@ -117,7 +117,7 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
     }
     
     public func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws {
-        self.registerFunctionCall(named: "fly:on:atSpeed:completionHandler")
+        self.registerFunctionCall(named: "fly")
         print("\(prefix) DummyDroneToken > fly(on: \(path), atSpeed: \(speed))")
         Thread.sleep(forTimeInterval: delay)
         
@@ -126,12 +126,11 @@ public class DummyDroneToken: ExecutableTokenCard, DroneToken {
         }
     }
     
-    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise: DCKMovementDirection?, toCircleRepeatedly toRepeat: Bool) throws {
-        self.registerFunctionCall(named: "circle:around:atRadius:atAltitude:atAngularSpeed:atClockwise")
-        print("\(prefix) DummyDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(angularSpeed), atClockwise: \(isClockwise), toCircleRepeatedly: \(toRepeat)")
+    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws {
+        self.registerFunctionCall(named: "circle")
+        print("\(prefix) DummyDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(angularSpeed), direction: \(direction), repeatedly: \(shouldRepeat)")
         Thread.sleep(forTimeInterval: delay)
     }
-
     
     public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, toLand land: Bool) throws {
         self.registerFunctionCall(named: "returnHome")

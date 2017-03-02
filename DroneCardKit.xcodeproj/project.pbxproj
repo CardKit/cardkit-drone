@@ -101,6 +101,36 @@
 		CC9318CE1D479716001B71B1 /* DroneCardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CC93187E1D4796DB001B71B1 /* DroneCardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
 		CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC93188A1D4796DB001B71B1 /* DroneCardKitTests.swift */; };
+		CC9AACB91E67756C00C294FD /* FlyForwardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACB81E67756C00C294FD /* FlyForwardTests.swift */; };
+		CC9AACBA1E67756C00C294FD /* FlyForwardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACB81E67756C00C294FD /* FlyForwardTests.swift */; };
+		CC9AACBB1E67756C00C294FD /* FlyForwardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACB81E67756C00C294FD /* FlyForwardTests.swift */; };
+		CC9AACBD1E67760300C294FD /* HoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACBC1E67760300C294FD /* HoverTests.swift */; };
+		CC9AACBE1E67760300C294FD /* HoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACBC1E67760300C294FD /* HoverTests.swift */; };
+		CC9AACBF1E67760300C294FD /* HoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACBC1E67760300C294FD /* HoverTests.swift */; };
+		CC9AACC51E67789100C294FD /* CoverAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC41E67789100C294FD /* CoverAreaTests.swift */; };
+		CC9AACC61E67789100C294FD /* CoverAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC41E67789100C294FD /* CoverAreaTests.swift */; };
+		CC9AACC71E67789100C294FD /* CoverAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC41E67789100C294FD /* CoverAreaTests.swift */; };
+		CC9AACC91E677A2400C294FD /* CircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC81E677A2400C294FD /* CircleTests.swift */; };
+		CC9AACCA1E677A2400C294FD /* CircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC81E677A2400C294FD /* CircleTests.swift */; };
+		CC9AACCB1E677A2400C294FD /* CircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC81E677A2400C294FD /* CircleTests.swift */; };
+		CC9AACCD1E677E7700C294FD /* CircleRepeatedlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACCC1E677E7700C294FD /* CircleRepeatedlyTests.swift */; };
+		CC9AACCE1E677E7700C294FD /* CircleRepeatedlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACCC1E677E7700C294FD /* CircleRepeatedlyTests.swift */; };
+		CC9AACCF1E677E7700C294FD /* CircleRepeatedlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACCC1E677E7700C294FD /* CircleRepeatedlyTests.swift */; };
+		CC9AACD11E677F6300C294FD /* FlyToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD01E677F6200C294FD /* FlyToTests.swift */; };
+		CC9AACD21E677F6300C294FD /* FlyToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD01E677F6200C294FD /* FlyToTests.swift */; };
+		CC9AACD31E677F6300C294FD /* FlyToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD01E677F6200C294FD /* FlyToTests.swift */; };
+		CC9AACD51E67802E00C294FD /* ReturnHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD41E67802E00C294FD /* ReturnHome.swift */; };
+		CC9AACD61E67802E00C294FD /* ReturnHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD41E67802E00C294FD /* ReturnHome.swift */; };
+		CC9AACD71E67802E00C294FD /* ReturnHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD41E67802E00C294FD /* ReturnHome.swift */; };
+		CC9AACD91E67808100C294FD /* SpinAroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD81E67808100C294FD /* SpinAroundTests.swift */; };
+		CC9AACDA1E67808100C294FD /* SpinAroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD81E67808100C294FD /* SpinAroundTests.swift */; };
+		CC9AACDB1E67808100C294FD /* SpinAroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD81E67808100C294FD /* SpinAroundTests.swift */; };
+		CC9AACDD1E67811200C294FD /* FlyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACDC1E67811200C294FD /* FlyPathTests.swift */; };
+		CC9AACDE1E67811200C294FD /* FlyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACDC1E67811200C294FD /* FlyPathTests.swift */; };
+		CC9AACDF1E67811200C294FD /* FlyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACDC1E67811200C294FD /* FlyPathTests.swift */; };
+		CC9AACE11E679CBD00C294FD /* PaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACE01E679CBD00C294FD /* PaceTests.swift */; };
+		CC9AACE21E679CBD00C294FD /* PaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACE01E679CBD00C294FD /* PaceTests.swift */; };
+		CC9AACE31E679CBD00C294FD /* PaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACE01E679CBD00C294FD /* PaceTests.swift */; };
 		CCBB794C1D7897D8003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		CCBB794D1D7897D8003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */; };
 		CCBB794E1D7897D8003B6458 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794B1D7897D8003B6458 /* Freddy.framework */; };
@@ -218,6 +248,16 @@
 		CC9318B61D479706001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318BF1D479706001B71B1 /* DroneCardKitTests tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DroneCardKitTests tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStudyScenarios.swift; sourceTree = "<group>"; };
+		CC9AACB81E67756C00C294FD /* FlyForwardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyForwardTests.swift; sourceTree = "<group>"; };
+		CC9AACBC1E67760300C294FD /* HoverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoverTests.swift; sourceTree = "<group>"; };
+		CC9AACC41E67789100C294FD /* CoverAreaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverAreaTests.swift; sourceTree = "<group>"; };
+		CC9AACC81E677A2400C294FD /* CircleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTests.swift; sourceTree = "<group>"; };
+		CC9AACCC1E677E7700C294FD /* CircleRepeatedlyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRepeatedlyTests.swift; sourceTree = "<group>"; };
+		CC9AACD01E677F6200C294FD /* FlyToTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyToTests.swift; sourceTree = "<group>"; };
+		CC9AACD41E67802E00C294FD /* ReturnHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnHome.swift; sourceTree = "<group>"; };
+		CC9AACD81E67808100C294FD /* SpinAroundTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinAroundTests.swift; sourceTree = "<group>"; };
+		CC9AACDC1E67811200C294FD /* FlyPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyPathTests.swift; sourceTree = "<group>"; };
+		CC9AACE01E679CBD00C294FD /* PaceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceTests.swift; sourceTree = "<group>"; };
 		CCBB79411D7897BB003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/iOS/CardKit.framework; sourceTree = "<group>"; };
 		CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/iOS/CardKitRuntime.framework; sourceTree = "<group>"; };
 		CCBB79431D7897BB003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
@@ -359,6 +399,10 @@
 		68D432A11DFAFC030080389E /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				CC9AACC01E67788400C294FD /* Area */,
+				CC9AACC11E67788400C294FD /* Location */,
+				CC9AACC21E67788400C294FD /* Orientation */,
+				CC9AACC31E67788400C294FD /* Sequence */,
 				68D432A21DFAFC0C0080389E /* Simple */,
 			);
 			path = Movement;
@@ -367,6 +411,8 @@
 		68D432A21DFAFC0C0080389E /* Simple */ = {
 			isa = PBXGroup;
 			children = (
+				CC9AACB81E67756C00C294FD /* FlyForwardTests.swift */,
+				CC9AACBC1E67760300C294FD /* HoverTests.swift */,
 				68D4329C1DFAFBFB0080389E /* LandTests.swift */,
 			);
 			path = Simple;
@@ -528,6 +574,42 @@
 				CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */,
 			);
 			path = Scenarios;
+			sourceTree = "<group>";
+		};
+		CC9AACC01E67788400C294FD /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AACC41E67789100C294FD /* CoverAreaTests.swift */,
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
+		CC9AACC11E67788400C294FD /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AACC81E677A2400C294FD /* CircleTests.swift */,
+				CC9AACCC1E677E7700C294FD /* CircleRepeatedlyTests.swift */,
+				CC9AACD01E677F6200C294FD /* FlyToTests.swift */,
+				CC9AACD41E67802E00C294FD /* ReturnHome.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		CC9AACC21E67788400C294FD /* Orientation */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AACD81E67808100C294FD /* SpinAroundTests.swift */,
+			);
+			path = Orientation;
+			sourceTree = "<group>";
+		};
+		CC9AACC31E67788400C294FD /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AACDC1E67811200C294FD /* FlyPathTests.swift */,
+				CC9AACE01E679CBD00C294FD /* PaceTests.swift */,
+			);
+			path = Sequence;
 			sourceTree = "<group>";
 		};
 		CCBB79471D7897C1003B6458 /* iOS */ = {
@@ -1091,14 +1173,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9AACD11E677F6300C294FD /* FlyToTests.swift in Sources */,
 				CC524AF01E66595A00773BFB /* ApiKeys.swift in Sources */,
+				CC9AACCD1E677E7700C294FD /* CircleRepeatedlyTests.swift in Sources */,
+				CC9AACC91E677A2400C294FD /* CircleTests.swift in Sources */,
+				CC9AACC51E67789100C294FD /* CoverAreaTests.swift in Sources */,
+				CC9AACB91E67756C00C294FD /* FlyForwardTests.swift in Sources */,
+				CC9AACD91E67808100C294FD /* SpinAroundTests.swift in Sources */,
 				CC524AEE1E66561100773BFB /* WatsonVisualRecognitionTokenTests.swift in Sources */,
+				CC9AACE11E679CBD00C294FD /* PaceTests.swift in Sources */,
 				6896BFFC1E43919F00256601 /* DCKCoordinate2DTests.swift in Sources */,
 				CCFAFB741E64CCEB000DBEF4 /* DetectObjectTests.swift in Sources */,
 				688D74DA1E5F771C000D9FD4 /* DCKOrientedCoordinate3DTests.swift in Sources */,
+				CC9AACD51E67802E00C294FD /* ReturnHome.swift in Sources */,
+				CC9AACBD1E67760300C294FD /* HoverTests.swift in Sources */,
 				68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */,
 				CC524AF71E67310C00773BFB /* DCKCardinalDirectionTests.swift in Sources */,
 				CC93188B1D4796DB001B71B1 /* DroneCardKitTests.swift in Sources */,
+				CC9AACDD1E67811200C294FD /* FlyPathTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1142,11 +1234,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				68D4329E1DFAFBFB0080389E /* LandTests.swift in Sources */,
+				CC9AACE21E679CBD00C294FD /* PaceTests.swift in Sources */,
 				CCFAFB751E64CCEB000DBEF4 /* DetectObjectTests.swift in Sources */,
+				CC9AACD61E67802E00C294FD /* ReturnHome.swift in Sources */,
 				6896BFFD1E4391A100256601 /* DCKCoordinate2DTests.swift in Sources */,
+				CC9AACCA1E677A2400C294FD /* CircleTests.swift in Sources */,
+				CC9AACD21E677F6300C294FD /* FlyToTests.swift in Sources */,
+				CC9AACBA1E67756C00C294FD /* FlyForwardTests.swift in Sources */,
 				CC9318CF1D47971E001B71B1 /* DroneCardKitTests.swift in Sources */,
+				CC9AACDE1E67811200C294FD /* FlyPathTests.swift in Sources */,
 				CCBE8C6F1DA69F5900BD7638 /* InputTypes.swift in Sources */,
+				CC9AACC61E67789100C294FD /* CoverAreaTests.swift in Sources */,
+				CC9AACDA1E67808100C294FD /* SpinAroundTests.swift in Sources */,
+				CC9AACBE1E67760300C294FD /* HoverTests.swift in Sources */,
 				CC524AF81E67310D00773BFB /* DCKCardinalDirectionTests.swift in Sources */,
+				CC9AACCE1E677E7700C294FD /* CircleRepeatedlyTests.swift in Sources */,
 				688D74DB1E5F771D000D9FD4 /* DCKOrientedCoordinate3DTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1191,11 +1293,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				68D4329F1DFAFBFB0080389E /* LandTests.swift in Sources */,
+				CC9AACE31E679CBD00C294FD /* PaceTests.swift in Sources */,
 				CCFAFB761E64CCEB000DBEF4 /* DetectObjectTests.swift in Sources */,
+				CC9AACD71E67802E00C294FD /* ReturnHome.swift in Sources */,
 				6896BFFE1E4391A100256601 /* DCKCoordinate2DTests.swift in Sources */,
+				CC9AACCB1E677A2400C294FD /* CircleTests.swift in Sources */,
+				CC9AACD31E677F6300C294FD /* FlyToTests.swift in Sources */,
+				CC9AACBB1E67756C00C294FD /* FlyForwardTests.swift in Sources */,
 				CC9318D01D47971F001B71B1 /* DroneCardKitTests.swift in Sources */,
+				CC9AACDF1E67811200C294FD /* FlyPathTests.swift in Sources */,
 				CCBE8C711DA69F5900BD7638 /* InputTypes.swift in Sources */,
+				CC9AACC71E67789100C294FD /* CoverAreaTests.swift in Sources */,
+				CC9AACDB1E67808100C294FD /* SpinAroundTests.swift in Sources */,
+				CC9AACBF1E67760300C294FD /* HoverTests.swift in Sources */,
 				CC524AF91E67310E00773BFB /* DCKCardinalDirectionTests.swift in Sources */,
+				CC9AACCF1E677E7700C294FD /* CircleRepeatedlyTests.swift in Sources */,
 				688D74DC1E5F771E000D9FD4 /* DCKOrientedCoordinate3DTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
