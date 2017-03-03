@@ -49,14 +49,6 @@
 		CC0F32C21E2FFBE8008423AC /* DummyCameraToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */; };
 		CC0F32C31E2FFBE8008423AC /* DummyCameraToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */; };
 		CC0F32C41E2FFBE8008423AC /* DummyCameraToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */; };
-		CC356B4F1E68CFCF00E2DF14 /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC356B4D1E68CFCF00E2DF14 /* dolomites.jpg */; };
-		CC356B501E68CFCF00E2DF14 /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC356B4D1E68CFCF00E2DF14 /* dolomites.jpg */; };
-		CC356B511E68CFCF00E2DF14 /* dolomites.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC356B4D1E68CFCF00E2DF14 /* dolomites.jpg */; };
-		CC356B521E68CFCF00E2DF14 /* lab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC356B4E1E68CFCF00E2DF14 /* lab.jpg */; };
-		CC356B531E68CFCF00E2DF14 /* lab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC356B4E1E68CFCF00E2DF14 /* lab.jpg */; };
-		CC356B541E68CFCF00E2DF14 /* lab.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC356B4E1E68CFCF00E2DF14 /* lab.jpg */; };
-		CC524AE81E661CF000773BFB /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE41E66159400773BFB /* RestKit.framework */; };
-		CC524AE91E661CFE00773BFB /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */; };
 		CC524AF71E67310C00773BFB /* DCKCardinalDirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AF51E67310600773BFB /* DCKCardinalDirectionTests.swift */; };
 		CC524AF81E67310D00773BFB /* DCKCardinalDirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AF51E67310600773BFB /* DCKCardinalDirectionTests.swift */; };
 		CC524AF91E67310E00773BFB /* DCKCardinalDirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC524AF51E67310600773BFB /* DCKCardinalDirectionTests.swift */; };
@@ -179,8 +171,6 @@
 		68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyForward.swift; sourceTree = "<group>"; };
 		CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDroneToken.swift; sourceTree = "<group>"; };
 		CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCameraToken.swift; sourceTree = "<group>"; };
-		CC356B4D1E68CFCF00E2DF14 /* dolomites.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dolomites.jpg; sourceTree = "<group>"; };
-		CC356B4E1E68CFCF00E2DF14 /* lab.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lab.jpg; sourceTree = "<group>"; };
 		CC524AE41E66159400773BFB /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
 		CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		CC524AF51E67310600773BFB /* DCKCardinalDirectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCardinalDirectionTests.swift; sourceTree = "<group>"; };
@@ -247,8 +237,6 @@
 				6809DF371DF4B7B80077C6EE /* CardKit.framework in Frameworks */,
 				6809DF381DF4B7B80077C6EE /* CardKitRuntime.framework in Frameworks */,
 				6809DF391DF4B7B80077C6EE /* Freddy.framework in Frameworks */,
-				CC524AE81E661CF000773BFB /* RestKit.framework in Frameworks */,
-				CC524AE91E661CFE00773BFB /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +376,6 @@
 				CC0F32C11E2FFBE8008423AC /* DummyCameraToken.swift */,
 				CC0F32BD1E2FFBC2008423AC /* DummyDroneToken.swift */,
 				CCFAFB771E64CD52000DBEF4 /* DummyTelemetryToken.swift */,
-				CC356B4C1E68CFBF00E2DF14 /* images */,
 			);
 			path = "Dummy Tokens";
 			sourceTree = "<group>";
@@ -401,15 +388,6 @@
 				688D74D61E5F7711000D9FD4 /* DCKOrientedCoordinate3DTests.swift */,
 			);
 			path = Input;
-			sourceTree = "<group>";
-		};
-		CC356B4C1E68CFBF00E2DF14 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				CC356B4D1E68CFCF00E2DF14 /* dolomites.jpg */,
-				CC356B4E1E68CFCF00E2DF14 /* lab.jpg */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 		CC64EC6F1E3FCEA600F7010D /* Tech */ = {
@@ -806,8 +784,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC356B4F1E68CFCF00E2DF14 /* dolomites.jpg in Resources */,
-				CC356B521E68CFCF00E2DF14 /* lab.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,8 +798,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC356B501E68CFCF00E2DF14 /* dolomites.jpg in Resources */,
-				CC356B531E68CFCF00E2DF14 /* lab.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,8 +812,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC356B511E68CFCF00E2DF14 /* dolomites.jpg in Resources */,
-				CC356B541E68CFCF00E2DF14 /* lab.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,8 +873,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CardKitRuntime.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RestKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/VisualRecognitionV3.framework",
 			);
 			outputPaths = (
 			);
