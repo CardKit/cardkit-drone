@@ -26,7 +26,6 @@ public struct DroneCardKit {
         DroneCardKit.Action.Movement.Simple.Hover,
         DroneCardKit.Action.Movement.Simple.Land,
         DroneCardKit.Action.Tech.Camera.RecordVideo,
-        DroneCardKit.Action.Tech.Camera.TakeHDRPhoto,
         DroneCardKit.Action.Tech.Camera.TakePhoto,
         DroneCardKit.Action.Tech.Camera.TakePhotoBurst,
         DroneCardKit.Action.Tech.Camera.TakePhotos,
