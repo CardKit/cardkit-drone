@@ -52,14 +52,14 @@ class DetectObjectTests: XCTestCase {
         }
         
         // wait for execution to finish in 5 seconds
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: DroneCardKitTests.expectationTimeout) { error in
             if let error = error {
                 XCTFail("testDetectObject error: \(error)")
             }
             
             // assert!
             XCTAssertTrue(detectObject.errors.count == 0)
-            detectObject.errors.forEach { XCTFail("\($0.localizedDescription)") }
+            detectObject.errors.forEach { XCTFail("\($0)") }
             XCTAssertTrue(detectObject.yieldData.count > 0)
             
             guard let first = detectObject.yieldData.first else {

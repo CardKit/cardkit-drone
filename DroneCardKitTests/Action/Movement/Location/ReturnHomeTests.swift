@@ -1,9 +1,9 @@
 //
-//  LandTests.swift
+//  ReturnHomeTests.swift
 //  DroneCardKit
 //
-//  Created by ismails on 12/9/16.
-//  Copyright © 2016 IBM. All rights reserved.
+//  Created by Justin Weisz on 3/1/17.
+//  Copyright © 2017 IBM. All rights reserved.
 //
 
 import XCTest
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class LandTests: XCTestCase {
+class ReturnHomeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,22 @@ class LandTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLand() {
+    func testReturnHome() {
         // executable card
-        let land = Land(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
+        let returnHome = ReturnHome(with: DroneCardKit.Action.Movement.Location.ReturnHome.makeCard())
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = [:]
+        let inputBindings: [String : JSONEncodable] = ["Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1)]
         let tokenBindings = ["Drone": droneToken]
         
-        land.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        returnHome.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         let myExpectation = expectation(description: "test completion")
         
         DispatchQueue.global(qos: .default).async {
-            land.main()
+            returnHome.main()
             myExpectation.fulfill()
         }
         
@@ -52,9 +52,11 @@ class LandTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(land.errors.count == 0)
-            land.errors.forEach { XCTFail("\($0)") }
+            XCTAssertTrue(returnHome.errors.count == 0)
+            returnHome.errors.forEach { XCTFail("\($0)") }
             
+            XCTAssertTrue(droneToken.calledFunctions.contains("returnHome"), "returnHome should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("flyTo"), "flyTo should have been called")
             XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
         }
     }

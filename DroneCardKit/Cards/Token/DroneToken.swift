@@ -50,7 +50,7 @@ public protocol DroneToken: TelemetryToken {
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws
     
     // MARK: Circle
-    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, atClockwise isClockwise: DCKMovementDirection?, toCircleRepeatedly toRepeat: Bool) throws
+    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws
     
     // MARK: Return home
     var homeLocation: DCKCoordinate2D? { get }
@@ -58,6 +58,7 @@ public protocol DroneToken: TelemetryToken {
     
     // MARK: Spin Around
     func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?) throws
+    
     // MARK: Landing gear
     var isLandingGearDown: Bool? { get }
     func landingGear(down: Bool) throws

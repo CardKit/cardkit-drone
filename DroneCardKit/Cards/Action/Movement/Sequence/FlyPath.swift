@@ -21,7 +21,7 @@ public class FlyPath: ExecutableActionCard {
         
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
-        let duration: Double? = self.optionalValue(forInput: "Duration")
+        let pauseDuration: Double? = self.optionalValue(forInput: "PauseDuration")
         
         do {
             // take of to the provided altitude
@@ -38,7 +38,7 @@ public class FlyPath: ExecutableActionCard {
                 }
                 
                 if !isCancelled && index < path.path.count-1 {
-                    Thread.sleep(forTimeInterval: duration ?? 1.0)
+                    Thread.sleep(forTimeInterval: pauseDuration ?? 1.0)
                 } else if isCancelled {
                     break
                 }
