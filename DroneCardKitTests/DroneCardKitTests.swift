@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import DroneCardKit
 
 @testable import DroneCardKit
 
@@ -27,10 +26,4 @@ class DroneCardKitTests: XCTestCase {
         
     }
     
-    func testAllCardsGrouped() {
-        let cards = DroneCardKit.allCardsGrouped()
-        print("cards grouped: \(cards) \n\n\n")
-        print("Movement Simple Cards : \(cards["Action/Movement/Simple"])")
-        XCTAssertNotNil(cards)
-    }
 }

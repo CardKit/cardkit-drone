@@ -18,30 +18,12 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     var photoCount = 0
     
-    fileprivate func makeFakePhoto() -> DCKPhoto {
+    fileprivate func makePhoto() -> DCKPhoto {
         let photoCounter = "".appendingFormat("%03d", self.photoCount)
         let fileName = "DUMMY_\(photoCounter).JPG"
         
         let photo = DCKPhoto(fileName: fileName, sizeInBytes: 100, timeCreated: Date(), data: Data(), location: nil)
         return photo
-    }
-    
-    fileprivate func makePhoto() -> DCKPhoto {
-        let myBundle = Bundle(for: type(of: self))
-        guard let imagePath = myBundle.path(forResource: "lab", ofType: "jpg") else {
-            return self.makeFakePhoto()
-        }
-        
-        var photo: DCKPhoto? = nil
-        
-        do {
-            let imageData = try Data(contentsOf: URL(fileURLWithPath: imagePath))
-            photo = DCKPhoto(fileName: "lab.jpg", sizeInBytes: UInt(imageData.count), timeCreated: Date(), data: imageData, location: nil)
-        } catch {
-            return self.makeFakePhoto()
-        }
-        
-        return photo ?? self.makeFakePhoto()
     }
     
     fileprivate func makeVideo() -> DCKVideo {
