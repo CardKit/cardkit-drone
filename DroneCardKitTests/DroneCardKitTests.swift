@@ -12,6 +12,9 @@ import XCTest
 
 class DroneCardKitTests: XCTestCase {
     
+    public static let expectationTimeout: TimeInterval = 20
+    public static let nonEndingCardProcessTime: TimeInterval = 10
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,10 +26,4 @@ class DroneCardKitTests: XCTestCase {
         
     }
     
-    func testAllCardsGrouped() {
-        let cards = DroneCardKit.allCardsGrouped()
-        print("cards grouped: \(cards) \n\n\n")
-        print("Movement Simple Cards : \(cards["Action/Movement/Simple"])")
-        XCTAssertNotNil(cards)
-    }
 }
