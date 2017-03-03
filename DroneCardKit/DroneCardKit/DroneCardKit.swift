@@ -13,6 +13,53 @@ import CardKit
 /// DroneCardKit card descriptors
 public struct DroneCardKit {
     fileprivate init() {}
+    
+    /// All card descriptors included in DroneCardKit
+    public static let descriptors: [ActionCardDescriptor] = [
+        DroneCardKit.Action.Movement.Location.Circle,
+        DroneCardKit.Action.Movement.Location.CircleRepeatedly,
+        DroneCardKit.Action.Movement.Location.FlyTo,
+        DroneCardKit.Action.Movement.Location.ReturnHome,
+        DroneCardKit.Action.Movement.Sequence.FlyPath,
+        DroneCardKit.Action.Movement.Sequence.Pace,
+        DroneCardKit.Action.Movement.Simple.FlyForward,
+        DroneCardKit.Action.Movement.Simple.Hover,
+        DroneCardKit.Action.Movement.Simple.Land,
+        DroneCardKit.Action.Tech.Camera.RecordVideo,
+        DroneCardKit.Action.Tech.Camera.TakePhoto,
+        DroneCardKit.Action.Tech.Camera.TakePhotoBurst,
+        DroneCardKit.Action.Tech.Camera.TakePhotos,
+        DroneCardKit.Action.Tech.Gimbal.PanBetweenLocations,
+        DroneCardKit.Action.Tech.Gimbal.PointAtFront,
+        DroneCardKit.Action.Tech.Gimbal.PointAtGround,
+        DroneCardKit.Action.Tech.Gimbal.PointAtLocation,
+        DroneCardKit.Action.Tech.Gimbal.PointAtMovement,
+        DroneCardKit.Action.Tech.Gimbal.PointInDirection]
+    
+    // these descriptors are not (yet) included above because they haven't been implemented yet
+    private static let unimplementedDescriptors: [ActionCardDescriptor] = [
+        DroneCardKit.Action.Movement.Area.CoverArea,
+        DroneCardKit.Action.Movement.Area.Survey,
+        DroneCardKit.Action.Movement.Orientation.SpinAround,
+        DroneCardKit.Action.Movement.Orientation.SpinAroundRepeatedly,
+        DroneCardKit.Action.Movement.Path.Trace,
+        DroneCardKit.Action.Movement.Path.TraceRepeatedly,
+        DroneCardKit.Action.Movement.Relative.Follow]
+    
+    /// All card descriptors included in DroneCardKit, grouped by path
+    /// (e.g. `Action/Movement/Location`, `Action/Movement/Sequence`, etc.)
+    public static var descriptorsByPath: [String : [ActionCardDescriptor]] {
+        var groups: [String : [ActionCardDescriptor]] = [:]
+        
+        for descriptor in DroneCardKit.descriptors {
+            if groups[descriptor.path.description] == nil {
+                groups[descriptor.path.description] = []
+            }
+            groups[descriptor.path.description]?.append(descriptor)
+        }
+        
+        return groups
+    }
 }
 
 // MARK: - Action Cards
