@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class Pace: ExecutableActionCard {
+public class Pace: ExecutableAction {
     
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,

@@ -11,7 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public class DummyTelemetryToken: ExecutableTokenCard, TelemetryToken {
+public class DummyTelemetryToken: ExecutableToken, TelemetryToken {
     public var currentLocation: DCKCoordinate2D? {
         // make up a random location
         let randomLat = Double(Int(arc4random_uniform(UInt32(360))) - 180)

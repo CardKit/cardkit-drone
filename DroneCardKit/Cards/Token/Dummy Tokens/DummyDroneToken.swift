@@ -11,7 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public class DummyDroneToken: ExecutableTokenCard, DroneToken {
+public class DummyDroneToken: ExecutableToken, DroneToken {
     let prefix = ">> "
     let delay: TimeInterval = 3.0
     

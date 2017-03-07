@@ -11,7 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public class DummyCameraToken: ExecutableTokenCard, CameraToken {
+public class DummyCameraToken: ExecutableToken, CameraToken {
     let prefix = ">> "
     let delay: TimeInterval = 3.0
     

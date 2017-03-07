@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class CoverArea: ExecutableActionCard {
+public class CoverArea: ExecutableAction {
     override public func main() {
         // mandatory inputs
         guard let _: DCKCoordinate2DPath = self.value(forInput: "Area") else {

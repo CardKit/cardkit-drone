@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class CircleRepeatedly: ExecutableActionCard {
+public class CircleRepeatedly: ExecutableAction {
     
     override public func main() {
         
