@@ -21,7 +21,7 @@ public class Pace: ExecutableAction {
         
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
-        let duration: Double? = self.optionalValue(forInput: "Duration")
+        let pauseDuration: Double? = self.optionalValue(forInput: "PauseDuration")
         
         do {
             // take of to the provided altitude
@@ -30,7 +30,7 @@ public class Pace: ExecutableAction {
             }
             
             // fly path
-            while(!isCancelled) {
+            while !isCancelled {
                 for (index, location) in path.path.enumerated() {
                     if !isCancelled {
                         try drone.fly(to: location, atSpeed: speed)
@@ -39,7 +39,7 @@ public class Pace: ExecutableAction {
                     }
                     
                     if !isCancelled {
-                        Thread.sleep(forTimeInterval: duration ?? 1.0)
+                        Thread.sleep(forTimeInterval: pauseDuration ?? 1.0)
                     } else {
                         break
                     }

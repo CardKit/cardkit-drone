@@ -1,9 +1,9 @@
 //
-//  LandTests.swift
+//  HoverTests.swift
 //  DroneCardKit
 //
-//  Created by ismails on 12/9/16.
-//  Copyright © 2016 IBM. All rights reserved.
+//  Created by Justin Weisz on 3/1/17.
+//  Copyright © 2017 IBM. All rights reserved.
 //
 
 import XCTest
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class LandTests: XCTestCase {
+class HoverTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,29 @@ class LandTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLand() {
+    func testHover() {
         // executable card
-        let land = Land(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
+        let hover = Hover(with: DroneCardKit.Action.Movement.Simple.Hover.makeCard())
         
         // bind inputs and tokens
         let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = [:]
+        let inputBindings: [String : JSONEncodable] = ["Altitude": DCKDistance(meters: 10.0)]
         let tokenBindings = ["Drone": droneToken]
         
-        land.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        hover.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
-        let myExpectation = expectation(description: "test completion")
-        
         DispatchQueue.global(qos: .default).async {
-            land.main()
+            hover.main()
+        }
+        
+        // give the card some time to process
+        Thread.sleep(forTimeInterval: DroneCardKitTests.nonEndingCardProcessTime)
+        
+        // stop the card
+        let myExpectation = expectation(description: "cancel() should finish within \(DroneCardKitTests.nonEndingCardProcessTime) seconds")
+        DispatchQueue.global(qos: .default).async {
+            hover.cancel()
             myExpectation.fulfill()
         }
         
@@ -52,10 +59,10 @@ class LandTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(land.errors.count == 0)
-            land.errors.forEach { XCTFail("\($0)") }
+            XCTAssertTrue(hover.errors.count == 0)
+            hover.errors.forEach { XCTFail("\($0)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
+            XCTAssertTrue(droneToken.calledFunctions.contains("hover"), "hover should have been called")
         }
     }
 }

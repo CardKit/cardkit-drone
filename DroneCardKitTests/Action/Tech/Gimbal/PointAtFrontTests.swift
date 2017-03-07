@@ -1,9 +1,9 @@
 //
-//  LandTests.swift
+//  PointAtFrontTests.swift
 //  DroneCardKit
 //
-//  Created by ismails on 12/9/16.
-//  Copyright © 2016 IBM. All rights reserved.
+//  Created by Justin Weisz on 3/2/17.
+//  Copyright © 2017 IBM. All rights reserved.
 //
 
 import XCTest
@@ -14,7 +14,7 @@ import Freddy
 @testable import CardKitRuntime
 @testable import DroneCardKit
 
-class LandTests: XCTestCase {
+class PointAtFrontTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,22 +26,22 @@ class LandTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLand() {
+    func testPointAtFront() {
         // executable card
-        let land = Land(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
+        let pointAtFront = PointAtFront(with: DroneCardKit.Action.Tech.Gimbal.PointAtFront.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
+        let gimbalToken = DummyGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
         let inputBindings: [String : JSONEncodable] = [:]
-        let tokenBindings = ["Drone": droneToken]
+        let tokenBindings = ["Gimbal": gimbalToken]
         
-        land.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
+        pointAtFront.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
         
         // execute
         let myExpectation = expectation(description: "test completion")
         
         DispatchQueue.global(qos: .default).async {
-            land.main()
+            pointAtFront.main()
             myExpectation.fulfill()
         }
         
@@ -52,10 +52,10 @@ class LandTests: XCTestCase {
             }
             
             // assert!
-            XCTAssertTrue(land.errors.count == 0)
-            land.errors.forEach { XCTFail("\($0)") }
+            XCTAssertTrue(pointAtFront.errors.count == 0)
+            pointAtFront.errors.forEach { XCTFail("\($0)") }
             
-            XCTAssertTrue(droneToken.calledFunctions.contains("land"), "land should have been called")
+            XCTAssertTrue(gimbalToken.calledFunctions.contains("orient"), "orient should have been called")
         }
     }
 }
