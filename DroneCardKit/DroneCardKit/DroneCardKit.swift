@@ -674,7 +674,7 @@ extension DroneCardKit.Input.Camera {
     public static let AspectRatio = InputCardDescriptor(
         name: "Aspect Ratio",
         subpath: "Camera",
-        inputType: PhotoAspectRatio.self,
+        inputType: DCKPhotoAspectRatio.self,
         inputDescription: "Photo aspect ratio (16x9 or 4x3)",
         assetCatalog: CardAssetCatalog(description: "Aspect ratio"))
     
@@ -683,7 +683,7 @@ extension DroneCardKit.Input.Camera {
     public static let BurstCount = InputCardDescriptor(
         name: "Burst Count",
         subpath: "Camera",
-        inputType: PhotoBurstCount.self,
+        inputType: DCKPhotoBurstCount.self,
         inputDescription: "Photo burst count",
         assetCatalog: CardAssetCatalog(description: "Burst count"))
     
@@ -692,7 +692,7 @@ extension DroneCardKit.Input.Camera {
     public static let Framerate = InputCardDescriptor(
         name: "Framerate",
         subpath: "Camera",
-        inputType: VideoFramerate.self,
+        inputType: DCKVideoFramerate.self,
         inputDescription: "Video framerate",
         assetCatalog: CardAssetCatalog(description: "Framerate"))
     
@@ -701,7 +701,7 @@ extension DroneCardKit.Input.Camera {
     public static let Quality = InputCardDescriptor(
         name: "Quality",
         subpath: "Camera",
-        inputType: PhotoQuality.self,
+        inputType: DCKPhotoQuality.self,
         inputDescription: "Photo quality",
         assetCatalog: CardAssetCatalog(description: "Quality"))
     
@@ -710,7 +710,7 @@ extension DroneCardKit.Input.Camera {
     public static let Resolution = InputCardDescriptor(
         name: "Resolution",
         subpath: "Camera",
-        inputType: VideoResolution.self,
+        inputType: DCKVideoResolution.self,
         inputDescription: "Video resolution",
         assetCatalog: CardAssetCatalog(description: "Resolution"))
 }

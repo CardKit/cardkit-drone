@@ -33,8 +33,8 @@ class TakePhotosTests: XCTestCase {
         // bind inputs and tokens
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let interval: Double = 1.0
-        let aspectRatio = PhotoAspectRatio.aspect_16x9
-        let quality = PhotoQuality.excellent
+        let aspectRatio = DCKPhotoAspectRatio.aspect_16x9
+        let quality = DCKPhotoQuality.excellent
         let inputBindings: [String : JSONEncodable] = ["Interval": interval, "AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
