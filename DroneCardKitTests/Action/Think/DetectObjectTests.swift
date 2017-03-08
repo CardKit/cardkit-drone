@@ -79,6 +79,7 @@ class DetectObjectTests: XCTestCase {
         }
     }
     
+    // swiftlint:disable:next function_body_length
     func testDetectObjectInDeck() {
         // token cards
         let cameraCard = DroneCardKit.Token.Camera.makeCard()

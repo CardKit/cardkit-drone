@@ -26,6 +26,7 @@ class CoverAreaTests: XCTestCase {
         super.tearDown()
     }
     
+    // swiftlint:disable:next function_body_length
     func testCoverArea() {
         // executable card
         let coverArea = CoverArea(with: DroneCardKit.Action.Movement.Area.CoverArea.makeCard())
