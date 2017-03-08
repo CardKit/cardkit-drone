@@ -501,7 +501,7 @@ extension DroneCardKit.Action.Tech.Camera {
         name: "Take Photos",
         subpath: "Tech/Camera",
         inputs: [
-            InputSlot(name: "Interval", descriptor: CardKit.Input.Numeric.Real, isOptional: false),
+            InputSlot(name: "Frequency", descriptor: CardKit.Input.Time.Periodicity, isOptional: false),
             InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],

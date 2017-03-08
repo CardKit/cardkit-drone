@@ -16,7 +16,7 @@ public class TakePhotos: ExecutableAction {
             return
         }
         
-        guard let interval: TimeInterval = self.value(forInput: "Interval") else {
+        guard let frequency: TimeInterval = self.value(forInput: "Frequency") else {
             return
         }
         
@@ -33,7 +33,7 @@ public class TakePhotos: ExecutableAction {
         
         do {
             if !isCancelled {
-                try camera.startTakingPhotos(at: interval, options: cameraOptions)
+                try camera.startTakingPhotos(at: frequency, options: cameraOptions)
             }
         } catch let error {
             self.error(error)
