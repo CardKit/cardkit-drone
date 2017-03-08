@@ -20,8 +20,8 @@ public class TakePhotos: ExecutableAction {
             return
         }
         
-        let aspect: PhotoAspectRatio? = self.optionalValue(forInput: "AspectRatio")
-        let quality: PhotoQuality? = self.optionalValue(forInput: "Quality")
+        let aspect: DCKPhotoAspectRatio? = self.optionalValue(forInput: "AspectRatio")
+        let quality: DCKPhotoQuality? = self.optionalValue(forInput: "Quality")
         
         var cameraOptions: Set<CameraPhotoOption> = []
         if let aspect = aspect {

@@ -16,8 +16,8 @@ public class RecordVideo: ExecutableAction {
             return
         }
         
-        let framerate: VideoFramerate? = self.optionalValue(forInput: "Framerate")
-        let resolution: VideoResolution? = self.optionalValue(forInput: "Resolution")
+        let framerate: DCKVideoFramerate? = self.optionalValue(forInput: "Framerate")
+        let resolution: DCKVideoResolution? = self.optionalValue(forInput: "Resolution")
         let slowmo: Bool? = self.optionalValue(forInput: "SlowMotionEnabled")
         
         var cameraOptions: Set<CameraVideoOption> = []

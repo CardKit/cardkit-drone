@@ -32,9 +32,9 @@ class TakePhotoBurstTests: XCTestCase {
         
         // bind inputs and tokens
         let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
-        let burstCount = PhotoBurstCount.burst_3
-        let aspectRatio = PhotoAspectRatio.aspect_16x9
-        let quality = PhotoQuality.excellent
+        let burstCount = DCKPhotoBurstCount.burst_3
+        let aspectRatio = DCKPhotoAspectRatio.aspect_16x9
+        let quality = DCKPhotoQuality.excellent
         let inputBindings: [String : JSONEncodable] = ["BurstCount": burstCount, "AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
