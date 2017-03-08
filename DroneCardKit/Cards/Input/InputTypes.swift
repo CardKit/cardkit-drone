@@ -1059,6 +1059,26 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
     }
 }
 
+// MARK: DCKPhotoAspectRatio
+
+public enum DCKPhotoAspectRatio: String {
+    case aspect_4x3
+    case aspect_16x9
+    case aspect_3x2
+}
+
+extension DCKPhotoAspectRatio: JSONEncodable, JSONDecodable {}
+
+// MARK: DCKPhotoQuality
+
+public enum DCKPhotoQuality: String {
+    case normal
+    case fine
+    case excellent
+}
+
+extension DCKPhotoQuality: JSONEncodable, JSONDecodable {}
+
 // MARK: DCKPhotoBurst
 
 public struct DCKPhotoBurst {
@@ -1088,6 +1108,18 @@ extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
             ])
     }
 }
+
+// MARK: DCKPhotoBurstCount
+
+public enum DCKPhotoBurstCount: Int {
+    case burst_3 = 3
+    case burst_5 = 5
+    case burst_7 = 7
+    case burst_10 = 10
+    case burst_14 = 14
+}
+
+extension DCKPhotoBurstCount: JSONEncodable, JSONDecodable {}
 
 // MARK: DCKVideo
 
@@ -1170,3 +1202,43 @@ extension DCKVideo: JSONEncodable, JSONDecodable {
             ])
     }
 }
+
+// MARK: DCKVideoResolution
+
+public enum DCKVideoResolution: String {
+    case resolution_640x480
+    case resolution_640x512
+    case resolution_720p
+    case resolution_1080p
+    case resolution_2704x1520
+    case resolution_2720x1530
+    case resolution_3840x1572
+    case resolution_4k
+    case resolution_4096x2160
+    case resolution_5280x2160
+    case max
+    case noSSDVideo
+    case unknown
+}
+
+extension DCKVideoResolution: JSONEncodable, JSONDecodable {}
+
+// MARK: DCKVideoFramerate
+
+public enum DCKVideoFramerate: String {
+    case framerate_23dot976fps
+    case framerate_24fps
+    case framerate_25fps
+    case framerate_29dot970fps
+    case framerate_30fps
+    case framerate_47dot950fps
+    case framerate_48fps
+    case framerate_50fps
+    case framerate_59dot940fps
+    case framerate_60fps
+    case framerate_96fps
+    case framerate_120fps
+    case unknown
+}
+
+extension DCKVideoFramerate: JSONEncodable, JSONDecodable {}

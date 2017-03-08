@@ -24,7 +24,7 @@ public protocol CameraToken {
     
     /// Take a burst of photos, with the given photo options specified. Returns the images
     /// produced in the photo burst.
-    func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws -> DCKPhotoBurst
+    func takePhotoBurst(count: DCKPhotoBurstCount, options: Set<CameraPhotoOption>) throws -> DCKPhotoBurst
     
     /// Start taking photos with a given time interval.
     func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws
@@ -46,24 +46,12 @@ public protocol CameraToken {
     func stopVideo() throws -> DCKVideo
 }
 
-// MARK: - PhotoBurstCount
-
-public enum PhotoBurstCount: Int {
-    case burst_3 = 3
-    case burst_5 = 5
-    case burst_7 = 7
-    case burst_10 = 10
-    case burst_14 = 14
-}
-
-extension PhotoBurstCount: JSONEncodable, JSONDecodable {}
-
 // MARK: - CameraPhotoOption
 
 public enum CameraPhotoOption {
     case none
-    case aspectRatio(PhotoAspectRatio)
-    case quality(PhotoQuality)
+    case aspectRatio(DCKPhotoAspectRatio)
+    case quality(DCKPhotoQuality)
 }
 
 extension CameraPhotoOption: Equatable {
@@ -112,7 +100,7 @@ extension CameraPhotoOption: JSONEncodable, JSONDecodable {
         case "aspectRatio":
             do {
                 let value = try json.getString(at: "value")
-                if let ratio = PhotoAspectRatio(rawValue: value) {
+                if let ratio = DCKPhotoAspectRatio(rawValue: value) {
                     self = .aspectRatio(ratio)
                 } else {
                     self = .none
@@ -123,7 +111,7 @@ extension CameraPhotoOption: JSONEncodable, JSONDecodable {
         case "quality":
             do {
                 let value = try json.getString(at: "value")
-                if let quality = PhotoQuality(rawValue: value) {
+                if let quality = DCKPhotoQuality(rawValue: value) {
                     self = .quality(quality)
                 } else {
                     self = .none
@@ -156,33 +144,13 @@ extension CameraPhotoOption: JSONEncodable, JSONDecodable {
     }
 }
 
-// MARK: PhotoAspectRatio
-
-public enum PhotoAspectRatio: String {
-    case aspect_4x3
-    case aspect_16x9
-    case aspect_3x2
-}
-
-extension PhotoAspectRatio: JSONEncodable, JSONDecodable {}
-
-// MARK: PhotoQuality
-
-public enum PhotoQuality: String {
-    case normal
-    case fine
-    case excellent
-}
-
-extension PhotoQuality: JSONEncodable, JSONDecodable {}
-
 // MARK: - CameraVideoOption
 
 public enum CameraVideoOption {
     case none
     case slowMotionEnabled
-    case framerate(VideoFramerate)
-    case resolution(VideoResolution)
+    case framerate(DCKVideoFramerate)
+    case resolution(DCKVideoResolution)
 }
 
 extension CameraVideoOption: Equatable {
@@ -241,7 +209,7 @@ extension CameraVideoOption: JSONEncodable, JSONDecodable {
         case "framerate":
             do {
                 let value = try json.getString(at: "value")
-                if let fps = VideoFramerate(rawValue: value) {
+                if let fps = DCKVideoFramerate(rawValue: value) {
                     self = .framerate(fps)
                 } else {
                     self = .none
@@ -252,7 +220,7 @@ extension CameraVideoOption: JSONEncodable, JSONDecodable {
         case "resolution":
             do {
                 let value = try json.getString(at: "value")
-                if let resolution = VideoResolution(rawValue: value) {
+                if let resolution = DCKVideoResolution(rawValue: value) {
                     self = .resolution(resolution)
                 } else {
                     self = .none
@@ -288,43 +256,6 @@ extension CameraVideoOption: JSONEncodable, JSONDecodable {
         }
     }
 }
-
-public enum VideoResolution: String {
-    case resolution_640x480
-    case resolution_640x512
-    case resolution_720p
-    case resolution_1080p
-    case resolution_2704x1520
-    case resolution_2720x1530
-    case resolution_3840x1572
-    case resolution_4k
-    case resolution_4096x2160
-    case resolution_5280x2160
-    case max
-    case noSSDVideo
-    case unknown
-}
-
-extension VideoResolution: JSONEncodable, JSONDecodable {}
-
-public enum VideoFramerate: String {
-    case framerate_23dot976fps
-    case framerate_24fps
-    case framerate_25fps
-    case framerate_29dot970fps
-    case framerate_30fps
-    case framerate_47dot950fps
-    case framerate_48fps
-    case framerate_50fps
-    case framerate_59dot940fps
-    case framerate_60fps
-    case framerate_96fps
-    case framerate_120fps
-    case unknown
-}
-
-extension VideoFramerate: JSONEncodable, JSONDecodable {}
-
 
 // MARK: - CameraTokenError
 

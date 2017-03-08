@@ -52,7 +52,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
         return self.makePhoto()
     }
     
-    public func takePhotoBurst(count: PhotoBurstCount, options: Set<CameraPhotoOption>) throws -> DCKPhotoBurst {
+    public func takePhotoBurst(count: DCKPhotoBurstCount, options: Set<CameraPhotoOption>) throws -> DCKPhotoBurst {
         self.registerFunctionCall(named: "takePhotoBurst")
         print("\(prefix) DummyCameraToken > takePhotoBurst(count: \(count), options: \(options))")
         
