@@ -31,7 +31,7 @@ class TakePhotosTests: XCTestCase {
         let takePhotos = TakePhotos(with: DroneCardKit.Action.Tech.Camera.TakePhotos.makeCard())
         
         // bind inputs and tokens
-        let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
+        let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let interval: Double = 1.0
         let aspectRatio = DCKPhotoAspectRatio.aspect_16x9
         let quality = DCKPhotoQuality.excellent

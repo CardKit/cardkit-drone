@@ -1,5 +1,5 @@
 //
-//  DummyCameraToken.swift
+//  MockCameraToken.swift
 //  DroneCardKit
 //
 //  Created by Justin Weisz on 1/18/17.
@@ -11,7 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public class DummyCameraToken: BaseMockToken, CameraToken {
+public class MockCameraToken: BaseMockToken, CameraToken {
     var isTakingPhotos = false
     var isTakingTimelapse = false
     var isTakingVideo = false
@@ -36,7 +36,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func takePhoto(options: Set<CameraPhotoOption>) throws -> DCKPhoto {
         self.registerFunctionCall(named: "takePhoto")
-        print("\(prefix) DummyCameraToken > takePhoto(options: \(options))")
+        print("\(prefix) MockCameraToken > takePhoto(options: \(options))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -45,7 +45,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func takeHDRPhoto(options: Set<CameraPhotoOption>) throws -> DCKPhoto {
         self.registerFunctionCall(named: "takeHDRPhoto")
-        print("\(prefix) DummyCameraToken > takeHDRPhoto(options: \(options))")
+        print("\(prefix) MockCameraToken > takeHDRPhoto(options: \(options))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -54,7 +54,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func takePhotoBurst(count: DCKPhotoBurstCount, options: Set<CameraPhotoOption>) throws -> DCKPhotoBurst {
         self.registerFunctionCall(named: "takePhotoBurst")
-        print("\(prefix) DummyCameraToken > takePhotoBurst(count: \(count), options: \(options))")
+        print("\(prefix) MockCameraToken > takePhotoBurst(count: \(count), options: \(options))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -63,7 +63,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func startTakingPhotos(at interval: TimeInterval, options: Set<CameraPhotoOption>) throws {
         self.registerFunctionCall(named: "startTakingPhotos")
-        print("\(prefix) DummyCameraToken > startTakingPhotos(at: \(interval), options: \(options))")
+        print("\(prefix) MockCameraToken > startTakingPhotos(at: \(interval), options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             throw CameraTokenError.cameraAlreadyInUse
@@ -74,7 +74,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func stopTakingPhotos() throws -> DCKPhotoBurst {
         self.registerFunctionCall(named: "stopTakingPhotos")
-        print("\(prefix) DummyCameraToken > stopTakingPhotos()")
+        print("\(prefix) MockCameraToken > stopTakingPhotos()")
         
         self.isTakingPhotos = false
         
@@ -83,7 +83,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func startTimelapse(options: Set<CameraPhotoOption>) throws {
         self.registerFunctionCall(named: "startTimelapse")
-        print("\(prefix) DummyCameraToken > startTimelapse(options: \(options))")
+        print("\(prefix) MockCameraToken > startTimelapse(options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             throw CameraTokenError.cameraAlreadyInUse
@@ -94,7 +94,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func stopTimelapse() throws -> DCKVideo {
         self.registerFunctionCall(named: "stopTimelapse")
-        print("\(prefix) DummyCameraToken > stopTimelapse()")
+        print("\(prefix) MockCameraToken > stopTimelapse()")
         
         self.isTakingTimelapse = false
         
@@ -103,7 +103,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func startVideo(options: Set<CameraVideoOption>) throws {
         self.registerFunctionCall(named: "startVideo")
-        print("\(prefix) DummyCameraToken > startVideo(options: \(options))")
+        print("\(prefix) MockCameraToken > startVideo(options: \(options))")
         
         if self.isTakingPhotos || self.isTakingTimelapse || self.isTakingVideo {
             throw CameraTokenError.cameraAlreadyInUse
@@ -114,7 +114,7 @@ public class DummyCameraToken: BaseMockToken, CameraToken {
     
     public func stopVideo() throws -> DCKVideo {
         self.registerFunctionCall(named: "stopVideo")
-        print("\(prefix) DummyCameraToken > stopVideo()")
+        print("\(prefix) MockCameraToken > stopVideo()")
         
         self.isTakingVideo = false
         

@@ -31,8 +31,8 @@ class PanBetweenLocationsTests: XCTestCase {
         let panBetweenLocations = PanBetweenLocations(with: DroneCardKit.Action.Tech.Gimbal.PanBetweenLocations.makeCard())
         
         // bind inputs and tokens
-        let gimbalToken = DummyGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
-        let telemetryToken = DummyTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
+        let gimbalToken = MockGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
+        let telemetryToken = MockTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
         let startLocation = DCKCoordinate3D(latitude: 41.45782443982217, longitude: -73.29261755536784, altitude: 10)
         let endLocation = DCKCoordinate3D(latitude: 41.4538063973752, longitude: -73.28752206344512, altitude: 10)
         let duration = 2.0
