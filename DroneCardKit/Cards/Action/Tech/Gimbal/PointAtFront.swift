@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class PointAtFront: ExecutableActionCard {
+public class PointAtFront: ExecutableAction {
     override public func main() {
         guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
             return

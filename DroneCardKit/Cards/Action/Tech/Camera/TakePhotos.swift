@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class TakePhotos: ExecutableActionCard {
+public class TakePhotos: ExecutableAction {
     override public func main() {
         guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
             return

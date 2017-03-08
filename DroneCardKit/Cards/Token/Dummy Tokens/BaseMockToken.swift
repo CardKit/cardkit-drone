@@ -11,7 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public class BaseMockToken: ExecutableTokenCard {
+public class BaseMockToken: ExecutableToken {
     let prefix = ">> "
     let delay: TimeInterval = 1.0
     

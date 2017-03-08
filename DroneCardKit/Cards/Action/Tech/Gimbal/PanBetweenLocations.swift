@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class PanBetweenLocations: ExecutableActionCard {
+public class PanBetweenLocations: ExecutableAction {
     override public func main() {
         guard let telemetry: TelemetryToken = self.token(named: "Telemetry") as? TelemetryToken,
             let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,

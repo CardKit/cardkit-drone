@@ -10,7 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class FlyForward: ExecutableActionCard {
+public class FlyForward: ExecutableAction {
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
             return
