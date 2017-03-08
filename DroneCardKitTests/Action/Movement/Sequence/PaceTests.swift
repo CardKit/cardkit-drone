@@ -31,7 +31,7 @@ class PaceTests: XCTestCase {
         let pace = Pace(with: DroneCardKit.Action.Movement.Sequence.Pace.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
+        let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let path = DCKCoordinate2DPath(path: [
             DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784),
             DCKCoordinate2D(latitude: 41.45671972574724, longitude: -73.29207348324675)])

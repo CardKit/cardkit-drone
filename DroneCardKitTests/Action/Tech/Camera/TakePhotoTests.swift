@@ -31,7 +31,7 @@ class TakePhotoTests: XCTestCase {
         let takePhoto = TakePhoto(with: DroneCardKit.Action.Tech.Camera.TakePhoto.makeCard())
         
         // bind inputs and tokens
-        let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
+        let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let aspectRatio = PhotoAspectRatio.aspect_16x9
         let quality = PhotoQuality.excellent
         let inputBindings: [String : JSONEncodable] = ["AspectRatio": aspectRatio, "Quality": quality]
@@ -79,7 +79,7 @@ class TakePhotoTests: XCTestCase {
         let takePhoto = TakePhoto(with: DroneCardKit.Action.Tech.Camera.TakePhoto.makeCard())
         
         // bind inputs and tokens
-        let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
+        let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let hdr = true
         let aspectRatio = PhotoAspectRatio.aspect_16x9
         let quality = PhotoQuality.excellent

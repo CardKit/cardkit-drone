@@ -31,7 +31,7 @@ class FlyForwardTests: XCTestCase {
         let flyForward = FlyForward(with: DroneCardKit.Action.Movement.Simple.FlyForward.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
+        let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let distance = DCKDistance(meters: 10.0)
         let speed = DCKSpeed(metersPerSecond: 2)
         let inputBindings: [String : JSONEncodable] = ["Distance": distance, "Speed": speed]

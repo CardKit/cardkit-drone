@@ -31,7 +31,7 @@ class ReturnHomeTests: XCTestCase {
         let returnHome = ReturnHome(with: DroneCardKit.Action.Movement.Location.ReturnHome.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
+        let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let inputBindings: [String : JSONEncodable] = ["Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1)]
         let tokenBindings = ["Drone": droneToken]
         

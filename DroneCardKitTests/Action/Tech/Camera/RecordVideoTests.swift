@@ -31,7 +31,7 @@ class RecordVideoTests: XCTestCase {
         let recordVideo = RecordVideo(with: DroneCardKit.Action.Tech.Camera.RecordVideo.makeCard())
         
         // bind inputs and tokens
-        let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
+        let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let framerate = VideoFramerate.framerate_30fps
         let resolution = VideoResolution.resolution_1080p
         let inputBindings: [String : JSONEncodable] = ["Framerate": framerate, "Resolution": resolution, "SlowMotionEnabled": false]

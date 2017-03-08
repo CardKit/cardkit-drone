@@ -31,7 +31,7 @@ class PointAtFrontTests: XCTestCase {
         let pointAtFront = PointAtFront(with: DroneCardKit.Action.Tech.Gimbal.PointAtFront.makeCard())
         
         // bind inputs and tokens
-        let gimbalToken = DummyGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
+        let gimbalToken = MockGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
         let inputBindings: [String : JSONEncodable] = [:]
         let tokenBindings = ["Gimbal": gimbalToken]
         

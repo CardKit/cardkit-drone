@@ -31,7 +31,7 @@ class TakeTimelapseTests: XCTestCase {
         let takeTimelapse = TakeTimelapse(with: DroneCardKit.Action.Tech.Camera.TakeTimelapse.makeCard())
         
         // bind inputs and tokens
-        let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
+        let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let aspectRatio = PhotoAspectRatio.aspect_16x9
         let quality = PhotoQuality.excellent
         let inputBindings: [String : JSONEncodable] = ["AspectRatio": aspectRatio, "Quality": quality]

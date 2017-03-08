@@ -31,8 +31,8 @@ class PointAtLocationTests: XCTestCase {
         let pointAtLocation = PointAtLocation(with: DroneCardKit.Action.Tech.Gimbal.PointAtLocation.makeCard())
         
         // bind inputs and tokens
-        let gimbalToken = DummyGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
-        let telemetryToken = DummyTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
+        let gimbalToken = MockGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
+        let telemetryToken = MockTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
         let location = DCKCoordinate3D(latitude: 41.45782443982217, longitude: -73.29261755536784, altitude: 10)
         let inputBindings: [String : JSONEncodable] = ["Location": location]
         let tokenBindings = ["Gimbal": gimbalToken, "Telemetry": telemetryToken]

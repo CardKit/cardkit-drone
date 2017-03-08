@@ -31,7 +31,7 @@ class HoverTests: XCTestCase {
         let hover = Hover(with: DroneCardKit.Action.Movement.Simple.Hover.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
+        let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let inputBindings: [String : JSONEncodable] = ["Altitude": DCKDistance(meters: 10.0)]
         let tokenBindings = ["Drone": droneToken]
         

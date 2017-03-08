@@ -31,7 +31,7 @@ class TakePhotoBurstTests: XCTestCase {
         let takePhotoBurst = TakePhotoBurst(with: DroneCardKit.Action.Tech.Camera.TakePhotoBurst.makeCard())
         
         // bind inputs and tokens
-        let cameraToken = DummyCameraToken(with: DroneCardKit.Token.Camera.makeCard())
+        let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let burstCount = PhotoBurstCount.burst_3
         let aspectRatio = PhotoAspectRatio.aspect_16x9
         let quality = PhotoQuality.excellent

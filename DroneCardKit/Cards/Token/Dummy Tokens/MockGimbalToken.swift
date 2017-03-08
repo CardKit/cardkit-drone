@@ -1,5 +1,5 @@
 //
-//  DummyGimbalToken.swift
+//  MockGimbalToken.swift
 //  DroneCardKit
 //
 //  Created by Justin Weisz on 3/2/17.
@@ -11,7 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public class DummyGimbalToken: BaseMockToken, GimbalToken {
+public class MockGimbalToken: BaseMockToken, GimbalToken {
     public var currentAttitude: DCKAttitude? {
         return self.attitude
     }

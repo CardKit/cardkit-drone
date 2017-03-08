@@ -31,7 +31,7 @@ class LandTests: XCTestCase {
         let land = Land(with: DroneCardKit.Action.Movement.Simple.Land.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
+        let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let inputBindings: [String : JSONEncodable] = [:]
         let tokenBindings = ["Drone": droneToken]
         

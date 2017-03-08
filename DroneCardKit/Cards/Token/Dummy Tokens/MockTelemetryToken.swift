@@ -1,5 +1,5 @@
 //
-//  DummyTelemetryToken.swift
+//  MockTelemetryToken.swift
 //  DroneCardKit
 //
 //  Created by Justin Weisz on 2/17/17.
@@ -11,7 +11,7 @@ import Foundation
 import CardKit
 import CardKitRuntime
 
-public class DummyTelemetryToken: BaseMockToken, TelemetryToken {
+public class MockTelemetryToken: BaseMockToken, TelemetryToken {
     public var currentLocation: DCKCoordinate2D? {
         // make up a random location
         let randomLat = Double(Int(arc4random_uniform(UInt32(360))) - 180)

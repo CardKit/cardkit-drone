@@ -31,7 +31,7 @@ class CircleRepeatedlyTests: XCTestCase {
         let circleRepeatedly = CircleRepeatedly(with: DroneCardKit.Action.Movement.Location.CircleRepeatedly.makeCard())
         
         // bind inputs and tokens
-        let droneToken = DummyDroneToken(with: DroneCardKit.Token.Drone.makeCard())
+        let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let inputBindings: [String : JSONEncodable] = ["Center": DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784), "Radius": DCKDistance(meters: 10), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "AngularSpeed": DCKAngularVelocity(degreesPerSecond: 5), "Direction": DCKRotationDirection.clockwise]
         let tokenBindings = ["Drone": droneToken]
         
