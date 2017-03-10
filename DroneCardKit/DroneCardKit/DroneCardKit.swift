@@ -9,6 +9,7 @@
 import Foundation
 
 import CardKit
+import CardKitRuntime
 
 /// DroneCardKit card descriptors
 public struct DroneCardKit {
@@ -60,6 +61,29 @@ public struct DroneCardKit {
         
         return groups
     }
+    
+    public static var executableActionTypes: [ActionCardDescriptor : ExecutableAction.Type] = [
+        DroneCardKit.Action.Movement.Location.Circle: Circle.self,
+        DroneCardKit.Action.Movement.Location.CircleRepeatedly: CircleRepeatedly.self,
+        DroneCardKit.Action.Movement.Location.FlyTo: FlyTo.self,
+        DroneCardKit.Action.Movement.Location.ReturnHome: ReturnHome.self,
+        DroneCardKit.Action.Movement.Sequence.FlyPath: FlyPath.self,
+        DroneCardKit.Action.Movement.Sequence.Pace: Pace.self,
+        DroneCardKit.Action.Movement.Simple.FlyForward: FlyForward.self,
+        DroneCardKit.Action.Movement.Simple.Hover: Hover.self,
+        DroneCardKit.Action.Movement.Simple.Land: Land.self,
+        DroneCardKit.Action.Tech.Camera.RecordVideo: RecordVideo.self,
+        DroneCardKit.Action.Tech.Camera.TakePhoto: TakePhoto.self,
+        DroneCardKit.Action.Tech.Camera.TakePhotoBurst: TakePhotoBurst.self,
+        DroneCardKit.Action.Tech.Camera.TakePhotos: TakePhotos.self,
+        DroneCardKit.Action.Tech.Gimbal.PanBetweenLocations: PanBetweenLocations.self,
+        DroneCardKit.Action.Tech.Gimbal.PointAtFront: PointAtFront.self,
+        DroneCardKit.Action.Tech.Gimbal.PointAtGround: PointAtGround.self,
+        DroneCardKit.Action.Tech.Gimbal.PointAtLocation: PointAtLocation.self,
+        DroneCardKit.Action.Tech.Gimbal.PointInDirection: PointInDirection.self,
+        DroneCardKit.Action.Movement.Area.CoverArea: CoverArea.self,
+        DroneCardKit.Action.Movement.Orientation.SpinAround: SpinAround.self
+    ]
 }
 
 // MARK: - Action Cards
