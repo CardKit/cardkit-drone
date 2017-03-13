@@ -10,11 +10,31 @@ import Foundation
 
 import Freddy
 
-// MARK: FloatingPoint Extensions
+public protocol EnumerableEnum {
+    static var allValues: [Self] { get }
+}
 
-extension FloatingPoint {
-    var degreesToRadians: Self { return self * .pi / 180 }
-    var radiansToDegrees: Self { return self * 180 / .pi }
+extension RawRepresentable where Self: EnumerableEnum, RawValue == Int {
+    public static var allValues: [Self] {
+        var allValuesArr: [Self] = []
+        
+        var count: Int = 0
+        
+        var enumVal = self.init(rawValue: count)
+        
+        while let enumValUR = enumVal {
+            allValuesArr.append(enumValUR)
+            count+=1
+            enumVal = self.init(rawValue: count)
+        }
+        
+        return allValuesArr
+    }
+}
+
+
+public protocol DescribableEnum {
+    func description() -> String
 }
 
 // MARK: DCKAngle
@@ -154,7 +174,7 @@ extension DCKAttitude: JSONDecodable, JSONEncodable {
 
 // MARK: DCKCardinalDirection
 
-public enum DCKCardinalDirection: Int {
+public enum DCKCardinalDirection: Int, EnumerableEnum, DescribableEnum {
     // https://en.wikipedia.org/wiki/Points_of_the_compass
     case North = 0
     case NorthByEast = 1
@@ -190,6 +210,77 @@ public enum DCKCardinalDirection: Int {
     case NorthByWest = 31
     
     private static let step: Double = 360 / 64.0
+    
+    // swiftlint:disable next cyclomatic_complexity function_body_length
+    public func description() -> String {
+        switch self {
+        case .North:
+            return "North"
+        case .NorthByEast:
+            return "North by East"
+        case .NorthNortheast:
+            return "North Northeast"
+        case .NortheastByNorth:
+            return "Northeast by North"
+        case .Northeast:
+            return "Northeast"
+        case .NortheastByEast:
+            return "Northeast by East"
+        case .EastNortheast:
+            return "East Northeast"
+        case .EastByNorth:
+            return "East by North"
+        case .East:
+            return "East"
+        case .EastBySouth:
+            return "East by South"
+        case .EastSoutheast:
+            return "East Southeast"
+        case .SoutheastByEast:
+            return "Southeast by East"
+        case .Southeast:
+            return "Southeast"
+        case .SoutheastBySouth:
+            return "Southeast by South"
+        case .SouthSoutheast:
+            return "South Southeast"
+        case .SouthByEast:
+            return "South by East"
+        case .South:
+            return "South"
+        case .SouthByWest:
+            return "South by West"
+        case .SouthSouthwest:
+            return "South Southwest"
+        case .SouthwestBySouth:
+            return "Southwest by South"
+        case .Southwest:
+            return "Southwest"
+        case .SouthwestByWest:
+            return "Southwest by West"
+        case .WestSouthwest:
+            return "West Southwest"
+        case .WestBySouth:
+            return "West by South"
+        case .West:
+            return "West"
+        case .WestByNorth:
+            return "West by North"
+        case .WestNorthwest:
+            return "West Northwest"
+        case .NorthwestByWest:
+            return "Northwest by West"
+        case .Northwest:
+            return "Northwest"
+        case .NorthwestByNorth:
+            return "Northwest by North"
+        case .NorthNorthwest:
+            return "North Northwest"
+        case .NorthByWest:
+            return "North by West"
+        }
+    }
+    
     
     private var base: Double {
         return DCKCardinalDirection.step * (2 * Double(self.rawValue) - 1)
@@ -310,7 +401,7 @@ extension DCKCoordinate2D: JSONDecodable, JSONEncodable {
         self.latitude = try json.getDouble(at: "latitude")
         self.longitude = try json.getDouble(at: "longitude")
     }
-
+    
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
@@ -442,7 +533,7 @@ extension DCKCoordinate3D: JSONDecodable, JSONEncodable {
         self.longitude = try json.getDouble(at: "longitude")
         self.altitude = try json.decode(at: "altitude", type: DCKRelativeAltitude.self)
     }
-
+    
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
@@ -642,7 +733,7 @@ extension DCKCoordinate3DPath: CustomStringConvertible {
         return strs.joined(separator: ", ")
     }
 }
-    
+
 extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
     public func toJSON() -> JSON {
         return self.path.toJSON()
@@ -853,9 +944,22 @@ extension DCKDistance : JSONDecodable, JSONEncodable {
 
 // MARK: DCKRotationDirection
 
-public enum DCKRotationDirection: String {
+public enum DCKRotationDirection: String, EnumerableEnum, DescribableEnum {
     case clockwise
     case counterClockwise
+    
+    public static var allValues: [DCKRotationDirection] {
+        return [.clockwise, .counterClockwise]
+    }
+    
+    public func description() -> String {
+        switch self {
+        case .clockwise:
+            return "Clockwise"
+        case .counterClockwise:
+            return "Counterclockwise"
+        }
+    }
 }
 
 extension DCKRotationDirection: JSONEncodable, JSONDecodable {}
@@ -868,7 +972,7 @@ public struct DCKAngularVelocity {
     public init(degreesPerSecond: Double) {
         self.degreesPerSecond = degreesPerSecond
     }
-
+    
     public var radiansPerSecond: Double {
         return degreesPerSecond * .pi / 180
     }
@@ -916,7 +1020,7 @@ public struct DCKFrequency {
     public let hertz: Double
     
     //https://en.wikipedia.org/wiki/Hertz
-
+    
     public var kilohertz: Double {
         return hertz / 1000
     }
@@ -1061,20 +1165,50 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
 
 // MARK: DCKPhotoAspectRatio
 
-public enum DCKPhotoAspectRatio: String {
+public enum DCKPhotoAspectRatio: String, EnumerableEnum, DescribableEnum {
     case aspect_4x3
     case aspect_16x9
     case aspect_3x2
+    
+    public static var allValues: [DCKPhotoAspectRatio] {
+        return [.aspect_4x3, .aspect_16x9, .aspect_3x2]
+    }
+    
+    public func description() -> String {
+        switch self {
+        case .aspect_4x3:
+            return "4x3"
+        case .aspect_16x9:
+            return "16x9"
+        case .aspect_3x2:
+            return "3x2"
+        }
+    }
 }
 
 extension DCKPhotoAspectRatio: JSONEncodable, JSONDecodable {}
 
 // MARK: DCKPhotoQuality
 
-public enum DCKPhotoQuality: String {
+public enum DCKPhotoQuality: String, EnumerableEnum, DescribableEnum {
     case normal
     case fine
     case excellent
+    
+    public static var allValues: [DCKPhotoQuality] {
+        return [.normal, .fine, .excellent]
+    }
+    
+    public func description() -> String {
+        switch self {
+        case .normal:
+            return "Normal"
+        case .fine:
+            return "Fine"
+        case .excellent:
+            return "Excellent"
+        }
+    }
 }
 
 extension DCKPhotoQuality: JSONEncodable, JSONDecodable {}
@@ -1111,12 +1245,31 @@ extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
 
 // MARK: DCKPhotoBurstCount
 
-public enum DCKPhotoBurstCount: Int {
+public enum DCKPhotoBurstCount: Int, EnumerableEnum, DescribableEnum {
     case burst_3 = 3
     case burst_5 = 5
     case burst_7 = 7
     case burst_10 = 10
     case burst_14 = 14
+    
+    public static var allValues: [DCKPhotoBurstCount] {
+        return [.burst_3, .burst_5, .burst_7, .burst_10, .burst_14]
+    }
+    
+    public func description() -> String {
+        switch self {
+        case .burst_3:
+            return "3 Photos"
+        case .burst_5:
+            return "5 Photos"
+        case .burst_7:
+            return "7 Photos"
+        case .burst_10:
+            return "10 Photos"
+        case .burst_14:
+            return "14 Photos"
+        }
+    }
 }
 
 extension DCKPhotoBurstCount: JSONEncodable, JSONDecodable {}
@@ -1205,7 +1358,7 @@ extension DCKVideo: JSONEncodable, JSONDecodable {
 
 // MARK: DCKVideoResolution
 
-public enum DCKVideoResolution: String {
+public enum DCKVideoResolution: String, EnumerableEnum, DescribableEnum {
     case resolution_640x480
     case resolution_640x512
     case resolution_720p
@@ -1219,13 +1372,48 @@ public enum DCKVideoResolution: String {
     case max
     case noSSDVideo
     case unknown
+    
+    public static var allValues: [DCKVideoResolution] {
+        return [.resolution_640x480, .resolution_640x512, .resolution_720p, .resolution_1080p, .resolution_2704x1520, .resolution_2720x1530, .resolution_3840x1572, .resolution_4k, .resolution_4096x2160, .resolution_5280x2160, .max, .noSSDVideo, .unknown]
+    }
+    
+    public func description() -> String {
+        switch self {
+        case .resolution_640x480:
+            return "640 x 480"
+        case .resolution_640x512:
+            return "640 x 512"
+        case .resolution_720p:
+            return "720p"
+        case .resolution_1080p:
+            return "1080p"
+        case .resolution_2704x1520:
+            return "2704 x 1520"
+        case .resolution_2720x1530:
+            return "2720 x 1530"
+        case .resolution_3840x1572:
+            return "3840 x 1572"
+        case .resolution_4k:
+            return "4k"
+        case .resolution_4096x2160:
+            return "4096 x 2160"
+        case .resolution_5280x2160:
+            return "5280 x 2160"
+        case .max:
+            return "Max"
+        case .noSSDVideo:
+            return "No SSD Video"
+        case .unknown:
+            return "Unknown"
+        }
+    }
 }
 
 extension DCKVideoResolution: JSONEncodable, JSONDecodable {}
 
 // MARK: DCKVideoFramerate
 
-public enum DCKVideoFramerate: String {
+public enum DCKVideoFramerate: String, EnumerableEnum, DescribableEnum {
     case framerate_23dot976fps
     case framerate_24fps
     case framerate_25fps
@@ -1239,6 +1427,41 @@ public enum DCKVideoFramerate: String {
     case framerate_96fps
     case framerate_120fps
     case unknown
+    
+    public static var allValues: [DCKVideoFramerate] {
+        return [.framerate_23dot976fps, .framerate_24fps, .framerate_25fps, .framerate_29dot970fps, .framerate_30fps, .framerate_47dot950fps, .framerate_48fps, .framerate_50fps, .framerate_59dot940fps, .framerate_60fps, .framerate_96fps, .framerate_120fps, .unknown]
+    }
+    
+    public func description() -> String {
+        switch self {
+        case .framerate_23dot976fps:
+            return "23.976 fps"
+        case .framerate_24fps:
+            return "24 fps"
+        case .framerate_25fps:
+            return "25 fps"
+        case .framerate_29dot970fps:
+            return "29.970 fps"
+        case .framerate_30fps:
+            return "30 fps"
+        case .framerate_47dot950fps:
+            return "47.950 fps"
+        case .framerate_48fps:
+            return "48 fps"
+        case .framerate_50fps:
+            return "50 fps"
+        case .framerate_59dot940fps:
+            return "59.940 fps"
+        case .framerate_60fps:
+            return "60 fps"
+        case .framerate_96fps:
+            return "96 fps"
+        case .framerate_120fps:
+            return "120 fps"
+        case .unknown:
+            return "Unknown"
+        }
+    }
 }
 
 extension DCKVideoFramerate: JSONEncodable, JSONDecodable {}
