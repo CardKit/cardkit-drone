@@ -207,7 +207,7 @@ public enum DCKCardinalDirection: Int, EnumerableEnum, CustomStringConvertible {
     
     private static let step: Double = 360 / 64.0
     
-    // swiftlint:disable next cyclomatic_complexity function_body_length
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     public var description: String {
         switch self {
         case .North:
