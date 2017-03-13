@@ -32,11 +32,6 @@ extension RawRepresentable where Self: EnumerableEnum, RawValue == Int {
     }
 }
 
-
-public protocol DescribableEnum {
-    func description() -> String
-}
-
 // MARK: DCKAngle
 
 public struct DCKAngle {
@@ -174,7 +169,8 @@ extension DCKAttitude: JSONDecodable, JSONEncodable {
 
 // MARK: DCKCardinalDirection
 
-public enum DCKCardinalDirection: Int, EnumerableEnum, DescribableEnum {
+public enum DCKCardinalDirection: Int, EnumerableEnum, CustomStringConvertible {
+
     // https://en.wikipedia.org/wiki/Points_of_the_compass
     case North = 0
     case NorthByEast = 1
@@ -212,7 +208,7 @@ public enum DCKCardinalDirection: Int, EnumerableEnum, DescribableEnum {
     private static let step: Double = 360 / 64.0
     
     // swiftlint:disable next cyclomatic_complexity function_body_length
-    public func description() -> String {
+    public var description: String {
         switch self {
         case .North:
             return "North"
@@ -944,7 +940,7 @@ extension DCKDistance : JSONDecodable, JSONEncodable {
 
 // MARK: DCKRotationDirection
 
-public enum DCKRotationDirection: String, EnumerableEnum, DescribableEnum {
+public enum DCKRotationDirection: String, EnumerableEnum, CustomStringConvertible {
     case clockwise
     case counterClockwise
     
@@ -952,7 +948,7 @@ public enum DCKRotationDirection: String, EnumerableEnum, DescribableEnum {
         return [.clockwise, .counterClockwise]
     }
     
-    public func description() -> String {
+    public var description: String {
         switch self {
         case .clockwise:
             return "Clockwise"
@@ -1165,7 +1161,7 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
 
 // MARK: DCKPhotoAspectRatio
 
-public enum DCKPhotoAspectRatio: String, EnumerableEnum, DescribableEnum {
+public enum DCKPhotoAspectRatio: String, EnumerableEnum, CustomStringConvertible {
     case aspect_4x3
     case aspect_16x9
     case aspect_3x2
@@ -1174,7 +1170,7 @@ public enum DCKPhotoAspectRatio: String, EnumerableEnum, DescribableEnum {
         return [.aspect_4x3, .aspect_16x9, .aspect_3x2]
     }
     
-    public func description() -> String {
+    public var description: String {
         switch self {
         case .aspect_4x3:
             return "4x3"
@@ -1190,7 +1186,7 @@ extension DCKPhotoAspectRatio: JSONEncodable, JSONDecodable {}
 
 // MARK: DCKPhotoQuality
 
-public enum DCKPhotoQuality: String, EnumerableEnum, DescribableEnum {
+public enum DCKPhotoQuality: String, EnumerableEnum, CustomStringConvertible {
     case normal
     case fine
     case excellent
@@ -1199,7 +1195,7 @@ public enum DCKPhotoQuality: String, EnumerableEnum, DescribableEnum {
         return [.normal, .fine, .excellent]
     }
     
-    public func description() -> String {
+    public var description: String {
         switch self {
         case .normal:
             return "Normal"
@@ -1245,7 +1241,7 @@ extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
 
 // MARK: DCKPhotoBurstCount
 
-public enum DCKPhotoBurstCount: Int, EnumerableEnum, DescribableEnum {
+public enum DCKPhotoBurstCount: Int, EnumerableEnum, CustomStringConvertible {
     case burst_3 = 3
     case burst_5 = 5
     case burst_7 = 7
@@ -1256,7 +1252,7 @@ public enum DCKPhotoBurstCount: Int, EnumerableEnum, DescribableEnum {
         return [.burst_3, .burst_5, .burst_7, .burst_10, .burst_14]
     }
     
-    public func description() -> String {
+    public var description: String {
         switch self {
         case .burst_3:
             return "3 Photos"
@@ -1358,7 +1354,7 @@ extension DCKVideo: JSONEncodable, JSONDecodable {
 
 // MARK: DCKVideoResolution
 
-public enum DCKVideoResolution: String, EnumerableEnum, DescribableEnum {
+public enum DCKVideoResolution: String, EnumerableEnum, CustomStringConvertible {
     case resolution_640x480
     case resolution_640x512
     case resolution_720p
@@ -1377,7 +1373,7 @@ public enum DCKVideoResolution: String, EnumerableEnum, DescribableEnum {
         return [.resolution_640x480, .resolution_640x512, .resolution_720p, .resolution_1080p, .resolution_2704x1520, .resolution_2720x1530, .resolution_3840x1572, .resolution_4k, .resolution_4096x2160, .resolution_5280x2160, .max, .noSSDVideo, .unknown]
     }
     
-    public func description() -> String {
+    public var description: String {
         switch self {
         case .resolution_640x480:
             return "640 x 480"
@@ -1413,7 +1409,7 @@ extension DCKVideoResolution: JSONEncodable, JSONDecodable {}
 
 // MARK: DCKVideoFramerate
 
-public enum DCKVideoFramerate: String, EnumerableEnum, DescribableEnum {
+public enum DCKVideoFramerate: String, EnumerableEnum, CustomStringConvertible {
     case framerate_23dot976fps
     case framerate_24fps
     case framerate_25fps
@@ -1432,7 +1428,7 @@ public enum DCKVideoFramerate: String, EnumerableEnum, DescribableEnum {
         return [.framerate_23dot976fps, .framerate_24fps, .framerate_25fps, .framerate_29dot970fps, .framerate_30fps, .framerate_47dot950fps, .framerate_48fps, .framerate_50fps, .framerate_59dot940fps, .framerate_60fps, .framerate_96fps, .framerate_120fps, .unknown]
     }
     
-    public func description() -> String {
+    public var description: String {
         switch self {
         case .framerate_23dot976fps:
             return "23.976 fps"
