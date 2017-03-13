@@ -9,6 +9,7 @@
 import Foundation
 
 import CardKit
+import CardKitRuntime
 
 /// DroneCardKit card descriptors
 public struct DroneCardKit {
@@ -60,6 +61,36 @@ public struct DroneCardKit {
         
         return groups
     }
+    
+    public static var executableActionTypes: [ActionCardDescriptor : ExecutableAction.Type] = [
+        DroneCardKit.Action.Movement.Location.Circle: Circle.self,
+        DroneCardKit.Action.Movement.Location.CircleRepeatedly: CircleRepeatedly.self,
+        DroneCardKit.Action.Movement.Location.FlyTo: FlyTo.self,
+        DroneCardKit.Action.Movement.Location.ReturnHome: ReturnHome.self,
+        DroneCardKit.Action.Movement.Sequence.FlyPath: FlyPath.self,
+        DroneCardKit.Action.Movement.Sequence.Pace: Pace.self,
+        DroneCardKit.Action.Movement.Simple.FlyForward: FlyForward.self,
+        DroneCardKit.Action.Movement.Simple.Hover: Hover.self,
+        DroneCardKit.Action.Movement.Simple.Land: Land.self,
+        DroneCardKit.Action.Tech.Camera.RecordVideo: RecordVideo.self,
+        DroneCardKit.Action.Tech.Camera.TakePhoto: TakePhoto.self,
+        DroneCardKit.Action.Tech.Camera.TakePhotoBurst: TakePhotoBurst.self,
+        DroneCardKit.Action.Tech.Camera.TakePhotos: TakePhotos.self,
+        DroneCardKit.Action.Tech.Gimbal.PanBetweenLocations: PanBetweenLocations.self,
+        DroneCardKit.Action.Tech.Gimbal.PointAtFront: PointAtFront.self,
+        DroneCardKit.Action.Tech.Gimbal.PointAtGround: PointAtGround.self,
+        DroneCardKit.Action.Tech.Gimbal.PointAtLocation: PointAtLocation.self,
+        DroneCardKit.Action.Tech.Gimbal.PointInDirection: PointInDirection.self,
+        DroneCardKit.Action.Movement.Area.CoverArea: CoverArea.self,
+        DroneCardKit.Action.Movement.Orientation.SpinAround: SpinAround.self
+    ]
+    
+    public struct TokenSlotNames {
+        public static let drone = "Drone"
+        public static let camera = "Camera"
+        public static let gimbal = "Gimbal"
+        public static let telemetry = "Telemetry"
+    }
 }
 
 // MARK: - Action Cards
@@ -96,7 +127,7 @@ extension DroneCardKit.Action.Movement.Area {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -114,7 +145,7 @@ extension DroneCardKit.Action.Movement.Area {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -143,7 +174,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -163,7 +194,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -181,7 +212,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -198,7 +229,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -225,7 +256,7 @@ extension DroneCardKit.Action.Movement.Orientation {
             InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -242,7 +273,7 @@ extension DroneCardKit.Action.Movement.Orientation {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -270,7 +301,7 @@ extension DroneCardKit.Action.Movement.Path {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -289,7 +320,7 @@ extension DroneCardKit.Action.Movement.Path {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -317,7 +348,7 @@ extension DroneCardKit.Action.Movement.Relative {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -343,7 +374,7 @@ extension DroneCardKit.Action.Movement.Simple {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -359,7 +390,7 @@ extension DroneCardKit.Action.Movement.Simple {
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -375,7 +406,7 @@ extension DroneCardKit.Action.Movement.Simple {
             InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -403,7 +434,7 @@ extension DroneCardKit.Action.Movement.Sequence {
             InputSlot(name: "PauseDuration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -422,7 +453,7 @@ extension DroneCardKit.Action.Movement.Sequence {
             InputSlot(name: "PauseDuration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.drone, descriptor: DroneCardKit.Token.Drone)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -455,7 +486,7 @@ extension DroneCardKit.Action.Tech.Camera {
             InputSlot(name: "SlowMotionEnabled", descriptor: CardKit.Input.Logical.Boolean, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.camera, descriptor: DroneCardKit.Token.Camera)
         ],
         yields: [Yield(type: DCKVideo.self)],
         yieldDescription: "Yields a video",
@@ -472,7 +503,7 @@ extension DroneCardKit.Action.Tech.Camera {
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.camera, descriptor: DroneCardKit.Token.Camera)
         ],
         yields: [Yield(type: DCKPhoto.self)],
         yieldDescription: "Yields a photo",
@@ -489,7 +520,7 @@ extension DroneCardKit.Action.Tech.Camera {
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.camera, descriptor: DroneCardKit.Token.Camera)
         ],
         yields: [Yield(type: DCKPhotoBurst.self)],
         yieldDescription: "Yields a photo burst",
@@ -506,7 +537,7 @@ extension DroneCardKit.Action.Tech.Camera {
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.camera, descriptor: DroneCardKit.Token.Camera)
         ],
         yields: [Yield(type: DCKPhotoBurst.self)],
         yieldDescription: "Yields a sequence of photos",
@@ -522,7 +553,7 @@ extension DroneCardKit.Action.Tech.Camera {
             InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.camera, descriptor: DroneCardKit.Token.Camera)
         ],
         yields: [Yield(type: DCKVideo.self)],
         yieldDescription: "Yields a timelapse video",
@@ -557,8 +588,8 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Duration", descriptor: CardKit.Input.Time.Duration, isOptional: true)
         ],
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
-            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.gimbal, descriptor: DroneCardKit.Token.Gimbal),
+            TokenSlot(name: DroneCardKit.TokenSlotNames.telemetry, descriptor: DroneCardKit.Token.Telemetry)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -571,7 +602,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
         subpath: "Tech/Gimbal",
         inputs: nil,
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.gimbal, descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -584,7 +615,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
         subpath: "Tech/Gimbal",
         inputs: nil,
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.gimbal, descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -599,8 +630,8 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "Location", descriptor: DroneCardKit.Input.Location.Coordinate3D, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
-            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.gimbal, descriptor: DroneCardKit.Token.Gimbal),
+            TokenSlot(name: DroneCardKit.TokenSlotNames.telemetry, descriptor: DroneCardKit.Token.Telemetry)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -613,7 +644,7 @@ extension DroneCardKit.Action.Tech.Gimbal {
         subpath: "Tech/Gimbal",
         inputs: nil,
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.gimbal, descriptor: DroneCardKit.Token.Gimbal)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -628,8 +659,8 @@ extension DroneCardKit.Action.Tech.Gimbal {
             InputSlot(name: "CardinalDirection", descriptor: DroneCardKit.Input.Location.CardinalDirection, isOptional: false)
         ],
         tokens: [
-            TokenSlot(name: "Gimbal", descriptor: DroneCardKit.Token.Gimbal),
-            TokenSlot(name: "Telemetry", descriptor: DroneCardKit.Token.Telemetry)
+            TokenSlot(name: DroneCardKit.TokenSlotNames.gimbal, descriptor: DroneCardKit.Token.Gimbal),
+            TokenSlot(name: DroneCardKit.TokenSlotNames.telemetry, descriptor: DroneCardKit.Token.Telemetry)
         ],
         yields: nil,
         yieldDescription: nil,
@@ -892,25 +923,25 @@ extension DroneCardKit {
 
 extension DroneCardKit.Token {
     public static let Camera = TokenCardDescriptor(
-        name: "Camera",
+        name: DroneCardKit.TokenSlotNames.camera,
         subpath: nil,
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Camera token"))
     
     public static let Drone = TokenCardDescriptor(
-        name: "Drone",
+        name: DroneCardKit.TokenSlotNames.drone,
         subpath: nil,
         isConsumed: true,
         assetCatalog: CardAssetCatalog(description: "Drone token"))
     
     public static let Gimbal = TokenCardDescriptor(
-        name: "Gimbal",
+        name: DroneCardKit.TokenSlotNames.gimbal,
         subpath: nil,
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Gimbal token"))
     
     public static let Telemetry = TokenCardDescriptor(
-        name: "Telemetry",
+        name: DroneCardKit.TokenSlotNames.telemetry,
         subpath: nil,
         isConsumed: false,
         assetCatalog: CardAssetCatalog(description: "Drone telemetry token"))
