@@ -830,7 +830,7 @@ extension DroneCardKit.Input.Location {
     public static let Coordinate2D = InputCardDescriptor(
         name: "Coordinate 2D",
         subpath: "Location/Coordinate",
-        inputType: DCKCoordinate2D.self as InputType,
+        inputType: DCKCoordinate2D.self,
         inputDescription: "Coordinate (2D)",
         assetCatalog: CardAssetCatalog(description: "2D coordinate"))
     
