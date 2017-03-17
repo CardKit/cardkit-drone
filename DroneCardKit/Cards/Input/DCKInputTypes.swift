@@ -1,5 +1,5 @@
 //
-//  InputTypes.swift
+//  DCKInputTypes.swift
 //  DroneCardKit
 //
 //  Created by Justin Manweiler on 7/27/16.
@@ -7,15 +7,9 @@
 //
 
 import Foundation
+import CardKit
 
 import Freddy
-
-// MARK: FloatingPoint Extensions
-
-extension FloatingPoint {
-    var degreesToRadians: Self { return self * .pi / 180 }
-    var radiansToDegrees: Self { return self * 180 / .pi }
-}
 
 // MARK: DCKAngle
 
@@ -154,45 +148,94 @@ extension DCKAttitude: JSONDecodable, JSONEncodable {
 
 // MARK: DCKCardinalDirection
 
-public enum DCKCardinalDirection: Int {
+public enum DCKCardinalDirection: String {
     // https://en.wikipedia.org/wiki/Points_of_the_compass
-    case North = 0
-    case NorthByEast = 1
-    case NorthNortheast = 2
-    case NortheastByNorth = 3
-    case Northeast = 4
-    case NortheastByEast = 5
-    case EastNortheast = 6
-    case EastByNorth = 7
-    case East = 8
-    case EastBySouth = 9
-    case EastSoutheast = 10
-    case SoutheastByEast = 11
-    case Southeast = 12
-    case SoutheastBySouth = 13
-    case SouthSoutheast = 14
-    case SouthByEast = 15
-    case South = 16
-    case SouthByWest = 17
-    case SouthSouthwest = 18
-    case SouthwestBySouth = 19
-    case Southwest = 20
-    case SouthwestByWest = 21
-    case WestSouthwest = 22
-    case WestBySouth = 23
-    case West = 24
-    case WestByNorth = 25
-    case WestNorthwest = 26
-    case NorthwestByWest = 27
-    case Northwest = 28
-    case NorthwestByNorth = 29
-    case NorthNorthwest = 30
-    case NorthByWest = 31
+    case North = "North"
+    case NorthByEast = "North by East"
+    case NorthNortheast = "North Northeast"
+    case NortheastByNorth = "Northeast by North"
+    case Northeast = "Northeast"
+    case NortheastByEast = "Northeast by East"
+    case EastNortheast = "East Northeast"
+    case EastByNorth = "East by North"
+    case East = "East"
+    case EastBySouth = "East by South"
+    case EastSoutheast = "East Southeast"
+    case SoutheastByEast = "Southeast by East"
+    case Southeast = "Southeast"
+    case SoutheastBySouth = "Southeast by South"
+    case SouthSoutheast = "South Southeast"
+    case SouthByEast = "South by East"
+    case South = "South"
+    case SouthByWest = "South by West"
+    case SouthSouthwest = "South Southwest"
+    case SouthwestBySouth = "Southwest by South"
+    case Southwest = "Southwest"
+    case SouthwestByWest = "Southwest by West"
+    case WestSouthwest = "West Southwest"
+    case WestBySouth = "West by South"
+    case West = "West"
+    case WestByNorth = "West by North"
+    case WestNorthwest = "West Northwest"
+    case NorthwestByWest = "Northwest by West"
+    case Northwest = "Northwest"
+    case NorthwestByNorth = "Northwest by North"
+    case NorthNorthwest = "North Northwest"
+    case NorthByWest = "North by West"
+    
+    public var description: String {
+        return self.rawValue
+    }
+    
+    public static var values: [DCKCardinalDirection] {
+        return [
+            .North,
+            .NorthByEast,
+            .NorthNortheast,
+            .NortheastByNorth,
+            .Northeast,
+            .NortheastByEast,
+            .EastNortheast,
+            .EastByNorth,
+            .East,
+            .EastBySouth,
+            .EastSoutheast,
+            .SoutheastByEast,
+            .Southeast,
+            .SoutheastBySouth,
+            .SouthSoutheast,
+            .SouthByEast,
+            .South,
+            .SouthByWest,
+            .SouthSouthwest,
+            .SouthwestBySouth,
+            .Southwest,
+            .SouthwestByWest,
+            .WestSouthwest,
+            .WestBySouth,
+            .West,
+            .WestByNorth,
+            .WestNorthwest,
+            .NorthwestByWest,
+            .Northwest,
+            .NorthwestByNorth,
+            .NorthNorthwest,
+            .NorthByWest
+        ]
+    }
+    
+    private var numericalValue: Int {
+        if let direction = DCKCardinalDirection.values.index(of: self) {
+            return direction
+        } else {
+            return 0
+        }
+    }
     
     private static let step: Double = 360 / 64.0
     
     private var base: Double {
-        return DCKCardinalDirection.step * (2 * Double(self.rawValue) - 1)
+        return DCKCardinalDirection.step * (2 * Double(self.numericalValue) - 1)
     }
     
     public var min: DCKAngle {
@@ -209,7 +252,7 @@ public enum DCKCardinalDirection: Int {
     
     public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
         let index: Int = Int(((angle.degrees + DCKCardinalDirection.step) * 32) / 360) % 32
-        return DCKCardinalDirection(rawValue: index)!
+        return DCKCardinalDirection.values[index]
     }
 }
 
@@ -310,7 +353,7 @@ extension DCKCoordinate2D: JSONDecodable, JSONEncodable {
         self.latitude = try json.getDouble(at: "latitude")
         self.longitude = try json.getDouble(at: "longitude")
     }
-
+    
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
@@ -442,7 +485,7 @@ extension DCKCoordinate3D: JSONDecodable, JSONEncodable {
         self.longitude = try json.getDouble(at: "longitude")
         self.altitude = try json.decode(at: "altitude", type: DCKRelativeAltitude.self)
     }
-
+    
     public func toJSON() -> JSON {
         return .dictionary([
             "latitude": self.latitude.toJSON(),
@@ -642,7 +685,7 @@ extension DCKCoordinate3DPath: CustomStringConvertible {
         return strs.joined(separator: ", ")
     }
 }
-    
+
 extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
     public func toJSON() -> JSON {
         return self.path.toJSON()
@@ -854,11 +897,17 @@ extension DCKDistance : JSONDecodable, JSONEncodable {
 // MARK: DCKRotationDirection
 
 public enum DCKRotationDirection: String {
-    case clockwise
-    case counterClockwise
+    case clockwise = "Clockwise"
+    case counterClockwise = "Counterclockwise"
 }
 
 extension DCKRotationDirection: JSONEncodable, JSONDecodable {}
+
+extension DCKRotationDirection: Enumerable, StringEnumerable {
+    public static var values: [DCKRotationDirection] {
+        return [.clockwise, .counterClockwise]
+    }
+}
 
 // MARK: DCKAngularVelocity
 
@@ -868,7 +917,7 @@ public struct DCKAngularVelocity {
     public init(degreesPerSecond: Double) {
         self.degreesPerSecond = degreesPerSecond
     }
-
+    
     public var radiansPerSecond: Double {
         return degreesPerSecond * .pi / 180
     }
@@ -911,11 +960,9 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
 }
 
 // MARK: DCKFrequency
-
 public struct DCKFrequency {
-    public let hertz: Double
-    
     //https://en.wikipedia.org/wiki/Hertz
+    public let hertz: Double
 
     public var kilohertz: Double {
         return hertz / 1000
@@ -1062,22 +1109,34 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
 // MARK: DCKPhotoAspectRatio
 
 public enum DCKPhotoAspectRatio: String {
-    case aspect_4x3
-    case aspect_16x9
-    case aspect_3x2
+    case aspect_4x3 = "4x3"
+    case aspect_16x9 = "16x9"
+    case aspect_3x2 = "3x2"
 }
 
 extension DCKPhotoAspectRatio: JSONEncodable, JSONDecodable {}
 
+extension DCKPhotoAspectRatio: Enumerable, StringEnumerable {
+    public static var values: [DCKPhotoAspectRatio] {
+        return [.aspect_4x3, .aspect_16x9, .aspect_3x2]
+    }
+}
+
 // MARK: DCKPhotoQuality
 
 public enum DCKPhotoQuality: String {
-    case normal
-    case fine
-    case excellent
+    case normal = "Normal"
+    case fine = "Fine"
+    case excellent = "Excellent"
 }
 
 extension DCKPhotoQuality: JSONEncodable, JSONDecodable {}
+
+extension DCKPhotoQuality: Enumerable, StringEnumerable {
+    public static var values: [DCKPhotoQuality] {
+        return [.normal, .fine, .excellent]
+    }
+}
 
 // MARK: DCKPhotoBurst
 
@@ -1111,15 +1170,31 @@ extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
 
 // MARK: DCKPhotoBurstCount
 
-public enum DCKPhotoBurstCount: Int {
-    case burst_3 = 3
-    case burst_5 = 5
-    case burst_7 = 7
-    case burst_10 = 10
-    case burst_14 = 14
+public enum DCKPhotoBurstCount: String {
+    case burst_3 = "3 Photos"
+    case burst_5 = "5 Photos"
+    case burst_7 = "7 Photos"
+    case burst_10 = "10 Photos"
+    case burst_14 = "14 Photos"
+    
+    public var numericalValue: Int {
+        switch self {
+        case .burst_3: return 3
+        case .burst_5: return 5
+        case .burst_7: return 7
+        case .burst_10: return 10
+        case .burst_14: return 14
+        }
+    }
 }
 
 extension DCKPhotoBurstCount: JSONEncodable, JSONDecodable {}
+
+extension DCKPhotoBurstCount: Enumerable, StringEnumerable {
+    public static var values: [DCKPhotoBurstCount] {
+        return [.burst_3, .burst_5, .burst_7, .burst_10, .burst_14]
+    }
+}
 
 // MARK: DCKVideo
 
@@ -1206,39 +1281,51 @@ extension DCKVideo: JSONEncodable, JSONDecodable {
 // MARK: DCKVideoResolution
 
 public enum DCKVideoResolution: String {
-    case resolution_640x480
-    case resolution_640x512
-    case resolution_720p
-    case resolution_1080p
-    case resolution_2704x1520
-    case resolution_2720x1530
-    case resolution_3840x1572
-    case resolution_4k
-    case resolution_4096x2160
-    case resolution_5280x2160
-    case max
-    case noSSDVideo
-    case unknown
+    case resolution_640x480 = "640 x 480"
+    case resolution_640x512 = "640 x 512"
+    case resolution_720p = "720p"
+    case resolution_1080p = "1080p"
+    case resolution_2704x1520 = "2704 x 1520"
+    case resolution_2720x1530 = "2720 x 1530"
+    case resolution_3840x1572 = "3840 x 1572"
+    case resolution_4k = "4k"
+    case resolution_4096x2160 = "4096 x 2160"
+    case resolution_5280x2160 = "5280 x 2160"
+    case max = "Max"
+    case noSSDVideo = "No SSD Video"
+    case unknown = "Unknown"
 }
 
 extension DCKVideoResolution: JSONEncodable, JSONDecodable {}
 
+extension DCKVideoResolution: Enumerable, StringEnumerable {
+    public static var values: [DCKVideoResolution] {
+        return [.resolution_640x480, .resolution_640x512, .resolution_720p, .resolution_1080p, .resolution_2704x1520, .resolution_2720x1530, .resolution_3840x1572, .resolution_4k, .resolution_4096x2160, .resolution_5280x2160, .max, .noSSDVideo, .unknown]
+    }
+}
+
 // MARK: DCKVideoFramerate
 
 public enum DCKVideoFramerate: String {
-    case framerate_23dot976fps
-    case framerate_24fps
-    case framerate_25fps
-    case framerate_29dot970fps
-    case framerate_30fps
-    case framerate_47dot950fps
-    case framerate_48fps
-    case framerate_50fps
-    case framerate_59dot940fps
-    case framerate_60fps
-    case framerate_96fps
-    case framerate_120fps
-    case unknown
+    case framerate_23dot976fps = "23.976 fps"
+    case framerate_24fps = "24 fps"
+    case framerate_25fps = "25 fps"
+    case framerate_29dot970fps = "29.970 fps"
+    case framerate_30fps = "30 fps"
+    case framerate_47dot950fps = "47.950 fps"
+    case framerate_48fps = "48 fps"
+    case framerate_50fps = "50 fps"
+    case framerate_59dot940fps = "59.940 fps"
+    case framerate_60fps = "60 fps"
+    case framerate_96fps = "96 fps"
+    case framerate_120fps = "120 fps"
+    case unknown = "Unknown"
 }
 
 extension DCKVideoFramerate: JSONEncodable, JSONDecodable {}
+
+extension DCKVideoFramerate: Enumerable, StringEnumerable {
+    public static var values: [DCKVideoFramerate] {
+        return [.framerate_23dot976fps, .framerate_24fps, .framerate_25fps, .framerate_29dot970fps, .framerate_30fps, .framerate_47dot950fps, .framerate_48fps, .framerate_50fps, .framerate_59dot940fps, .framerate_60fps, .framerate_96fps, .framerate_120fps, .unknown]
+    }
+}
