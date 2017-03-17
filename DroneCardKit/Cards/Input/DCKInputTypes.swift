@@ -903,7 +903,7 @@ public enum DCKRotationDirection: String {
 
 extension DCKRotationDirection: JSONEncodable, JSONDecodable {}
 
-extension DCKRotationDirection: EnumerableEnum, EnumerableAsString {
+extension DCKRotationDirection: Enumerable, StringEnumerable {
     public static var values: [DCKRotationDirection] {
         return [.clockwise, .counterClockwise]
     }
@@ -1116,7 +1116,7 @@ public enum DCKPhotoAspectRatio: String {
 
 extension DCKPhotoAspectRatio: JSONEncodable, JSONDecodable {}
 
-extension DCKPhotoAspectRatio: EnumerableEnum, EnumerableAsString {
+extension DCKPhotoAspectRatio: Enumerable, StringEnumerable {
     public static var values: [DCKPhotoAspectRatio] {
         return [.aspect_4x3, .aspect_16x9, .aspect_3x2]
     }
@@ -1132,7 +1132,7 @@ public enum DCKPhotoQuality: String {
 
 extension DCKPhotoQuality: JSONEncodable, JSONDecodable {}
 
-extension DCKPhotoQuality: EnumerableEnum, EnumerableAsString {
+extension DCKPhotoQuality: Enumerable, StringEnumerable {
     public static var values: [DCKPhotoQuality] {
         return [.normal, .fine, .excellent]
     }
@@ -1190,7 +1190,7 @@ public enum DCKPhotoBurstCount: String {
 
 extension DCKPhotoBurstCount: JSONEncodable, JSONDecodable {}
 
-extension DCKPhotoBurstCount: EnumerableEnum, EnumerableAsString {
+extension DCKPhotoBurstCount: Enumerable, StringEnumerable {
     public static var values: [DCKPhotoBurstCount] {
         return [.burst_3, .burst_5, .burst_7, .burst_10, .burst_14]
     }
@@ -1298,7 +1298,7 @@ public enum DCKVideoResolution: String {
 
 extension DCKVideoResolution: JSONEncodable, JSONDecodable {}
 
-extension DCKVideoResolution: EnumerableEnum, EnumerableAsString {
+extension DCKVideoResolution: Enumerable, StringEnumerable {
     public static var values: [DCKVideoResolution] {
         return [.resolution_640x480, .resolution_640x512, .resolution_720p, .resolution_1080p, .resolution_2704x1520, .resolution_2720x1530, .resolution_3840x1572, .resolution_4k, .resolution_4096x2160, .resolution_5280x2160, .max, .noSSDVideo, .unknown]
     }
@@ -1324,7 +1324,7 @@ public enum DCKVideoFramerate: String {
 
 extension DCKVideoFramerate: JSONEncodable, JSONDecodable {}
 
-extension DCKVideoFramerate: EnumerableEnum, EnumerableAsString {
+extension DCKVideoFramerate: Enumerable, StringEnumerable {
     public static var values: [DCKVideoFramerate] {
         return [.framerate_23dot976fps, .framerate_24fps, .framerate_25fps, .framerate_29dot970fps, .framerate_30fps, .framerate_47dot950fps, .framerate_48fps, .framerate_50fps, .framerate_59dot940fps, .framerate_60fps, .framerate_96fps, .framerate_120fps, .unknown]
     }

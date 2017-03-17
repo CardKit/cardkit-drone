@@ -87,7 +87,7 @@ public struct DroneCardKit {
     ]
     
     public static var allInputTypes: [String : InputType] = [
-        "CKBool": CKBool.self, //this will have to be moved into card kit
+        "Bool": Bool.self, //this will have to be moved into card kit
         
         "DCKPhotoQuality": DCKPhotoQuality.self,
         "DCKVideoFramerate": DCKVideoFramerate.self,
