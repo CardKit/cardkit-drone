@@ -25,25 +25,25 @@ class InputTypeTests: XCTestCase {
     }
     
     func testAllValuesEnum() {
-        var valuesCount = DCKCardinalDirection.allValues.count
+        var valuesCount = DCKCardinalDirection.values.count
         XCTAssert(valuesCount == 32)
         
-        valuesCount = DCKRotationDirection.allValues.count
+        valuesCount = DCKRotationDirection.values.count
         XCTAssert(valuesCount == 2)
         
-        valuesCount = DCKPhotoAspectRatio.allValues.count
+        valuesCount = DCKPhotoAspectRatio.values.count
         XCTAssert(valuesCount == 3)
         
-        valuesCount = DCKPhotoQuality.allValues.count
+        valuesCount = DCKPhotoQuality.values.count
         XCTAssert(valuesCount == 3)
         
-        valuesCount = DCKPhotoBurstCount.allValues.count
+        valuesCount = DCKPhotoBurstCount.values.count
         XCTAssert(valuesCount == 5)
         
-        valuesCount = DCKVideoResolution.allValues.count
+        valuesCount = DCKVideoResolution.values.count
         XCTAssert(valuesCount == 13)
         
-        valuesCount = DCKVideoFramerate.allValues.count
+        valuesCount = DCKVideoFramerate.values.count
         XCTAssert(valuesCount == 13)
     }
 

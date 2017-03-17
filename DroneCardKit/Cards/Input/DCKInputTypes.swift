@@ -92,12 +92,6 @@ extension DCKAngle : JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKAngle: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.supportedUnits(["degrees", "radians"])]
-    }
-}
-
 // MARK: DCKAttitude
 
 public struct DCKAttitude {
@@ -152,11 +146,9 @@ extension DCKAttitude: JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKAttitude: InputProtocol {}
-
 // MARK: DCKCardinalDirection
 
-public enum DCKCardinalDirection: String, EnumerableEnum, CustomStringConvertible {
+public enum DCKCardinalDirection: String {
     // https://en.wikipedia.org/wiki/Points_of_the_compass
     case North = "North"
     case NorthByEast = "North by East"
@@ -195,7 +187,7 @@ public enum DCKCardinalDirection: String, EnumerableEnum, CustomStringConvertibl
         return self.rawValue
     }
     
-    public static var allValues: [DCKCardinalDirection] {
+    public static var values: [DCKCardinalDirection] {
         return [
             .North,
             .NorthByEast,
@@ -233,7 +225,7 @@ public enum DCKCardinalDirection: String, EnumerableEnum, CustomStringConvertibl
     }
     
     private var numericalValue: Int {
-        if let direction = DCKCardinalDirection.allValues.index(of: self) {
+        if let direction = DCKCardinalDirection.values.index(of: self) {
             return direction
         } else {
             return 0
@@ -260,17 +252,12 @@ public enum DCKCardinalDirection: String, EnumerableEnum, CustomStringConvertibl
     
     public static func byAngle(_ angle: DCKAngle) -> DCKCardinalDirection {
         let index: Int = Int(((angle.degrees + DCKCardinalDirection.step) * 32) / 360) % 32
-        return DCKCardinalDirection.allValues[index]
+        return DCKCardinalDirection.values[index]
     }
 }
 
 extension DCKCardinalDirection: JSONEncodable, JSONDecodable {}
 
-extension DCKCardinalDirection: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKCardinalDirection.allValues.map { $0.rawValue })]
-    }
-}
 // MARK: DCKCoordinate2D
 
 public struct DCKCoordinate2D {
@@ -375,8 +362,6 @@ extension DCKCoordinate2D: JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKCoordinate2D: InputProtocol {}
-
 // MARK: DCKOrientedCoordinate2D
 
 public struct DCKOrientedCoordinate2D {
@@ -429,12 +414,6 @@ extension DCKOrientedCoordinate2D: JSONDecodable, JSONEncodable {
             "longitude": self.longitude.toJSON(),
             "yaw": self.yaw.toJSON()
             ])
-    }
-}
-
-extension DCKOrientedCoordinate2D: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKCardinalDirection.allValues.map { $0.rawValue })]
     }
 }
 
@@ -515,8 +494,6 @@ extension DCKCoordinate3D: JSONDecodable, JSONEncodable {
             ])
     }
 }
-
-extension DCKCoordinate3D: InputProtocol {}
 
 // MARK: DCKOrientedCoordinate3D
 
@@ -653,8 +630,6 @@ extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKOrientedCoordinate3D: InputProtocol {}
-
 // MARK: DCKCoordinate2DPath
 
 public struct DCKCoordinate2DPath {
@@ -688,8 +663,6 @@ extension DCKCoordinate2DPath: JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKCoordinate2DPath: InputProtocol {}
-
 // MARK: DCKCoordinate3DPath
 
 public struct DCKCoordinate3DPath {
@@ -722,8 +695,6 @@ extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
         self.path = try json.decodedArray(type: DCKCoordinate3D.self)
     }
 }
-
-extension DCKCoordinate3DPath: InputProtocol {}
 
 // MARK: DCKAbsoluteAltitude
 
@@ -762,12 +733,6 @@ extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
         return .dictionary([
             "metersAboveSeaLevel": metersAboveSeaLevel.toJSON()
             ])
-    }
-}
-
-extension DCKAbsoluteAltitude: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.supportedUnits(["meters"])]
     }
 }
 
@@ -825,12 +790,6 @@ extension DCKRelativeAltitude : JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKRelativeAltitude: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.supportedUnits(["meters"])]
-    }
-}
-
 // MARK: DCKSpeed
 
 public struct DCKSpeed {
@@ -885,12 +844,6 @@ extension DCKSpeed : JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKSpeed: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.supportedUnits(["meters", "miles"])]
-    }
-}
-
 // MARK: DCKDistance
 
 public struct DCKDistance {
@@ -941,12 +894,6 @@ extension DCKDistance : JSONDecodable, JSONEncodable {
     }
 }
 
-extension DCKDistance: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.supportedUnits(["meters"])]
-    }
-}
-
 // MARK: DCKRotationDirection
 
 public enum DCKRotationDirection: String {
@@ -956,14 +903,8 @@ public enum DCKRotationDirection: String {
 
 extension DCKRotationDirection: JSONEncodable, JSONDecodable {}
 
-extension DCKRotationDirection: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKRotationDirection.allValues.map { $0.rawValue })]
-    }
-}
-
-extension DCKRotationDirection: EnumerableEnum {
-    public static var allValues: [DCKRotationDirection] {
+extension DCKRotationDirection: EnumerableEnum, EnumerableAsString {
+    public static var values: [DCKRotationDirection] {
         return [.clockwise, .counterClockwise]
     }
 }
@@ -1015,12 +956,6 @@ extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
     
     public func toJSON() -> JSON {
         return .dictionary(["degreesPerSecond": degreesPerSecond.toJSON()])
-    }
-}
-
-extension DCKAngularVelocity: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.supportedUnits(["degrees", "radians"])]
     }
 }
 
@@ -1081,12 +1016,6 @@ extension DCKFrequency: Equatable {
 extension DCKFrequency: Comparable {
     public static func < (lhs: DCKFrequency, rhs: DCKFrequency) -> Bool {
         return lhs.hertz < rhs.hertz
-    }
-}
-
-extension DCKFrequency: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.supportedUnits(["hertz"])]
     }
 }
 
@@ -1177,8 +1106,6 @@ extension DCKPhoto: JSONEncodable, JSONDecodable {
     }
 }
 
-extension DCKPhoto: InputProtocol {}
-
 // MARK: DCKPhotoAspectRatio
 
 public enum DCKPhotoAspectRatio: String {
@@ -1189,14 +1116,8 @@ public enum DCKPhotoAspectRatio: String {
 
 extension DCKPhotoAspectRatio: JSONEncodable, JSONDecodable {}
 
-extension DCKPhotoAspectRatio: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKPhotoAspectRatio.allValues.map { $0.rawValue })]
-    }
-}
-
-extension DCKPhotoAspectRatio: EnumerableEnum {
-    public static var allValues: [DCKPhotoAspectRatio] {
+extension DCKPhotoAspectRatio: EnumerableEnum, EnumerableAsString {
+    public static var values: [DCKPhotoAspectRatio] {
         return [.aspect_4x3, .aspect_16x9, .aspect_3x2]
     }
 }
@@ -1211,14 +1132,8 @@ public enum DCKPhotoQuality: String {
 
 extension DCKPhotoQuality: JSONEncodable, JSONDecodable {}
 
-extension DCKPhotoQuality: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKPhotoQuality.allValues.map { $0.rawValue })]
-    }
-}
-
-extension DCKPhotoQuality: EnumerableEnum {
-    public static var allValues: [DCKPhotoQuality] {
+extension DCKPhotoQuality: EnumerableEnum, EnumerableAsString {
+    public static var values: [DCKPhotoQuality] {
         return [.normal, .fine, .excellent]
     }
 }
@@ -1253,8 +1168,6 @@ extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
     }
 }
 
-extension DCKPhotoBurst: InputProtocol {}
-
 // MARK: DCKPhotoBurstCount
 
 public enum DCKPhotoBurstCount: String {
@@ -1277,14 +1190,8 @@ public enum DCKPhotoBurstCount: String {
 
 extension DCKPhotoBurstCount: JSONEncodable, JSONDecodable {}
 
-extension DCKPhotoBurstCount: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKPhotoBurstCount.allValues.map { $0.rawValue })]
-    }
-}
-
-extension DCKPhotoBurstCount: EnumerableEnum {
-    public static var allValues: [DCKPhotoBurstCount] {
+extension DCKPhotoBurstCount: EnumerableEnum, EnumerableAsString {
+    public static var values: [DCKPhotoBurstCount] {
         return [.burst_3, .burst_5, .burst_7, .burst_10, .burst_14]
     }
 }
@@ -1371,8 +1278,6 @@ extension DCKVideo: JSONEncodable, JSONDecodable {
     }
 }
 
-extension DCKVideo: InputProtocol {}
-
 // MARK: DCKVideoResolution
 
 public enum DCKVideoResolution: String {
@@ -1393,18 +1298,11 @@ public enum DCKVideoResolution: String {
 
 extension DCKVideoResolution: JSONEncodable, JSONDecodable {}
 
-extension DCKVideoResolution: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKVideoResolution.allValues.map { $0.rawValue })]
-    }
-}
-
-extension DCKVideoResolution: EnumerableEnum {
-    public static var allValues: [DCKVideoResolution] {
+extension DCKVideoResolution: EnumerableEnum, EnumerableAsString {
+    public static var values: [DCKVideoResolution] {
         return [.resolution_640x480, .resolution_640x512, .resolution_720p, .resolution_1080p, .resolution_2704x1520, .resolution_2720x1530, .resolution_3840x1572, .resolution_4k, .resolution_4096x2160, .resolution_5280x2160, .max, .noSSDVideo, .unknown]
     }
 }
-
 
 // MARK: DCKVideoFramerate
 
@@ -1426,14 +1324,8 @@ public enum DCKVideoFramerate: String {
 
 extension DCKVideoFramerate: JSONEncodable, JSONDecodable {}
 
-extension DCKVideoFramerate: InputProtocol {
-    public static var inputDetails: [InputDetails] {
-        return [.choices(DCKVideoFramerate.allValues.map { $0.rawValue })]
-    }
-}
-
-extension DCKVideoFramerate: EnumerableEnum {
-    public static var allValues: [DCKVideoFramerate] {
+extension DCKVideoFramerate: EnumerableEnum, EnumerableAsString {
+    public static var values: [DCKVideoFramerate] {
         return [.framerate_23dot976fps, .framerate_24fps, .framerate_25fps, .framerate_29dot970fps, .framerate_30fps, .framerate_47dot950fps, .framerate_48fps, .framerate_50fps, .framerate_59dot940fps, .framerate_60fps, .framerate_96fps, .framerate_120fps, .unknown]
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+import Freddy
 import CardKit
 import CardKitRuntime
 
@@ -85,7 +86,9 @@ public struct DroneCardKit {
         DroneCardKit.Action.Movement.Orientation.SpinAround: SpinAround.self
     ]
     
-    public static var allInputTypes: [String : InputProtocol.Type] = [
+    public static var allInputTypes: [String : InputType] = [
+        "CKBool": CKBool.self, //this will have to be moved into card kit
+        
         "DCKPhotoQuality": DCKPhotoQuality.self,
         "DCKVideoFramerate": DCKVideoFramerate.self,
         "DCKPhotoBurstCount": DCKPhotoBurstCount.self,
