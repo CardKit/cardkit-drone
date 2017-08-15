@@ -31,7 +31,7 @@ public class Pace: ExecutableAction {
             
             // fly path
             while !isCancelled {
-                for (_, location) in path.path.enumerated() {
+                for location in path.path {
                     if !isCancelled {
                         try drone.fly(to: location, atSpeed: speed)
                     } else {

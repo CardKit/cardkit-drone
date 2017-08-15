@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -32,7 +30,7 @@ class FlyToTests: XCTestCase {
         
         // bind inputs and tokens
         let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = ["Destination": DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1)]
+        let inputBindings: [String : Codable] = ["Destination": DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1)]
         let tokenBindings = ["Drone": droneToken]
         
         flyTo.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

@@ -34,7 +34,7 @@ public class TakePhotoBurst: ExecutableAction {
         do {
             if !isCancelled {
                 let burst = try camera.takePhotoBurst(count: burstCount, options: cameraOptions)
-                self.store(data: burst, forYieldIndex: 0)
+                self.store(burst, forYieldIndex: 0)
             }
         } catch {
             self.error(error)

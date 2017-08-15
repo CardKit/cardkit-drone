@@ -9,11 +9,9 @@
 import Foundation
 import CardKit
 
-import Freddy
-
 // MARK: DCKAngle
 
-public struct DCKAngle {
+public struct DCKAngle: Codable {
     public static let zero = DCKAngle(degrees: 0)
     
     public let degrees: Double
@@ -82,19 +80,9 @@ extension DCKAngle: Comparable {
     }
 }
 
-extension DCKAngle : JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.degrees = try json.getDouble(at: "degrees")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary(["degrees": degrees.toJSON()])
-    }
-}
-
 // MARK: DCKAttitude
 
-public struct DCKAttitude {
+public struct DCKAttitude: Codable {
     public static let zero = DCKAttitude(yaw: DCKAngle.zero, pitch: DCKAngle.zero, roll: DCKAngle.zero)
     
     public let yaw: DCKAngle
@@ -130,58 +118,42 @@ extension DCKAttitude: Equatable {
     }
 }
 
-extension DCKAttitude: JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.yaw = try json.decode(at: "yaw", type: DCKAngle.self)
-        self.pitch = try json.decode(at: "pitch", type: DCKAngle.self)
-        self.roll = try json.decode(at: "roll", type: DCKAngle.self)
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "yaw": self.yaw.toJSON(),
-            "pitch": self.pitch.toJSON(),
-            "roll": self.roll.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKCardinalDirection
 
 public enum DCKCardinalDirection: String {
     // https://en.wikipedia.org/wiki/Points_of_the_compass
-    case North = "North"
-    case NorthByEast = "North by East"
-    case NorthNortheast = "North Northeast"
-    case NortheastByNorth = "Northeast by North"
-    case Northeast = "Northeast"
-    case NortheastByEast = "Northeast by East"
-    case EastNortheast = "East Northeast"
-    case EastByNorth = "East by North"
-    case East = "East"
-    case EastBySouth = "East by South"
-    case EastSoutheast = "East Southeast"
-    case SoutheastByEast = "Southeast by East"
-    case Southeast = "Southeast"
-    case SoutheastBySouth = "Southeast by South"
-    case SouthSoutheast = "South Southeast"
-    case SouthByEast = "South by East"
-    case South = "South"
-    case SouthByWest = "South by West"
-    case SouthSouthwest = "South Southwest"
-    case SouthwestBySouth = "Southwest by South"
-    case Southwest = "Southwest"
-    case SouthwestByWest = "Southwest by West"
-    case WestSouthwest = "West Southwest"
-    case WestBySouth = "West by South"
-    case West = "West"
-    case WestByNorth = "West by North"
-    case WestNorthwest = "West Northwest"
-    case NorthwestByWest = "Northwest by West"
-    case Northwest = "Northwest"
-    case NorthwestByNorth = "Northwest by North"
-    case NorthNorthwest = "North Northwest"
-    case NorthByWest = "North by West"
+    case north = "north"
+    case northByEast = "north by east"
+    case northNortheast = "north northeast"
+    case northeastByNorth = "northeast by north"
+    case northeast = "northeast"
+    case northeastByEast = "northeast by east"
+    case eastNortheast = "east northeast"
+    case eastByNorth = "east by north"
+    case east = "east"
+    case eastBySouth = "east by south"
+    case eastSoutheast = "east southeast"
+    case southeastByEast = "southeast by east"
+    case southeast = "southeast"
+    case southeastBySouth = "southeast by south"
+    case southSoutheast = "south southeast"
+    case southByEast = "south by east"
+    case south = "south"
+    case southByWest = "south by west"
+    case southSouthwest = "south southwest"
+    case southwestBySouth = "southwest by south"
+    case southwest = "southwest"
+    case southwestByWest = "southwest by west"
+    case westSouthwest = "west southwest"
+    case westBySouth = "west by south"
+    case west = "west"
+    case westByNorth = "west by north"
+    case westNorthwest = "west northwest"
+    case northwestByWest = "northwest by west"
+    case northwest = "northwest"
+    case northwestByNorth = "northwest by north"
+    case northNorthwest = "north northwest"
+    case northByWest = "north by west"
     
     public var description: String {
         return self.rawValue
@@ -189,38 +161,38 @@ public enum DCKCardinalDirection: String {
     
     public static var values: [DCKCardinalDirection] {
         return [
-            .North,
-            .NorthByEast,
-            .NorthNortheast,
-            .NortheastByNorth,
-            .Northeast,
-            .NortheastByEast,
-            .EastNortheast,
-            .EastByNorth,
-            .East,
-            .EastBySouth,
-            .EastSoutheast,
-            .SoutheastByEast,
-            .Southeast,
-            .SoutheastBySouth,
-            .SouthSoutheast,
-            .SouthByEast,
-            .South,
-            .SouthByWest,
-            .SouthSouthwest,
-            .SouthwestBySouth,
-            .Southwest,
-            .SouthwestByWest,
-            .WestSouthwest,
-            .WestBySouth,
-            .West,
-            .WestByNorth,
-            .WestNorthwest,
-            .NorthwestByWest,
-            .Northwest,
-            .NorthwestByNorth,
-            .NorthNorthwest,
-            .NorthByWest
+            .north,
+            .northByEast,
+            .northNortheast,
+            .northeastByNorth,
+            .northeast,
+            .northeastByEast,
+            .eastNortheast,
+            .eastByNorth,
+            .east,
+            .eastBySouth,
+            .eastSoutheast,
+            .southeastByEast,
+            .southeast,
+            .southeastBySouth,
+            .southSoutheast,
+            .southByEast,
+            .south,
+            .southByWest,
+            .southSouthwest,
+            .southwestBySouth,
+            .southwest,
+            .southwestByWest,
+            .westSouthwest,
+            .westBySouth,
+            .west,
+            .westByNorth,
+            .westNorthwest,
+            .northwestByWest,
+            .northwest,
+            .northwestByNorth,
+            .northNorthwest,
+            .northByWest
         ]
     }
     
@@ -256,11 +228,11 @@ public enum DCKCardinalDirection: String {
     }
 }
 
-extension DCKCardinalDirection: JSONEncodable, JSONDecodable {}
+extension DCKCardinalDirection: Codable {}
 
 // MARK: DCKCoordinate2D
 
-public struct DCKCoordinate2D {
+public struct DCKCoordinate2D: Codable {
     static let earthsRadiusInMeters = 6371e3 //in meters
     public let latitude: Double
     public let longitude: Double
@@ -348,23 +320,9 @@ extension DCKCoordinate2D: CustomStringConvertible {
     }
 }
 
-extension DCKCoordinate2D: JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.latitude = try json.getDouble(at: "latitude")
-        self.longitude = try json.getDouble(at: "longitude")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "latitude": self.latitude.toJSON(),
-            "longitude": self.longitude.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKOrientedCoordinate2D
 
-public struct DCKOrientedCoordinate2D {
+public struct DCKOrientedCoordinate2D: Codable {
     public let latitude: Double
     public let longitude: Double
     public let yaw: DCKAngle
@@ -401,25 +359,9 @@ extension DCKOrientedCoordinate2D: CustomStringConvertible {
     }
 }
 
-extension DCKOrientedCoordinate2D: JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.latitude = try json.getDouble(at: "latitude")
-        self.longitude = try json.getDouble(at: "longitude")
-        self.yaw = try json.decode(at: "yaw", type: DCKAngle.self)
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "latitude": self.latitude.toJSON(),
-            "longitude": self.longitude.toJSON(),
-            "yaw": self.yaw.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKCoordinate3D
 
-public struct DCKCoordinate3D {
+public struct DCKCoordinate3D: Codable {
     public let latitude: Double
     public let longitude: Double
     public let altitude: DCKRelativeAltitude
@@ -479,25 +421,9 @@ extension DCKCoordinate3D: CustomStringConvertible {
     }
 }
 
-extension DCKCoordinate3D: JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.latitude = try json.getDouble(at: "latitude")
-        self.longitude = try json.getDouble(at: "longitude")
-        self.altitude = try json.decode(at: "altitude", type: DCKRelativeAltitude.self)
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "latitude": self.latitude.toJSON(),
-            "longitude": self.longitude.toJSON(),
-            "altitude": self.altitude.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKOrientedCoordinate3D
 
-public struct DCKOrientedCoordinate3D {
+public struct DCKOrientedCoordinate3D: Codable {
     public let latitude: Double
     public let longitude: Double
     public let altitude: DCKRelativeAltitude
@@ -612,27 +538,9 @@ extension DCKOrientedCoordinate3D: CustomStringConvertible {
     }
 }
 
-extension DCKOrientedCoordinate3D: JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.latitude = try json.getDouble(at: "latitude")
-        self.longitude = try json.getDouble(at: "longitude")
-        self.altitude = try json.decode(at: "altitude", type: DCKRelativeAltitude.self)
-        self.yaw = try json.decode(at: "yaw", type: DCKAngle.self)
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "latitude": self.latitude.toJSON(),
-            "longitude": self.longitude.toJSON(),
-            "altitude": self.altitude.toJSON(),
-            "yaw": self.yaw.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKCoordinate2DPath
 
-public struct DCKCoordinate2DPath {
+public struct DCKCoordinate2DPath: Codable {
     public let path: [DCKCoordinate2D]
     
     public init(path: [DCKCoordinate2D]) {
@@ -653,19 +561,9 @@ extension DCKCoordinate2DPath: CustomStringConvertible {
     }
 }
 
-extension DCKCoordinate2DPath: JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.path = try json.decodedArray(type: DCKCoordinate2D.self)
-    }
-    
-    public func toJSON() -> JSON {
-        return self.path.toJSON()
-    }
-}
-
 // MARK: DCKCoordinate3DPath
 
-public struct DCKCoordinate3DPath {
+public struct DCKCoordinate3DPath: Codable {
     public let path: [DCKCoordinate3D]
     
     public init(path: [DCKCoordinate3D]) {
@@ -686,19 +584,9 @@ extension DCKCoordinate3DPath: CustomStringConvertible {
     }
 }
 
-extension DCKCoordinate3DPath: JSONEncodable, JSONDecodable {
-    public func toJSON() -> JSON {
-        return self.path.toJSON()
-    }
-    
-    public init(json: JSON) throws {
-        self.path = try json.decodedArray(type: DCKCoordinate3D.self)
-    }
-}
-
 // MARK: DCKAbsoluteAltitude
 
-public struct DCKAbsoluteAltitude {
+public struct DCKAbsoluteAltitude: Codable {
     public let metersAboveSeaLevel: Double
 }
 
@@ -724,21 +612,9 @@ extension DCKAbsoluteAltitude: Comparable {
     }
 }
 
-extension DCKAbsoluteAltitude : JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.metersAboveSeaLevel = try json.getDouble(at: "metersAboveSeaLevel")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "metersAboveSeaLevel": metersAboveSeaLevel.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKRelativeAltitude
 
-public struct DCKRelativeAltitude {
+public struct DCKRelativeAltitude: Codable {
     public let metersAboveGroundAtTakeoff: Double
     
     public init(metersAboveGroundAtTakeoff: Double) {
@@ -778,21 +654,9 @@ extension DCKRelativeAltitude: Comparable {
     }
 }
 
-extension DCKRelativeAltitude : JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.metersAboveGroundAtTakeoff = try json.getDouble(at: "metersAboveGroundAtTakeoff")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "metersAboveGroundAtTakeoff": metersAboveGroundAtTakeoff.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKSpeed
 
-public struct DCKSpeed {
+public struct DCKSpeed: Codable {
     public let metersPerSecond: Double
     
     private static let mpsToMphConversionFactor: Double = 2.23694
@@ -832,21 +696,9 @@ extension DCKSpeed: Comparable {
     }
 }
 
-extension DCKSpeed : JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.metersPerSecond = try json.getDouble(at: "metersPerSecond")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "metersPerSecond": metersPerSecond.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKDistance
 
-public struct DCKDistance {
+public struct DCKDistance: Codable {
     public let meters: Double
     
     private static let footToMeterConversionFactor: Double = 0.3048
@@ -882,18 +734,6 @@ extension DCKDistance: Comparable {
     }
 }
 
-extension DCKDistance : JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.meters = try json.getDouble(at: "meters")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "meters": meters.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKRotationDirection
 
 public enum DCKRotationDirection: String {
@@ -901,7 +741,7 @@ public enum DCKRotationDirection: String {
     case counterClockwise = "Counterclockwise"
 }
 
-extension DCKRotationDirection: JSONEncodable, JSONDecodable {}
+extension DCKRotationDirection: Codable {}
 
 extension DCKRotationDirection: Enumerable, StringEnumerable {
     public static var values: [DCKRotationDirection] {
@@ -911,7 +751,7 @@ extension DCKRotationDirection: Enumerable, StringEnumerable {
 
 // MARK: DCKAngularVelocity
 
-public struct DCKAngularVelocity {
+public struct DCKAngularVelocity: Codable {
     public let degreesPerSecond: Double
     
     public init(degreesPerSecond: Double) {
@@ -949,18 +789,9 @@ extension DCKAngularVelocity: Comparable {
     }
 }
 
-extension DCKAngularVelocity : JSONDecodable, JSONEncodable {
-    public init(json: JSON) throws {
-        self.degreesPerSecond = try json.getDouble(at: "degreesPerSecond")
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary(["degreesPerSecond": degreesPerSecond.toJSON()])
-    }
-}
-
 // MARK: DCKFrequency
-public struct DCKFrequency {
+
+public struct DCKFrequency: Codable {
     //https://en.wikipedia.org/wiki/Hertz
     public let hertz: Double
 
@@ -1021,7 +852,7 @@ extension DCKFrequency: Comparable {
 
 // MARK: DCKPhoto
 
-public struct DCKPhoto {
+public struct DCKPhoto: Codable {
     public let fileName: String
     public internal (set) var pathInLocalFileSystem: URL?
     public let sizeInBytes: UInt
@@ -1069,68 +900,31 @@ extension DCKPhoto {
     }
 }
 
-extension DCKPhoto: JSONEncodable, JSONDecodable {
-    public init(json: JSON) throws {
-        self.fileName = try json.getString(at: "fileName")
-        
-        let lfsPath = try json.getString(at: "pathInLocalFileSystem")
-        if lfsPath == "nil" {
-            self.pathInLocalFileSystem = nil
-        } else {
-            self.pathInLocalFileSystem = URL(fileURLWithPath: lfsPath)
-        }
-        
-        let size = try json.getInt(at: "sizeInBytes")
-        self.sizeInBytes = UInt(size)
-        
-        self.timeCreated = try json.decode(at: "timeCreated", type: Date.self)
-        
-        let locationStr = try json.getString(at: "location")
-        if locationStr == "nil" {
-            self.location = nil
-        } else {
-            self.location = try json.decode(at: "location", type: DCKCoordinate3D.self)
-        }
-    }
-    
-    public func toJSON() -> JSON {
-        // NOTE: we do not serialize photoData since it would already be in
-        // the local file system (assuming pathInLocalFileSystem is not nil)
-        return .dictionary([
-            "fileName": self.fileName.toJSON(),
-            "pathInLocalFileSystem": self.pathInLocalFileSystem?.absoluteString.toJSON() ?? .string("nil"),
-            "sizeInBytes": Int(self.sizeInBytes).toJSON(),
-            "timeCreated": self.timeCreated.toJSON(),
-            "location": self.location?.toJSON() ?? .string("nil")
-            ])
-    }
-}
-
 // MARK: DCKPhotoAspectRatio
 
 public enum DCKPhotoAspectRatio: String {
-    case aspect_4x3 = "4x3"
-    case aspect_16x9 = "16x9"
-    case aspect_3x2 = "3x2"
+    case aspect4x3 = "4x3"
+    case aspect16x9 = "16x9"
+    case aspect3x2 = "3x2"
 }
 
-extension DCKPhotoAspectRatio: JSONEncodable, JSONDecodable {}
+extension DCKPhotoAspectRatio: Codable {}
 
 extension DCKPhotoAspectRatio: Enumerable, StringEnumerable {
     public static var values: [DCKPhotoAspectRatio] {
-        return [.aspect_4x3, .aspect_16x9, .aspect_3x2]
+        return [.aspect4x3, .aspect16x9, .aspect3x2]
     }
 }
 
 // MARK: DCKPhotoQuality
 
 public enum DCKPhotoQuality: String {
-    case normal = "Normal"
-    case fine = "Fine"
-    case excellent = "Excellent"
+    case normal
+    case fine
+    case excellent
 }
 
-extension DCKPhotoQuality: JSONEncodable, JSONDecodable {}
+extension DCKPhotoQuality: Codable {}
 
 extension DCKPhotoQuality: Enumerable, StringEnumerable {
     public static var values: [DCKPhotoQuality] {
@@ -1140,7 +934,7 @@ extension DCKPhotoQuality: Enumerable, StringEnumerable {
 
 // MARK: DCKPhotoBurst
 
-public struct DCKPhotoBurst {
+public struct DCKPhotoBurst: Codable {
     public internal (set) var photos: [DCKPhoto] = []
     
     public init(photos: [DCKPhoto]) {
@@ -1156,49 +950,27 @@ public struct DCKPhotoBurst {
     }
 }
 
-extension DCKPhotoBurst: JSONEncodable, JSONDecodable {
-    public init(json: JSON) throws {
-        self.photos = try json.decodedArray(at: "photos", type: DCKPhoto.self)
-    }
-    
-    public func toJSON() -> JSON {
-        return .dictionary([
-            "photos": self.photos.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKPhotoBurstCount
 
-public enum DCKPhotoBurstCount: String {
-    case burst_3 = "3 Photos"
-    case burst_5 = "5 Photos"
-    case burst_7 = "7 Photos"
-    case burst_10 = "10 Photos"
-    case burst_14 = "14 Photos"
-    
-    public var numericalValue: Int {
-        switch self {
-        case .burst_3: return 3
-        case .burst_5: return 5
-        case .burst_7: return 7
-        case .burst_10: return 10
-        case .burst_14: return 14
-        }
-    }
+public enum DCKPhotoBurstCount: Int {
+    case burst3 = 3
+    case burst5 = 5
+    case burst7 = 7
+    case burst10 = 10
+    case burst14 = 14
 }
 
-extension DCKPhotoBurstCount: JSONEncodable, JSONDecodable {}
+extension DCKPhotoBurstCount: Codable {}
 
-extension DCKPhotoBurstCount: Enumerable, StringEnumerable {
+extension DCKPhotoBurstCount: Enumerable {
     public static var values: [DCKPhotoBurstCount] {
-        return [.burst_3, .burst_5, .burst_7, .burst_10, .burst_14]
+        return [.burst3, .burst5, .burst7, .burst10, .burst14]
     }
 }
 
 // MARK: DCKVideo
 
-public struct DCKVideo {
+public struct DCKVideo: Codable {
     public let fileName: String
     public internal (set) var pathInLocalFileSystem: URL?
     public let sizeInBytes: UInt
@@ -1247,85 +1019,60 @@ extension DCKVideo {
     }
 }
 
-extension DCKVideo: JSONEncodable, JSONDecodable {
-    public init(json: JSON) throws {
-        self.fileName = try json.getString(at: "fileName")
-        
-        let lfsPath = try json.getString(at: "pathInLocalFileSystem")
-        if lfsPath == "nil" {
-            self.pathInLocalFileSystem = nil
-        } else {
-            self.pathInLocalFileSystem = URL(fileURLWithPath: lfsPath)
-        }
-        
-        let size = try json.getInt(at: "sizeInBytes")
-        self.sizeInBytes = UInt(size)
-        
-        self.timeCreated = try json.decode(at: "timeCreated", type: Date.self)
-        self.durationInSeconds = try json.getDouble(at: "durationInSeconds")
-    }
-    
-    public func toJSON() -> JSON {
-        // NOTE: we do not serialize videoData since it would already be in
-        // the local file system (assuming pathInLocalFileSystem is not nil)
-        return .dictionary([
-            "fileName": self.fileName.toJSON(),
-            "pathInLocalFileSystem": self.pathInLocalFileSystem?.absoluteString.toJSON() ?? .string("nil"),
-            "sizeInBytes": Int(self.sizeInBytes).toJSON(),
-            "timeCreated": self.timeCreated.toJSON(),
-            "durationInSeconds": self.durationInSeconds.toJSON()
-            ])
-    }
-}
-
 // MARK: DCKVideoResolution
 
 public enum DCKVideoResolution: String {
-    case resolution_640x480 = "640 x 480"
-    case resolution_640x512 = "640 x 512"
-    case resolution_720p = "720p"
-    case resolution_1080p = "1080p"
-    case resolution_2704x1520 = "2704 x 1520"
-    case resolution_2720x1530 = "2720 x 1530"
-    case resolution_3840x1572 = "3840 x 1572"
-    case resolution_4k = "4k"
-    case resolution_4096x2160 = "4096 x 2160"
-    case resolution_5280x2160 = "5280 x 2160"
-    case max = "Max"
-    case noSSDVideo = "No SSD Video"
-    case unknown = "Unknown"
+    case resolution640x480 = "640x480"
+    case resolution640x512 = "640x512"
+    case resolution720p = "720p"
+    case resolution1080p = "1080p"
+    case resolution2704x1520 = "2704x1520"
+    case resolution2720x1530 = "2720x1530"
+    case resolution3840x1572 = "3840x1572"
+    case resolution4k = "4k"
+    case resolution4096x2160 = "4096x2160"
+    case resolution5280x2160 = "5280x2160"
+    case max = "max"
+    case noSSDVideo = "no SSD video"
+    case unknown = "unknown"
 }
 
-extension DCKVideoResolution: JSONEncodable, JSONDecodable {}
+extension DCKVideoResolution: Codable {}
 
 extension DCKVideoResolution: Enumerable, StringEnumerable {
     public static var values: [DCKVideoResolution] {
-        return [.resolution_640x480, .resolution_640x512, .resolution_720p, .resolution_1080p, .resolution_2704x1520, .resolution_2720x1530, .resolution_3840x1572, .resolution_4k, .resolution_4096x2160, .resolution_5280x2160, .max, .noSSDVideo, .unknown]
+        return [.resolution640x480, .resolution640x512, .resolution720p, .resolution1080p,
+                .resolution2704x1520, .resolution2720x1530, .resolution3840x1572,
+                .resolution4k, .resolution4096x2160, .resolution5280x2160,
+                .max, .noSSDVideo, .unknown]
     }
 }
 
 // MARK: DCKVideoFramerate
 
 public enum DCKVideoFramerate: String {
-    case framerate_23dot976fps = "23.976 fps"
-    case framerate_24fps = "24 fps"
-    case framerate_25fps = "25 fps"
-    case framerate_29dot970fps = "29.970 fps"
-    case framerate_30fps = "30 fps"
-    case framerate_47dot950fps = "47.950 fps"
-    case framerate_48fps = "48 fps"
-    case framerate_50fps = "50 fps"
-    case framerate_59dot940fps = "59.940 fps"
-    case framerate_60fps = "60 fps"
-    case framerate_96fps = "96 fps"
-    case framerate_120fps = "120 fps"
-    case unknown = "Unknown"
+    case framerate23dot976fps = "23.976fps"
+    case framerate24fps = "24fps"
+    case framerate25fps = "25fps"
+    case framerate29dot970fps = "29.970fps"
+    case framerate30fps = "30fps"
+    case framerate47dot950fps = "47.950fps"
+    case framerate48fps = "48fps"
+    case framerate50fps = "50fps"
+    case framerate59dot940fps = "59.940fps"
+    case framerate60fps = "60fps"
+    case framerate96fps = "96fps"
+    case framerate120fps = "120fps"
+    case unknown = "unknown"
 }
 
-extension DCKVideoFramerate: JSONEncodable, JSONDecodable {}
+extension DCKVideoFramerate: Codable {}
 
 extension DCKVideoFramerate: Enumerable, StringEnumerable {
     public static var values: [DCKVideoFramerate] {
-        return [.framerate_23dot976fps, .framerate_24fps, .framerate_25fps, .framerate_29dot970fps, .framerate_30fps, .framerate_47dot950fps, .framerate_48fps, .framerate_50fps, .framerate_59dot940fps, .framerate_60fps, .framerate_96fps, .framerate_120fps, .unknown]
+        return [.framerate23dot976fps, .framerate24fps, .framerate25fps, .framerate29dot970fps,
+                .framerate30fps, .framerate47dot950fps, .framerate48fps, .framerate50fps,
+                .framerate59dot940fps, .framerate60fps, .framerate96fps, .framerate120fps,
+                .unknown]
     }
 }

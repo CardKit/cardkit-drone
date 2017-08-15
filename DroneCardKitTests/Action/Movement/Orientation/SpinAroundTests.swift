@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -32,7 +30,7 @@ class SpinAroundTests: XCTestCase {
         
         // bind inputs and tokens
         let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = ["Angle": DCKAngle(degrees: 180), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "AngularSpeed": DCKAngularVelocity(degreesPerSecond: 12)]
+        let inputBindings: [String : Codable] = ["Angle": DCKAngle(degrees: 180), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "AngularSpeed": DCKAngularVelocity(degreesPerSecond: 12)]
         let tokenBindings = ["Drone": droneToken]
         
         spinAround.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

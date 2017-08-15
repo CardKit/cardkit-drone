@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -32,7 +30,7 @@ class LandTests: XCTestCase {
         
         // bind inputs and tokens
         let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = [:]
+        let inputBindings: [String : Codable] = [:]
         let tokenBindings = ["Drone": droneToken]
         
         land.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

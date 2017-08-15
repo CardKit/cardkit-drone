@@ -8,7 +8,6 @@
 
 import Foundation
 
-import Freddy
 import CardKit
 import CardKitRuntime
 

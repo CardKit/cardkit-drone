@@ -160,8 +160,12 @@ class DetectObjectTests: XCTestCase {
                 }
             }
             
-            XCTAssertNotNil(detectedObjects["workroom"], "expected to find a workroom")
-            XCTAssertTrue(detectedObjects["workroom"]!.confidence > 0.7)
+            guard let workroom = detectedObjects["workroom"] else {
+                XCTFail("expected to find a workroom")
+                return
+            }
+            
+            XCTAssertTrue(workroom.confidence > 0.7)
         })
     }
 }

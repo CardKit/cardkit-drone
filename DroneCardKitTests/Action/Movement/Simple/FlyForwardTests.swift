@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -34,7 +32,7 @@ class FlyForwardTests: XCTestCase {
         let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
         let distance = DCKDistance(meters: 10.0)
         let speed = DCKSpeed(metersPerSecond: 2)
-        let inputBindings: [String : JSONEncodable] = ["Distance": distance, "Speed": speed]
+        let inputBindings: [String : Codable] = ["Distance": distance, "Speed": speed]
         let tokenBindings = ["Drone": droneToken]
         
         flyForward.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

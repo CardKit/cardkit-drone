@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -35,7 +33,7 @@ class PaceTests: XCTestCase {
         let path = DCKCoordinate2DPath(path: [
             DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784),
             DCKCoordinate2D(latitude: 41.45671972574724, longitude: -73.29207348324675)])
-        let inputBindings: [String : JSONEncodable] = ["Path": path, "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1), "PauseDuration": 2.0]
+        let inputBindings: [String : Codable] = ["Path": path, "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "Speed": DCKSpeed(metersPerSecond: 1), "PauseDuration": 2.0]
         let tokenBindings = ["Drone": droneToken]
         
         pace.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

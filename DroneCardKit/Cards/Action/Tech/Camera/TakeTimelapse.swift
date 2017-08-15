@@ -50,7 +50,7 @@ public class TakeTimelapse: ExecutableAction {
             let video = try camera.stopTimelapse()
             
             // store the video as a yield
-            self.store(data: video, forYieldIndex: 0)
+            self.store(video, forYieldIndex: 0)
             
         } catch let error {
             self.error(error)

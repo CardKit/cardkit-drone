@@ -45,7 +45,7 @@ public class MockDroneToken: BaseMockToken, DroneToken {
     
     public func takeOff(at altitude: DCKRelativeAltitude?) throws {
         self.registerFunctionCall(named: "takeOff")
-        print("\(prefix) MockDroneToken > takeOff(at: \(altitude))")
+        print("\(prefix) MockDroneToken > takeOff(at: \(String(describing: altitude)))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -63,7 +63,7 @@ public class MockDroneToken: BaseMockToken, DroneToken {
     
     public func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?) throws {
         self.registerFunctionCall(named: "hover")
-        print("\(prefix) MockDroneToken > hover(at: \(altitude), withYaw: \(yaw))")
+        print("\(prefix) MockDroneToken > hover(at: \(String(describing: altitude)), withYaw: \(String(describing: yaw)))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -74,7 +74,7 @@ public class MockDroneToken: BaseMockToken, DroneToken {
     
     public func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
         self.registerFunctionCall(named: "flyTo")
-        print("\(prefix) MockDroneToken > fly(to: \(coordinate), atYaw: \(yaw), atAltitude: \(altitude), atSpeed: \(speed))")
+        print("\(prefix) MockDroneToken > fly(to: \(coordinate), atYaw: \(String(describing: yaw)), atAltitude: \(String(describing: altitude)), atSpeed: \(String(describing: speed)))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -103,7 +103,7 @@ public class MockDroneToken: BaseMockToken, DroneToken {
     
     public func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws {
         self.registerFunctionCall(named: "flyOn2DPath")
-        print("\(prefix) MockDroneToken > fly(on: \(path), atAltitude: \(altitude), atSpeed: \(speed))")
+        print("\(prefix) MockDroneToken > fly(on: \(path), atAltitude: \(String(describing: altitude)), atSpeed: \(String(describing: speed)))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -114,7 +114,7 @@ public class MockDroneToken: BaseMockToken, DroneToken {
     
     public func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws {
         self.registerFunctionCall(named: "flyOn3DPath")
-        print("\(prefix) MockDroneToken > fly(on: \(path), atSpeed: \(speed))")
+        print("\(prefix) MockDroneToken > fly(on: \(path), atSpeed: \(String(describing: speed)))")
         
         Thread.sleep(forTimeInterval: delay)
         
@@ -125,14 +125,14 @@ public class MockDroneToken: BaseMockToken, DroneToken {
     
     public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws {
         self.registerFunctionCall(named: "circle")
-        print("\(prefix) MockDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(angularSpeed), direction: \(direction), repeatedly: \(shouldRepeat)")
+        print("\(prefix) MockDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(String(describing: angularSpeed)), direction: \(String(describing: direction)), repeatedly: \(shouldRepeat)")
         
         Thread.sleep(forTimeInterval: delay)
     }
     
     public func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, toLand land: Bool) throws {
         self.registerFunctionCall(named: "returnHome")
-        print("\(prefix) MockDroneToken > returnHome(atAltitude: \(altitude), atSpeed: \(speed), toLand: \(land))")
+        print("\(prefix) MockDroneToken > returnHome(atAltitude: \(String(describing: altitude)), atSpeed: \(String(describing: speed)), toLand: \(land))")
         Thread.sleep(forTimeInterval: delay)
         
         guard let homeLocation = self.homeLocation else {
@@ -146,7 +146,7 @@ public class MockDroneToken: BaseMockToken, DroneToken {
     
     public func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?) throws {
         self.registerFunctionCall(named: "spinAround")
-        print("\(prefix) MockDroneToken > spinAround(toYawAngle: \(yaw), atAngularSpeed: \(angularSpeed)")
+        print("\(prefix) MockDroneToken > spinAround(toYawAngle: \(yaw), atAngularSpeed: \(String(describing: angularSpeed))")
         
         Thread.sleep(forTimeInterval: delay)
     }

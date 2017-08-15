@@ -54,7 +54,7 @@ public class TakePhotos: ExecutableAction {
             let photos = try camera.stopTakingPhotos()
             
             // store the photos as a yield
-            self.store(data: photos, forYieldIndex: 0)
+            self.store(photos, forYieldIndex: 0)
             
         } catch let error {
             self.error(error)

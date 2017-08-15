@@ -75,33 +75,27 @@ public protocol DroneToken: TelemetryToken {
 // MARK: - Convienience Functions for Default Parameters
 
 public extension DroneToken {
-    
-    // takeOff without altitude specified
-    final func takeOff(at altitude: DCKRelativeAltitude? = nil) throws {
+    func takeOff(at altitude: DCKRelativeAltitude? = nil) throws {
         try self.takeOff(at: nil)
     }
     
-    // hover without Yaw angle specified
-    final func hover(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
+    func hover(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
         try self.hover(at: altitude, withYaw: nil)
     }
     
-    //fly to with DCKCoordinate2D
-    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+    func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try self.fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed)
     }
     
-    //fly to with DCKOrientedCoordinate2D
-    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+    func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try self.fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude, atSpeed: speed)
     }
     
-    //fly to with DCKCoordinate3D
-    final func fly(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+    func fly(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try self.fly(to: coordinate.as2D(), atYaw: yaw, atAltitude: coordinate.altitude, atSpeed: speed)
     }
     
-    final func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+    func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try self.fly(on: path, atAltitude: altitude, atSpeed: speed)
     }
 }

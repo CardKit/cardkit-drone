@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -32,7 +30,7 @@ class HoverTests: XCTestCase {
         
         // bind inputs and tokens
         let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : JSONEncodable] = ["Altitude": DCKDistance(meters: 10.0)]
+        let inputBindings: [String : Codable] = ["Altitude": DCKDistance(meters: 10.0)]
         let tokenBindings = ["Drone": droneToken]
         
         hover.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
