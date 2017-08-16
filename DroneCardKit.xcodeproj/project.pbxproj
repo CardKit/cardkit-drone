@@ -54,6 +54,9 @@
 		CC0F5EEC1F44892D00B18D10 /* FlyForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */; };
 		CC0F5EED1F44892F00B18D10 /* SpinAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */; };
 		CC0F5EEE1F44892F00B18D10 /* FlyForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */; };
+		CC0F5EFD1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */; };
+		CC0F5EFE1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */; };
+		CC0F5EFF1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */; };
 		CC356B561E69FD1100E2DF14 /* DCKCoordinate2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC356B551E69FD1100E2DF14 /* DCKCoordinate2DTests.swift */; };
 		CC356B571E69FD1100E2DF14 /* DCKCoordinate2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC356B551E69FD1100E2DF14 /* DCKCoordinate2DTests.swift */; };
 		CC356B581E69FD1100E2DF14 /* DCKCoordinate2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC356B551E69FD1100E2DF14 /* DCKCoordinate2DTests.swift */; };
@@ -247,6 +250,7 @@
 		68D4329C1DFAFBFB0080389E /* LandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandTests.swift; sourceTree = "<group>"; };
 		68DE99A71DF1C7670040D76A /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
 		68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyForward.swift; sourceTree = "<group>"; };
+		CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneCardCatalog.swift; sourceTree = "<group>"; };
 		CC356B551E69FD1100E2DF14 /* DCKCoordinate2DTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCoordinate2DTests.swift; sourceTree = "<group>"; };
 		CC356B5A1E70732C00E2DF14 /* BaseMockToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMockToken.swift; sourceTree = "<group>"; };
 		CC356B5C1E70732C00E2DF14 /* MockCameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCameraToken.swift; sourceTree = "<group>"; };
@@ -726,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				CCD6D6E21DFF0E38004CEB71 /* DroneCardKit.swift */,
+				CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */,
 			);
 			path = DroneCardKit;
 			sourceTree = "<group>";
@@ -1102,6 +1107,7 @@
 			files = (
 				CC356B6C1E70732C00E2DF14 /* MockTelemetryToken.swift in Sources */,
 				44017E2E1E4A1F7C00B4D9C1 /* ReturnHome.swift in Sources */,
+				CC0F5EFD1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */,
 				CC64EC7C1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
 				CC64EC971E3FE4F200F7010D /* PointAtGround.swift in Sources */,
 				CC64EC931E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
@@ -1176,6 +1182,7 @@
 			files = (
 				CC64EC7D1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
 				CC64EC981E3FE4F200F7010D /* PointAtGround.swift in Sources */,
+				CC0F5EFE1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */,
 				CC64EC941E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
 				CC0F5EEC1F44892D00B18D10 /* FlyForward.swift in Sources */,
 				CC356B641E70732C00E2DF14 /* MockCameraToken.swift in Sources */,
@@ -1250,6 +1257,7 @@
 			files = (
 				CC64EC7E1E3FCEA600F7010D /* TakePhotoBurst.swift in Sources */,
 				CC64EC991E3FE4F200F7010D /* PointAtGround.swift in Sources */,
+				CC0F5EFF1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */,
 				CC64EC951E3FE4E900F7010D /* PanBetweenLocations.swift in Sources */,
 				CC0F5EEE1F44892F00B18D10 /* FlyForward.swift in Sources */,
 				CC356B651E70732C00E2DF14 /* MockCameraToken.swift in Sources */,
