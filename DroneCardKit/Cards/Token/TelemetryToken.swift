@@ -8,9 +8,11 @@
 
 import Foundation
 
-/// Current drone telemetry, read-only. Carries current location, altitude, attitude, and motor state.
+import CardKit
+import CardKitRuntime
+
+/// Read-only drone telemetry. Carries current location, altitude, attitude, and motor state.
 public protocol TelemetryToken {
-    // MARK: Location & attitude
     var currentLocation: DCKCoordinate2D? { get }
     var currentAltitude: DCKRelativeAltitude? { get }
     
@@ -18,6 +20,5 @@ public protocol TelemetryToken {
     /// Values range from 0 to 360. 0º represents North, 90º:East, 180º:South, 270º:West, 360º:North
     var currentAttitude: DCKAttitude? { get }
     
-    // MARK: Motor state
     var areMotorsOn: Bool? { get }
 }

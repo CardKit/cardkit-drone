@@ -30,7 +30,7 @@ class SpinAroundTests: XCTestCase {
         
         // bind inputs and tokens
         let droneToken = MockDroneToken(with: DroneCardKit.Token.Drone.makeCard())
-        let inputBindings: [String : Codable] = ["Angle": DCKAngle(degrees: 180), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "AngularSpeed": DCKAngularVelocity(degreesPerSecond: 12)]
+        let inputBindings: [String : Codable] = ["Angle": DCKAngle(degrees: 180), "Altitude": DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10), "AngularVelocity": DCKAngularVelocity(degreesPerSecond: 12)]
         let tokenBindings = ["Drone": droneToken]
         
         spinAround.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

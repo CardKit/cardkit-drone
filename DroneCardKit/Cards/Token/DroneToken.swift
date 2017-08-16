@@ -12,67 +12,45 @@ import CardKit
 import CardKitRuntime
 
 public protocol DroneToken: TelemetryToken {
+    /// Turn on (or off) the drone's motors.
     func spinMotors(on: Bool) throws
     
-    // MARK: Take off
-    
-    /// Takes off to a default altitude or custom altitude (if specified).
-    /// If the drone is already in the air, this function should not do anything.
-    ///
-    /// - Parameters:
-    ///   - altitude: the altitude the drone will climb to. if nil, the drone will take off to it's default take off altitude.
-    ///   - completionHandler: AsyncExecutionCompletionHandler
+    /// Commands the drone to take off. If the drone is already in the air, this function should not do anything.
     func takeOff(at altitude: DCKRelativeAltitude?) throws
     
-    // MARK: Hover
-    
-    /// Cancels all current operations and hovers. The drone will fly to an altitude (if specified) and change its yaw (if specified).
-    ///
-    /// - Parameters:
-    ///   - altitude: the height the drone should be at. if nil, the altitude will not change.
-    ///   - yaw: the angle the drone should be facing. if nil, the yaw will not change.
-    ///   - completionHandler: AsyncExecutionCompletionHandler
+    /// Causes the drone to hover in its current location. The drone will fly to an altitude (if specified) and change its yaw (if specified).
     func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?) throws
     
-    // MARK: Fly
-    
-    /// Fly to a coordinate at an altitude, speed, and yaw. The drone will change its yaw angle and then fly to the location.
-    /// The yaw angle will be updated by calling the hover(withYaw:) function.
-    ///
-    /// - Parameters:
-    ///   - coordinate: the location the drone needs to fly to
-    ///   - yaw: the angle the drone should be facing. if nil, the yaw will not change.
-    ///   - altitude: the height the drone should be at. if nil, the altitude will not change.
-    ///   - speed: the speed the drone should be flying. if nil, the default speed will be used (8 m/s)
-    ///   - completionHandler: AsyncExecutionCompletionHandler
+    /// Fly to the given coordinate at an altitude, speed, and yaw.
     func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws
+    
+    /// Fly along the given 2D path, at the given altitude and speed.
     func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws
+    
+    /// Fly along the given 3D path, at the given speed.
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws
     
-    // MARK: Circle
-    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws
+    /// Fly in a circle around the center point.
+    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularVelocity angularVelocity: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws
     
-    // MARK: Return home
+    /// Home location (captured at takeoff)
     var homeLocation: DCKCoordinate2D? { get }
+    
+    /// Causes the drone to return home.
     func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, toLand land: Bool) throws
     
-    // MARK: Spin Around
-    func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?) throws
+    /// Causes the drone to spin around at the given angular velocity.
+    func spinAround(toYawAngle yaw: DCKAngle, atAngularVelocity angularVelocity: DCKAngularVelocity?) throws
     
-    // MARK: Landing gear
+    /// Returns true if the landing gear is down, false otherwise.
     var isLandingGearDown: Bool? { get }
+    
+    /// Changes the state of the landing gear.
     func landingGear(down: Bool) throws
     
-    // MARK: Land
-    
-    /// Lands the drone at the current location. Once the drone has landed, the motors will automatically turn off.
-    ///
-    /// - Parameter completionHandler: AsyncExecutionCompletionHandler
+    /// Lands the drone at the current location. Once the drone has landed, the motors should automatically disengage.
     func land() throws
 }
-
-
-// MARK: - Convienience Functions for Default Parameters
 
 public extension DroneToken {
     func takeOff(at altitude: DCKRelativeAltitude? = nil) throws {

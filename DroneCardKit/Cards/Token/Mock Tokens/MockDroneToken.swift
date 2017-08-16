@@ -123,9 +123,9 @@ public class MockDroneToken: BaseMockToken, DroneToken {
         }
     }
     
-    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws {
+    public func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularVelocity angularVelocity: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws {
         self.registerFunctionCall(named: "circle")
-        print("\(prefix) MockDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularSpeed: \(String(describing: angularSpeed)), direction: \(String(describing: direction)), repeatedly: \(shouldRepeat)")
+        print("\(prefix) MockDroneToken > circle(around: \(center), atRadius: \(radius), atAltitude: \(altitude), atAngularVelocity: \(String(describing: angularVelocity)), direction: \(String(describing: direction)), repeatedly: \(shouldRepeat)")
         
         Thread.sleep(forTimeInterval: delay)
     }
@@ -144,9 +144,9 @@ public class MockDroneToken: BaseMockToken, DroneToken {
         if land { try self.land() }
     }
     
-    public func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?) throws {
+    public func spinAround(toYawAngle yaw: DCKAngle, atAngularVelocity angularVelocity: DCKAngularVelocity?) throws {
         self.registerFunctionCall(named: "spinAround")
-        print("\(prefix) MockDroneToken > spinAround(toYawAngle: \(yaw), atAngularSpeed: \(String(describing: angularSpeed))")
+        print("\(prefix) MockDroneToken > spinAround(toYawAngle: \(yaw), atAngularVelocity: \(String(describing: angularVelocity))")
         
         Thread.sleep(forTimeInterval: delay)
     }

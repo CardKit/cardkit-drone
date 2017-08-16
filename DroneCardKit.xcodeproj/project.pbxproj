@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		44017E2E1E4A1F7C00B4D9C1 /* ReturnHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */; };
-		44017E321E4AD9EC00B4D9C1 /* SpinAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */; };
 		447F6B761E4997E100BAF604 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B741E4997E100BAF604 /* Circle.swift */; };
 		447F6B771E4997E100BAF604 /* CircleRepeatedly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */; };
 		6809DF331DF4B7970077C6EE /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79411D7897BB003B6458 /* CardKit.framework */; };
@@ -38,9 +37,6 @@
 		68D4329D1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
 		68D4329E1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
 		68D4329F1DFAFBFB0080389E /* LandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D4329C1DFAFBFB0080389E /* LandTests.swift */; };
-		68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
-		68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
-		68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DE99A71DF1C7670040D76A /* CoverArea.swift */; };
 		68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
 		68FB026A1E5CEAEB003BB6E0 /* FlyForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */; };
@@ -50,9 +46,7 @@
 		CC0F5EE81F44890D00B18D10 /* CircleRepeatedly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */; };
 		CC0F5EE91F44891200B18D10 /* ReturnHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */; };
 		CC0F5EEA1F44891200B18D10 /* ReturnHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */; };
-		CC0F5EEB1F44892D00B18D10 /* SpinAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */; };
 		CC0F5EEC1F44892D00B18D10 /* FlyForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */; };
-		CC0F5EED1F44892F00B18D10 /* SpinAround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */; };
 		CC0F5EEE1F44892F00B18D10 /* FlyForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */; };
 		CC0F5EFD1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */; };
 		CC0F5EFE1F44DBFD00B18D10 /* DroneCardCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */; };
@@ -150,9 +144,6 @@
 		CC9AACBD1E67760300C294FD /* HoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACBC1E67760300C294FD /* HoverTests.swift */; };
 		CC9AACBE1E67760300C294FD /* HoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACBC1E67760300C294FD /* HoverTests.swift */; };
 		CC9AACBF1E67760300C294FD /* HoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACBC1E67760300C294FD /* HoverTests.swift */; };
-		CC9AACC51E67789100C294FD /* CoverAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC41E67789100C294FD /* CoverAreaTests.swift */; };
-		CC9AACC61E67789100C294FD /* CoverAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC41E67789100C294FD /* CoverAreaTests.swift */; };
-		CC9AACC71E67789100C294FD /* CoverAreaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC41E67789100C294FD /* CoverAreaTests.swift */; };
 		CC9AACC91E677A2400C294FD /* CircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC81E677A2400C294FD /* CircleTests.swift */; };
 		CC9AACCA1E677A2400C294FD /* CircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC81E677A2400C294FD /* CircleTests.swift */; };
 		CC9AACCB1E677A2400C294FD /* CircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACC81E677A2400C294FD /* CircleTests.swift */; };
@@ -165,9 +156,6 @@
 		CC9AACD51E67802E00C294FD /* ReturnHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD41E67802E00C294FD /* ReturnHomeTests.swift */; };
 		CC9AACD61E67802E00C294FD /* ReturnHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD41E67802E00C294FD /* ReturnHomeTests.swift */; };
 		CC9AACD71E67802E00C294FD /* ReturnHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD41E67802E00C294FD /* ReturnHomeTests.swift */; };
-		CC9AACD91E67808100C294FD /* SpinAroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD81E67808100C294FD /* SpinAroundTests.swift */; };
-		CC9AACDA1E67808100C294FD /* SpinAroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD81E67808100C294FD /* SpinAroundTests.swift */; };
-		CC9AACDB1E67808100C294FD /* SpinAroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACD81E67808100C294FD /* SpinAroundTests.swift */; };
 		CC9AACDD1E67811200C294FD /* FlyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACDC1E67811200C294FD /* FlyPathTests.swift */; };
 		CC9AACDE1E67811200C294FD /* FlyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACDC1E67811200C294FD /* FlyPathTests.swift */; };
 		CC9AACDF1E67811200C294FD /* FlyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACDC1E67811200C294FD /* FlyPathTests.swift */; };
@@ -236,7 +224,6 @@
 
 /* Begin PBXFileReference section */
 		44017E2D1E4A1F7C00B4D9C1 /* ReturnHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnHome.swift; sourceTree = "<group>"; };
-		44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinAround.swift; sourceTree = "<group>"; };
 		447F6B741E4997E100BAF604 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRepeatedly.swift; sourceTree = "<group>"; };
 		686EE8A21DF855A40024F3E5 /* Land.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Land.swift; sourceTree = "<group>"; };
@@ -248,7 +235,6 @@
 		68B6352F1DFB5B0E00A2AA07 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
 		68D3BD501E40025200F83B36 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		68D4329C1DFAFBFB0080389E /* LandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandTests.swift; sourceTree = "<group>"; };
-		68DE99A71DF1C7670040D76A /* CoverArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverArea.swift; sourceTree = "<group>"; };
 		68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyForward.swift; sourceTree = "<group>"; };
 		CC0F5EFC1F44DBFD00B18D10 /* DroneCardCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneCardCatalog.swift; sourceTree = "<group>"; };
 		CC356B551E69FD1100E2DF14 /* DCKCoordinate2DTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCoordinate2DTests.swift; sourceTree = "<group>"; };
@@ -289,7 +275,6 @@
 		CC9318A31D4796F5001B71B1 /* DroneCardKitTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DroneCardKitTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318B61D479706001B71B1 /* DroneCardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DroneCardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9318BF1D479706001B71B1 /* DroneCardKitTests tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DroneCardKitTests tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStudyScenarios.swift; sourceTree = "<group>"; };
 		CC9AACB81E67756C00C294FD /* FlyForwardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyForwardTests.swift; sourceTree = "<group>"; };
 		CC9AACBC1E67760300C294FD /* HoverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoverTests.swift; sourceTree = "<group>"; };
 		CC9AACC41E67789100C294FD /* CoverAreaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverAreaTests.swift; sourceTree = "<group>"; };
@@ -388,7 +373,6 @@
 		44017E301E4AD94C00B4D9C1 /* Orientation */ = {
 			isa = PBXGroup;
 			children = (
-				44017E311E4AD9EC00B4D9C1 /* SpinAround.swift */,
 			);
 			path = Orientation;
 			sourceTree = "<group>";
@@ -476,7 +460,6 @@
 		68DE99A61DF1C7670040D76A /* Area */ = {
 			isa = PBXGroup;
 			children = (
-				68DE99A71DF1C7670040D76A /* CoverArea.swift */,
 			);
 			path = Area;
 			sourceTree = "<group>";
@@ -568,7 +551,6 @@
 				CCD6D6E11DFF0E38004CEB71 /* DroneCardKit */,
 				CCBE8C5E1DA69F5900BD7638 /* Cards */,
 				68657C2D1E3FBEB900612ECC /* Extensions */,
-				CC9318D31D4797BF001B71B1 /* Scenarios */,
 			);
 			path = DroneCardKit;
 			sourceTree = "<group>";
@@ -582,14 +564,6 @@
 				CC0F32C51E316C9E008423AC /* Input */,
 			);
 			path = DroneCardKitTests;
-			sourceTree = "<group>";
-		};
-		CC9318D31D4797BF001B71B1 /* Scenarios */ = {
-			isa = PBXGroup;
-			children = (
-				CC9318D41D4797BF001B71B1 /* UserStudyScenarios.swift */,
-			);
-			path = Scenarios;
 			sourceTree = "<group>";
 		};
 		CC9AACC01E67788400C294FD /* Area */ = {
@@ -1118,7 +1092,6 @@
 				CCD6D6F01DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
 				68D3BD511E40025200F83B36 /* DispatchQueueExtension.swift in Sources */,
 				CCD6D6EA1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
-				68DE99A81DF1C7670040D76A /* CoverArea.swift in Sources */,
 				68FB026A1E5CEAEB003BB6E0 /* FlyForward.swift in Sources */,
 				CC64EC821E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CCFAFB6A1E60C02F000DBEF4 /* TelemetryToken.swift in Sources */,
@@ -1128,7 +1101,6 @@
 				447F6B771E4997E100BAF604 /* CircleRepeatedly.swift in Sources */,
 				CC64EC7F1E3FCEA600F7010D /* TakePhotos.swift in Sources */,
 				CCD6D6E31DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
-				44017E321E4AD9EC00B4D9C1 /* SpinAround.swift in Sources */,
 				CC64EC871E3FD1D700F7010D /* PointAtFront.swift in Sources */,
 				687DC9E21E579276000F7EBE /* Pace.swift in Sources */,
 				686EE8A31DF855A40024F3E5 /* Land.swift in Sources */,
@@ -1151,10 +1123,8 @@
 				CC566A9F1E687A4700EAF4F3 /* PanBetweenLocationsTests.swift in Sources */,
 				CC9AACCD1E677E7700C294FD /* CircleRepeatedlyTests.swift in Sources */,
 				CC9AACC91E677A2400C294FD /* CircleTests.swift in Sources */,
-				CC9AACC51E67789100C294FD /* CoverAreaTests.swift in Sources */,
 				CC9AACB91E67756C00C294FD /* FlyForwardTests.swift in Sources */,
 				CC356B561E69FD1100E2DF14 /* DCKCoordinate2DTests.swift in Sources */,
-				CC9AACD91E67808100C294FD /* SpinAroundTests.swift in Sources */,
 				CC566AAB1E68807900EAF4F3 /* PointAtGroundTests.swift in Sources */,
 				CC566AA71E687FFB00EAF4F3 /* PointAtFrontTests.swift in Sources */,
 				CC9AACE11E679CBD00C294FD /* PaceTests.swift in Sources */,
@@ -1190,14 +1160,12 @@
 				CC0F5EE51F44890700B18D10 /* Circle.swift in Sources */,
 				CCD6D6EB1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
-				CC0F5EEB1F44892D00B18D10 /* SpinAround.swift in Sources */,
 				68D3BD521E40025200F83B36 /* DispatchQueueExtension.swift in Sources */,
 				CCD6D6E41DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
 				CCBE8C6E1DA69F5900BD7638 /* DCKInputTypes.swift in Sources */,
 				CC64EC831E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC771E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F5EE71F44890C00B18D10 /* CircleRepeatedly.swift in Sources */,
-				68DE99A91DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC356B6D1E70732C00E2DF14 /* MockTelemetryToken.swift in Sources */,
 				687DC9E51E5793E3000F7EBE /* Pace.swift in Sources */,
 				CC64EC801E3FCEA600F7010D /* TakePhotos.swift in Sources */,
@@ -1239,8 +1207,6 @@
 				CC9AACDE1E67811200C294FD /* FlyPathTests.swift in Sources */,
 				CC566A9C1E6872E000EAF4F3 /* TakeTimelapseTests.swift in Sources */,
 				CC566AB41E68810900EAF4F3 /* PointInDirectionTests.swift in Sources */,
-				CC9AACC61E67789100C294FD /* CoverAreaTests.swift in Sources */,
-				CC9AACDA1E67808100C294FD /* SpinAroundTests.swift in Sources */,
 				CC9AACBE1E67760300C294FD /* HoverTests.swift in Sources */,
 				CC524AF81E67310D00773BFB /* DCKCardinalDirectionTests.swift in Sources */,
 				CC566AAC1E68807900EAF4F3 /* PointAtGroundTests.swift in Sources */,
@@ -1265,14 +1231,12 @@
 				CC0F5EE61F44890800B18D10 /* Circle.swift in Sources */,
 				CCD6D6EC1DFF0EA9004CEB71 /* CameraToken.swift in Sources */,
 				CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */,
-				CC0F5EED1F44892F00B18D10 /* SpinAround.swift in Sources */,
 				68D3BD531E40025200F83B36 /* DispatchQueueExtension.swift in Sources */,
 				CCD6D6E51DFF0E38004CEB71 /* DroneCardKit.swift in Sources */,
 				CCBE8C701DA69F5900BD7638 /* DCKInputTypes.swift in Sources */,
 				CC64EC841E3FCEA600F7010D /* TakeTimelapse.swift in Sources */,
 				CC64EC781E3FCEA600F7010D /* RecordVideo.swift in Sources */,
 				CC0F5EE81F44890D00B18D10 /* CircleRepeatedly.swift in Sources */,
-				68DE99AA1DF1C7670040D76A /* CoverArea.swift in Sources */,
 				CC356B6E1E70732C00E2DF14 /* MockTelemetryToken.swift in Sources */,
 				687DC9E61E5793E5000F7EBE /* Pace.swift in Sources */,
 				CC64EC811E3FCEA600F7010D /* TakePhotos.swift in Sources */,
@@ -1314,8 +1278,6 @@
 				CC9AACDF1E67811200C294FD /* FlyPathTests.swift in Sources */,
 				CC566A9D1E6872E000EAF4F3 /* TakeTimelapseTests.swift in Sources */,
 				CC566AB51E68810900EAF4F3 /* PointInDirectionTests.swift in Sources */,
-				CC9AACC71E67789100C294FD /* CoverAreaTests.swift in Sources */,
-				CC9AACDB1E67808100C294FD /* SpinAroundTests.swift in Sources */,
 				CC9AACBF1E67760300C294FD /* HoverTests.swift in Sources */,
 				CC524AF91E67310E00773BFB /* DCKCardinalDirectionTests.swift in Sources */,
 				CC566AAD1E68807900EAF4F3 /* PointAtGroundTests.swift in Sources */,

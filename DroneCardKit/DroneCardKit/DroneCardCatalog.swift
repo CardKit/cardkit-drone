@@ -27,11 +27,11 @@ public struct DroneCardCatalog: DescriptorCatalog {
         DroneCardKit.Action.Tech.Camera.TakePhoto,
         DroneCardKit.Action.Tech.Camera.TakePhotoBurst,
         DroneCardKit.Action.Tech.Camera.TakePhotos,
+        DroneCardKit.Action.Tech.Camera.TakeTimelapse,
         DroneCardKit.Action.Tech.Gimbal.PanBetweenLocations,
         DroneCardKit.Action.Tech.Gimbal.PointAtFront,
         DroneCardKit.Action.Tech.Gimbal.PointAtGround,
         DroneCardKit.Action.Tech.Gimbal.PointAtLocation,
-        DroneCardKit.Action.Tech.Gimbal.PointAtMovement,
         DroneCardKit.Action.Tech.Gimbal.PointInDirection,
         DroneCardKit.Input.Camera.AspectRatio,
         DroneCardKit.Input.Camera.BurstCount,
@@ -46,7 +46,7 @@ public struct DroneCardCatalog: DescriptorCatalog {
         DroneCardKit.Input.Location.Coordinate3D,
         DroneCardKit.Input.Location.Distance,
         DroneCardKit.Input.Modifier.Movement.Altitude,
-        DroneCardKit.Input.Modifier.Movement.AngularSpeed,
+        DroneCardKit.Input.Modifier.Movement.AngularVelocity,
         DroneCardKit.Input.Modifier.Movement.RotationDirection,
         DroneCardKit.Input.Modifier.Movement.Speed,
         DroneCardKit.Input.Relative.RelativeToLocation,
@@ -66,7 +66,9 @@ public struct DroneCardCatalog: DescriptorCatalog {
         DroneCardKit.Action.Movement.Orientation.SpinAroundRepeatedly,
         DroneCardKit.Action.Movement.Path.Trace,
         DroneCardKit.Action.Movement.Path.TraceRepeatedly,
-        DroneCardKit.Action.Movement.Relative.Follow]
+        DroneCardKit.Action.Movement.Relative.Follow,
+        DroneCardKit.Action.Tech.Gimbal.PointAtMovement
+    ]
     
     public var executableActionTypes: [ActionCardDescriptor: ExecutableAction.Type] = [
         DroneCardKit.Action.Movement.Location.Circle: Circle.self,
@@ -86,8 +88,6 @@ public struct DroneCardCatalog: DescriptorCatalog {
         DroneCardKit.Action.Tech.Gimbal.PointAtFront: PointAtFront.self,
         DroneCardKit.Action.Tech.Gimbal.PointAtGround: PointAtGround.self,
         DroneCardKit.Action.Tech.Gimbal.PointAtLocation: PointAtLocation.self,
-        DroneCardKit.Action.Tech.Gimbal.PointInDirection: PointInDirection.self,
-        DroneCardKit.Action.Movement.Area.CoverArea: CoverArea.self,
-        DroneCardKit.Action.Movement.Orientation.SpinAround: SpinAround.self
+        DroneCardKit.Action.Tech.Gimbal.PointInDirection: PointInDirection.self
     ]
 }

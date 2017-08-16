@@ -93,7 +93,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate2D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
-            InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true),
+            InputSlot(name: "AngularVelocity", descriptor: DroneCardKit.Input.Modifier.Movement.AngularVelocity, isOptional: true),
             InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
         ],
         tokens: [
@@ -113,7 +113,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate2D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
-            InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true),
+            InputSlot(name: "AngularVelocity", descriptor: DroneCardKit.Input.Modifier.Movement.AngularVelocity, isOptional: true),
             InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
         ],
         tokens: [
@@ -176,7 +176,7 @@ extension DroneCardKit.Action.Movement.Orientation {
         inputs: [
             InputSlot(name: "Angle", descriptor: DroneCardKit.Input.Location.Angle, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "AngularSpeed", descriptor: DroneCardKit.Input.Modifier.Movement.AngularSpeed, isOptional: true)
+            InputSlot(name: "AngularVelocity", descriptor: DroneCardKit.Input.Modifier.Movement.AngularVelocity, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -799,13 +799,13 @@ extension DroneCardKit.Input.Modifier.Movement {
         inputDescription: "Altitude (in meters)",
         assetCatalog: CardAssetCatalog(description: "Altitude (in meters)"))
     
-    // MARK: Modifier/Movement/AngularSpeed
-    public static let AngularSpeed = InputCardDescriptor(
-        name: "AngularSpeed",
+    // MARK: Modifier/Movement/AngularVelocity
+    public static let AngularVelocity = InputCardDescriptor(
+        name: "AngularVelocity",
         subpath: "Modifier/Movement",
         inputType: DCKAngularVelocity.self,
-        inputDescription: "Angular speed (in degrees/sec)",
-        assetCatalog: CardAssetCatalog(description: "Angular speed (in degress/sec)"))
+        inputDescription: "Angular velocity (in degrees/sec). Positive values indicate clockwise direction, negative values indicate counterclockwise direction.",
+        assetCatalog: CardAssetCatalog(description: "Angular velocity (in degress/sec)"))
     
     // MARK: Modifier/Movement/Speed
     public static let Speed = InputCardDescriptor(

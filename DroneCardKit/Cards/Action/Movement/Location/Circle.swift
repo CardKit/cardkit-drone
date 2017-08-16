@@ -19,7 +19,7 @@ public class Circle: ExecutableAction {
             let altitude: DCKRelativeAltitude = self.value(forInput: "Altitude")
             else { return }
         
-        let angularSpeed: DCKAngularVelocity? = self.optionalValue(forInput: "AngularSpeed")
+        let angularVelocity: DCKAngularVelocity? = self.optionalValue(forInput: "AngularVelocity")
         let direction: DCKRotationDirection? = self.optionalValue(forInput: "Direction")
         
         do {
@@ -30,7 +30,7 @@ public class Circle: ExecutableAction {
             
             // circle
             if !isCancelled {
-                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, direction: direction, repeatedly: false)
+                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularVelocity: angularVelocity, direction: direction, repeatedly: false)
             }
         } catch let error {
             self.error(error)
