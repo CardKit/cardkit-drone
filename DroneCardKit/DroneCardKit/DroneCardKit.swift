@@ -93,8 +93,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate2D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
-            InputSlot(name: "AngularVelocity", descriptor: DroneCardKit.Input.Modifier.Movement.AngularVelocity, isOptional: true),
-            InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
+            InputSlot(name: "AngularVelocity", descriptor: DroneCardKit.Input.Modifier.Movement.AngularVelocity, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -113,8 +112,7 @@ extension DroneCardKit.Action.Movement.Location {
             InputSlot(name: "Center", descriptor: DroneCardKit.Input.Location.Coordinate2D, isOptional: false),
             InputSlot(name: "Radius", descriptor: DroneCardKit.Input.Location.Distance, isOptional: false),
             InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: false),
-            InputSlot(name: "AngularVelocity", descriptor: DroneCardKit.Input.Modifier.Movement.AngularVelocity, isOptional: true),
-            InputSlot(name: "Direction", descriptor: DroneCardKit.Input.Modifier.Movement.RotationDirection, isOptional: true)
+            InputSlot(name: "AngularVelocity", descriptor: DroneCardKit.Input.Modifier.Movement.AngularVelocity, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
@@ -147,10 +145,7 @@ extension DroneCardKit.Action.Movement.Location {
     public static let ReturnHome = ActionCardDescriptor(
         name: "Return Home",
         subpath: "Movement/Location",
-        inputs: [
-            InputSlot(name: "Altitude", descriptor: DroneCardKit.Input.Modifier.Movement.Altitude, isOptional: true),
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
-        ],
+        inputs: nil,
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
         ],
@@ -325,9 +320,7 @@ extension DroneCardKit.Action.Movement.Simple {
     public static let Land = ActionCardDescriptor(
         name: "Land",
         subpath: "Movement/Simple",
-        inputs: [
-            InputSlot(name: "Speed", descriptor: DroneCardKit.Input.Modifier.Movement.Speed, isOptional: true)
-        ],
+        inputs: nil,
         tokens: [
             TokenSlot(name: "Drone", descriptor: DroneCardKit.Token.Drone)
         ],
@@ -448,8 +441,7 @@ extension DroneCardKit.Action.Tech.Camera {
         subpath: "Tech/Camera",
         inputs: [
             InputSlot(name: "HDR", descriptor: CardKit.Input.Logical.Boolean, isOptional: true),
-            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
@@ -465,8 +457,7 @@ extension DroneCardKit.Action.Tech.Camera {
         subpath: "Tech/Camera",
         inputs: [
             InputSlot(name: "BurstCount", descriptor: DroneCardKit.Input.Camera.BurstCount, isOptional: false),
-            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
@@ -482,8 +473,7 @@ extension DroneCardKit.Action.Tech.Camera {
         subpath: "Tech/Camera",
         inputs: [
             InputSlot(name: "Frequency", descriptor: CardKit.Input.Time.Periodicity, isOptional: false),
-            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
@@ -498,8 +488,7 @@ extension DroneCardKit.Action.Tech.Camera {
         name: "Take a Timelapse",
         subpath: "Tech/Camera",
         inputs: [
-            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true),
-            InputSlot(name: "Quality", descriptor: DroneCardKit.Input.Camera.Quality, isOptional: true)
+            InputSlot(name: "AspectRatio", descriptor: DroneCardKit.Input.Camera.AspectRatio, isOptional: true)
         ],
         tokens: [
             TokenSlot(name: "Camera", descriptor: DroneCardKit.Token.Camera)
@@ -654,15 +643,6 @@ extension DroneCardKit.Input.Camera {
         inputDescription: "Video framerate",
         assetCatalog: CardAssetCatalog(description: "Framerate"))
     
-    // MARK: Camera/Quality
-    /// Descriptor for the Quality card
-    public static let Quality = InputCardDescriptor(
-        name: "Quality",
-        subpath: "Camera",
-        inputType: DCKPhotoQuality.self,
-        inputDescription: "Photo quality",
-        assetCatalog: CardAssetCatalog(description: "Quality"))
-    
     // MARK: Camera/Resolution
     /// Descriptor for the Resolution card
     public static let Resolution = InputCardDescriptor(
@@ -801,15 +781,6 @@ extension DroneCardKit.Input.Modifier.Movement {
         inputType: DCKSpeed.self,
         inputDescription: "Speed (in meters/sec)",
         assetCatalog: CardAssetCatalog(description: "Speed (in meters/sec)"))
-    
-    // MARK: Modifier/Movement/RotationDirection
-    public static let RotationDirection = InputCardDescriptor(
-        name: "RotationDirection",
-        subpath: "Modifier/Movement",
-        inputType: DCKRotationDirection.self,
-        inputDescription: "Direction of rotation (clockwise or counterclockwise)",
-        assetCatalog: CardAssetCatalog(description: "Rotation direction"))
-
 }
 
 extension DroneCardKit.Input {

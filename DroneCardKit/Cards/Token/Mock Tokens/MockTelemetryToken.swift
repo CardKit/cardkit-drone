@@ -12,6 +12,13 @@ import CardKit
 import CardKitRuntime
 
 public class MockTelemetryToken: BaseMockToken, TelemetryToken {
+    public var homeLocation: DCKCoordinate2D? {
+        // make up a random location
+        let randomLat = Double(Int(arc4random_uniform(UInt32(360))) - 180)
+        let randomLong = Double(Int(arc4random_uniform(UInt32(360))) - 180)
+        return DCKCoordinate2D(latitude: randomLat, longitude: randomLong)
+    }
+    
     public var currentLocation: DCKCoordinate2D? {
         // make up a random location
         let randomLat = Double(Int(arc4random_uniform(UInt32(360))) - 180)

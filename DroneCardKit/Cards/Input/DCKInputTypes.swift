@@ -38,6 +38,18 @@ public struct DCKAngle: Codable {
     }
 }
 
+extension DCKAngle: ExpressibleByFloatLiteral {
+    public init(floatLiteral value: Float) {
+        self.degrees = Double(value)
+    }
+}
+
+extension DCKAngle: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Float) {
+        self.degrees = Double(value)
+    }
+}
+
 extension DCKAngle {
     public static func + (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
         return DCKAngle(degrees: lhs.degrees + rhs.degrees)
@@ -246,7 +258,6 @@ public struct DCKCoordinate2D: Codable {
         self.longitude = longitude
     }
     
-    
     /// Finds the distance between two DCKCoordinate2Ds using the haversine formula.
     /// See here for more info: http://www.movable-type.co.uk/scripts/latlong.html
     ///
@@ -291,7 +302,6 @@ public struct DCKCoordinate2D: Codable {
         
         return DCKAngle(degrees: bearing)
     }
-    
     
     /// Add x,y distance in meters to a lat/lon coordinate.
     /// Method: http://stackoverflow.com/questions/7477003/calculating-new-longtitude-latitude-from-old-n-meters
@@ -594,6 +604,18 @@ public struct DCKAbsoluteAltitude: Codable {
     public let metersAboveSeaLevel: Double
 }
 
+extension DCKAbsoluteAltitude: ExpressibleByFloatLiteral {
+    public init(floatLiteral value: FloatLiteralType) {
+        self.metersAboveSeaLevel = value
+    }
+}
+
+extension DCKAbsoluteAltitude: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: IntegerLiteralType) {
+        self.metersAboveSeaLevel = Double(value)
+    }
+}
+
 extension DCKAbsoluteAltitude {
     public static func + (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> DCKAbsoluteAltitude {
         return DCKAbsoluteAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel + rhs.metersAboveSeaLevel)
@@ -626,11 +648,13 @@ public struct DCKRelativeAltitude: Codable {
     }
 }
 
-extension DCKRelativeAltitude: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+extension DCKRelativeAltitude: ExpressibleByFloatLiteral {
     public init(floatLiteral value: FloatLiteralType) {
         self.metersAboveGroundAtTakeoff = value
     }
-    
+}
+
+extension DCKRelativeAltitude: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: IntegerLiteralType) {
         self.metersAboveGroundAtTakeoff = Double(value)
     }
@@ -678,6 +702,18 @@ public struct DCKSpeed: Codable {
     }
 }
 
+extension DCKSpeed: ExpressibleByFloatLiteral {
+    public init(floatLiteral value: Float) {
+        self.metersPerSecond = Double(value)
+    }
+}
+
+extension DCKSpeed: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int) {
+        self.metersPerSecond = Double(value)
+    }
+}
+
 extension DCKSpeed {
     public static func + (lhs: DCKSpeed, rhs: DCKSpeed) -> DCKSpeed {
         return DCKSpeed(metersPerSecond: lhs.metersPerSecond + rhs.metersPerSecond)
@@ -716,6 +752,18 @@ public struct DCKDistance: Codable {
     }
 }
 
+extension DCKDistance: ExpressibleByFloatLiteral {
+    public init(floatLiteral value: Float) {
+        self.meters = Double(value)
+    }
+}
+
+extension DCKDistance: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int) {
+        self.meters = Double(value)
+    }
+}
+
 extension DCKDistance {
     public static func + (lhs: DCKDistance, rhs: DCKDistance) -> DCKDistance {
         return DCKDistance(meters: lhs.meters + rhs.meters)
@@ -738,21 +786,6 @@ extension DCKDistance: Comparable {
     }
 }
 
-// MARK: DCKRotationDirection
-
-public enum DCKRotationDirection: String {
-    case clockwise = "Clockwise"
-    case counterClockwise = "Counterclockwise"
-}
-
-extension DCKRotationDirection: Codable {}
-
-extension DCKRotationDirection: Enumerable, StringEnumerable {
-    public static var values: [DCKRotationDirection] {
-        return [.clockwise, .counterClockwise]
-    }
-}
-
 // MARK: DCKAngularVelocity
 
 public struct DCKAngularVelocity: Codable {
@@ -765,9 +798,17 @@ public struct DCKAngularVelocity: Codable {
     public var radiansPerSecond: Double {
         return degreesPerSecond * .pi / 180
     }
-    
-    public var rotationDirection: DCKRotationDirection {
-        return degreesPerSecond < 0 ? .counterClockwise : .clockwise
+}
+
+extension DCKAngularVelocity: ExpressibleByFloatLiteral {
+    public init(floatLiteral value: Float) {
+        self.degreesPerSecond = Double(value)
+    }
+}
+
+extension DCKAngularVelocity: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int) {
+        self.degreesPerSecond = Double(value)
     }
 }
 
@@ -796,7 +837,7 @@ extension DCKAngularVelocity: Comparable {
 // MARK: DCKFrequency
 
 public struct DCKFrequency: Codable {
-    //https://en.wikipedia.org/wiki/Hertz
+    // https://en.wikipedia.org/wiki/Hertz
     public let hertz: Double
 
     public var kilohertz: Double {
@@ -817,6 +858,18 @@ public struct DCKFrequency: Codable {
     
     public init(megahertz: Double) {
         self.hertz = megahertz * 1000000
+    }
+}
+
+extension DCKFrequency: ExpressibleByFloatLiteral {
+    public init(floatLiteral value: Float) {
+        self.hertz = Double(value)
+    }
+}
+
+extension DCKFrequency: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int) {
+        self.hertz = Double(value)
     }
 }
 
@@ -917,22 +970,6 @@ extension DCKPhotoAspectRatio: Codable {}
 extension DCKPhotoAspectRatio: Enumerable, StringEnumerable {
     public static var values: [DCKPhotoAspectRatio] {
         return [.aspect4x3, .aspect16x9, .aspect3x2]
-    }
-}
-
-// MARK: DCKPhotoQuality
-
-public enum DCKPhotoQuality: String {
-    case normal
-    case fine
-    case excellent
-}
-
-extension DCKPhotoQuality: Codable {}
-
-extension DCKPhotoQuality: Enumerable, StringEnumerable {
-    public static var values: [DCKPhotoQuality] {
-        return [.normal, .fine, .excellent]
     }
 }
 

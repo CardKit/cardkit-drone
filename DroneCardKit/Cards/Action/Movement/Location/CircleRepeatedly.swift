@@ -11,7 +11,6 @@ import Foundation
 import CardKitRuntime
 
 public class CircleRepeatedly: ExecutableAction {
-    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,
             let center: DCKCoordinate2D = self.value(forInput: "Center"),
@@ -20,7 +19,6 @@ public class CircleRepeatedly: ExecutableAction {
             else { return }
         
         let angularVelocity: DCKAngularVelocity? = self.optionalValue(forInput: "AngularVelocity")
-        let direction: DCKRotationDirection? = self.optionalValue(forInput: "Direction")
         
         do {
             // take of to the provided altitude
@@ -28,9 +26,9 @@ public class CircleRepeatedly: ExecutableAction {
                 try drone.takeOff(at: altitude)
             }
             
-            // circle
-            if !isCancelled {
-                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularVelocity: angularVelocity, direction: direction, repeatedly: true)
+            // circle until this card is cancelled
+            while !isCancelled {
+                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularVelocity: angularVelocity)
             }
         } catch {
             self.error(error)
@@ -41,16 +39,5 @@ public class CircleRepeatedly: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            return
-        }
-        
-        do {
-            try drone.land()
-        } catch {
-            self.error(error)
-        }
-    }
-    
+    override public func cancel() {}
 }

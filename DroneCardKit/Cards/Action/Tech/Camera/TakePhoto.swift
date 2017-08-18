@@ -12,20 +12,14 @@ import CardKitRuntime
 
 public class TakePhoto: ExecutableAction {
     override public func main() {
-        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            return
-        }
+        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else { return }
         
         let hdr: Bool = self.optionalValue(forInput: "HDR") ?? false
         let aspect: DCKPhotoAspectRatio? = self.optionalValue(forInput: "AspectRatio")
-        let quality: DCKPhotoQuality? = self.optionalValue(forInput: "Quality")
         
         var cameraOptions: Set<CameraPhotoOption> = []
         if let aspect = aspect {
             cameraOptions.insert(.aspectRatio(aspect))
-        }
-        if let quality = quality {
-            cameraOptions.insert(.quality(quality))
         }
         
         do {

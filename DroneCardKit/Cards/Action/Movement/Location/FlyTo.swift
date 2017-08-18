@@ -11,15 +11,10 @@ import Foundation
 import CardKitRuntime
 
 public class FlyTo: ExecutableAction {
-    
     override public func main() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            return
-        }
-        
-        guard let location: DCKCoordinate2D = self.value(forInput: "Destination") else {
-            return
-        }
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,
+            let location: DCKCoordinate2D = self.value(forInput: "Destination")
+            else { return }
         
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
@@ -41,16 +36,5 @@ public class FlyTo: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            return
-        }
-        
-        do {
-            try drone.land()
-        } catch let error {
-            self.error(error)
-        }
-    }
-    
+    override public func cancel() {}
 }

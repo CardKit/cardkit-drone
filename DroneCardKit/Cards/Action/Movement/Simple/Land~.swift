@@ -1,23 +1,25 @@
 //
-//  ReturnHome.swift
+//  Land.swift
 //  DroneCardKit
 //
-//  Created by Kyungmin Lee on 2/7/17.
-//  Copyright © 2017 IBM. All rights reserved.
+//  Created by ismails on 12/7/16.
+//  Copyright © 2016 IBM. All rights reserved.
 //
 
 import Foundation
 
 import CardKitRuntime
 
-public class ReturnHome: ExecutableAction {
+public class Land: ExecutableAction {
+    
     override public func main() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else { return }
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+            return
+        }
         
         do {
-            // return back to the home location
             if !isCancelled {
-                try drone.returnHome()
+                try drone.land()
             }
         } catch {
             self.error(error)

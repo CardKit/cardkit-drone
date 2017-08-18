@@ -12,9 +12,7 @@ import CardKitRuntime
 
 public class RecordVideo: ExecutableAction {
     override public func main() {
-        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            return
-        }
+        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else { return }
         
         let framerate: DCKVideoFramerate? = self.optionalValue(forInput: "Framerate")
         let resolution: DCKVideoResolution? = self.optionalValue(forInput: "Resolution")

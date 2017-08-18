@@ -14,9 +14,8 @@ public class PointAtLocation: ExecutableAction {
     override public func main() {
         guard let telemetry: TelemetryToken = self.token(named: "Telemetry") as? TelemetryToken,
             let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
-            let desiredLocation: DCKCoordinate3D = self.value(forInput: "Location") else {
-                return
-        }
+            let desiredLocation: DCKCoordinate3D = self.value(forInput: "Location")
+            else { return }
         
         guard let currentLocation = telemetry.currentLocation,
             let currentAltitude = telemetry.currentAltitude,
@@ -47,7 +46,5 @@ public class PointAtLocation: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        // gimbal rotations cannot be cancelled
-    }
+    override public func cancel() {}
 }

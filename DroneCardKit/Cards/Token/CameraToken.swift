@@ -49,7 +49,6 @@ public protocol CameraToken {
 public enum CameraPhotoOption {
     case none
     case aspectRatio(DCKPhotoAspectRatio)
-    case quality(DCKPhotoQuality)
 }
 
 extension CameraPhotoOption: Equatable {
@@ -67,12 +66,6 @@ extension CameraPhotoOption: Equatable {
             } else {
                 return false
             }
-        case .quality(let lhs_quality):
-            if case .quality(let rhs_quality) = rhs {
-                return lhs_quality == rhs_quality
-            } else {
-                return false
-            }
         }
     }
 }
@@ -84,8 +77,6 @@ extension CameraPhotoOption: Hashable {
             return 0x00
         case .aspectRatio(let ratio):
             return 0x0F + ratio.hashValue
-        case .quality(let quality):
-            return 0xF0 + quality.hashValue
         }
     }
 }
@@ -110,9 +101,6 @@ extension CameraPhotoOption: Codable {
         case "aspectRatio":
             let aspectRatio = try values.decode(DCKPhotoAspectRatio.self, forKey: .aspectRatio)
             self = .aspectRatio(aspectRatio)
-        case "quality":
-            let quality = try values.decode(DCKPhotoQuality.self, forKey: .quality)
-            self = .quality(quality)
         default:
             throw CodingError.unknownOption(option)
         }
@@ -127,9 +115,6 @@ extension CameraPhotoOption: Codable {
         case .aspectRatio(let ratio):
             try container.encode("aspectRatio", forKey: .option)
             try container.encode(ratio, forKey: .aspectRatio)
-        case .quality(let quality):
-            try container.encode("quality", forKey: .option)
-            try container.encode(quality, forKey: .quality)
         }
     }
 }
