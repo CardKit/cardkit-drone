@@ -66,8 +66,7 @@ public struct DroneCardCatalog: DescriptorCatalog {
         DroneCardKit.Action.Movement.Orientation.SpinAroundRepeatedly,
         DroneCardKit.Action.Movement.Path.Trace,
         DroneCardKit.Action.Movement.Path.TraceRepeatedly,
-        DroneCardKit.Action.Movement.Relative.Follow,
-        DroneCardKit.Action.Tech.Gimbal.PointAtMovement
+        DroneCardKit.Action.Movement.Relative.Follow
     ]
     
     public var executableActionTypes: [ActionCardDescriptor: ExecutableAction.Type] = [

@@ -14,21 +14,21 @@ import CardKitRuntime
 public protocol GimbalToken {
     var currentAttitude: DCKAttitude? { get }
     
+    /// Calibrates the gimbal.
     func calibrate() throws
+    
+    /// Resets the gimbal.
     func reset() throws
     
-    /// Rotates the gimbal to a yaw, pitch, and roll in the specified amount of time. 0º always points towards the front of the drone. Values can range from 0 to 360. Value being negative indicates a reverse movement.
-    /// Picture this unit circle: https://i.stack.imgur.com/FR229.png perpendicular to the axis of yaw, pitch, or roll. The gimbal will rotate the number of degrees specified in the direction of the unit circle. See below for examples.
+    /// Rotates the gimbal to a specified yaw, pitch, and roll within the specified amount of time. 0º always points towards the front of the drone. Values can range from 0º to 360º. Negative values indicate a reverse movement.
     ///
     /// - Parameters:
-    ///   - yaw: Rotation along the perpendicular axis. Example: 90º rotation for yaw will rotate the gimbal right by 90º
-    ///   - pitch: Rotation along the lateral axis. Example: 90º rotation for pitch will rotate the gimbal down by 90º
-    ///   - roll: Rotation along the longitudinal axis. Example: 90º rotation for roll will rotate the gimbal clockwise by 90º
-    ///   - relativeToDrone: if true, rotation will be performed relative to current gimbal position. if false, this will be considered as an absolute position.
-    ///   - withinTimeInSeconds: the amount of time in which the drone should perform the rotation.
-    func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relativeToDrone: Bool, withinTimeInSeconds duration: Double?) throws
-    
-    func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds duration: Double) throws
+    ///   - yaw: Rotation along the perpendicular (vertical) axis. Example: A 90º yaw rotation for yaw will turn the gimbal to the right by 90º.
+    ///   - pitch: Rotation along the lateral (horizontal) axis. Example: A 90º rotation for pitch will point the gimbal downward by 90º.
+    ///   - roll: Rotation along the longitudinal axis. Example: A 10º rotation for roll will twist the gimbal camera clockwise by 10º.
+    ///   - relative: if true, the angles will be interpreted as relative to the gimbal's current orientation; if false, the angles will be considered absolute angles.
+    ///   - withinTimeInSeconds: the amount of time in which the gimbal should perform the rotation.
+    func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relative: Bool, withinTimeInSeconds duration: Double?) throws
     
     /// Rotate the gimbal to a given position.
     func orient(to position: GimbalOrientation) throws
@@ -46,10 +46,6 @@ public enum GimbalOrientation {
 public extension GimbalToken {
     func rotate(yaw: DCKAngle? = nil, pitch: DCKAngle? = nil, roll: DCKAngle? = nil, relativeToDrone: Bool = false, withinTimeInSeconds: Double? = nil) throws {
         try self.rotate(yaw: yaw, pitch: pitch, roll: roll, relativeToDrone: relativeToDrone, withinTimeInSeconds: withinTimeInSeconds)
-    }
-    
-    func rotate(yaw: DCKAngularVelocity? = nil, pitch: DCKAngularVelocity? = nil, roll: DCKAngularVelocity? = nil, forTimeInSeconds seconds: Double) throws {
-        try self.rotate(yaw: yaw, pitch: pitch, roll: roll, forTimeInSeconds: seconds)
     }
 }
 

@@ -20,6 +20,10 @@ public struct DCKAngle: Codable {
         return degrees * .pi / 180
     }
     
+    public var asNumber: NSNumber {
+        return NSNumber(value: self.degrees)
+    }
+    
     public init(degrees: Double) {
         self.degrees = degrees
     }
