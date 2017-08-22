@@ -64,6 +64,10 @@ public extension DroneToken {
         try self.fly(to: coordinate, atAltitude: nil, atSpeed: nil)
     }
     
+    func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+        try self.fly(to: coordinate, atAltitude: altitude, atSpeed: speed)
+    }
+    
     func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
         try self.fly(to: coordinate.asNonOriented(), atAltitude: altitude, atSpeed: speed)
     }
