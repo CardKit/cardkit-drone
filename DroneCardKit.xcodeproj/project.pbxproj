@@ -40,6 +40,8 @@
 		68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
 		68FB026A1E5CEAEB003BB6E0 /* FlyForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB02691E5CEAEB003BB6E0 /* FlyForward.swift */; };
+		CC09F3291F4C6939003FA148 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */; };
+		CC09F32A1F4C693D003FA148 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */; };
 		CC0F5EE51F44890700B18D10 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B741E4997E100BAF604 /* Circle.swift */; };
 		CC0F5EE61F44890800B18D10 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B741E4997E100BAF604 /* Circle.swift */; };
 		CC0F5EE71F44890C00B18D10 /* CircleRepeatedly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F6B751E4997E100BAF604 /* CircleRepeatedly.swift */; };
@@ -165,8 +167,6 @@
 		CC9AACE81E679D8600C294FD /* RecordVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACE71E679D8600C294FD /* RecordVideoTests.swift */; };
 		CC9AACE91E679D8600C294FD /* RecordVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACE71E679D8600C294FD /* RecordVideoTests.swift */; };
 		CC9AACEA1E679D8600C294FD /* RecordVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AACE71E679D8600C294FD /* RecordVideoTests.swift */; };
-		CC9BD49B1F436853008E6E9D /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC9BD49A1F436853008E6E9D /* CardKitRuntime.framework */; };
-		CC9BD49D1F436860008E6E9D /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC9BD49C1F436860008E6E9D /* CardKitRuntime.framework */; };
 		CCBB794C1D7897D8003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79491D7897D8003B6458 /* CardKit.framework */; };
 		CCBB794D1D7897D8003B6458 /* CardKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */; };
 		CCBB79531D7897FA003B6458 /* CardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBB79501D7897FA003B6458 /* CardKit.framework */; };
@@ -243,8 +243,6 @@
 		CC356B5D1E70732C00E2DF14 /* MockDroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDroneToken.swift; sourceTree = "<group>"; };
 		CC356B5E1E70732C00E2DF14 /* MockGimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGimbalToken.swift; sourceTree = "<group>"; };
 		CC356B5F1E70732C00E2DF14 /* MockTelemetryToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTelemetryToken.swift; sourceTree = "<group>"; };
-		CC524AE41E66159400773BFB /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
-		CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		CC524AF51E67310600773BFB /* DCKCardinalDirectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKCardinalDirectionTests.swift; sourceTree = "<group>"; };
 		CC566A8E1E68704000EAF4F3 /* TakePhotoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoTests.swift; sourceTree = "<group>"; };
 		CC566A921E6870CB00EAF4F3 /* TakePhotoBurstTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoBurstTests.swift; sourceTree = "<group>"; };
@@ -286,25 +284,17 @@
 		CC9AACDC1E67811200C294FD /* FlyPathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyPathTests.swift; sourceTree = "<group>"; };
 		CC9AACE01E679CBD00C294FD /* PaceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceTests.swift; sourceTree = "<group>"; };
 		CC9AACE71E679D8600C294FD /* RecordVideoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoTests.swift; sourceTree = "<group>"; };
-		CC9BD49A1F436853008E6E9D /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = "../card-kit-runtime/build/Debug/CardKitRuntime.framework"; sourceTree = "<group>"; };
-		CC9BD49C1F436860008E6E9D /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = "../card-kit-runtime/build/Debug-appletvos/CardKitRuntime.framework"; sourceTree = "<group>"; };
 		CCBB79411D7897BB003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/iOS/CardKit.framework; sourceTree = "<group>"; };
 		CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/iOS/CardKitRuntime.framework; sourceTree = "<group>"; };
-		CCBB79431D7897BB003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
 		CCBB79491D7897D8003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/Mac/CardKit.framework; sourceTree = "<group>"; };
 		CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/Mac/CardKitRuntime.framework; sourceTree = "<group>"; };
-		CCBB794B1D7897D8003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/Mac/Freddy.framework; sourceTree = "<group>"; };
 		CCBB79501D7897FA003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/tvOS/CardKit.framework; sourceTree = "<group>"; };
 		CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/tvOS/CardKitRuntime.framework; sourceTree = "<group>"; };
-		CCBB79521D7897FA003B6458 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/tvOS/Freddy.framework; sourceTree = "<group>"; };
 		CCBE8C611DA69F5900BD7638 /* DCKInputTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKInputTypes.swift; sourceTree = "<group>"; };
-		CCD033521DC144CB001AE5C9 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		CCD6D6E21DFF0E38004CEB71 /* DroneCardKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCardKit.swift; sourceTree = "<group>"; };
 		CCD6D6E71DFF0EA9004CEB71 /* CameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraToken.swift; sourceTree = "<group>"; };
 		CCD6D6E81DFF0EA9004CEB71 /* DroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneToken.swift; sourceTree = "<group>"; };
 		CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalToken.swift; sourceTree = "<group>"; };
-		CCD6D6F81DFF1840004CEB71 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = "<group>"; };
-		CCD6D6FA1DFF1855004CEB71 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/tvOS/PromiseKit.framework; sourceTree = "<group>"; };
 		CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryToken.swift; sourceTree = "<group>"; };
 		F90FD0021DF1FAD200C26E86 /* FlyTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -343,8 +333,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				68DE99C41DF216160040D76A /* CardKit.framework in Frameworks */,
-				CC9BD49B1F436853008E6E9D /* CardKitRuntime.framework in Frameworks */,
 				CC9318A41D4796F5001B71B1 /* DroneCardKit.framework in Frameworks */,
+				CC09F3291F4C6939003FA148 /* CardKitRuntime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,8 +352,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				68DE99C51DF216330040D76A /* CardKit.framework in Frameworks */,
-				CC9BD49D1F436860008E6E9D /* CardKitRuntime.framework in Frameworks */,
 				CC9318C01D479706001B71B1 /* DroneCardKit.framework in Frameworks */,
+				CC09F32A1F4C693D003FA148 /* CardKitRuntime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,8 +630,6 @@
 			children = (
 				CCBB79411D7897BB003B6458 /* CardKit.framework */,
 				CCBB79421D7897BB003B6458 /* CardKitRuntime.framework */,
-				CCBB79431D7897BB003B6458 /* Freddy.framework */,
-				CCD033521DC144CB001AE5C9 /* PromiseKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -649,10 +637,6 @@
 		CCBB79481D7897C6003B6458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CC9BD49A1F436853008E6E9D /* CardKitRuntime.framework */,
-				CC9BD49C1F436860008E6E9D /* CardKitRuntime.framework */,
-				CC524AE41E66159400773BFB /* RestKit.framework */,
-				CC524AE51E66159400773BFB /* VisualRecognitionV3.framework */,
 				CCBB79471D7897C1003B6458 /* iOS */,
 				CCBB794F1D7897E2003B6458 /* macOS */,
 				CCBB79561D7897FF003B6458 /* tvOS */,
@@ -665,8 +649,6 @@
 			children = (
 				CCBB79491D7897D8003B6458 /* CardKit.framework */,
 				CCBB794A1D7897D8003B6458 /* CardKitRuntime.framework */,
-				CCBB794B1D7897D8003B6458 /* Freddy.framework */,
-				CCD6D6F81DFF1840004CEB71 /* PromiseKit.framework */,
 			);
 			name = macOS;
 			sourceTree = "<group>";
@@ -676,8 +658,6 @@
 			children = (
 				CCBB79501D7897FA003B6458 /* CardKit.framework */,
 				CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */,
-				CCBB79521D7897FA003B6458 /* Freddy.framework */,
-				CCD6D6FA1DFF1855004CEB71 /* PromiseKit.framework */,
 			);
 			name = tvOS;
 			sourceTree = "<group>";
