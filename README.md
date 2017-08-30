@@ -6,9 +6,9 @@ DroneCardKit is written in Swift 4 and supports macOS, iOS, and tvOS.
 
 ## Cards
 
-### Action Cards
+All cards in `DroneCardKit` are specified in `DroneCardCatalog`.
 
-DroneCardKit defines a number of `Action` cards specific to the operation of a drone, its camera, and its gimbal.
+### Action Cards
 
 #### Movement
 
@@ -50,7 +50,7 @@ A number of `Input` cards are defined in DroneCardKit to provide input to the `A
 
 ## Building
 
-DroneCardKit depends on both [CardKit](https://github.com/CardKit/card-kit) and the [CardKit Runtime](https://github.com/CardKit/card-kit-runtime).
+DroneCardKit depends on both [CardKit](https://github.com/CardKit/card-kit) and the [CardKit Runtime](https://github.com/CardKit/card-kit-runtime). We use Carthage to manage our dependencies. Run `carthage bootstrap` to build all of the dependencies before building the DroneCardKit Xcode project.
 
 > ⚠️ DroneCardKit does *not* provide implementations of its `Token` cards. Rather, it defines interfaces for those cards that drone-specific implementations must use. This design choice enables multiple, drone-specific token implementations to exist. For a DJI-based implementation of the `DroneCardKit` tokens, please see [DroneTokensDJI](https://github.com/CardKit/drone-tokens-dji).
 
