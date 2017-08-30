@@ -291,6 +291,7 @@
 		CCBB79501D7897FA003B6458 /* CardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKit.framework; path = Carthage/Build/tvOS/CardKit.framework; sourceTree = "<group>"; };
 		CCBB79511D7897FA003B6458 /* CardKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CardKitRuntime.framework; path = Carthage/Build/tvOS/CardKitRuntime.framework; sourceTree = "<group>"; };
 		CCBE8C611DA69F5900BD7638 /* DCKInputTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCKInputTypes.swift; sourceTree = "<group>"; };
+		CCBEE83C1F570A9B00047AE5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CCD6D6E21DFF0E38004CEB71 /* DroneCardKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneCardKit.swift; sourceTree = "<group>"; };
 		CCD6D6E71DFF0EA9004CEB71 /* CameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraToken.swift; sourceTree = "<group>"; };
 		CCD6D6E81DFF0EA9004CEB71 /* DroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneToken.swift; sourceTree = "<group>"; };
@@ -513,6 +514,7 @@
 		CC9318711D4796DB001B71B1 = {
 			isa = PBXGroup;
 			children = (
+				CCBEE83C1F570A9B00047AE5 /* README.md */,
 				CC93187D1D4796DB001B71B1 /* DroneCardKit */,
 				CC9318891D4796DB001B71B1 /* DroneCardKitTests */,
 				CCBB79481D7897C6003B6458 /* Frameworks */,
