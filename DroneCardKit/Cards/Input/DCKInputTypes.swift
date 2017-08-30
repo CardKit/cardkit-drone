@@ -38,18 +38,6 @@ public struct DCKAngle: Codable {
     }
 }
 
-extension DCKAngle: ExpressibleByFloatLiteral {
-    public init(floatLiteral value: Float) {
-        self.degrees = Double(value)
-    }
-}
-
-extension DCKAngle: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: Float) {
-        self.degrees = Double(value)
-    }
-}
-
 extension DCKAngle {
     public static func + (lhs: DCKAngle, rhs: DCKAngle) -> DCKAngle {
         return DCKAngle(degrees: lhs.degrees + rhs.degrees)
@@ -604,18 +592,6 @@ public struct DCKAbsoluteAltitude: Codable {
     public let metersAboveSeaLevel: Double
 }
 
-extension DCKAbsoluteAltitude: ExpressibleByFloatLiteral {
-    public init(floatLiteral value: FloatLiteralType) {
-        self.metersAboveSeaLevel = value
-    }
-}
-
-extension DCKAbsoluteAltitude: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: IntegerLiteralType) {
-        self.metersAboveSeaLevel = Double(value)
-    }
-}
-
 extension DCKAbsoluteAltitude {
     public static func + (lhs: DCKAbsoluteAltitude, rhs: DCKAbsoluteAltitude) -> DCKAbsoluteAltitude {
         return DCKAbsoluteAltitude(metersAboveSeaLevel: lhs.metersAboveSeaLevel + rhs.metersAboveSeaLevel)
@@ -645,18 +621,6 @@ public struct DCKRelativeAltitude: Codable {
     
     public init(metersAboveGroundAtTakeoff: Double) {
         self.metersAboveGroundAtTakeoff = metersAboveGroundAtTakeoff
-    }
-}
-
-extension DCKRelativeAltitude: ExpressibleByFloatLiteral {
-    public init(floatLiteral value: FloatLiteralType) {
-        self.metersAboveGroundAtTakeoff = value
-    }
-}
-
-extension DCKRelativeAltitude: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: IntegerLiteralType) {
-        self.metersAboveGroundAtTakeoff = Double(value)
     }
 }
 
@@ -702,18 +666,6 @@ public struct DCKSpeed: Codable {
     }
 }
 
-extension DCKSpeed: ExpressibleByFloatLiteral {
-    public init(floatLiteral value: Float) {
-        self.metersPerSecond = Double(value)
-    }
-}
-
-extension DCKSpeed: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: Int) {
-        self.metersPerSecond = Double(value)
-    }
-}
-
 extension DCKSpeed {
     public static func + (lhs: DCKSpeed, rhs: DCKSpeed) -> DCKSpeed {
         return DCKSpeed(metersPerSecond: lhs.metersPerSecond + rhs.metersPerSecond)
@@ -752,18 +704,6 @@ public struct DCKDistance: Codable {
     }
 }
 
-extension DCKDistance: ExpressibleByFloatLiteral {
-    public init(floatLiteral value: Float) {
-        self.meters = Double(value)
-    }
-}
-
-extension DCKDistance: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: Int) {
-        self.meters = Double(value)
-    }
-}
-
 extension DCKDistance {
     public static func + (lhs: DCKDistance, rhs: DCKDistance) -> DCKDistance {
         return DCKDistance(meters: lhs.meters + rhs.meters)
@@ -797,18 +737,6 @@ public struct DCKAngularVelocity: Codable {
     
     public var radiansPerSecond: Double {
         return degreesPerSecond * .pi / 180
-    }
-}
-
-extension DCKAngularVelocity: ExpressibleByFloatLiteral {
-    public init(floatLiteral value: Float) {
-        self.degreesPerSecond = Double(value)
-    }
-}
-
-extension DCKAngularVelocity: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: Int) {
-        self.degreesPerSecond = Double(value)
     }
 }
 
@@ -858,18 +786,6 @@ public struct DCKFrequency: Codable {
     
     public init(megahertz: Double) {
         self.hertz = megahertz * 1000000
-    }
-}
-
-extension DCKFrequency: ExpressibleByFloatLiteral {
-    public init(floatLiteral value: Float) {
-        self.hertz = Double(value)
-    }
-}
-
-extension DCKFrequency: ExpressibleByIntegerLiteral {
-    public init(integerLiteral value: Int) {
-        self.hertz = Double(value)
     }
 }
 
