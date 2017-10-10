@@ -32,7 +32,7 @@ class TakeTimelapseTests: XCTestCase {
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let aspectRatio: DCKPhotoAspectRatio = .aspect16x9
         let quality: DCKPhotoQuality = .excellent
-        let inputBindings: [String : Codable] = ["AspectRatio": aspectRatio, "Quality": quality]
+        let inputBindings: [String: Codable] = ["AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
         takeTimelapse.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

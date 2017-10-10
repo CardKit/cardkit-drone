@@ -33,7 +33,7 @@ class TakePhotosTests: XCTestCase {
         let frequency: TimeInterval = 1.0
         let aspectRatio = DCKPhotoAspectRatio.aspect16x9
         let quality = DCKPhotoQuality.excellent
-        let inputBindings: [String : Codable] = ["Frequency": frequency, "AspectRatio": aspectRatio, "Quality": quality]
+        let inputBindings: [String: Codable] = ["Frequency": frequency, "AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
         takePhotos.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

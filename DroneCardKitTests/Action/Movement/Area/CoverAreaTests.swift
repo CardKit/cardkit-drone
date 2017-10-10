@@ -66,7 +66,7 @@ class CoverAreaTests: XCTestCase {
             DCKCoordinate2D(latitude: 41.45782443982217, longitude: -73.29261755536784)])
         let altitude = DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10)
         let speed = DCKSpeed(metersPerSecond: 2)
-        let inputBindings: [String : Codable] = ["Area": area, "Altitude": altitude, "Speed": speed]
+        let inputBindings: [String: Codable] = ["Area": area, "Altitude": altitude, "Speed": speed]
         let tokenBindings = ["Drone": droneToken]
         
         coverArea.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

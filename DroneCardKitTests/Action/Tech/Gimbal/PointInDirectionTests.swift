@@ -32,7 +32,7 @@ class PointInDirectionTests: XCTestCase {
         let gimbalToken = MockGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
         let telemetryToken = MockTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
         let direction: DCKCardinalDirection = .north
-        let inputBindings: [String : Codable] = ["CardinalDirection": direction]
+        let inputBindings: [String: Codable] = ["CardinalDirection": direction]
         let tokenBindings = ["Gimbal": gimbalToken, "Telemetry": telemetryToken]
         
         pointInDirection.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

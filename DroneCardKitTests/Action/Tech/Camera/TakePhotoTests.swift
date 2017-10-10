@@ -31,8 +31,7 @@ class TakePhotoTests: XCTestCase {
         // bind inputs and tokens
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let aspectRatio = DCKPhotoAspectRatio.aspect16x9
-        let quality = DCKPhotoQuality.excellent
-        let inputBindings: [String : Codable] = ["AspectRatio": aspectRatio, "Quality": quality]
+        let inputBindings: [String: Codable] = ["AspectRatio": aspectRatio]
         let tokenBindings = ["Camera": cameraToken]
         
         takePhoto.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -81,8 +80,7 @@ class TakePhotoTests: XCTestCase {
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let hdr = true
         let aspectRatio = DCKPhotoAspectRatio.aspect16x9
-        let quality = DCKPhotoQuality.excellent
-        let inputBindings: [String : Codable] = ["HDR": hdr, "AspectRatio": aspectRatio, "Quality": quality]
+        let inputBindings: [String: Codable] = ["HDR": hdr, "AspectRatio": aspectRatio]
         let tokenBindings = ["Camera": cameraToken]
         
         takePhoto.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

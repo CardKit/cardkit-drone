@@ -32,7 +32,7 @@ class RecordVideoTests: XCTestCase {
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let framerate: DCKVideoFramerate = .framerate30fps
         let resolution: DCKVideoResolution = .resolution1080p
-        let inputBindings: [String : Codable] = ["Framerate": framerate, "Resolution": resolution, "SlowMotionEnabled": false]
+        let inputBindings: [String: Codable] = ["Framerate": framerate, "Resolution": resolution, "SlowMotionEnabled": false]
         let tokenBindings = ["Camera": cameraToken]
         
         recordVideo.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

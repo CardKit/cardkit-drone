@@ -38,7 +38,7 @@ class DetectObjectTests: XCTestCase {
         let telemetryToken = DummyTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
         let watsonToken = WatsonVisualRecognitionToken(with: DroneCardKit.Token.Watson.VisualRecognition.makeCard(), usingApiKey: ApiKeys.justinsVisualRecoAPIKey)
         
-        let inputBindings: [String : JSONEncodable] = ["Objects": "workroom", "Confidence": 0.7, "Frequency": 5.0]
+        let inputBindings: [String: JSONEncodable] = ["Objects": "workroom", "Confidence": 0.7, "Frequency": 5.0]
         let tokenBindings = ["Camera": cameraToken, "Telemetry": telemetryToken, "WatsonVisualRecognition": watsonToken]
         
         detectObject.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -150,7 +150,7 @@ class DetectObjectTests: XCTestCase {
             
             XCTAssertTrue(yields.count == 1)
             
-            var detectedObjects: [String : DCKDetectedObject] = [:]
+            var detectedObjects: [String: DCKDetectedObject] = [:]
             for yield in yields {
                 do {
                     let object = try yield.data.decode(type: DCKDetectedObject.self)

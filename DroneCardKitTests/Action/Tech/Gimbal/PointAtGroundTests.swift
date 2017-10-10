@@ -30,7 +30,7 @@ class PointAtGroundTests: XCTestCase {
         
         // bind inputs and tokens
         let gimbalToken = MockGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
-        let inputBindings: [String : Codable] = [:]
+        let inputBindings: [String: Codable] = [:]
         let tokenBindings = ["Gimbal": gimbalToken]
         
         pointAtGround.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

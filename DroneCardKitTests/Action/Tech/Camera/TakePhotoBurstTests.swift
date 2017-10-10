@@ -33,7 +33,7 @@ class TakePhotoBurstTests: XCTestCase {
         let burstCount: DCKPhotoBurstCount = .burst3
         let aspectRatio: DCKPhotoAspectRatio = .aspect16x9
         let quality = DCKPhotoQuality.excellent
-        let inputBindings: [String : Codable] = ["BurstCount": burstCount, "AspectRatio": aspectRatio, "Quality": quality]
+        let inputBindings: [String: Codable] = ["BurstCount": burstCount, "AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
         takePhotoBurst.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
