@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -33,9 +31,9 @@ class TakePhotosTests: XCTestCase {
         // bind inputs and tokens
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
         let frequency: TimeInterval = 1.0
-        let aspectRatio = DCKPhotoAspectRatio.aspect_16x9
+        let aspectRatio = DCKPhotoAspectRatio.aspect16x9
         let quality = DCKPhotoQuality.excellent
-        let inputBindings: [String : JSONEncodable] = ["Frequency": frequency, "AspectRatio": aspectRatio, "Quality": quality]
+        let inputBindings: [String: Codable] = ["Frequency": frequency, "AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
         takePhotos.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -75,13 +73,12 @@ class TakePhotosTests: XCTestCase {
                 return
             }
             
-            do {
-                let burst = try yieldData.decode(type: DCKPhotoBurst.self)
-                XCTAssertTrue(burst.photos.count > 0, "should have taken at least one photo")
-                XCTAssertTrue(burst.photos.count <= 5, "should not have taken more than 5 photos within 5 seconds at a 1 second interval")
-            } catch let error {
-                XCTFail("failed to decode DCKPhotoBurst from yield: \(error)")
+            guard let burst: DCKPhotoBurst = yieldData.unboxedValue() else {
+                XCTFail("unable to unbox yielded DCKPhotoBurst")
+                return
             }
+            XCTAssertTrue(burst.photos.count > 0, "should have taken at least one photo")
+            XCTAssertTrue(burst.photos.count <= 5, "should not have taken more than 5 photos within 5 seconds at a 1 second interval")
         }
     }
 }

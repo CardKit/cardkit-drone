@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -36,7 +34,7 @@ class PanBetweenLocationsTests: XCTestCase {
         let startLocation = DCKCoordinate3D(latitude: 41.45782443982217, longitude: -73.29261755536784, altitude: 10)
         let endLocation = DCKCoordinate3D(latitude: 41.4538063973752, longitude: -73.28752206344512, altitude: 10)
         let duration = 2.0
-        let inputBindings: [String : JSONEncodable] = ["StartLocation": startLocation, "EndLocation": endLocation, "Duration": duration]
+        let inputBindings: [String: Codable] = ["StartLocation": startLocation, "EndLocation": endLocation, "Duration": duration]
         let tokenBindings = ["Gimbal": gimbalToken, "Telemetry": telemetryToken]
         
         panBetweenLocations.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)

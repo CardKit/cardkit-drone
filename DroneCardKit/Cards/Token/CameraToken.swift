@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Freddy
-
 import CardKit
 import CardKitRuntime
 
@@ -51,7 +49,6 @@ public protocol CameraToken {
 public enum CameraPhotoOption {
     case none
     case aspectRatio(DCKPhotoAspectRatio)
-    case quality(DCKPhotoQuality)
 }
 
 extension CameraPhotoOption: Equatable {
@@ -69,12 +66,6 @@ extension CameraPhotoOption: Equatable {
             } else {
                 return false
             }
-        case .quality(let lhs_quality):
-            if case .quality(let rhs_quality) = rhs {
-                return lhs_quality == rhs_quality
-            } else {
-                return false
-            }
         }
     }
 }
@@ -86,60 +77,44 @@ extension CameraPhotoOption: Hashable {
             return 0x00
         case .aspectRatio(let ratio):
             return 0x0F + ratio.hashValue
-        case .quality(let quality):
-            return 0xF0 + quality.hashValue
         }
     }
 }
 
-extension CameraPhotoOption: JSONEncodable, JSONDecodable {
-    public init(json: JSON) throws {
-        let type = try json.getString(at: "type")
-        
-        switch type {
-        case "aspectRatio":
-            do {
-                let value = try json.getString(at: "value")
-                if let ratio = DCKPhotoAspectRatio(rawValue: value) {
-                    self = .aspectRatio(ratio)
-                } else {
-                    self = .none
-                }
-            } catch {
-                self = .none
-            }
-        case "quality":
-            do {
-                let value = try json.getString(at: "value")
-                if let quality = DCKPhotoQuality(rawValue: value) {
-                    self = .quality(quality)
-                } else {
-                    self = .none
-                }
-            } catch {
-                self = .none
-            }
-        default:
+extension CameraPhotoOption: Codable {
+    enum CodingError: Error {
+        case unknownOption(String)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case option
+        case aspectRatio
+        case quality
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let option = try values.decode(String.self, forKey: .option)
+        switch option {
+        case "none":
             self = .none
+        case "aspectRatio":
+            let aspectRatio = try values.decode(DCKPhotoAspectRatio.self, forKey: .aspectRatio)
+            self = .aspectRatio(aspectRatio)
+        default:
+            throw CodingError.unknownOption(option)
         }
     }
     
-    public func toJSON() -> JSON {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
         switch self {
         case .none:
-            return .dictionary([
-                "type": "none"
-            ])
+            try container.encode("none", forKey: .option)
         case .aspectRatio(let ratio):
-            return .dictionary([
-                "type": "aspectRatio",
-                "value": ratio.toJSON()
-                ])
-        case .quality(let quality):
-            return .dictionary([
-                "type": "quality",
-                "value": quality.toJSON()
-            ])
+            try container.encode("aspectRatio", forKey: .option)
+            try container.encode(ratio, forKey: .aspectRatio)
         }
     }
 }
@@ -199,60 +174,50 @@ extension CameraVideoOption: Hashable {
     }
 }
 
-extension CameraVideoOption: JSONEncodable, JSONDecodable {
-    public init(json: JSON) throws {
-        let type = try json.getString(at: "type")
-        
-        switch type {
+extension CameraVideoOption: Codable {
+    enum CodingError: Error {
+        case unknownOption(String)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case option
+        case framerate
+        case resolution
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let option = try values.decode(String.self, forKey: .option)
+        switch option {
+        case "none":
+            self = .none
         case "slowMotionEnabled":
             self = .slowMotionEnabled
         case "framerate":
-            do {
-                let value = try json.getString(at: "value")
-                if let fps = DCKVideoFramerate(rawValue: value) {
-                    self = .framerate(fps)
-                } else {
-                    self = .none
-                }
-            } catch {
-                self = .none
-            }
+            let framerate = try values.decode(DCKVideoFramerate.self, forKey: .framerate)
+            self = .framerate(framerate)
         case "resolution":
-            do {
-                let value = try json.getString(at: "value")
-                if let resolution = DCKVideoResolution(rawValue: value) {
-                    self = .resolution(resolution)
-                } else {
-                    self = .none
-                }
-            } catch {
-                self = .none
-            }
+            let resolution = try values.decode(DCKVideoResolution.self, forKey: .resolution)
+            self = .resolution(resolution)
         default:
-            self = .none
+            throw CodingError.unknownOption(option)
         }
     }
     
-    public func toJSON() -> JSON {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
         switch self {
         case .none:
-            return .dictionary([
-                "type": "none"
-                ])
+            try container.encode("none", forKey: .option)
         case .slowMotionEnabled:
-            return .dictionary([
-                "type": "slowMotionEnabled"
-                ])
+            try container.encode("slowMotionEnabled", forKey: .option)
         case .framerate(let fps):
-            return .dictionary([
-                "type": "framerate",
-                "value": fps.toJSON()
-                ])
+            try container.encode("framerate", forKey: .option)
+            try container.encode(fps, forKey: .framerate)
         case .resolution(let resolution):
-            return .dictionary([
-                "type": "resolution",
-                "value": resolution.toJSON()
-                ])
+            try container.encode("resolution", forKey: .option)
+            try container.encode(resolution, forKey: .resolution)
         }
     }
 }

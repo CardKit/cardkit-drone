@@ -14,9 +14,8 @@ public class PointInDirection: ExecutableAction {
     override public func main() {
         guard let telemetry: TelemetryToken = self.token(named: "Telemetry") as? TelemetryToken,
             let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
-            let cardinalDirection: DCKCardinalDirection = self.value(forInput: "CardinalDirection") else {
-                return
-        }
+            let cardinalDirection: DCKCardinalDirection = self.value(forInput: "CardinalDirection")
+            else { return }
         
         guard let droneYaw = telemetry.currentAttitude?.yaw else {
             self.error(DroneTokenError.failureRetrievingDroneState)
@@ -36,7 +35,5 @@ public class PointInDirection: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        // gimbal rotations cannot be cancelled
-    }
+    override public func cancel() {}
 }

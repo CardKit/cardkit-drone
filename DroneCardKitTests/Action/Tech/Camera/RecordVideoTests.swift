@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -32,9 +30,9 @@ class RecordVideoTests: XCTestCase {
         
         // bind inputs and tokens
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
-        let framerate = DCKVideoFramerate.framerate_30fps
-        let resolution = DCKVideoResolution.resolution_1080p
-        let inputBindings: [String : JSONEncodable] = ["Framerate": framerate, "Resolution": resolution, "SlowMotionEnabled": false]
+        let framerate: DCKVideoFramerate = .framerate30fps
+        let resolution: DCKVideoResolution = .resolution1080p
+        let inputBindings: [String: Codable] = ["Framerate": framerate, "Resolution": resolution, "SlowMotionEnabled": false]
         let tokenBindings = ["Camera": cameraToken]
         
         recordVideo.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -74,11 +72,12 @@ class RecordVideoTests: XCTestCase {
                 return
             }
             
-            do {
-                let _ = try yieldData.decode(type: DCKVideo.self)
-            } catch let error {
-                XCTFail("failed to decode DCKVideo from yield: \(error)")
+            guard let video: DCKVideo = yieldData.unboxedValue() else {
+                XCTFail("unable to unbox yielded DCKVideo")
+                return
             }
+            
+            XCTAssertTrue(video.sizeInBytes > 0)
         }
     }
 }

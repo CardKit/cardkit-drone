@@ -12,19 +12,13 @@ import CardKitRuntime
 
 public class TakeTimelapse: ExecutableAction {
     override public func main() {
-        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            return
-        }
+        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else { return }
         
         let aspect: DCKPhotoAspectRatio? = self.optionalValue(forInput: "AspectRatio")
-        let quality: DCKPhotoQuality? = self.optionalValue(forInput: "Quality")
         
         var cameraOptions: Set<CameraPhotoOption> = []
         if let aspect = aspect {
             cameraOptions.insert(.aspectRatio(aspect))
-        }
-        if let quality = quality {
-            cameraOptions.insert(.quality(quality))
         }
         
         do {
@@ -50,7 +44,7 @@ public class TakeTimelapse: ExecutableAction {
             let video = try camera.stopTimelapse()
             
             // store the video as a yield
-            self.store(data: video, forYieldIndex: 0)
+            self.store(video, forYieldIndex: 0)
             
         } catch let error {
             self.error(error)

@@ -12,7 +12,9 @@ import CardKitRuntime
 
 public class Hover: ExecutableAction {
     override public func main() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else { return }
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+            return
+        }
         
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         
@@ -29,5 +31,15 @@ public class Hover: ExecutableAction {
         }
     }
     
-    override public func cancel() {}
+    override public func cancel() {
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
+            return
+        }
+        
+        do {
+            try drone.land()
+        } catch let error {
+            self.error(error)
+        }
+    }
 }

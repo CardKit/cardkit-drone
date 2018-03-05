@@ -12,9 +12,7 @@ import CardKitRuntime
 
 public class RecordVideo: ExecutableAction {
     override public func main() {
-        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            return
-        }
+        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else { return }
         
         let framerate: DCKVideoFramerate? = self.optionalValue(forInput: "Framerate")
         let resolution: DCKVideoResolution? = self.optionalValue(forInput: "Resolution")
@@ -27,7 +25,7 @@ public class RecordVideo: ExecutableAction {
         if let resolution = resolution {
             cameraOptions.insert(.resolution(resolution))
         }
-        if let _ = slowmo {
+        if slowmo != nil {
             cameraOptions.insert(.slowMotionEnabled)
         }
         
@@ -54,7 +52,7 @@ public class RecordVideo: ExecutableAction {
             let video = try camera.stopVideo()
             
             // save it as a yield
-            self.store(data: video, forYieldIndex: 0)
+            self.store(video, forYieldIndex: 0)
             
         } catch let error {
             self.error(error)

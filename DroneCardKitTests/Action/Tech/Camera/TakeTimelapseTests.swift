@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -32,9 +30,9 @@ class TakeTimelapseTests: XCTestCase {
         
         // bind inputs and tokens
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
-        let aspectRatio = DCKPhotoAspectRatio.aspect_16x9
-        let quality = DCKPhotoQuality.excellent
-        let inputBindings: [String : JSONEncodable] = ["AspectRatio": aspectRatio, "Quality": quality]
+        let aspectRatio: DCKPhotoAspectRatio = .aspect16x9
+        let quality: DCKPhotoQuality = .excellent
+        let inputBindings: [String: Codable] = ["AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
         takeTimelapse.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -75,11 +73,12 @@ class TakeTimelapseTests: XCTestCase {
                 return
             }
             
-            do {
-                let _ = try yieldData.decode(type: DCKVideo.self)
-            } catch let error {
-                XCTFail("failed to decode DCKVideo from yield: \(error)")
+            guard let video: DCKVideo = yieldData.unboxedValue() else {
+                XCTFail("unable to unbox yielded DCKVideo")
+                return
             }
+            
+            XCTAssertTrue(video.durationInSeconds > 0)
         }
     }
 }

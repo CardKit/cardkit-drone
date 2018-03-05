@@ -12,9 +12,7 @@ import CardKitRuntime
 
 public class PointAtGround: ExecutableAction {
     override public func main() {
-        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else {
-            return
-        }
+        guard let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken else { return }
         
         do {
             if !isCancelled {
@@ -29,7 +27,5 @@ public class PointAtGround: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        // gimbal rotations cannot be cancelled
-    }
+    override public func cancel() {}
 }

@@ -11,13 +11,10 @@ import Foundation
 import CardKitRuntime
 
 public class Pace: ExecutableAction {
-    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,
             let path: DCKCoordinate2DPath = self.value(forInput: "Path")
-            else {
-                return
-        }
+            else { return }
         
         let altitude: DCKRelativeAltitude? = self.optionalValue(forInput: "Altitude")
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
@@ -31,9 +28,9 @@ public class Pace: ExecutableAction {
             
             // fly path
             while !isCancelled {
-                for (_, location) in path.path.enumerated() {
+                for location in path.path {
                     if !isCancelled {
-                        try drone.fly(to: location, atSpeed: speed)
+                        try drone.fly(to: location, atAltitude: nil, atSpeed: speed)
                     } else {
                         break
                     }

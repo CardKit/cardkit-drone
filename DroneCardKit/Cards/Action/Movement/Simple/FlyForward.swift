@@ -12,13 +12,9 @@ import CardKitRuntime
 
 public class FlyForward: ExecutableAction {
     override public func main() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            return
-        }
-        
-        guard let distance: DCKDistance = self.value(forInput: "Distance") else {
-            return
-        }
+        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,
+            let distance: DCKDistance = self.value(forInput: "Distance")
+            else { return }
         
         let speed: DCKSpeed? = self.optionalValue(forInput: "Speed")
         
@@ -34,7 +30,7 @@ public class FlyForward: ExecutableAction {
                 let droneLocation = DCKOrientedCoordinate3D(latitude: currentLocation.latitude, longitude: currentLocation.longitude, altitude: currentAltitude, yaw: currentAttitude.yaw)
                 
                 let newLocation = droneLocation.add(distance: distance)
-                try drone.fly(to: newLocation, atSpeed: speed)
+                try drone.fly(to: newLocation, atAltitude: nil, atSpeed: speed)
             }
         } catch {
             self.error(error)
@@ -45,15 +41,5 @@ public class FlyForward: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            return
-        }
-        
-        do {
-            try drone.land()
-        } catch {
-            self.error(error)
-        }
-    }
+    override public func cancel() {}
 }

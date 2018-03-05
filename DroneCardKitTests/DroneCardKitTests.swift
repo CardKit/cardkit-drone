@@ -8,7 +8,6 @@
 
 import XCTest
 
-import Freddy
 @testable import CardKit
 @testable import DroneCardKit
 

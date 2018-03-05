@@ -31,30 +31,9 @@ public class MockGimbalToken: BaseMockToken, GimbalToken {
         self.attitude = DCKAttitude.zero
     }
     
-    public func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relativeToDrone: Bool, withinTimeInSeconds duration: Double?) throws {
+    public func rotate(yaw: DCKAngle?, pitch: DCKAngle?, roll: DCKAngle?, relative: Bool, withinTimeInSeconds duration: Double?) throws {
         self.registerFunctionCall(named: "rotate")
         self.attitude = DCKAttitude(yaw: yaw ?? self.attitude.yaw, pitch: pitch ?? self.attitude.pitch, roll: roll ?? self.attitude.roll)
-    }
-    
-    public func rotate(yaw: DCKAngularVelocity?, pitch: DCKAngularVelocity?, roll: DCKAngularVelocity?, forTimeInSeconds duration: Double) throws {
-        self.registerFunctionCall(named: "rotate")
-        
-        var newYaw: DCKAngle? = nil
-        if let yaw = yaw {
-            newYaw = self.attitude.yaw + DCKAngle(degrees: (yaw.degreesPerSecond * duration))
-        }
-        
-        var newPitch: DCKAngle? = nil
-        if let pitch = pitch {
-            newPitch = self.attitude.pitch + DCKAngle(degrees: (pitch.degreesPerSecond * duration))
-        }
-        
-        var newRoll: DCKAngle? = nil
-        if let roll = roll {
-            newRoll = self.attitude.roll + DCKAngle(degrees: (roll.degreesPerSecond * duration))
-        }
-        
-        self.attitude = DCKAttitude(yaw: newYaw ?? self.attitude.yaw, pitch: newPitch ?? self.attitude.pitch, roll: newRoll ?? self.attitude.roll)
     }
     
     public func orient(to position: GimbalOrientation) throws {

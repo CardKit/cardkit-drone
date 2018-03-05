@@ -15,9 +15,8 @@ public class PanBetweenLocations: ExecutableAction {
         guard let telemetry: TelemetryToken = self.token(named: "Telemetry") as? TelemetryToken,
             let gimbal: GimbalToken = self.token(named: "Gimbal") as? GimbalToken,
             let startLocation: DCKCoordinate3D = self.value(forInput: "StartLocation"),
-            let endLocation: DCKCoordinate3D = self.value(forInput: "EndLocation") else {
-            return
-        }
+            let endLocation: DCKCoordinate3D = self.value(forInput: "EndLocation")
+            else { return }
         
         let duration: Double? = self.optionalValue(forInput: "Duration")
         
@@ -65,7 +64,5 @@ public class PanBetweenLocations: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        // panning will stop automatically when cancel() is called
-    }
+    override public func cancel() {}
 }

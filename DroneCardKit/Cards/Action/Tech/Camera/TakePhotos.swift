@@ -12,23 +12,15 @@ import CardKitRuntime
 
 public class TakePhotos: ExecutableAction {
     override public func main() {
-        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken else {
-            return
-        }
-        
-        guard let frequency: TimeInterval = self.value(forInput: "Frequency") else {
-            return
-        }
+        guard let camera: CameraToken = self.token(named: "Camera") as? CameraToken,
+            let frequency: TimeInterval = self.value(forInput: "Frequency")
+            else { return }
         
         let aspect: DCKPhotoAspectRatio? = self.optionalValue(forInput: "AspectRatio")
-        let quality: DCKPhotoQuality? = self.optionalValue(forInput: "Quality")
         
         var cameraOptions: Set<CameraPhotoOption> = []
         if let aspect = aspect {
             cameraOptions.insert(.aspectRatio(aspect))
-        }
-        if let quality = quality {
-            cameraOptions.insert(.quality(quality))
         }
         
         do {
@@ -54,7 +46,7 @@ public class TakePhotos: ExecutableAction {
             let photos = try camera.stopTakingPhotos()
             
             // store the photos as a yield
-            self.store(data: photos, forYieldIndex: 0)
+            self.store(photos, forYieldIndex: 0)
             
         } catch let error {
             self.error(error)

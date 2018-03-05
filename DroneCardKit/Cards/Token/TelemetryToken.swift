@@ -8,16 +8,21 @@
 
 import Foundation
 
-/// Current drone telemetry, read-only. Carries current location, altitude, attitude, and motor state.
+import CardKit
+import CardKitRuntime
+
+/// Read-only drone telemetry. Carries home location, current location, altitude, and attitude.
 public protocol TelemetryToken {
-    // MARK: Location & attitude
+    // Home location (captured at takeoff)
+    var homeLocation: DCKCoordinate2D? { get }
+    
+    /// Current location
     var currentLocation: DCKCoordinate2D? { get }
+    
+    /// Current altitude
     var currentAltitude: DCKRelativeAltitude? { get }
     
-    /// If the values of the pitch, roll, and yaw are 0, the aircraft will be hovering level with a True North heading.
-    /// Values range from 0 to 360. 0º represents North, 90º:East, 180º:South, 270º:West, 360º:North
+    /// Current attitude of the aircraft, in the range of [-180, 180]. The attitude can be normalized to [0, 360]
+    /// by calling `currentAttitude.normalized()`.
     var currentAttitude: DCKAttitude? { get }
-    
-    // MARK: Motor state
-    var areMotorsOn: Bool? { get }
 }

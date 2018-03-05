@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -32,10 +30,10 @@ class TakePhotoBurstTests: XCTestCase {
         
         // bind inputs and tokens
         let cameraToken = MockCameraToken(with: DroneCardKit.Token.Camera.makeCard())
-        let burstCount = DCKPhotoBurstCount.burst_3
-        let aspectRatio = DCKPhotoAspectRatio.aspect_16x9
+        let burstCount: DCKPhotoBurstCount = .burst3
+        let aspectRatio: DCKPhotoAspectRatio = .aspect16x9
         let quality = DCKPhotoQuality.excellent
-        let inputBindings: [String : JSONEncodable] = ["BurstCount": burstCount, "AspectRatio": aspectRatio, "Quality": quality]
+        let inputBindings: [String: Codable] = ["BurstCount": burstCount, "AspectRatio": aspectRatio, "Quality": quality]
         let tokenBindings = ["Camera": cameraToken]
         
         takePhotoBurst.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
@@ -67,11 +65,12 @@ class TakePhotoBurstTests: XCTestCase {
                 return
             }
             
-            do {
-                let _ = try yieldData.decode(type: DCKPhotoBurst.self)
-            } catch let error {
-                XCTFail("failed to decode DCKPhotoBurst from yield: \(error)")
+            guard let burst: DCKPhotoBurst = yieldData.unboxedValue() else {
+                XCTFail("unable to unbox yielded DCKPhotoBurst")
+                return
             }
+            
+            XCTAssertTrue(burst.photos.count > 0)
         }
     }
 }

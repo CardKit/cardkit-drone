@@ -12,97 +12,80 @@ import CardKit
 import CardKitRuntime
 
 public protocol DroneToken: TelemetryToken {
+    /// True if the motors are on, false otherwise.
+    var areMotorsOn: Bool { get }
+    
+    /// True if the drone is flying, false otherwise.
+    var isFlying: Bool { get }
+    
+    /// True if the landing gear is down (i.e. deployed), and false for any other state of the landing gear.
+    var isLandingGearDown: Bool { get }
+    
+    /// Turn on (or off) the drone's motors.
     func spinMotors(on: Bool) throws
     
-    // MARK: Take off
-    
-    /// Takes off to a default altitude or custom altitude (if specified).
-    /// If the drone is already in the air, this function should not do anything.
-    ///
-    /// - Parameters:
-    ///   - altitude: the altitude the drone will climb to. if nil, the drone will take off to it's default take off altitude.
-    ///   - completionHandler: AsyncExecutionCompletionHandler
+    /// Commands the drone to take off. If the drone is already in the air, this function should not do anything.
     func takeOff(at altitude: DCKRelativeAltitude?) throws
     
-    // MARK: Hover
+    /// Causes the drone to hover in its current location at the given altitude. If `altitude` is nil, the drone will hover at its current altitude.
+    func hover(at altitude: DCKRelativeAltitude?) throws
     
-    /// Cancels all current operations and hovers. The drone will fly to an altitude (if specified) and change its yaw (if specified).
-    ///
-    /// - Parameters:
-    ///   - altitude: the height the drone should be at. if nil, the altitude will not change.
-    ///   - yaw: the angle the drone should be facing. if nil, the yaw will not change.
-    ///   - completionHandler: AsyncExecutionCompletionHandler
-    func hover(at altitude: DCKRelativeAltitude?, withYaw yaw: DCKAngle?) throws
+    /// Orients the drone to point in the given direction.
+    func orient(to yaw: DCKAngle) throws
     
-    // MARK: Fly
+    /// Fly to the given 2D coordinate.
+    func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws
     
-    /// Fly to a coordinate at an altitude, speed, and yaw. The drone will change its yaw angle and then fly to the location.
-    /// The yaw angle will be updated by calling the hover(withYaw:) function.
-    ///
-    /// - Parameters:
-    ///   - coordinate: the location the drone needs to fly to
-    ///   - yaw: the angle the drone should be facing. if nil, the yaw will not change.
-    ///   - altitude: the height the drone should be at. if nil, the altitude will not change.
-    ///   - speed: the speed the drone should be flying. if nil, the default speed will be used (8 m/s)
-    ///   - completionHandler: AsyncExecutionCompletionHandler
-    func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle?, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws
+    /// Fly along the given 2D path.
     func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?) throws
+    
+    /// Fly along the given 3D path.
     func fly(on path: DCKCoordinate3DPath, atSpeed speed: DCKSpeed?) throws
     
-    // MARK: Circle
-    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude, atAngularSpeed angularSpeed: DCKAngularVelocity?, direction: DCKRotationDirection?, repeatedly shouldRepeat: Bool) throws
+    /// Fly in a circle once around the center point at the given radius.
+    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance, atAltitude altitude: DCKRelativeAltitude?, atAngularVelocity angularVelocity: DCKAngularVelocity?) throws
     
-    // MARK: Return home
-    var homeLocation: DCKCoordinate2D? { get }
-    func returnHome(atAltitude altitude: DCKRelativeAltitude?, atSpeed speed: DCKSpeed?, toLand land: Bool) throws
+    /// Causes the drone to return home.
+    func returnHome() throws
     
-    // MARK: Spin Around
-    func spinAround(toYawAngle yaw: DCKAngle, atAngularSpeed angularSpeed: DCKAngularVelocity?) throws
-    
-    // MARK: Landing gear
-    var isLandingGearDown: Bool? { get }
+    /// Changes the state of the landing gear.
     func landingGear(down: Bool) throws
     
-    // MARK: Land
-    
-    /// Lands the drone at the current location. Once the drone has landed, the motors will automatically turn off.
-    ///
-    /// - Parameter completionHandler: AsyncExecutionCompletionHandler
+    /// Lands the drone at the current location. Once the drone has landed, the motors should automatically disengage.
     func land() throws
 }
 
-
-// MARK: - Convienience Functions for Default Parameters
-
 public extension DroneToken {
-    
-    // takeOff without altitude specified
-    final func takeOff(at altitude: DCKRelativeAltitude? = nil) throws {
+    func takeOff() throws {
         try self.takeOff(at: nil)
     }
     
-    // hover without Yaw angle specified
-    final func hover(at altitude: DCKRelativeAltitude? = nil, withYaw yaw: DCKAngle? = nil) throws {
-        try self.hover(at: altitude, withYaw: nil)
+    func fly(to coordinate: DCKCoordinate2D) throws {
+        try self.fly(to: coordinate, atAltitude: nil, atSpeed: nil)
     }
     
-    //fly to with DCKCoordinate2D
-    final func fly(to coordinate: DCKCoordinate2D, atYaw yaw: DCKAngle? = nil, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try self.fly(to: coordinate, atYaw: yaw, atAltitude: altitude, atSpeed: speed)
+    func fly(to coordinate: DCKCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+        try self.fly(to: coordinate, atAltitude: altitude, atSpeed: speed)
     }
     
-    //fly to with DCKOrientedCoordinate2D
-    final func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try self.fly(to: coordinate.asNonOriented(), atYaw: coordinate.yaw, atAltitude: altitude, atSpeed: speed)
+    func fly(to coordinate: DCKOrientedCoordinate2D, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
+        try self.fly(to: coordinate.asNonOriented(), atAltitude: altitude, atSpeed: speed)
     }
     
-    //fly to with DCKCoordinate3D
-    final func fly(to coordinate: DCKCoordinate3D, atYaw yaw: DCKAngle? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try self.fly(to: coordinate.as2D(), atYaw: yaw, atAltitude: coordinate.altitude, atSpeed: speed)
+    func fly(to coordinate: DCKCoordinate3D, atSpeed speed: DCKSpeed? = nil) throws {
+        try self.fly(to: coordinate.as2D(), atAltitude: coordinate.altitude, atSpeed: speed)
     }
     
-    final func fly(on path: DCKCoordinate2DPath, atAltitude altitude: DCKRelativeAltitude? = nil, atSpeed speed: DCKSpeed? = nil) throws {
-        try self.fly(on: path, atAltitude: altitude, atSpeed: speed)
+    func fly(on path: DCKCoordinate2DPath) throws {
+        try self.fly(on: path, atAltitude: nil, atSpeed: nil)
+    }
+    
+    func fly(on path: DCKCoordinate3DPath) throws {
+        try self.fly(on: path, atSpeed: nil)
+    }
+    
+    func circle(around center: DCKCoordinate2D, atRadius radius: DCKDistance) throws {
+        try self.circle(around: center, atRadius: radius, atAltitude: nil, atAngularVelocity: nil)
     }
 }
 

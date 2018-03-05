@@ -10,8 +10,7 @@ import Foundation
 
 import CardKitRuntime
 
-public class Circle: ExecutableAction {
-    
+public class Circle: ExecutableAction {    
     override public func main() {
         guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken,
             let center: DCKCoordinate2D = self.value(forInput: "Center"),
@@ -19,8 +18,7 @@ public class Circle: ExecutableAction {
             let altitude: DCKRelativeAltitude = self.value(forInput: "Altitude")
             else { return }
         
-        let angularSpeed: DCKAngularVelocity? = self.optionalValue(forInput: "AngularSpeed")
-        let direction: DCKRotationDirection? = self.optionalValue(forInput: "Direction")
+        let angularVelocity: DCKAngularVelocity? = self.optionalValue(forInput: "AngularVelocity")
         
         do {
             // take of to the provided altitude
@@ -30,7 +28,7 @@ public class Circle: ExecutableAction {
             
             // circle
             if !isCancelled {
-                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularSpeed: angularSpeed, direction: direction, repeatedly: false)
+                try drone.circle(around: center, atRadius: radius, atAltitude: altitude, atAngularVelocity: angularVelocity)
             }
         } catch let error {
             self.error(error)
@@ -41,15 +39,5 @@ public class Circle: ExecutableAction {
         }
     }
     
-    override public func cancel() {
-        guard let drone: DroneToken = self.token(named: "Drone") as? DroneToken else {
-            return
-        }
-        
-        do {
-            try drone.land()
-        } catch let error {
-            self.error(error)
-        }
-    }
+    override public func cancel() {}
 }

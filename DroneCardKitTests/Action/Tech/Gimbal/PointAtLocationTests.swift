@@ -8,8 +8,6 @@
 
 import XCTest
 
-import Freddy
-
 @testable import CardKit
 @testable import CardKitRuntime
 @testable import DroneCardKit
@@ -34,7 +32,7 @@ class PointAtLocationTests: XCTestCase {
         let gimbalToken = MockGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
         let telemetryToken = MockTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
         let location = DCKCoordinate3D(latitude: 41.45782443982217, longitude: -73.29261755536784, altitude: 10)
-        let inputBindings: [String : JSONEncodable] = ["Location": location]
+        let inputBindings: [String: Codable] = ["Location": location]
         let tokenBindings = ["Gimbal": gimbalToken, "Telemetry": telemetryToken]
         
         pointAtLocation.setup(inputBindings: inputBindings, tokenBindings: tokenBindings)
