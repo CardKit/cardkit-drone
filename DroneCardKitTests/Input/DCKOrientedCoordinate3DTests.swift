@@ -28,7 +28,7 @@ class DCKOrientedCoordinate3DTests: XCTestCase {
     // swiftlint:disable:next function_body_length
     func testAddDistance() {
         let errorMsg = "new distance does not equal expected amount"
-        let coordinate = DCKCoordinate2D(latitude: 50.066, longitude:  -5.714)
+        let coordinate = DCKCoordinate2D(latitude: 50.066, longitude: -5.714)
         let distance = DCKDistance(meters: 20)
         
         // test adding distance with a yaw of 0 degrees
