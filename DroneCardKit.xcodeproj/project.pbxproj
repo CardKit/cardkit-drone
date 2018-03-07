@@ -186,6 +186,9 @@
 		CCD6D6F01DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
 		CCD6D6F11DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
 		CCD6D6F21DFF0EA9004CEB71 /* GimbalToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */; };
+		CCF540132050444600022405 /* DroneCardKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF540122050444600022405 /* DroneCardKit.xcassets */; };
+		CCF540142050444600022405 /* DroneCardKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF540122050444600022405 /* DroneCardKit.xcassets */; };
+		CCF540152050444600022405 /* DroneCardKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF540122050444600022405 /* DroneCardKit.xcassets */; };
 		CCFAFB6A1E60C02F000DBEF4 /* TelemetryToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */; };
 		CCFAFB6B1E60C02F000DBEF4 /* TelemetryToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */; };
 		CCFAFB6C1E60C02F000DBEF4 /* TelemetryToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */; };
@@ -296,6 +299,7 @@
 		CCD6D6E71DFF0EA9004CEB71 /* CameraToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraToken.swift; sourceTree = "<group>"; };
 		CCD6D6E81DFF0EA9004CEB71 /* DroneToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroneToken.swift; sourceTree = "<group>"; };
 		CCD6D6E91DFF0EA9004CEB71 /* GimbalToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GimbalToken.swift; sourceTree = "<group>"; };
+		CCF540122050444600022405 /* DroneCardKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DroneCardKit.xcassets; sourceTree = "<group>"; };
 		CCFAFB691E60C02F000DBEF4 /* TelemetryToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryToken.swift; sourceTree = "<group>"; };
 		F90FD0021DF1FAD200C26E86 /* FlyTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -361,13 +365,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		44017E301E4AD94C00B4D9C1 /* Orientation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Orientation;
-			sourceTree = "<group>";
-		};
 		68657C2D1E3FBEB900612ECC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,20 +436,11 @@
 		68DE99A51DF1C7670040D76A /* Movement */ = {
 			isa = PBXGroup;
 			children = (
-				68DE99A61DF1C7670040D76A /* Area */,
 				F90FCFF01DF1FA0000C26E86 /* Location */,
-				44017E301E4AD94C00B4D9C1 /* Orientation */,
 				687DC9D01E5756E1000F7EBE /* Sequence */,
 				686EE8A11DF8558B0024F3E5 /* Simple */,
 			);
 			path = Movement;
-			sourceTree = "<group>";
-		};
-		68DE99A61DF1C7670040D76A /* Area */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Area;
 			sourceTree = "<group>";
 		};
 		CC0F32C51E316C9E008423AC /* Input */ = {
@@ -543,6 +531,7 @@
 				CCD6D6E11DFF0E38004CEB71 /* DroneCardKit */,
 				CCBE8C5E1DA69F5900BD7638 /* Cards */,
 				68657C2D1E3FBEB900612ECC /* Extensions */,
+				CCF540112050443100022405 /* Resources */,
 			);
 			path = DroneCardKit;
 			sourceTree = "<group>";
@@ -701,6 +690,14 @@
 				CC356B591E70732C00E2DF14 /* Mock Tokens */,
 			);
 			path = Token;
+			sourceTree = "<group>";
+		};
+		CCF540112050443100022405 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCF540122050444600022405 /* DroneCardKit.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F90FCFF01DF1FA0000C26E86 /* Location */ = {
@@ -923,6 +920,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF540132050444600022405 /* DroneCardKit.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +935,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF540142050444600022405 /* DroneCardKit.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -951,6 +950,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF540152050444600022405 /* DroneCardKit.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

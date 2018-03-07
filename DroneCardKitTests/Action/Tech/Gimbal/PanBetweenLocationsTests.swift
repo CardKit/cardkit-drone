@@ -1,10 +1,18 @@
-//
-//  PanBetweenLocationsTests.swift
-//  DroneCardKit
-//
-//  Created by Justin Weisz on 3/2/17.
-//  Copyright © 2017 IBM. All rights reserved.
-//
+/**
+ * Copyright 2018 IBM Corp. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import XCTest
 
@@ -31,8 +39,8 @@ class PanBetweenLocationsTests: XCTestCase {
         // bind inputs and tokens
         let gimbalToken = MockGimbalToken(with: DroneCardKit.Token.Gimbal.makeCard())
         let telemetryToken = MockTelemetryToken(with: DroneCardKit.Token.Telemetry.makeCard())
-        let startLocation = DCKCoordinate3D(latitude: 41.45782443982217, longitude: -73.29261755536784, altitude: 10)
-        let endLocation = DCKCoordinate3D(latitude: 41.4538063973752, longitude: -73.28752206344512, altitude: 10)
+        let startLocation = DCKCoordinate3D(latitude: 41.45782443982217, longitude: -73.29261755536784, altitude: DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10))
+        let endLocation = DCKCoordinate3D(latitude: 41.4538063973752, longitude: -73.28752206344512, altitude: DCKRelativeAltitude(metersAboveGroundAtTakeoff: 10))
         let duration = 2.0
         let inputBindings: [String: Codable] = ["StartLocation": startLocation, "EndLocation": endLocation, "Duration": duration]
         let tokenBindings = ["Gimbal": gimbalToken, "Telemetry": telemetryToken]

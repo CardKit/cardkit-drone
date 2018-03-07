@@ -1,6 +1,6 @@
 # DroneCardKit
 
-DroneCardKit includes card definitions and implementations of drone-specific cards in the [CardKit](https://github.com/CardKit/card-kit) framework. It includes a number of new `Action`, `Input`, and `Token` cards that control a drone's movement, a camera, and a gimbal.
+DroneCardKit includes card definitions and implementations of drone-specific cards in the [CardKit](https://github.com/CardKit/cardkit) framework. It includes a number of new `Action`, `Input`, and `Token` cards that control a drone's movement, a camera, and a gimbal.
 
 DroneCardKit is written in Swift 4 and supports macOS, iOS, and tvOS.
 
@@ -50,14 +50,17 @@ A number of `Input` cards are defined in DroneCardKit to provide input to the `A
 
 ## Building
 
-DroneCardKit depends on both [CardKit](https://github.com/CardKit/card-kit) and the [CardKit Runtime](https://github.com/CardKit/card-kit-runtime). We use Carthage to manage our dependencies. Run `carthage bootstrap` to build all of the dependencies before building the DroneCardKit Xcode project.
+DroneCardKit depends on both [CardKit](https://github.com/CardKit/cardkit) and the [CardKit Runtime](https://github.com/CardKit/cardkit-runtime). We use Carthage to manage our dependencies. Run `carthage bootstrap` to build all of the dependencies before building the DroneCardKit Xcode project.
 
-> ⚠️ DroneCardKit does *not* provide implementations of its `Token` cards. Rather, it defines interfaces for those cards that drone-specific implementations must use. This design choice enables multiple, drone-specific token implementations to exist. For a DJI-based implementation of the `DroneCardKit` tokens, please see [DroneTokensDJI](https://github.com/CardKit/drone-tokens-dji).
+> ⚠️ DroneCardKit does *not* provide implementations of its `Token` cards. Rather, it defines interfaces for those cards that drone-specific implementations must use. This design choice enables multiple, drone-specific token implementations to exist. For a DJI-based implementation of the `DroneCardKit` tokens, please see [DroneTokensDJI](https://github.com/CardKit/cardkit-drone-dji).
+
+## Known Limitations
+
+Drone cards were initially developed on paper and evaluated through a usability study. Since then, a number of new cards have been defined, some existing cards have been changed, and some have been eliminated. Thus, there are some cards lacking artwork, and artwork that may not fully match the descriptor as defined in code. In addition, `CoverArea` and `SpinAround` lack proper implementations, so their tests have been disabled.
+
+For reference, we have included the Sketch design file for the paper drone cards in the `Resources` directory.
 
 ## Contributing
 
 If you would like to contribute to DroneCardKit, we recommend forking the repository, making your changes, and submitting a pull request.
 
-## Contact
-
-Please contact Justin Weisz (jweisz [at] us.ibm.com) with any questions.
