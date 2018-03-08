@@ -21,7 +21,7 @@ import CardKitRuntime
 
 public struct DroneCardCatalog: DescriptorCatalog {
     /// All card descriptors included in DroneCardKit
-    public let descriptors: [CardDescriptor] = [
+    public var descriptors: [CardDescriptor] = [
         DroneCardKit.Action.Movement.Location.Circle,
         DroneCardKit.Action.Movement.Location.CircleRepeatedly,
         DroneCardKit.Action.Movement.Location.FlyTo,
@@ -65,7 +65,7 @@ public struct DroneCardCatalog: DescriptorCatalog {
     
     // These descriptors do not have complete implementations, so they are kept here and not (yet)
     // included in the list above.
-    private let unimplementedDescriptors: [ActionCardDescriptor] = [
+    private var unimplementedDescriptors: [ActionCardDescriptor] = [
         DroneCardKit.Action.Movement.Area.CoverArea,
         DroneCardKit.Action.Movement.Area.Survey,
         DroneCardKit.Action.Movement.Orientation.SpinAround,
@@ -95,4 +95,6 @@ public struct DroneCardCatalog: DescriptorCatalog {
         DroneCardKit.Action.Tech.Gimbal.PointAtLocation: PointAtLocation.self,
         DroneCardKit.Action.Tech.Gimbal.PointInDirection: PointInDirection.self
     ]
+    
+    public init() {}
 }
